@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-gold" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxford Academy | Premium Landing Page</title>
+  
+  <!-- CSS Library CDN Inclusions -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              light: '#e8d0ad',
+              DEFAULT: '#c5a880',
+              dark: '#a3875f',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Theme Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/themes/dark.css">
+  <link rel="stylesheet" href="css/themes/light.css">
+  <link rel="stylesheet" href="css/themes/gold.css">
+  <link rel="stylesheet" href="css/animations/transitions.css">
+  <link rel="stylesheet" href="css/animations/scroll-effects.css">
+  <link rel="stylesheet" href="css/animations/3d-effects.css">
+  <link rel="stylesheet" href="css/animations/hover-effects.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/hero-animation.css">
+
+  <!-- Theme loading script (prevents theme flash) -->
+  <script src="js/theme-manager.js"></script>
+</head>
+<body class="smooth-transition">
+
+  <!-- Hero Preloader (visible only while frames load) -->
+  <div id="hero-preloader" class="hero-preloader" aria-hidden="true">
+    <div class="hero-preloader__mark">OXFORD&nbsp;ACADEMY</div>
+    <div class="hero-preloader__bar"><div id="hero-preloader-fill" class="hero-preloader__bar-fill"></div></div>
+    <div id="hero-preloader-pct" class="hero-preloader__pct">0%</div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header id="header-nav" class="sticky-header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <!-- Logo -->
+      <a href="#" class="d-flex align-items-center text-decoration-none">
+        <img id="navbar-logo" src="assets/img/logo.png" alt="Oxford Logo" class="h-12 object-contain mr-3">
+        <span class="text-xl font-bold tracking-wider text-primary-class" style="color: var(--text-primary);">
+          OXFORD <span class="font-normal text-sm block opacity-75" data-en="ACADEMY" data-ar="الأكاديمية">ACADEMY</span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden lg:flex items-center space-x-6">
+        <a href="#hero" class="desktop-nav-link link-hover text-decoration-none font-medium active" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="#about" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="#strengths" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Strengths" data-ar="مميزاتنا">Strengths</a>
+        <a href="#actions" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
+        <a href="#news" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="News" data-ar="الأخبار">News</a>
+        <a href="#testimonials" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Testimonials" data-ar="التقييمات">Testimonials</a>
+        <a href="#faq" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a>
+        <a href="#contact" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+      </nav>
+
+      <!-- Desktop Action Buttons -->
+      <div class="hidden xl:flex items-center space-x-3">
+        <!-- Language Switcher (icon-only) -->
+        <button id="langToggleBtn" class="btn btn-glass icon-btn" onclick="toggleLanguage()" aria-label="Toggle language" title="Toggle language">
+          <i class="bi bi-globe2"></i>
+        </button>
+
+        <!-- Theme Cycle (icon-only, cycles on click) -->
+        <button id="themeCycleBtn" class="btn btn-glass icon-btn" type="button" aria-label="Switch theme" title="Switch theme">
+          <i class="bi bi-award-fill"></i>
+        </button>
+
+        <a href="#" class="btn btn-glass px-3 py-2 rounded-lg" data-en="Student Gate" data-ar="بوابة الطالب">Student Gate</a>
+        <a href="#" class="btn btn-luxury px-4 py-2 rounded-lg" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobileMenuToggle" class="lg:hidden text-2xl p-2 rounded-lg" style="color: var(--text-primary);">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobileMenuBackdrop" class="mobile-menu-backdrop"></div>
+  <div id="mobileNavMenu" class="mobile-nav-menu d-flex flex-column justify-content-between">
+    <div>
+      <div class="d-flex align-items-center justify-content-between mb-8">
+        <span class="text-xl font-bold tracking-wider" style="color: var(--text-primary);" data-en="OXFORD ACADEMY" data-ar="أكاديمية أوكسفورد">OXFORD ACADEMY</span>
+        <button id="closeMobileMenu" class="text-2xl p-2" style="color: var(--text-primary);">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <nav class="d-flex flex-column space-y-4">
+        <a href="#hero" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="#about" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="#strengths" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Strengths" data-ar="مميزاتنا">Strengths</a>
+        <a href="#actions" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
+        <a href="#news" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="News" data-ar="الأخبار">News</a>
+        <a href="#testimonials" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Testimonials" data-ar="التقييمات">Testimonials</a>
+        <a href="#faq" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a>
+        <a href="#contact" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Mobile controls -->
+    <div class="d-flex flex-column gap-3 mt-8">
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-glass icon-btn icon-btn-lg" onclick="toggleLanguage()" aria-label="Toggle language">
+          <i class="bi bi-globe2"></i>
+        </button>
+        <button id="themeCycleBtnMobile" class="btn btn-glass icon-btn icon-btn-lg" type="button" aria-label="Switch theme">
+          <i class="bi bi-award-fill"></i>
+        </button>
+      </div>
+
+      <a href="#" class="btn btn-glass w-100 py-3 rounded-lg text-center" data-en="Student Gate" data-ar="بوابة الطالب">Student Gate</a>
+      <a href="#" class="btn btn-luxury w-100 py-3 rounded-lg text-center" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <!-- Two-stage video background: video1 -> crossfade -> video2 -> crossfade -> still -->
+    <div class="hero-frame-stage" aria-hidden="true">
+      <video id="hero-bg-video-1"
+             class="hero-frame-stage__media hero-frame-stage__video is-active"
+             src="assets/last_vidio.mp4"
+             muted
+             playsinline
+             autoplay
+             preload="auto"></video>
+      <video id="hero-bg-video-2"
+             class="hero-frame-stage__media hero-frame-stage__video"
+             src="assets/ezgif-4717916b679dc07a.mp4"
+             muted
+             playsinline
+             preload="auto"></video>
+      <img id="hero-bg-still"
+           class="hero-frame-stage__media hero-frame-stage__still"
+           src="assets/bc-remove-4k.png"
+           alt="">
+    </div>
+
+    <div class="hero-overlay"></div>
+    <canvas id="particles-canvas" class="particles-canvas-class"></canvas>
+
+    <!-- Floating Background Shapes -->
+    <div class="absolute top-1/4 left-10 w-24 h-24 bg-gold opacity-10 rounded-full blur-xl float-slow parallax-layer" data-parallax-speed="0.03"></div>
+    <div class="absolute bottom-1/4 right-20 w-36 h-36 bg-cyan-400 opacity-10 rounded-full blur-2xl float-medium parallax-layer" data-parallax-speed="-0.02"></div>
+    <div class="absolute top-1/3 right-1/4 w-16 h-16 bg-purple-500 opacity-5 rounded-full blur-lg float-fast parallax-layer" data-parallax-speed="0.05"></div>
+
+    <div id="hero-content-overlay" class="hero-content hero-content-overlay container px-4">
+      <div class="reveal-scale">
+        <h1 class="hero-stagger text-4xl md:text-6xl font-extrabold tracking-tight mb-4 uppercase" data-stagger="1" style="color: var(--text-primary);">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold-dark" data-en="Oxford Academy" data-ar="أكاديمية أوكسفورد">Oxford Academy</span>
+        </h1>
+        <p class="hero-stagger text-lg md:text-2xl text-secondary-class mb-8 max-w-2xl mx-auto leading-relaxed" data-stagger="2" style="color: var(--text-secondary);"
+           data-en="Step Into Professional Excellence. Approved Oxford Test Center & Global Academic Preparation."
+           data-ar="بوابتك للتميز الأكاديمي والمهني. مركز اختبارات أوكسفورد المعتمد والتدريب اللغوي الدولي.">
+          Step Into Professional Excellence. Approved Oxford Test Center & Global Academic Preparation.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-stagger d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4" data-stagger="3">
+          <a href="#actions" class="btn btn-luxury px-5 py-3 rounded-xl w-60 sm:w-auto text-lg d-flex align-items-center justify-content-center"
+             data-en="Placement Test Booking" data-ar="حجز تحديد المستوى">
+            Placement Test Booking
+          </a>
+          <a href="#contact" class="btn btn-glass px-5 py-3 rounded-xl w-60 sm:w-auto text-lg d-flex align-items-center justify-content-center"
+             data-en="Book A Course" data-ar="حجز مقعد دراسي">
+            Book A Course
+          </a>
+        </div>
+      </div>
+
+      <!-- Symmetrical Floating 3D Cards -->
+      <div class="hero-stagger hidden md:grid grid-cols-3 gap-4 mt-16 max-w-4xl mx-auto" data-stagger="4">
+        <div class="glass-panel tilt-card p-4 text-center cursor-pointer float-slow">
+          <i class="bi bi-shield-check text-3xl mb-2 text-gold"></i>
+          <h4 class="font-bold text-sm mb-1" data-en="Approved OTE Center" data-ar="مركز اختبار معتمد">Approved OTE Center</h4>
+          <p class="text-xs opacity-75" data-en="Direct licensing from Oxford University Press" data-ar="ترخيص مباشر من مطبعة جامعة أوكسفورد">Direct licensing from Oxford University Press</p>
+        </div>
+        <div class="glass-panel tilt-card p-4 text-center cursor-pointer float-medium">
+          <i class="bi bi-person-workspace text-3xl mb-2 text-gold"></i>
+          <h4 class="font-bold text-sm mb-1" data-en="Expert Instructors" data-ar="مدربون ذوو خبرة">Expert Instructors</h4>
+          <p class="text-xs opacity-75" data-en="Certified ESL trainers with global experience" data-ar="مدربون لغة معتمدون ذوو خبرة عالمية">Certified ESL trainers with global experience</p>
+        </div>
+        <div class="glass-panel tilt-card p-4 text-center cursor-pointer float-fast">
+          <i class="bi bi-clock-history text-3xl mb-2 text-gold"></i>
+          <h4 class="font-bold text-sm mb-1" data-en="Flexible Hours" data-ar="أوقات مرنة">Flexible Hours</h4>
+          <p class="text-xs opacity-75" data-en="Morning & evening schedules fit for work and school" data-ar="مواعيد صباحية ومسائية تناسب العمل والدراسة">Morning & evening schedules fit for work and school</p>
+        </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="hero-stagger absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity" data-stagger="5">
+        <a href="#about" class="text-decoration-none" style="color: var(--text-primary);">
+          <span class="text-xs tracking-widest block mb-2 uppercase" data-en="SCROLL DOWN" data-ar="انزل للأسفل">SCROLL DOWN</span>
+          <i class="bi bi-chevron-double-down animate-bounce text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24" style="background: var(--bg-secondary);">
+    <div class="container px-4">
+      <div class="row align-items-center gy-12">
+        <!-- Text Column -->
+        <div class="col-lg-6 reveal-left">
+          <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="DISCOVER OXFORD" data-ar="اكتشف أوكسفورد">DISCOVER OXFORD</h5>
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="Leading Academic Training Institution" data-ar="المؤسسة الأكاديمية الرائدة للتدريب">Leading Academic Training Institution</h2>
+          <div class="w-16 h-1 bg-gold mb-6 rounded-full"></div>
+          <p class="text-lg leading-relaxed mb-6" style="color: var(--text-secondary);" 
+             data-en="Oxford Academy stands at the forefront of language education and testing. As an approved Oxford Test of English (OTE) center, we deliver globally recognized certifications alongside premier academic instruction tailored for IELTS preparation, general levels, and corporate business communication."
+             data-ar="تقف أكاديمية أوكسفورد في طليعة تعليم اللغات والتقييم الدولي. بصفتنا مركزًا معتمدًا لاختبار Oxford Test of English (OTE)، نقدم شهادات معترف بها عالميًا إلى جانب تدريب أكاديمي متميز مُعد خصيصًا لاجتياز اختبار آيلتس، المستويات العامة، والمحادثة المهنية للمؤسسات.">
+            Oxford Academy stands at the forefront of language education and testing. As an approved Oxford Test of English (OTE) center, we deliver globally recognized certifications alongside premier academic instruction tailored for IELTS preparation, general levels, and corporate business communication.
+          </p>
+          <div class="row g-4 mb-8">
+            <div class="col-6 d-flex align-items-start">
+              <i class="bi bi-patch-check-fill text-gold text-2xl me-3"></i>
+              <div>
+                <h5 class="font-bold mb-1" style="color: var(--text-primary);" data-en="Prestige" data-ar="سمعة دولية">Prestige</h5>
+                <p class="text-sm opacity-75" data-en="Oxford standards in testing" data-ar="معايير أوكسفورد للتقييم">Oxford standards in testing</p>
+              </div>
+            </div>
+            <div class="col-6 d-flex align-items-start">
+              <i class="bi bi-journal-bookmark-fill text-gold text-2xl me-3"></i>
+              <div>
+                <h5 class="font-bold mb-1" style="color: var(--text-primary);" data-en="Methodology" data-ar="مناهج حديثة">Methodology</h5>
+                <p class="text-sm opacity-75" data-en="Immersive teaching styles" data-ar="طرق تعليم تفاعلية غامرة">Immersive teaching styles</p>
+              </div>
+            </div>
+          </div>
+          <a href="assets/doc/brochur.pdf" target="_blank" class="btn btn-luxury px-4 py-3 rounded-lg" data-en="Download Academy Brochure" data-ar="تحميل كتيب الأكاديمية">Download Academy Brochure</a>
+        </div>
+        
+        <!-- Video/Image Column -->
+        <div class="col-lg-6 reveal-right">
+          <div class="relative p-3 glass-panel">
+            <div class="relative overflow-hidden rounded-lg bg-cover bg-center h-80 md:h-[450px]" style="background-image: url('assets/img/banner/1.jpg');">
+              <div class="absolute inset-0 bg-black bg-opacity-40 d-flex align-items-center justify-content-center">
+                <!-- Glowing Play Button -->
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="w-20 h-20 bg-gold hover:bg-gold-light text-black d-flex align-items-center justify-content-center rounded-full text-3xl shadow-lg transition-transform transform hover:scale-110 play-glow">
+                  <i class="bi bi-play-fill mr-[-2px]"></i>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Floating overlay widget -->
+            <div class="absolute -bottom-6 -left-6 glass-panel p-4 max-w-xs shadow-2xl hidden sm:block">
+              <div class="d-flex align-items-center">
+                <div class="w-12 h-12 bg-gold-dark bg-opacity-20 text-gold rounded-full d-flex align-items-center justify-content-center text-xl me-3">
+                  <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <div>
+                  <h6 class="font-bold mb-0" style="color: var(--text-primary);" data-en="Oxford Promise" data-ar="عهد أوكسفورد">Oxford Promise</h6>
+                  <p class="text-xs opacity-75 mb-0" data-en="Guaranteed level improvements" data-ar="تحسن مضمون ومثبت في المستويات">Guaranteed level improvements</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Separator -->
+  <div class="section-separator reveal">
+    <div class="separator-icon"></div>
+  </div>
+
+  <!-- Core Strengths Section (Hexagon Grid) -->
+  <section id="strengths" class="py-24" style="background: var(--bg-primary);">
+    <div class="container px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="WHY OXFORD?" data-ar="لماذا أوكسفورد؟">WHY OXFORD?</h5>
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="Core Pillars of Academic Success" data-ar="الركائز الأساسية للنجاح الأكاديمي">Core Pillars of Academic Success</h2>
+        <div class="mx-auto w-16 h-1 bg-gold rounded-full"></div>
+      </div>
+
+      <div class="hexagon-grid reveal">
+        <!-- Timetable -->
+        <div class="glass-panel hexagon-card">
+          <div class="hexagon-wrapper">
+            <div class="hexagon-wrapper-inner">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Timetable" data-ar="جدول مرن">Timetable</h4>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);"
+             data-en="Structured scheduling designed to adapt to school, university, and employment constraints."
+             data-ar="جداول زمنية منظمة ومصممة بدقة لتناسب مواعيد المدارس والجامعات وساعات العمل.">
+            Structured scheduling designed to adapt to school, university, and employment constraints.
+          </p>
+        </div>
+
+        <!-- Teachers -->
+        <div class="glass-panel hexagon-card">
+          <div class="hexagon-wrapper">
+            <div class="hexagon-wrapper-inner">
+              <i class="fa-solid fa-users-line"></i>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Instructors" data-ar="طاقم التدريس">Instructors</h4>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);"
+             data-en="Certified, highly experienced teachers employing advanced immersion educational methodologies."
+             data-ar="طاقم تدريس مؤهل دوليًا ومصنف لتطبيق أحدث مناهج التعليم التفاعلي المباشر.">
+            Certified, highly experienced teachers employing advanced immersion educational methodologies.
+          </p>
+        </div>
+
+        <!-- Value -->
+        <div class="glass-panel hexagon-card">
+          <div class="hexagon-wrapper">
+            <div class="hexagon-wrapper-inner">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Academic Value" data-ar="القيمة الأكاديمية">Academic Value</h4>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);"
+             data-en="High educational standards providing students with tangible, competitive market skills."
+             data-ar="معايير تعليمية رفيعة المستوى تمكن الطلاب من اكتساب مهارات تنافسية حقيقية في سوق العمل.">
+            High educational standards providing students with tangible, competitive market skills.
+          </p>
+        </div>
+
+        <!-- Students -->
+        <div class="glass-panel hexagon-card">
+          <div class="hexagon-wrapper">
+            <div class="hexagon-wrapper-inner">
+              <i class="fa-regular fa-face-smile"></i>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Student Growth" data-ar="تطوير الطالب">Student Growth</h4>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);"
+             data-en="Fostering student confidence through continuous language workshops and support resources."
+             data-ar="تعزيز ثقة الطلاب بأنفسهم من خلال ورش العمل اللغوية المتخصصة ومصادر التعلم الإضافية.">
+            Fostering student confidence through continuous language workshops and support resources.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Separator -->
+  <div class="section-separator reveal">
+    <div class="separator-icon"></div>
+  </div>
+
+  <!-- Quick Action Grid -->
+  <section id="actions" class="py-24" style="background: var(--bg-secondary);">
+    <div class="container px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="EASY NAVIGATION" data-ar="وصول سريع">EASY NAVIGATION</h5>
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="Enroll and Booking Gateways" data-ar="بوابات التسجيل والحجز الفوري">Enroll and Booking Gateways</h2>
+        <div class="mx-auto w-16 h-1 bg-gold rounded-full"></div>
+      </div>
+
+      <div class="row g-4 reveal">
+        <!-- Brochure -->
+        <div class="col-lg-4">
+          <div class="glass-panel p-5 text-center h-100 d-flex flex-column justify-content-between tilt-card hover-glow">
+            <div>
+              <div class="w-16 h-16 bg-gold bg-opacity-20 text-gold rounded-full d-flex align-items-center justify-content-center text-3xl mx-auto mb-4">
+                <i class="bi bi-file-pdf"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);" data-en="Our Syllabus" data-ar="منهج الأكاديمية">Our Syllabus</h3>
+              <p class="opacity-75 text-sm mb-6" data-en="Download the comprehensive academy brochure detailing levels, learning paths, pricing, and OTE structure."
+                 data-ar="قم بتحميل كتيب الأكاديمية الشامل لاستعراض المستويات، الخطط التعليمية، الأسعار، وبنية اختبارات OTE المعتمدة.">
+                Download the comprehensive academy brochure detailing levels, learning paths, pricing, and OTE structure.
+              </p>
+            </div>
+            <a href="assets/doc/brochur.pdf" target="_blank" class="btn btn-luxury w-100 py-3 rounded-lg" data-en="Download PDF" data-ar="تحميل الكتيب">Download PDF</a>
+          </div>
+        </div>
+
+        <!-- Placement Test -->
+        <div class="col-lg-4">
+          <div class="glass-panel p-5 text-center h-100 d-flex flex-column justify-content-between tilt-card hover-glow">
+            <div>
+              <div class="w-16 h-16 bg-gold bg-opacity-20 text-gold rounded-full d-flex align-items-center justify-content-center text-3xl mx-auto mb-4">
+                <i class="bi bi-person-check-fill"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);" data-en="Placement Booking" data-ar="حجز تحديد المستوى">Placement Booking</h3>
+              <p class="opacity-75 text-sm mb-6" data-en="Reserve your slot for the English language placement exam to accurately evaluate your current level."
+                 data-ar="احجز موعد اختبار تحديد المستوى في اللغة الإنجليزية لتقييم مستواك الحالي وضمك للمستوى الأنسب لك.">
+                Reserve your slot for the English language placement exam to accurately evaluate your current level.
+              </p>
+            </div>
+            <a href="#contact" class="btn btn-luxury w-100 py-3 rounded-lg" data-en="Reserve Now" data-ar="احجز موعدك">Reserve Now</a>
+          </div>
+        </div>
+
+        <!-- Book Course -->
+        <div class="col-lg-4">
+          <div class="glass-panel p-5 text-center h-100 d-flex flex-column justify-content-between tilt-card hover-glow">
+            <div>
+              <div class="w-16 h-16 bg-gold bg-opacity-20 text-gold rounded-full d-flex align-items-center justify-content-center text-3xl mx-auto mb-4">
+                <i class="bi bi-bookmark-star-fill"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);" data-en="Course Booking" data-ar="تسجيل في دورة">Course Booking</h3>
+              <p class="opacity-75 text-sm mb-6" data-en="Directly register in our IELTS prep modules, Academic writing workshops, or General levels."
+                 data-ar="سجل مباشرة في دورات التحضير لآيلتس، ورش الكتابة الأكاديمية، أو مستويات تقوية المحادثة واللغة العامة.">
+                Directly register in our IELTS prep modules, Academic writing workshops, or General levels.
+              </p>
+            </div>
+            <a href="#contact" class="btn btn-luxury w-100 py-3 rounded-lg" data-en="Secure Seat" data-ar="احجز مقعدك">Secure Seat</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Counter Section -->
+  <section class="counter-section" style="background-image: url('assets/img/banner/nos.jpg');">
+    <div class="counter-overlay"></div>
+    <div class="container relative z-2 px-4">
+      <div class="row g-4 text-center">
+        <!-- Stat 1 -->
+        <div class="col-md-4 reveal">
+          <div class="glass-panel p-5">
+            <h2 class="text-5xl font-extrabold text-gold mb-3 counter-number" data-target="15000">0</h2>
+            <p class="text-lg font-bold uppercase tracking-wider mb-0" style="color: var(--text-primary);" data-en="Training Hours" data-ar="ساعات تدريبية">Training Hours</p>
+          </div>
+        </div>
+        <!-- Stat 2 -->
+        <div class="col-md-4 reveal delay-2">
+          <div class="glass-panel p-5">
+            <h2 class="text-5xl font-extrabold text-gold mb-3 counter-number" data-target="320">0</h2>
+            <p class="text-lg font-bold uppercase tracking-wider mb-0" style="color: var(--text-primary);" data-en="Total Courses" data-ar="الدورات المنجزة">Total Courses</p>
+          </div>
+        </div>
+        <!-- Stat 3 -->
+        <div class="col-md-4 reveal delay-4">
+          <div class="glass-panel p-5">
+            <h2 class="text-5xl font-extrabold text-gold mb-3 counter-number" data-target="8700">0</h2>
+            <p class="text-lg font-bold uppercase tracking-wider mb-0" style="color: var(--text-primary);" data-en="Enrolled Students" data-ar="الطلاب المسجلين">Enrolled Students</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section id="news" class="py-24" style="background: var(--bg-primary);">
+    <div class="container px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="ACADEMY NEWS" data-ar="أخبار الأكاديمية">ACADEMY NEWS</h5>
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="Latest News and Updates" data-ar="آخر الأخبار والفعاليات">Latest News and Updates</h2>
+        <div class="mx-auto w-16 h-1 bg-gold rounded-full"></div>
+      </div>
+
+      <div class="row g-4 reveal">
+        <!-- News item 1 -->
+        <div class="col-md-4">
+          <div class="glass-panel news-card">
+            <div class="news-img-wrapper">
+              <img src="assets/img/banner/1.jpg" alt="News" class="news-img">
+              <div class="news-date-badge">
+                <span class="block">28</span>
+                <span class="text-xs font-bold uppercase">MAY</span>
+              </div>
+            </div>
+            <div class="p-6 flex-grow d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="New OTE Placement Sessions" data-ar="جلسات اختبار OTE جديدة">New OTE Placement Sessions</h4>
+                <p class="opacity-75 text-sm mb-4" data-en="Approved dates for the upcoming Oxford Test of English assessment are now open for registration."
+                   data-ar="المواعيد المعتمدة لجلسات تقييم اختبار أوكسفورد للغة الإنجليزية القادمة مفتوحة للتسجيل الآن.">
+                  Approved dates for the upcoming Oxford Test of English assessment are now open for registration.
+                </p>
+              </div>
+              <a href="#contact" class="text-gold font-bold text-decoration-none d-flex align-items-center mt-3" data-en="Read More" data-ar="اقرأ المزيد">
+                Read More <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News item 2 -->
+        <div class="col-md-4">
+          <div class="glass-panel news-card">
+            <div class="news-img-wrapper">
+              <img src="assets/img/banner/4.jpg" alt="News" class="news-img">
+              <div class="news-date-badge">
+                <span class="block">12</span>
+                <span class="text-xs font-bold uppercase">JUN</span>
+              </div>
+            </div>
+            <div class="p-6 flex-grow d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="IELTS Prep Program Starting" data-ar="بدء التسجيل لدورة الآيلتس المكثفة">IELTS Prep Program Starting</h4>
+                <p class="opacity-75 text-sm mb-4" data-en="Register for our academic IELTS training cohort led by certified British trainers with mock testing."
+                   data-ar="سجل الآن في المجموعة الأكاديمية الجديدة للتحضير لاختبار آيلتس بإشراف مدربين مؤهلين واختبارات تجريبية.">
+                  Register for our academic IELTS training cohort led by certified British trainers with mock testing.
+                </p>
+              </div>
+              <a href="#contact" class="text-gold font-bold text-decoration-none d-flex align-items-center mt-3" data-en="Read More" data-ar="اقرأ المزيد">
+                Read More <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News item 3 -->
+        <div class="col-md-4">
+          <div class="glass-panel news-card">
+            <div class="news-img-wrapper">
+              <img src="assets/img/banner/contact.jpg" alt="News" class="news-img">
+              <div class="news-date-badge">
+                <span class="block">05</span>
+                <span class="text-xs font-bold uppercase">JUL</span>
+              </div>
+            </div>
+            <div class="p-6 flex-grow d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Academic Speaking & Writing" data-ar="ورشة عمل المحادثة الأكاديمية">Academic Speaking & Writing</h4>
+                <p class="opacity-75 text-sm mb-4" data-en="Improve your essay structures and academic speaking fluency with our intensive workshops."
+                   data-ar="قم بتحسين صياغة المقالات الأكاديمية وطلاقة المحادثة العلمية من خلال ورشنا التدريبية المركزة.">
+                  Improve your essay structures and academic speaking fluency with our intensive workshops.
+                </p>
+              </div>
+              <a href="#contact" class="text-gold font-bold text-decoration-none d-flex align-items-center mt-3" data-en="Read More" data-ar="اقرأ المزيد">
+                Read More <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Separator -->
+  <div class="section-separator reveal">
+    <div class="separator-icon"></div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-24" style="background: var(--bg-secondary);">
+    <div class="container px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="STUDENT FEEDBACK" data-ar="تقييمات الطلاب">STUDENT FEEDBACK</h5>
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="What Our Students Say" data-ar="ماذا يقول طلابنا؟">What Our Students Say</h2>
+        <div class="mx-auto w-16 h-1 bg-gold rounded-full"></div>
+      </div>
+
+      <div class="swiper testimonials-swiper reveal">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="glass-panel testimonial-card-swiper">
+              <div class="d-flex align-items-center mb-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                  <img src="assets/img/default-photo.png" alt="Student" class="w-100 h-100 object-cover">
+                </div>
+                <div>
+                  <h5 class="font-bold mb-1" style="color: var(--text-primary);">Ahmad Al-Saeed</h5>
+                  <div class="rating-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="opacity-75 italic text-sm leading-relaxed" 
+                 data-en="&ldquo;I passed my academic IELTS test with a score of 7.5 thanks to the intensive courses at Oxford. The native instructors understand testing methodologies perfectly.&rdquo;"
+                 data-ar="&ldquo;اجتزت اختبار آيلتس الأكاديمي بنتيجة 7.5 بفضل الدورة المكثفة في الأكاديمية. المدربون على دراية كاملة بمنهجية الاختبار الدقيقة.&rdquo;">
+                "I passed my academic IELTS test with a score of 7.5 thanks to the intensive courses at Oxford. The native instructors understand testing methodologies perfectly."
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="glass-panel testimonial-card-swiper">
+              <div class="d-flex align-items-center mb-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                  <img src="assets/img/default-photo.png" alt="Student" class="w-100 h-100 object-cover">
+                </div>
+                <div>
+                  <h5 class="font-bold mb-1" style="color: var(--text-primary);">Mariam Naser</h5>
+                  <div class="rating-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="opacity-75 italic text-sm leading-relaxed" 
+                 data-en="&ldquo;The flexible timings were crucial for me as a working pharmacist. The educational platforms and level assessments are exceptionally professional.&rdquo;"
+                 data-ar="&ldquo;كانت الأوقات المرنة حاسمة بالنسبة لي كصيدلانية عاملة. المنصات التعليمية وتقييمات المستويات تفوق التوقعات احترافية.&rdquo;">
+                "The flexible timings were crucial for me as a working pharmacist. The educational platforms and level assessments are exceptionally professional."
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="glass-panel testimonial-card-swiper">
+              <div class="d-flex align-items-center mb-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                  <img src="assets/img/default-photo.png" alt="Student" class="w-100 h-100 object-cover">
+                </div>
+                <div>
+                  <h5 class="font-bold mb-1" style="color: var(--text-primary);">Samer Kabbani</h5>
+                  <div class="rating-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="opacity-75 italic text-sm leading-relaxed" 
+                 data-en="&ldquo;Oxford Test of English (OTE) at their center was a seamless experience. They provided pre-test mock software which built my confidence.&rdquo;"
+                 data-ar="&ldquo;كان خوض اختبار أوكسفورد (OTE) في المركز تجربة سلسة للغاية. وفروا لنا اختبارًا تجريبيًا مسبقًا ساعدني على كسب الثقة.&rdquo;">
+                "Oxford Test of English (OTE) at their center was a seamless experience. They provided pre-test mock software which built my confidence."
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Navigation bullets -->
+        <div class="swiper-pagination mt-8"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-24" style="background: var(--bg-primary);">
+    <div class="container px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="QUESTIONS & ANSWERS" data-ar="الأسئلة والأجوبة">QUESTIONS & ANSWERS</h5>
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="Frequently Asked Questions" data-ar="الأسئلة الشائعة للطلاب">Frequently Asked Questions</h2>
+        <div class="mx-auto w-16 h-1 bg-gold rounded-full"></div>
+      </div>
+
+      <div class="row justify-content-center reveal">
+        <div class="col-lg-8">
+          <div class="accordion faq-accordion" id="faqAccordion">
+            
+            <!-- Item 1 -->
+            <div class="accordion-item border-0">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
+                        data-en="What is the Oxford Test of English (OTE)?"
+                        data-ar="ما هو اختبار أوكسفورد للغة الإنجليزية (OTE)؟">
+                  What is the Oxford Test of English (OTE)?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body"
+                     data-en="The Oxford Test of English (OTE) is a multi-level general English proficiency test certified by the University of Oxford. It assesses Listening, Speaking, Reading, and Writing skills at levels A2, B1, and B2 of the CEFR."
+                     data-ar="اختبار أوكسفورد للغة الإنجليزية (OTE) هو اختبار كفاءة لغوي متعدد المستويات معتمد من جامعة أوكسفورد. يقيم مهارات الاستماع والمحادثة والقراءة والكتابة للمستويات A2 و B1 و B2 في الإطار الأوروبي المشترك.">
+                  The Oxford Test of English (OTE) is a multi-level general English proficiency test certified by the University of Oxford. It assesses Listening, Speaking, Reading, and Writing skills at levels A2, B1, and B2 of the CEFR.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item border-0">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                        data-en="How can I book a placement test?"
+                        data-ar="كيف يمكنني حجز اختبار تحديد المستوى؟">
+                  How can I book a placement test?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body"
+                     data-en="You can easily book a placement test online by filling out our quick contact form, choosing 'Placement Test' in the Contact Type dropdown, or contacting us via our direct phone line."
+                     data-ar="يمكنك حجز موعد اختبار تحديد المستوى مباشرة عبر الإنترنت من خلال ملء نموذج الاتصال بنا وتحديد 'تحديد المستوى' من قائمة نوع الطلب، أو من خلال الاتصال المباشر بخدمة العملاء.">
+                  You can easily book a placement test online by filling out our quick contact form, choosing 'Placement Test' in the Contact Type dropdown, or contacting us via our direct phone line.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item border-0">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+                        data-en="Are your certificates internationally recognized?"
+                        data-ar="هل الشهادات الصادرة معترف بها دولياً؟">
+                  Are your certificates internationally recognized?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body"
+                     data-en="Yes, Oxford Academy is a registered test centre. The Oxford Test of English certificate is officially approved by embassies, universities, and international organizations globally."
+                     data-ar="نعم، أكاديمية أوكسفورد هي مركز اختبارات مسجل ومعتمد رسميًا. شهادة اختبار أوكسفورد معترف بها ومصادق عليها من قبل السفارات والجامعات والمؤسسات الدولية حول العالم.">
+                  Yes, Oxford Academy is a registered test centre. The Oxford Test of English certificate is officially approved by embassies, universities, and international organizations globally.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Separator -->
+  <div class="section-separator reveal">
+    <div class="separator-icon"></div>
+  </div>
+
+  <!-- Contact Us Section -->
+  <section id="contact" class="py-24" style="background: var(--bg-secondary);">
+    <div class="container px-4">
+      <div class="row gy-12 reveal">
+        <!-- Info Cards -->
+        <div class="col-lg-5">
+          <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="CONNECT WITH US" data-ar="تواصل معنا">CONNECT WITH US</h5>
+          <h2 class="text-3xl md:text-5xl font-extrabold mb-6" style="color: var(--text-primary);" data-en="Get In Touch Today" data-ar="ابدأ رحلتك الأكاديمية الآن">Get In Touch Today</h2>
+          
+          <div class="d-flex flex-column space-y-6 mt-8">
+            <div class="d-flex align-items-center p-4 glass-panel">
+              <div class="w-12 h-12 bg-gold bg-opacity-20 text-gold rounded-full d-flex align-items-center justify-content-center text-2xl me-4">
+                <i class="bi bi-telephone"></i>
+              </div>
+              <div>
+                <h6 class="font-bold mb-1" style="color: var(--text-primary);" data-en="Call Us" data-ar="اتصل بنا">Call Us</h6>
+                <a href="tel:+96279000000" class="text-decoration-none opacity-75 text-sm" style="color: var(--text-primary);">+962 79 123 4567</a>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center p-4 glass-panel">
+              <div class="w-12 h-12 bg-gold bg-opacity-20 text-gold rounded-full d-flex align-items-center justify-content-center text-2xl me-4">
+                <i class="bi bi-envelope-open"></i>
+              </div>
+              <div>
+                <h6 class="font-bold mb-1" style="color: var(--text-primary);" data-en="Email Address" data-ar="البريد الإلكتروني">Email Address</h6>
+                <a href="mailto:info@oxfordacademy.com" class="text-decoration-none opacity-75 text-sm" style="color: var(--text-primary);">info@oxfordacademy.com</a>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center p-4 glass-panel">
+              <div class="w-12 h-12 bg-gold bg-opacity-20 text-gold rounded-full d-flex align-items-center justify-content-center text-2xl me-4">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div>
+                <h6 class="font-bold mb-1" style="color: var(--text-primary);" data-en="Location" data-ar="موقعنا">Location</h6>
+                <p class="opacity-75 text-sm mb-0" style="color: var(--text-primary);" data-en="University Street, Building 45, Amman, Jordan" data-ar="شارع الجامعة، مبنى 45، عمان، الأردن">University Street, Building 45, Amman, Jordan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <div class="glass-panel p-6 md:p-12">
+            <form onsubmit="handleFormSubmit(event)">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="floating-input-group">
+                    <input type="text" id="contactName" placeholder=" " required>
+                    <label for="contactName" data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="floating-input-group">
+                    <input type="email" id="contactEmail" placeholder=" " required>
+                    <label for="contactEmail" data-en="Email Address" data-ar="البريد الإلكتروني">Email Address</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="floating-input-group">
+                    <select id="contactType" required>
+                      <option value="" disabled selected hidden></option>
+                      <option value="placement" data-en="Placement Test Booking" data-ar="حجز تحديد المستوى">Placement Test Booking</option>
+                      <option value="course" data-en="IELTS / General Course" data-ar="دورة آيلتس / لغة عامة">IELTS / General Course</option>
+                      <option value="general" data-en="General Inquiry" data-ar="استفسار عام">General Inquiry</option>
+                    </select>
+                    <label for="contactType" data-en="Inquiry Type" data-ar="نوع الاستفسار">Inquiry Type</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="floating-input-group">
+                    <input type="text" id="contactPhone" placeholder=" ">
+                    <label for="contactPhone" data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="floating-input-group">
+                <textarea id="contactMessage" rows="5" placeholder=" " required></textarea>
+                <label for="contactMessage" data-en="Your Message" data-ar="رسالتك">Your Message</label>
+              </div>
+
+              <button type="submit" class="btn btn-luxury w-100 py-3 rounded-lg text-lg d-flex align-items-center justify-content-center">
+                <span data-en="Send Message" data-ar="إرسال الرسالة">Send Message</span>
+                <i class="bi bi-arrow-right ms-2 rtl:rotate-180"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-16" style="background: var(--bg-primary); border-top: 1px solid var(--separator-color);">
+    <div class="container px-4">
+      <div class="row g-8 mb-12">
+        <!-- Col 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center mb-4">
+            <img src="assets/img/logo.png" alt="Logo" class="h-12 object-contain mr-3">
+            <span class="text-xl font-bold tracking-wider" style="color: var(--text-primary);">
+              OXFORD <span class="font-normal text-sm block opacity-75" data-en="ACADEMY" data-ar="الأكاديمية">ACADEMY</span>
+            </span>
+          </div>
+          <p class="opacity-75 text-sm mb-6" data-en="Empowering academic horizons under international standards of test preparation."
+             data-ar="تمكين الآفاق الأكاديمية تحت مظلة المعايير الدولية للتقييم والتدريب اللغوي الشامل.">
+            Empowering academic horizons under international standards of test preparation.
+          </p>
+          <div class="d-flex space-x-3">
+            <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg hover:bg-gold hover:text-black transition-colors"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg hover:bg-gold hover:text-black transition-colors"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg hover:bg-gold hover:text-black transition-colors"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg hover:bg-gold hover:text-black transition-colors"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Our Courses" data-ar="دوراتنا">Our Courses</h4>
+          <ul class="list-unstyled space-y-2 text-sm opacity-75">
+            <li><a href="#" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="IELTS Preparation" data-ar="التحضير لاختبار آيلتس">IELTS Preparation</a></li>
+            <li><a href="#" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="General English Levels" data-ar="مستويات اللغة العامة">General English Levels</a></li>
+            <li><a href="#" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Academic Speaking" data-ar="دورة المحادثة المتقدمة">Academic Speaking</a></li>
+            <li><a href="#" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Academic Writing" data-ar="الكتابة الأكاديمية والإنشاء">Academic Writing</a></li>
+            <li><a href="#" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Business English Modules" data-ar="الإنجليزية للأعمال والشركات">Business English Modules</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+          <ul class="list-unstyled space-y-2 text-sm opacity-75">
+            <li><a href="#about" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="About Us" data-ar="من نحن">About Us</a></li>
+            <li><a href="#strengths" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Why Us" data-ar="لماذا نحن؟">Why Us</a></li>
+            <li><a href="#news" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Updates" data-ar="آخر التحديثات">Updates</a></li>
+            <li><a href="#faq" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Help FAQ" data-ar="الأسئلة المساعدة">Help FAQ</a></li>
+            <li><a href="#contact" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Contact Support" data-ar="الدعم الأكاديمي">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="col-lg-3 col-md-6 text-center text-md-start">
+          <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Approved Centre" data-ar="الاعتمادات والتراخيص">Approved Centre</h4>
+          <img src="assets/img/OTE-Approved-Test-Centre-Logo.png" alt="Approved Centre" class="h-16 object-contain mb-3 mx-auto mx-md-0">
+          <p class="text-xs opacity-75" data-en="Licence verification code: OTE-JO-2026" data-ar="رقم الترخيص المعتمد: OTE-JO-2026">Licence verification code: OTE-JO-2026</p>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t d-flex flex-column flex-md-row justify-content-between align-items-center text-sm opacity-60" style="border-color: var(--separator-color) !important;">
+        <p class="mb-0" data-en="&copy; 2026 Oxford Academy. All Rights Reserved." data-ar="&copy; 2026 أكاديمية أوكسفورد. جميع الحقوق محفوظة.">&copy; 2026 Oxford Academy. All Rights Reserved.</p>
+        <p class="mb-0 mt-2 mt-md-0" data-en="Designed with Luxury Principles" data-ar="صمم بأرقى معايير واجهات المستخدم">Designed with Luxury Principles</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="js/hero-animation.js"></script>
+  <script src="js/landing.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/scroll-effects.js"></script>
+  <script src="js/particles.js"></script>
+
+  <!-- Client-side translation language manager -->
+  <script>
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      applyLanguage(currentLang);
+    }
+
+    function applyLanguage(lang) {
+      const htmlElement = document.documentElement;
+      
+      if (lang === 'ar') {
+        htmlElement.setAttribute('dir', 'rtl');
+        htmlElement.setAttribute('lang', 'ar');
+        document.body.style.fontFamily = 'var(--font-ar)';
+      } else {
+        htmlElement.setAttribute('dir', 'ltr');
+        htmlElement.setAttribute('lang', 'en');
+        document.body.style.fontFamily = 'var(--font-en)';
+      }
+
+      // Find and translate all marked elements
+      document.querySelectorAll('[data-en][data-ar]').forEach(element => {
+        const textVal = element.getAttribute(`data-${lang}`);
+        
+        // Handle input placeholders and labels differently
+        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+          element.setAttribute('placeholder', textVal);
+        } else if (element.tagName === 'OPTION') {
+          element.textContent = textVal;
+        } else {
+          // Keep structure, change text
+          element.textContent = textVal;
+        }
+      });
+      
+      // Update Swiper direction if initialized
+      if (window.mySwiperInstance) {
+        window.mySwiperInstance.destroy(true, true);
+        initSwiper();
+      }
+    }
+
+    function initSwiper() {
+      const dir = document.documentElement.getAttribute('dir') || 'ltr';
+      window.mySwiperInstance = new Swiper('.testimonials-swiper', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30
+          }
+        }
+      });
+    }
+
+    // Load Swiper on page ready
+    document.addEventListener('DOMContentLoaded', () => {
+      initSwiper();
+    });
+
+    // Handle Contact Form Submit Mock
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      
+      const successMsg = currentLang === 'ar' 
+        ? `شكرًا لك يا ${name}، تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا على ${email}.`
+        : `Thank you, ${name}! Your message has been sent successfully. We will contact you soon at ${email}.`;
+        
+      alert(successMsg);
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

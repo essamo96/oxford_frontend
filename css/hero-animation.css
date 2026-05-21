@@ -1,0 +1,370 @@
+/* ============================================================
+   Hero frame-by-frame animation + global section reveal
+   Isolated stylesheet — no Tailwind, no framework deps
+   ============================================================ */
+
+/* ---------- Scroll lock while hero plays ---------- */
+html.hero-loading,
+html.hero-loading body {
+  overflow: hidden !important;
+  height: 100%;
+  touch-action: none;
+}
+
+html.hero-done body {
+  overflow-x: hidden;
+}
+
+/* ---------- Preloader overlay ---------- */
+.hero-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+
+.hero-preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero-preloader__mark {
+  font-size: .75rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: #c5a880;
+  opacity: .9;
+}
+
+.hero-preloader__bar {
+  width: min(260px, 60vw);
+  height: 2px;
+  background: rgba(255,255,255,.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.hero-preloader__bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #a3875f, #e8d0ad, #c5a880);
+  transition: width .25s ease;
+}
+
+.hero-preloader__pct {
+  font-size: .7rem;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,.55);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Frame stage ---------- */
+.hero-section {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  /* Hard-enforce centering of the hero content within the frame */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center;
+}
+
+.hero-frame-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: #060606;
+  overflow: hidden;
+}
+
+/* Both <video> and the fallback <img> share the same fullscreen behaviour */
+.hero-frame-stage__media {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* All three layers are absolute. JS toggles .is-active to crossfade. */
+.hero-frame-stage__video,
+.hero-frame-stage__still {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(.22,.7,.2,1);
+  will-change: opacity;
+}
+
+.hero-frame-stage__video.is-active,
+.hero-frame-stage__still.is-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Subtle scale-in on the still image for a modern "settle" effect */
+.hero-frame-stage__still {
+  transform: scale(1.04);
+  transition: opacity 1.2s cubic-bezier(.22,.7,.2,1),
+              transform 2.4s cubic-bezier(.22,.7,.2,1);
+}
+.hero-frame-stage__still.is-active {
+  transform: scale(1);
+}
+
+/* Subtle gradient veil to lift content readability on the final frame */
+.hero-frame-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.15) 45%,
+    rgba(0,0,0,0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------- Icon-only nav buttons ---------- */
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px !important;
+  font-size: 1.05rem;
+  line-height: 1;
+  transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.icon-btn:active {
+  transform: scale(.96);
+}
+
+.icon-btn > i {
+  margin: 0 !important;
+  display: inline-block;
+  transition: transform .35s cubic-bezier(.22,.7,.2,1);
+}
+
+#themeCycleBtn:active > i,
+#themeCycleBtnMobile:active > i {
+  transform: rotate(180deg) scale(.9);
+}
+
+.icon-btn-lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px !important;
+  font-size: 1.25rem;
+}
+
+/* ---------- Staggered hero content reveal ---------- */
+.hero-content-overlay {
+  position: relative;
+  z-index: 3;
+  /* Center the content block itself, regardless of Bootstrap .container width */
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content-overlay > * {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-content-overlay .hero-stagger {
+  opacity: 0;
+  transform: translateY(40px) scale(.96);
+  filter: blur(8px);
+  transition: opacity 1.1s cubic-bezier(.22,.7,.2,1),
+              transform 1.1s cubic-bezier(.22,.7,.2,1),
+              filter   1.1s cubic-bezier(.22,.7,.2,1);
+  will-change: opacity, transform, filter;
+}
+
+.hero-content-overlay.is-revealed .hero-stagger {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="1"] { transition-delay: .10s; }
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="2"] { transition-delay: .35s; }
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="3"] { transition-delay: .65s; }
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="4"] { transition-delay: .95s; }
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="5"] { transition-delay: 1.25s; }
+
+/* Soft golden glow pulse when content finishes revealing */
+@keyframes heroGlowIn {
+  0%   { box-shadow: 0 0 0 0 rgba(197,168,128,0); }
+  60%  { box-shadow: 0 18px 60px -10px rgba(197,168,128,.35); }
+  100% { box-shadow: 0 8px 30px -10px rgba(197,168,128,.2); }
+}
+
+.hero-content-overlay.is-revealed .btn-luxury {
+  animation: heroGlowIn 1.6s ease-out 1.4s both;
+}
+
+/* ---------- Global section reveal (IntersectionObserver) ---------- */
+.io-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .95s cubic-bezier(.22,.7,.2,1),
+              transform .95s cubic-bezier(.22,.7,.2,1);
+  will-change: opacity, transform;
+}
+
+.io-reveal.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Guarantee horizontal centering for every section's Bootstrap container */
+section > .container,
+footer > .container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Make sure no transformed ancestor breaks fixed/absolute children layout */
+section.io-reveal,
+footer.io-reveal {
+  transform-origin: center top;
+}
+
+/* ---------- Responsive tuning ---------- */
+@media (max-width: 768px) {
+  .hero-section { height: 100svh; min-height: 100svh; }
+  .hero-frame-stage__img { object-position: center 30%; }
+}
+
+@media (max-width: 480px) {
+  .hero-preloader__bar { width: 70vw; }
+}
+
+/* ============================================================
+   Navbar + global spacing polish (theme-aware via CSS vars)
+   ============================================================ */
+
+/* Navbar — consistent height, padding, link rhythm */
+.sticky-header > .container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  gap: 1.5rem;
+}
+
+.sticky-header nav { gap: 1.75rem; }
+.sticky-header nav a.desktop-nav-link {
+  position: relative;
+  padding: .5rem 0;
+  font-size: .95rem;
+  letter-spacing: .01em;
+  transition: color .25s ease;
+}
+.sticky-header nav a.desktop-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width .3s cubic-bezier(.22,.7,.2,1);
+}
+.sticky-header nav a.desktop-nav-link:hover,
+.sticky-header nav a.desktop-nav-link.active {
+  color: var(--accent-color) !important;
+}
+.sticky-header nav a.desktop-nav-link:hover::after,
+.sticky-header nav a.desktop-nav-link.active::after {
+  width: 100%;
+}
+
+/* Right-side action buttons — even spacing */
+.sticky-header > .container > .xl\:flex,
+.sticky-header > .container > div:last-child {
+  gap: .65rem;
+}
+
+/* Icon buttons — theme-aware accent on hover */
+.icon-btn {
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.icon-btn:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 24px -10px var(--accent-glow);
+}
+
+/* Section vertical rhythm — uniform across themes */
+section[id] { padding-top: clamp(4rem, 8vw, 7rem); padding-bottom: clamp(4rem, 8vw, 7rem); }
+section[id] + .section-separator { margin: 0 auto; }
+
+/* Ensure the page never gets a phantom horizontal scrollbar */
+html.hero-done, body { overflow-x: hidden; }
+
+/* Anchor-link offset so content never sits under the fixed navbar */
+html { scroll-padding-top: var(--navbar-height, 80px); scroll-behavior: smooth; }
+
+/* Mobile menu — improved padding + safe-area */
+.mobile-nav-menu { padding: 1.75rem 1.5rem; gap: 1rem; }
+
+/* Logo block — tighter alignment */
+#header-nav .h-12 { height: 44px; }
+#header-nav span.text-xl { line-height: 1.05; margin-left: .65rem; }
+
+/* Buttons — consistent radius across themes */
+.btn-luxury, .btn-glass {
+  border-radius: 12px;
+  letter-spacing: .015em;
+}
+
+/* ---------- Accessibility: respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content-overlay .hero-stagger,
+  .io-reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
