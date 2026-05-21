@@ -3,8 +3,9 @@
 
 :root {
   /* Typography */
-  --font-en: 'Outfit', sans-serif;
-  --font-ar: 'Almarai', sans-serif;
+  --font-en: 'Inter', 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-ar: 'Tajawal', 'Almarai', system-ui, sans-serif;
+  --font-display: 'Inter', 'Outfit', system-ui, sans-serif;
   
   /* Layout Dimensions */
   --navbar-height: 80px;

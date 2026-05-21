@@ -1,20 +1,23 @@
 /* ============================================================
-   Hero two-video intro -> static 4K image -> staggered content reveal
-   Sequence:
-     1. Preload video1, video2, still image
-     2. Play video1 (last_vidio.mp4)
-     3. Before video1 ends -> crossfade-start video2 (ezgif-...)
-     4. When video2 ends -> crossfade to still 4K image
-     5. THEN reveal hero content elements one by one
-     6. Unlock scroll + activate IntersectionObserver for sections
+   Hero looping intro:
+   1) video1 (last_vidio.mp4) → crossfade → video2 (ezgif-...mp4)
+   2) ~2 frames before video2 ends, the 4K still image fades in
+   3) Hero content reveals with staggered delays
+   4) After 20s of content visible, content fades out and the
+      whole sequence loops indefinitely (like a slider).
+   Also:
+   - Particles wait for the first 'hero:complete' before starting.
+   - Single scroll-track, scrollbar appears only when hero is done.
    ============================================================ */
 (() => {
   'use strict';
 
-  // Begin video2 this many seconds before video1 ends, so they crossfade.
-  const CROSSFADE_LEAD_SEC = 0.9;
-  const SAFETY_TIMEOUT_MS  = 25000;
-  const REDUCED_MOTION     = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CROSSFADE_LEAD_SEC  = 0.9;         // start video2 this many s before video1 ends
+  const STILL_LEAD_FRAMES   = 2;           // show still N frames before video2 ends
+  const ASSUMED_FPS         = 30;          // for the "frames" calculation
+  const CONTENT_VISIBLE_MS  = 20000;       // 20 s before looping
+  const SAFETY_TIMEOUT_MS   = 25000;
+  const REDUCED_MOTION      = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const html      = document.documentElement;
   const preloader = document.getElementById('hero-preloader');
@@ -29,13 +32,13 @@
 
   html.classList.add('hero-loading');
 
-  // -- Preload helpers -------------------------------------------------------
+  // ---------- Preload helpers ----------
   function whenVideoReady(v) {
     return new Promise((resolve) => {
       if (v.readyState >= 3) return resolve();
       const done = () => resolve();
-      v.addEventListener('canplay',     done, { once: true });
-      v.addEventListener('loadeddata',  done, { once: true });
+      v.addEventListener('canplay',    done, { once: true });
+      v.addEventListener('loadeddata', done, { once: true });
       setTimeout(done, SAFETY_TIMEOUT_MS);
     });
   }
@@ -48,13 +51,6 @@
     });
   }
 
-  // -- Combined preload progress UI -----------------------------------------
-  function updateProgress(ratio) {
-    const pct = Math.max(0, Math.min(100, Math.round(ratio * 100)));
-    if (barFill) barFill.style.width = pct + '%';
-    if (pctEl)   pctEl.textContent  = pct + '%';
-  }
-
   function preloadAll() {
     const tasks = [
       whenVideoReady(v1),
@@ -62,113 +58,169 @@
       whenImageReady(still),
     ];
     let done = 0;
-    tasks.forEach(p => p.then(() => updateProgress(++done / tasks.length)));
+    const setPct = (p) => {
+      const pct = Math.round(p * 100);
+      if (barFill) barFill.style.width = pct + '%';
+      if (pctEl)   pctEl.textContent  = pct + '%';
+    };
+    tasks.forEach((p) => p.then(() => setPct(++done / tasks.length)));
     return Promise.all(tasks);
   }
 
-  // -- Crossfade orchestration ---------------------------------------------
-  function startVideo2BeforeEnd() {
-    return new Promise((resolve) => {
-      let triggered = false;
+  // ---------- One full intro cycle ----------
+  function resetLayers() {
+    // Re-stage for a fresh cycle.
+    v1.classList.add('is-active');
+    v2.classList.remove('is-active');
+    still.classList.remove('is-active');
+    try {
+      v1.pause(); v1.currentTime = 0;
+      v2.pause(); v2.currentTime = 0;
+    } catch (_) {}
+  }
 
-      function trigger() {
-        if (triggered) return;
-        triggered = true;
-        // Start video2 just before video1 finishes & swap the active layer.
-        v2.currentTime = 0;
+  function playCycle() {
+    return new Promise((resolve) => {
+      resetLayers();
+
+      // ----- Video1 -> Video2 crossfade -----
+      let v1HandedOff = false;
+      const handoffToV2 = () => {
+        if (v1HandedOff) return;
+        v1HandedOff = true;
+        try { v2.currentTime = 0; } catch (_) {}
         const p = v2.play();
         if (p && p.catch) p.catch(() => {});
         v2.classList.add('is-active');
         v1.classList.remove('is-active');
-        // Resolve when video2 has actually ended.
-        v2.addEventListener('ended', resolve, { once: true });
+        scheduleStillReveal();   // arm the early still fade
+      };
 
-        // Safety: also resolve based on duration.
-        const safetyMs = (isFinite(v2.duration) ? v2.duration * 1000 : 8000) + 1500;
-        setTimeout(resolve, safetyMs);
-      }
-
-      function onTimeUpdate() {
+      const onV1Time = () => {
         if (!isFinite(v1.duration)) return;
         if (v1.duration - v1.currentTime <= CROSSFADE_LEAD_SEC) {
-          trigger();
-          v1.removeEventListener('timeupdate', onTimeUpdate);
+          v1.removeEventListener('timeupdate', onV1Time);
+          handoffToV2();
         }
-      }
-      v1.addEventListener('timeupdate', onTimeUpdate);
-      // If 'ended' fires first (very short video), still chain to video2.
-      v1.addEventListener('ended', trigger, { once: true });
+      };
+      v1.addEventListener('timeupdate', onV1Time);
+      v1.addEventListener('ended', handoffToV2, { once: true });
+
+      // ----- Show still ~2 frames before video2 ends -----
+      let stillShown = false;
+      const showStill = () => {
+        if (stillShown) return;
+        stillShown = true;
+        still.classList.add('is-active');
+        v2.classList.remove('is-active');
+      };
+      const STILL_LEAD_SEC = STILL_LEAD_FRAMES / ASSUMED_FPS; // ≈0.067s
+      const scheduleStillReveal = () => {
+        const onV2Time = () => {
+          if (!isFinite(v2.duration)) return;
+          if (v2.duration - v2.currentTime <= STILL_LEAD_SEC) {
+            v2.removeEventListener('timeupdate', onV2Time);
+            showStill();
+          }
+        };
+        v2.addEventListener('timeupdate', onV2Time);
+        // Backstop: even if 'timeupdate' resolution is too coarse, swap on 'ended'.
+        v2.addEventListener('ended', () => {
+          showStill();
+          // Give the CSS transition a beat to finish, then resolve the cycle.
+          setTimeout(resolve, 700);
+        }, { once: true });
+        // Hard safety net (e.g. tab throttled).
+        setTimeout(() => { showStill(); resolve(); },
+          (isFinite(v2.duration) ? v2.duration * 1000 + 2000 : 10000));
+      };
+
+      // Start video1 (autoplay attribute may already have started it).
+      const p1 = v1.play();
+      if (p1 && p1.catch) p1.catch(() => {});
     });
   }
 
-  function fadeToStill() {
-    return new Promise((resolve) => {
-      still.classList.add('is-active');
-      v2.classList.remove('is-active');
-      // Match the CSS transition (1.1s) plus a small buffer.
-      setTimeout(() => {
-        try { v1.pause(); v2.pause(); } catch (_) {}
-        resolve();
-      }, 1200);
-    });
-  }
-
-  // -- Reveal content (staggered) ------------------------------------------
+  // ---------- Content reveal/hide ----------
   function revealContent() {
+    overlay.classList.remove('is-hiding');
     overlay.classList.add('is-revealed');
-    html.classList.remove('hero-loading');
-    html.classList.add('hero-done');
-    window.dispatchEvent(new CustomEvent('hero:complete'));
+    // Re-enable particles fade-in
+    const pc = document.getElementById('particles-canvas');
+    if (pc) pc.classList.remove('is-fading-out');
+  }
+  function hideContent() {
+    // Trigger the REVERSE staggered fade-out
+    overlay.classList.add('is-hiding');
+    overlay.classList.remove('is-revealed');
+    // Fade particles out alongside the content
+    const pc = document.getElementById('particles-canvas');
+    if (pc) pc.classList.add('is-fading-out');
   }
 
-  // -- Global section reveal via IntersectionObserver ----------------------
+  // ---------- Global section reveal ----------
   function initSectionReveal() {
     const targets = document.querySelectorAll(
       'section:not(#hero), footer, .section-separator'
     );
-    targets.forEach(el => el.classList.add('io-reveal'));
-
+    targets.forEach((el) => el.classList.add('io-reveal'));
     if (!('IntersectionObserver' in window)) {
-      targets.forEach(el => el.classList.add('is-in-view'));
+      targets.forEach((el) => el.classList.add('is-in-view'));
       return;
     }
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-in-view');
           io.unobserve(entry.target);
         }
       });
     }, { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-    targets.forEach(el => io.observe(el));
+    targets.forEach((el) => io.observe(el));
   }
 
-  // -- Orchestrate ----------------------------------------------------------
+  // ---------- Loop driver ----------
+  let firstCycleDone = false;
+  async function loopForever() {
+    while (true) {
+      await playCycle();          // video1 → video2 → still
+      revealContent();            // staggered reveal kicks in
+
+      // Unlock the page on the very first cycle so the user can scroll.
+      if (!firstCycleDone) {
+        firstCycleDone = true;
+        if (preloader) preloader.classList.add('is-hidden');
+        html.classList.remove('hero-loading');
+        html.classList.add('hero-done');
+        window.dispatchEvent(new CustomEvent('hero:complete'));
+      }
+
+      // Hold the still + content for 20 s, then hide content and restart.
+      await new Promise((r) => setTimeout(r, CONTENT_VISIBLE_MS));
+      hideContent();
+      // Reverse-stagger fade-out: last delay (0.60s) + transition (1.1s) ≈ 1.8s
+      // Add a small visual breath before videos restart.
+      await new Promise((r) => setTimeout(r, 2000));
+    }
+  }
+
+  // ---------- Orchestrate ----------
   async function run() {
     initSectionReveal();
-
     await preloadAll();
     if (preloader) preloader.classList.add('is-hidden');
 
     if (REDUCED_MOTION) {
-      v1.classList.remove('is-active');
+      // Skip videos entirely.
       still.classList.add('is-active');
       revealContent();
+      html.classList.remove('hero-loading');
+      html.classList.add('hero-done');
+      window.dispatchEvent(new CustomEvent('hero:complete'));
       return;
     }
 
-    // Kick off video1 (autoplay attribute may already have started it).
-    const p1 = v1.play();
-    if (p1 && p1.catch) p1.catch(() => {});
-
-    // Wait until video2 ends (which means the entire video sequence is done).
-    await startVideo2BeforeEnd();
-
-    // Crossfade to the static 4K image.
-    await fadeToStill();
-
-    // Only NOW reveal the centered content one element after another.
-    revealContent();
+    loopForever();
   }
 
   if (document.readyState === 'loading') {

@@ -1,7 +1,9 @@
-/* particles.js */
-document.addEventListener('DOMContentLoaded', () => {
+/* particles.js — starts only after the hero intro videos finish */
+function __initParticlesCanvas() {
   const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
+  if (!canvas || canvas.dataset.inited === '1') return;
+  canvas.dataset.inited = '1';
+  canvas.classList.add('is-on');
 
   const ctx = canvas.getContext('2d');
   let particlesArray = [];
@@ -136,4 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Start particles
   resizeCanvas();
   animate();
+}
+
+// Kick off only after the hero intro completes (video sequence ended + still shown).
+window.addEventListener('hero:complete', () => __initParticlesCanvas(), { once: true });
+// Fallback: if the hero script is disabled, still init after DOM is ready.
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => __initParticlesCanvas(), 30000); // very late safety net
 });
