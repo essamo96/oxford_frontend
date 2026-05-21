@@ -17,7 +17,9 @@
   const ASSUMED_FPS         = 30;          // for the "frames" calculation
   const CONTENT_VISIBLE_MS  = 20000;       // 20 s before looping
   const SAFETY_TIMEOUT_MS   = 25000;
+  const SPLASH_MIN_MS       = 4000;        // splash visible for at least 4 s
   const REDUCED_MOTION      = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SPLASH_START        = performance.now();
 
   const html      = document.documentElement;
   const preloader = document.getElementById('hero-preloader');
@@ -29,6 +31,18 @@
   const overlay   = document.getElementById('hero-content-overlay');
 
   if (!v1 || !v2 || !overlay) return;
+
+  // Pick the splash logo that contrasts best with the active theme.
+  // Gold + Dark themes have dark backgrounds → use the white footer-logo.
+  // Light theme has a bright background → use the standard colored logo.
+  function pickSplashLogo() {
+    const splashLogo = document.getElementById('hero-splash-logo');
+    if (!splashLogo) return;
+    const onDark = html.classList.contains('theme-gold') || html.classList.contains('theme-dark');
+    splashLogo.src = onDark ? 'assets/img/footer-logo.png' : 'assets/img/logo.png';
+  }
+  pickSplashLogo();
+  window.addEventListener('themechanged', pickSplashLogo);
 
   html.classList.add('hero-loading');
 
@@ -241,11 +255,20 @@
   }
 
   // ---------- Orchestrate ----------
+  async function waitMinSplash() {
+    const elapsed = performance.now() - SPLASH_START;
+    const remaining = SPLASH_MIN_MS - elapsed;
+    if (remaining > 0) await new Promise(r => setTimeout(r, remaining));
+  }
+
   async function run() {
     initSectionReveal();
     initAboutVideo();
     initNavbarScroll();
     await preloadAll();
+
+    // Keep the splash on screen for at least 4 s so the pulse is visible.
+    await waitMinSplash();
     if (preloader) preloader.classList.add('is-hidden');
 
     if (REDUCED_MOTION) {

@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oxford Academy | Premium Landing Page</title>
-  
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+
   <!-- Modern academic-grade typography (English + Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,11 +56,13 @@
 </head>
 <body class="smooth-transition">
 
-  <!-- Hero Preloader (visible only while frames load) -->
-  <div id="hero-preloader" class="hero-preloader" aria-hidden="true">
-    <div class="hero-preloader__mark">OXFORD&nbsp;ACADEMY</div>
-    <div class="hero-preloader__bar"><div id="hero-preloader-fill" class="hero-preloader__bar-fill"></div></div>
-    <div id="hero-preloader-pct" class="hero-preloader__pct">0%</div>
+  <!-- Hero Splash (visible only while the intro videos load) -->
+  <div id="hero-preloader" class="hero-splash" aria-hidden="true">
+    <div class="hero-splash__bg"></div>
+    <div class="hero-splash__logo-wrap">
+      <span class="hero-splash__orbit"></span>
+      <img id="hero-splash-logo" class="hero-splash__logo" src="assets/img/logo.png" alt="Oxford Academy">
+    </div>
   </div>
 
   <!-- Sticky Navbar -->
@@ -152,7 +159,6 @@
              src="assets/last_vidio.mp4"
              muted
              playsinline
-             autoplay
              preload="auto"></video>
       <video id="hero-bg-video-2"
              class="hero-frame-stage__media hero-frame-stage__video"
