@@ -327,9 +327,21 @@ footer.io-reveal {
 .sticky-header nav a.desktop-nav-link.active {
   color: var(--accent-color) !important;
 }
+/* Animated underline — theme-aware accent color, active in every state */
 .sticky-header nav a.desktop-nav-link:hover::after,
 .sticky-header nav a.desktop-nav-link.active::after {
   width: 100%;
+}
+/* Make the underline pop on the bright light-theme hero overlay */
+.theme-light .sticky-header:not(.scrolled) nav a.desktop-nav-link::after {
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255,255,255,.45);
+}
+
+/* Force-remove any bottom border on the navbar while at top of page */
+.sticky-header:not(.scrolled) {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
 }
 
 /* Right-side action buttons — even spacing */
@@ -572,6 +584,119 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   color: var(--text-secondary) !important;
   padding: 0 1.25rem 1.25rem;
   line-height: 1.75;
+}
+
+/* ============================================================
+   About section — looping autoplay video (#about-video)
+   ============================================================ */
+.about-video-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: 12px;
+  isolation: isolate;
+}
+.about-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  /* Smooth gentle ken-burns-style breathing, very subtle */
+  transition: transform 8s ease-in-out;
+}
+.about-video-wrapper:hover .about-video {
+  transform: scale(1.03);
+}
+.about-video-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%);
+  pointer-events: none;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+/* ============================================================
+   Counter stats — themed icon + number
+   ============================================================ */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.22,.7,.2,1), box-shadow .35s ease;
+}
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px -20px var(--accent-glow);
+}
+.stat-card::before {
+  /* Subtle theme-colored radial halo at top */
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: .55;
+  pointer-events: none;
+  z-index: 0;
+}
+.stat-card > * { position: relative; z-index: 1; }
+
+.stat-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--accent-color);
+  background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 100%);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 8px 24px -10px var(--accent-glow), inset 0 0 18px var(--accent-glow);
+  transition: transform .4s cubic-bezier(.22,.7,.2,1);
+}
+.stat-card:hover .stat-icon {
+  transform: rotate(-6deg) scale(1.08);
+}
+
+/* The big number — themed accent + gradient text */
+.stat-card .counter-number {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 4px 14px var(--accent-glow));
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   Testimonials avatars — uniform circular crop
+   ============================================================ */
+.testimonial-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex: 0 0 64px;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 6px 18px -8px var(--accent-glow);
+  margin-right: 1rem;
+}
+[dir="rtl"] .testimonial-avatar { margin-right: 0; margin-left: 1rem; }
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ---------- Accessibility: respect reduced motion ---------- */

@@ -158,6 +158,42 @@
     if (pc) pc.classList.add('is-fading-out');
   }
 
+  // ---------- About-section looping video: play in view, pause out of view ----------
+  function initAboutVideo() {
+    const aboutVid = document.getElementById('about-video');
+    if (!aboutVid) return;
+    aboutVid.muted = true;
+    aboutVid.loop  = true;
+
+    if (!('IntersectionObserver' in window)) {
+      const p = aboutVid.play(); if (p && p.catch) p.catch(() => {});
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const p = aboutVid.play();
+          if (p && p.catch) p.catch(() => {});
+        } else {
+          aboutVid.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+    obs.observe(aboutVid);
+  }
+
+  // ---------- Navbar scrolled-state toggle (controls border/glass) ----------
+  function initNavbarScroll() {
+    const header = document.getElementById('header-nav');
+    if (!header) return;
+    const onScroll = () => {
+      if (window.scrollY > 60) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
   // ---------- Global section reveal ----------
   function initSectionReveal() {
     const targets = document.querySelectorAll(
@@ -207,6 +243,8 @@
   // ---------- Orchestrate ----------
   async function run() {
     initSectionReveal();
+    initAboutVideo();
+    initNavbarScroll();
     await preloadAll();
     if (preloader) preloader.classList.add('is-hidden');
 

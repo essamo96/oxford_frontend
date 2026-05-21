@@ -263,13 +263,16 @@
         <!-- Video/Image Column -->
         <div class="col-lg-6 reveal-right">
           <div class="relative p-3 glass-panel">
-            <div class="relative overflow-hidden rounded-lg bg-cover bg-center h-80 md:h-[450px]" style="background-image: url('assets/img/banner/1.jpg');">
-              <div class="absolute inset-0 bg-black bg-opacity-40 d-flex align-items-center justify-content-center">
-                <!-- Glowing Play Button -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="w-20 h-20 bg-gold hover:bg-gold-light text-black d-flex align-items-center justify-content-center rounded-full text-3xl shadow-lg transition-transform transform hover:scale-110 play-glow">
-                  <i class="bi bi-play-fill mr-[-2px]"></i>
-                </a>
-              </div>
+            <div class="about-video-wrapper relative overflow-hidden rounded-lg h-80 md:h-[450px]">
+              <video id="about-video"
+                     class="about-video"
+                     src="assets/aboutUs.mp4"
+                     muted
+                     loop
+                     playsinline
+                     preload="metadata"
+                     poster="assets/img/banner/1.jpg"></video>
+              <div class="about-video-tint"></div>
             </div>
             
             <!-- Floating overlay widget -->
@@ -444,22 +447,25 @@
       <div class="row g-4 text-center">
         <!-- Stat 1 -->
         <div class="col-md-4 reveal">
-          <div class="glass-panel p-5">
-            <h2 class="text-5xl font-extrabold text-gold mb-3 counter-number" data-target="15000">0</h2>
+          <div class="glass-panel stat-card p-5">
+            <div class="stat-icon"><i class="bi bi-hourglass-split"></i></div>
+            <h2 class="text-5xl font-extrabold mb-3 counter-number" data-target="15000">0</h2>
             <p class="text-lg font-bold uppercase tracking-wider mb-0" style="color: var(--text-primary);" data-en="Training Hours" data-ar="ساعات تدريبية">Training Hours</p>
           </div>
         </div>
         <!-- Stat 2 -->
         <div class="col-md-4 reveal delay-2">
-          <div class="glass-panel p-5">
-            <h2 class="text-5xl font-extrabold text-gold mb-3 counter-number" data-target="320">0</h2>
+          <div class="glass-panel stat-card p-5">
+            <div class="stat-icon"><i class="bi bi-mortarboard-fill"></i></div>
+            <h2 class="text-5xl font-extrabold mb-3 counter-number" data-target="320">0</h2>
             <p class="text-lg font-bold uppercase tracking-wider mb-0" style="color: var(--text-primary);" data-en="Total Courses" data-ar="الدورات المنجزة">Total Courses</p>
           </div>
         </div>
         <!-- Stat 3 -->
         <div class="col-md-4 reveal delay-4">
-          <div class="glass-panel p-5">
-            <h2 class="text-5xl font-extrabold text-gold mb-3 counter-number" data-target="8700">0</h2>
+          <div class="glass-panel stat-card p-5">
+            <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+            <h2 class="text-5xl font-extrabold mb-3 counter-number" data-target="8700">0</h2>
             <p class="text-lg font-bold uppercase tracking-wider mb-0" style="color: var(--text-primary);" data-en="Enrolled Students" data-ar="الطلاب المسجلين">Enrolled Students</p>
           </div>
         </div>
@@ -575,8 +581,8 @@
           <div class="swiper-slide">
             <div class="glass-panel testimonial-card-swiper">
               <div class="d-flex align-items-center mb-4">
-                <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <img src="assets/img/default-photo.png" alt="Student" class="w-100 h-100 object-cover">
+                <div class="testimonial-avatar">
+                  <img src="assets/img/students/student1.jpg" alt="Ahmad Al-Saeed" loading="lazy">
                 </div>
                 <div>
                   <h5 class="font-bold mb-1" style="color: var(--text-primary);">Ahmad Al-Saeed</h5>
@@ -601,8 +607,8 @@
           <div class="swiper-slide">
             <div class="glass-panel testimonial-card-swiper">
               <div class="d-flex align-items-center mb-4">
-                <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <img src="assets/img/default-photo.png" alt="Student" class="w-100 h-100 object-cover">
+                <div class="testimonial-avatar">
+                  <img src="assets/img/students/student2.jpg" alt="Mariam Naser" loading="lazy">
                 </div>
                 <div>
                   <h5 class="font-bold mb-1" style="color: var(--text-primary);">Mariam Naser</h5>
@@ -627,8 +633,8 @@
           <div class="swiper-slide">
             <div class="glass-panel testimonial-card-swiper">
               <div class="d-flex align-items-center mb-4">
-                <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <img src="assets/img/default-photo.png" alt="Student" class="w-100 h-100 object-cover">
+                <div class="testimonial-avatar">
+                  <img src="assets/img/students/student3.jpg" alt="Samer Kabbani" loading="lazy">
                 </div>
                 <div>
                   <h5 class="font-bold mb-1" style="color: var(--text-primary);">Samer Kabbani</h5>
