@@ -712,11 +712,32 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
 .theme-dark .faq-accordion .accordion-button::after,
 .theme-gold .faq-accordion .accordion-button::after { filter: invert(1) brightness(1.4); }
 
+/* FAQ answer body — force readable color in every theme.
+   Bootstrap 5.3 uses internal CSS custom properties (--bs-accordion-*)
+   that can override theme colors when an item becomes active. We pin
+   ALL of them here so the answer text is never invisible. */
+.faq-accordion .accordion-item,
+.faq-accordion .accordion-collapse,
 .faq-accordion .accordion-body {
+  --bs-accordion-color:        var(--text-primary);
+  --bs-accordion-bg:           var(--card-bg);
+  --bs-accordion-active-color: var(--text-primary);
+  --bs-accordion-active-bg:    var(--card-bg);
+  --bs-accordion-body-color:   var(--text-primary);
+}
+.faq-accordion .accordion-body,
+.faq-accordion .accordion-body * {
   background: var(--card-bg) !important;
-  color: var(--text-secondary) !important;
-  padding: 0 1.25rem 1.25rem;
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+.faq-accordion .accordion-body {
+  padding: 1rem 1.25rem 1.5rem !important;
   line-height: 1.75;
+  font-size: .98rem;
 }
 
 /* ============================================================
@@ -941,6 +962,20 @@ html.theme-light #header-nav span.text-xl > span.font-normal {
 /* ----- Scrolled state — both words go to BLACK ----- */
 html.theme-light #header-nav.scrolled span.text-xl,
 html.theme-light #header-nav.scrolled span.text-xl > span.font-normal {
+  color: #0a0a0a !important;
+  text-shadow: 0 1px 4px rgba(255,255,255,.55);
+}
+
+/* Mobile menu toggle (.bi-list icon) — same scroll-aware color flip */
+html.theme-light #header-nav .mobile-menu-toggle,
+html.theme-light #header-nav .mobile-menu-toggle i.bi-list {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+  transition: color .6s cubic-bezier(.22,.7,.2,1),
+              text-shadow .6s cubic-bezier(.22,.7,.2,1);
+}
+html.theme-light #header-nav.scrolled .mobile-menu-toggle,
+html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   color: #0a0a0a !important;
   text-shadow: 0 1px 4px rgba(255,255,255,.55);
 }
