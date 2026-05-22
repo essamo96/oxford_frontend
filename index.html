@@ -76,20 +76,35 @@
         </span>
       </a>
 
-      <!-- Desktop Links -->
-      <nav class="hidden lg:flex items-center space-x-6">
-        <a href="#hero" class="desktop-nav-link link-hover text-decoration-none font-medium active" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
-        <a href="#about" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
-        <a href="#strengths" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Strengths" data-ar="مميزاتنا">Strengths</a>
-        <a href="#actions" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
-        <a href="#news" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="News" data-ar="الأخبار">News</a>
-        <a href="#testimonials" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Testimonials" data-ar="التقييمات">Testimonials</a>
-        <a href="#faq" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a>
-        <a href="#contact" class="desktop-nav-link link-hover text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+      <!-- Primary nav (desktop full, tablet shows fewer + a 'More' dropdown) -->
+      <nav id="primary-nav" class="primary-nav d-flex align-items-center">
+        <a href="#hero" class="desktop-nav-link nav-item-primary text-decoration-none font-medium active" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="#about" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="#actions" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
+        <a href="#contact" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+
+        <!-- Items only visible on full desktop (≥1280px) -->
+        <a href="#strengths" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Strengths" data-ar="مميزاتنا">Strengths</a>
+        <a href="#news" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="News" data-ar="الأخبار">News</a>
+        <a href="#testimonials" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Testimonials" data-ar="التقييمات">Testimonials</a>
+        <a href="#faq" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a>
+
+        <!-- "More" dropdown — only shown on tablet (768–1279px) -->
+        <div class="dropdown nav-more-wrap">
+          <button class="btn btn-glass desktop-nav-link nav-more-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span data-en="More" data-ar="المزيد">More</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end glass-panel border-0 mt-2 shadow-lg">
+            <li><a class="dropdown-item" href="#strengths" data-en="Strengths" data-ar="مميزاتنا">Strengths</a></li>
+            <li><a class="dropdown-item" href="#news" data-en="News" data-ar="الأخبار">News</a></li>
+            <li><a class="dropdown-item" href="#testimonials" data-en="Testimonials" data-ar="التقييمات">Testimonials</a></li>
+            <li><a class="dropdown-item" href="#faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+          </ul>
+        </div>
       </nav>
 
-      <!-- Desktop Action Buttons -->
-      <div class="hidden xl:flex items-center space-x-3">
+      <!-- Action Buttons — visible from tablet up -->
+      <div class="header-actions d-flex align-items-center">
         <!-- Language Switcher (icon-only) -->
         <button id="langToggleBtn" class="btn btn-glass icon-btn" onclick="toggleLanguage()" aria-label="Toggle language" title="Toggle language">
           <i class="bi bi-globe2"></i>
@@ -100,12 +115,12 @@
           <i class="bi bi-award-fill"></i>
         </button>
 
-        <a href="#" class="btn btn-glass px-3 py-2 rounded-lg" data-en="Student Gate" data-ar="بوابة الطالب">Student Gate</a>
+        <a href="#" class="btn btn-glass student-gate-link px-3 py-2 rounded-lg" data-en="Student Gate" data-ar="بوابة الطالب">Student Gate</a>
         <a href="#" class="btn btn-luxury px-4 py-2 rounded-lg" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
       </div>
 
-      <!-- Mobile Menu Toggle -->
-      <button id="mobileMenuToggle" class="lg:hidden text-2xl p-2 rounded-lg" style="color: var(--text-primary);">
+      <!-- Mobile Menu Toggle (visible <768px only) -->
+      <button id="mobileMenuToggle" class="mobile-menu-toggle text-2xl p-2 rounded-lg" style="color: var(--text-primary);" aria-label="Open menu">
         <i class="bi bi-list"></i>
       </button>
     </div>

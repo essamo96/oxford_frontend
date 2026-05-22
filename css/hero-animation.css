@@ -759,6 +759,140 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   display: block;
 }
 
+/* ============================================================
+   Responsive Navbar — three breakpoints
+     • <768px    : mobile menu toggle only
+     • 768-1279  : primary 4 items + "More" dropdown + icon actions
+     • ≥1280px   : full nav (8 items) + full action buttons
+   ============================================================ */
+
+/* Default — hide everything below md, show on md+ */
+.primary-nav,
+.header-actions       { display: none !important; }
+.mobile-menu-toggle   { display: inline-flex; }
+.nav-more-wrap        { display: none; }
+.nav-item-extra       { display: none; }
+
+/* Tablet & up (≥768px) */
+@media (min-width: 768px) {
+  .primary-nav        { display: flex !important; align-items: center; gap: 1.5rem; }
+  .header-actions     { display: flex !important; align-items: center; gap: .65rem; }
+  .mobile-menu-toggle { display: none !important; }
+
+  /* On tablet, hide the "extra" inline items — they live inside More */
+  .nav-item-extra { display: none !important; }
+  .nav-more-wrap  { display: inline-block; }
+
+  /* Hide non-essential desktop labels — keep icons + Apply Now */
+  .header-actions .student-gate-link { display: none; }
+}
+
+/* Full desktop (≥1280px) — show everything inline, drop the More dropdown */
+@media (min-width: 1280px) {
+  .nav-item-extra { display: inline-block !important; }
+  .nav-more-wrap  { display: none !important; }
+  .header-actions .student-gate-link { display: inline-block; }
+}
+
+/* Make sure the inline elements actually flex on tablet */
+.primary-nav > .nav-item-primary,
+.primary-nav > .nav-item-extra { display: inline-block; }
+.primary-nav .nav-more-btn {
+  padding: .5rem 1rem !important;
+  font-size: .95rem;
+  font-weight: 500;
+  border-radius: 12px !important;
+}
+.primary-nav .nav-more-btn::after {
+  margin-left: .35rem;
+  vertical-align: .15em;
+}
+
+/* Dropdown menu styling, theme-aware */
+.primary-nav .dropdown-menu {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  min-width: 180px;
+  padding: .35rem;
+}
+.primary-nav .dropdown-menu .dropdown-item {
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: .55rem .9rem;
+  font-weight: 500;
+  font-family: var(--font-en);
+  transition: background .2s ease, color .2s ease;
+}
+[dir="rtl"] .primary-nav .dropdown-menu .dropdown-item { font-family: var(--font-ar); }
+.primary-nav .dropdown-menu .dropdown-item:hover,
+.primary-nav .dropdown-menu .dropdown-item:focus {
+  background: var(--accent-glow);
+  color: var(--accent-color);
+}
+
+/* ============================================================
+   Hero — softer overlay over the videos in Light theme,
+   theme-aware brand-name gradient, readable secondary text
+   ============================================================ */
+/* Significantly reduce the white wash in light theme so videos pop */
+.theme-light .hero-overlay {
+  background: radial-gradient(circle at center,
+              rgba(255,255,255,0.06) 0%,
+              rgba(15,23,42,0.45) 100%) !important;
+}
+/* Light theme hero text must read on (now darker) overlay */
+.theme-light #hero h1,
+.theme-light #hero p,
+.theme-light #hero a {
+  color: #ffffff !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.35);
+}
+.theme-light #hero p { color: rgba(255,255,255,.92) !important; }
+
+/* Theme-aware brand gradient (replaces hardcoded Tailwind gold) */
+#hero h1 > span[data-en="Oxford Academy"],
+#hero h1 .brand-gradient {
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+          background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: drop-shadow(0 4px 18px var(--accent-glow));
+}
+.theme-light #hero h1 > span[data-en="Oxford Academy"] {
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+}
+
+/* ============================================================
+   Scroll-reveal — directional slides (alternating L/R)
+   ============================================================ */
+.io-slide-l,
+.io-slide-r,
+.io-fade-up {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(.22,.7,.2,1),
+              transform 1s cubic-bezier(.22,.7,.2,1);
+  transition-delay: var(--io-delay, 0ms);
+  will-change: opacity, transform;
+}
+.io-slide-l  { transform: translateX(-60px); }
+.io-slide-r  { transform: translateX( 60px); }
+.io-fade-up  { transform: translateY( 30px); }
+
+.io-slide-l.is-in-view,
+.io-slide-r.is-in-view,
+.io-fade-up.is-in-view {
+  opacity: 1;
+  transform: none;
+}
+
+[dir="rtl"] .io-slide-l { transform: translateX( 60px); }
+[dir="rtl"] .io-slide-r { transform: translateX(-60px); }
+
 /* ---------- Accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .hero-content-overlay .hero-stagger,

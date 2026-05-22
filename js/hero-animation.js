@@ -240,10 +240,29 @@
 
   // ---------- Global section reveal ----------
   function initSectionReveal() {
+    // 1) Tag each section / footer / separator for the fade-up envelope
+    document.querySelectorAll('section:not(#hero), footer, .section-separator')
+      .forEach((el) => el.classList.add('io-reveal'));
+
+    // 2) For each .row inside a section, give children alternating
+    //    slide directions (L, R, L, R…) with a 140ms stagger.
+    document.querySelectorAll('section:not(#hero) .row').forEach((row) => {
+      Array.from(row.children).forEach((col, i) => {
+        col.classList.add(i % 2 === 0 ? 'io-slide-l' : 'io-slide-r');
+        col.style.setProperty('--io-delay', `${i * 140}ms`);
+      });
+    });
+
+    // 3) Section headings fade upward (no slide)
+    document.querySelectorAll(
+      'section:not(#hero) > .container > .text-center, ' +
+      'section:not(#hero) .faq-header-block'
+    ).forEach((el) => el.classList.add('io-fade-up'));
+
     const targets = document.querySelectorAll(
-      'section:not(#hero), footer, .section-separator'
+      '.io-reveal, .io-slide-l, .io-slide-r, .io-fade-up'
     );
-    targets.forEach((el) => el.classList.add('io-reveal'));
+
     if (!('IntersectionObserver' in window)) {
       targets.forEach((el) => el.classList.add('is-in-view'));
       return;
