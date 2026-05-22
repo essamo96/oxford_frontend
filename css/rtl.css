@@ -18,6 +18,63 @@
   letter-spacing: 0;
 }
 
+/* ============================================================
+   Navbar — Arabic-specific sizing & spacing
+   Arabic words are typically wider than English equivalents, so we
+   tighten gaps and shrink the link font a touch to prevent overflow.
+   ============================================================ */
+[dir="rtl"] #header-nav .primary-nav { gap: .9rem !important; }
+[dir="rtl"] #header-nav .header-actions { gap: .5rem !important; }
+[dir="rtl"] #header-nav .desktop-nav-link {
+  font-size: .9rem !important;
+  white-space: nowrap;
+  padding: .35rem .15rem !important;
+}
+[dir="rtl"] #header-nav .nav-more-btn {
+  padding: .45rem .75rem !important;
+  font-size: .9rem !important;
+  white-space: nowrap;
+}
+
+/* Action buttons stay on one line, no wrapping */
+[dir="rtl"] #header-nav .btn-luxury,
+[dir="rtl"] #header-nav .btn-glass {
+  white-space: nowrap;
+  min-width: max-content;
+  padding-inline: .9rem !important;
+  font-size: .9rem !important;
+}
+
+/* Brand block beside the logo — slightly tighter line in Arabic */
+[dir="rtl"] #header-nav span.text-xl {
+  font-size: 1rem !important;
+  line-height: 1.2;
+}
+[dir="rtl"] #header-nav span.text-xl > span.font-normal {
+  font-size: .7rem !important;
+}
+
+/* Logo image a touch smaller so the wider Arabic text fits naturally */
+[dir="rtl"] #navbar-logo { height: 38px !important; }
+
+/* Wider container padding for navbar in Arabic to give breathing room */
+[dir="rtl"] .sticky-header > .container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  gap: .9rem;
+}
+
+/* On tablet (768–1199px) drop one more item into More so 3 inline + More + actions fit */
+@media (min-width: 768px) and (max-width: 1199px) {
+  [dir="rtl"] #header-nav .primary-nav { gap: .65rem !important; }
+  [dir="rtl"] #header-nav .desktop-nav-link { font-size: .85rem !important; }
+  [dir="rtl"] #header-nav .btn-luxury,
+  [dir="rtl"] #header-nav .btn-glass {
+    font-size: .85rem !important;
+    padding-inline: .75rem !important;
+  }
+}
+
 /* ----- Layout: never allow horizontal scrolling ----- */
 [dir="rtl"] html,
 [dir="rtl"] body {

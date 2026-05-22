@@ -410,6 +410,72 @@ footer.io-reveal {
   gap: .65rem;
 }
 
+/* ============================================================
+   Navbar — anti-cramping rules (English / default direction)
+   Keep everything on one line, prevent button text wrapping,
+   tighten gaps & font sizes responsively.
+   ============================================================ */
+#header-nav .primary-nav { gap: 1.1rem; }
+#header-nav .header-actions { gap: .55rem; }
+
+#header-nav .desktop-nav-link {
+  font-size: .95rem;
+  white-space: nowrap;
+  padding: .4rem .2rem;
+}
+#header-nav .nav-more-btn {
+  padding: .5rem .9rem !important;
+  font-size: .95rem !important;
+  white-space: nowrap;
+}
+
+/* Action buttons stay on one line, no wrapping */
+#header-nav .btn-luxury,
+#header-nav .btn-glass {
+  white-space: nowrap;
+  min-width: max-content;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: .92rem;
+}
+
+/* Brand block beside the logo — stable line height */
+#header-nav span.text-xl {
+  font-size: 1.15rem;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+#header-nav span.text-xl > span.font-normal {
+  font-size: .72rem;
+  white-space: nowrap;
+}
+
+/* Logo a touch smaller so nav has room */
+#navbar-logo { height: 40px; }
+
+/* Container — consistent breathing room */
+.sticky-header > .container {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  gap: 1rem;
+}
+
+/* Tablet (768–1199px) — extra tightening to fit the More dropdown */
+@media (min-width: 768px) and (max-width: 1199px) {
+  #header-nav .primary-nav { gap: .75rem; }
+  #header-nav .header-actions { gap: .45rem; }
+  #header-nav .desktop-nav-link { font-size: .88rem; }
+  #header-nav .btn-luxury,
+  #header-nav .btn-glass {
+    font-size: .88rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
+  }
+  #header-nav .nav-more-btn { font-size: .88rem !important; padding: .45rem .75rem !important; }
+  #navbar-logo { height: 38px; }
+  #header-nav span.text-xl { font-size: 1.05rem; }
+}
+
 /* Icon buttons — theme-aware accent on hover */
 .icon-btn {
   border: 1px solid var(--glass-border);
@@ -1125,6 +1191,15 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
 .theme-light #hero p {
   color: #ffffff !important;
   text-shadow: 0 1px 6px rgba(0,0,0,.45);
+  font-weight: 500;
+}
+
+/* Tilt-card sub-description text — brand BLUE in light theme */
+.theme-light #hero .tilt-card p.text-xs,
+.theme-light #hero .tilt-card p.opacity-75 {
+  color: var(--accent-color, #0284c7) !important;
+  opacity: 1 !important;
+  text-shadow: 0 1px 3px rgba(255,255,255,.55);
   font-weight: 500;
 }
 
