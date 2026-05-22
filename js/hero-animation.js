@@ -32,6 +32,36 @@
 
   if (!v1 || !v2 || !overlay) return;
 
+  // ---------- Swap video sources to portrait versions on mobile -----------
+  // Mobile encoded copies (720x1280) with a blurred-fill background fix
+  // the cropping problem on portrait screens.
+  function pickResponsiveSources() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const map = {
+      'hero-bg-video-1': isMobile
+        ? 'assets/last_vidio_mobile.mp4'
+        : 'assets/last_vidio.mp4',
+      'hero-bg-video-2': isMobile
+        ? 'assets/ezgif-4717916b679dc07a_mobile.mp4'
+        : 'assets/ezgif-4717916b679dc07a.mp4',
+      'about-video':    isMobile
+        ? 'assets/aboutUs_mobile.mp4'
+        : 'assets/aboutUs.mp4',
+    };
+    Object.entries(map).forEach(([id, src]) => {
+      const el = document.getElementById(id);
+      if (el && el.getAttribute('src') !== src) {
+        el.setAttribute('src', src);
+        try { el.load(); } catch (_) {}
+      }
+    });
+  }
+  pickResponsiveSources();
+  // React to orientation / resize crossing the mobile breakpoint
+  const mqMobile = window.matchMedia('(max-width: 768px)');
+  if (mqMobile.addEventListener) mqMobile.addEventListener('change', pickResponsiveSources);
+  else if (mqMobile.addListener) mqMobile.addListener(pickResponsiveSources);
+
   // Pick the splash logo that contrasts best with the active theme.
   // Gold + Dark themes have dark backgrounds → use the white footer-logo.
   // Light theme has a bright background → use the standard colored logo.

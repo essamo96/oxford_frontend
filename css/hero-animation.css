@@ -332,7 +332,22 @@ footer.io-reveal {
 /* ---------- Responsive tuning ---------- */
 @media (max-width: 768px) {
   .hero-section { height: 100svh; min-height: 100svh; }
-  .hero-frame-stage__img { object-position: center 30%; }
+
+  /* The mobile-encoded videos are 720x1280 (9:16) — they already include
+     a blurred-fill background, so `cover` here just edge-aligns them. */
+  .hero-frame-stage__media,
+  .hero-frame-stage__video,
+  .hero-frame-stage__still {
+    width: 100vw;
+    height: 100svh;
+    min-height: 100svh;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* The about-section video also gets its portrait version on mobile */
+  .about-video-wrapper { height: 60vh; min-height: 380px; }
+  .about-video { object-fit: cover; object-position: center center; }
 }
 
 @media (max-width: 480px) {
