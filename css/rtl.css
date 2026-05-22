@@ -1,0 +1,170 @@
+/* ============================================================
+   rtl.css — Arabic / RTL specific overrides
+   Loaded for ALL pages but only activates under [dir="rtl"].
+   Contains every direction-aware rule for the Oxford Academy
+   landing page. No LTR rules belong here.
+   ============================================================ */
+
+/* ----- Base typography ----- */
+[dir="rtl"] body,
+[dir="rtl"] .sticky-header,
+[dir="rtl"] .sticky-header nav a,
+[dir="rtl"] .mobile-nav-menu,
+[dir="rtl"] .mobile-nav-menu a,
+[dir="rtl"] .btn,
+[dir="rtl"] .btn-luxury,
+[dir="rtl"] .btn-glass {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+}
+
+/* ----- Layout: never allow horizontal scrolling ----- */
+[dir="rtl"] html,
+[dir="rtl"] body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Sections use `clip` (modern, doesn't change scroll container) so
+   Bootstrap's negative row margins still align inside the container */
+[dir="rtl"] section[id],
+[dir="rtl"] footer,
+[dir="rtl"] .hero-section {
+  overflow-x: clip;
+}
+
+/* Container: generous padding to leave room for Arabic glyph shapes */
+[dir="rtl"] section[id] > .container,
+[dir="rtl"] footer > .container {
+  padding-left: clamp(1.25rem, 4vw, 2.5rem);
+  padding-right: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* Bootstrap row keeps default gutter; remove our previous override
+   that was creating subtle width mismatches on tablet/laptop */
+[dir="rtl"] .row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 1.5rem;
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+}
+
+/* ----- Tailwind margin utilities flipped ----- */
+[dir="rtl"] .mr-1 { margin-right: 0 !important; margin-left: .25rem !important; }
+[dir="rtl"] .mr-2 { margin-right: 0 !important; margin-left: .5rem  !important; }
+[dir="rtl"] .mr-3 { margin-right: 0 !important; margin-left: .75rem !important; }
+[dir="rtl"] .mr-4 { margin-right: 0 !important; margin-left: 1rem   !important; }
+[dir="rtl"] .ml-1 { margin-left: 0 !important; margin-right: .25rem !important; }
+[dir="rtl"] .ml-2 { margin-left: 0 !important; margin-right: .5rem  !important; }
+[dir="rtl"] .ml-3 { margin-left: 0 !important; margin-right: .75rem !important; }
+[dir="rtl"] .ml-4 { margin-left: 0 !important; margin-right: 1rem   !important; }
+
+/* Tailwind space-x reverse */
+[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* ----- Tailwind absolute positions used on this page ----- */
+[dir="rtl"] .left-10    { left: auto !important; right: 2.5rem !important; }
+[dir="rtl"] .right-20   { right: auto !important; left: 5rem !important; }
+[dir="rtl"] .right-1\/4 { right: auto !important; left: 25% !important; }
+[dir="rtl"] .left-1\/4  { left: auto !important; right: 25% !important; }
+
+/* Any class with negative offset prefix */
+[dir="rtl"] [class*="-left-"]  { left: auto !important; right: 1rem !important; }
+[dir="rtl"] [class*="-right-"] { right: auto !important; left: 1rem !important; }
+
+/* Center-translate stays centered */
+[dir="rtl"] .-translate-x-1\/2 { --tw-translate-x: 50% !important; }
+
+/* ----- News date badge ----- */
+[dir="rtl"] .news-date-badge { left: auto !important; right: 15px !important; }
+
+/* ----- About section: floating widget on the inside ----- */
+[dir="rtl"] #about .glass-panel .absolute {
+  left: auto !important;
+  right: 1rem !important;
+}
+
+/* ----- Testimonial avatar margin ----- */
+[dir="rtl"] .testimonial-avatar {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+/* ----- Logo/brand spacing in navbar + footer ----- */
+[dir="rtl"] #header-nav .h-12,
+[dir="rtl"] footer .h-12 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+/* ----- Reveal animations: flip horizontal direction ----- */
+[dir="rtl"] .reveal-left  { transform: translateX( 50px); }
+[dir="rtl"] .reveal-right { transform: translateX(-50px); }
+[dir="rtl"] .reveal-left.reveal-active,
+[dir="rtl"] .reveal-right.reveal-active { transform: translateX(0); }
+
+/* IntersectionObserver-driven slide reveals */
+[dir="rtl"] .io-slide-l { transform: translateX( 60px); }
+[dir="rtl"] .io-slide-r { transform: translateX(-60px); }
+[dir="rtl"] .io-slide-l.is-in-view,
+[dir="rtl"] .io-slide-r.is-in-view { transform: none; }
+
+/* ----- Hero floating decorative shapes ----- */
+[dir="rtl"] #hero .absolute.top-1\/4.left-10 { left: auto !important; right: 2.5rem !important; }
+[dir="rtl"] #hero .absolute.bottom-1\/4.right-20 { right: auto !important; left: 5rem !important; }
+
+/* ----- Splash mark spacing tweak ----- */
+[dir="rtl"] .hero-splash__mark { letter-spacing: .15em; }
+
+/* ----- Form fields: align right ----- */
+[dir="rtl"] .floating-input-group input,
+[dir="rtl"] .floating-input-group textarea,
+[dir="rtl"] .floating-input-group select { text-align: right; }
+
+/* ----- Cards inside rows keep equal height in RTL without changing
+   the column display (column flex would break Bootstrap's grid math).
+   We only force the inner panel to fill the column height. ----- */
+[dir="rtl"] section .row > [class*="col-"] > .glass-panel,
+[dir="rtl"] section .row > [class*="col-"] > .h-100 {
+  height: 100%;
+}
+
+/* RTL section/footer overflow — use `clip` to keep Bootstrap row math intact */
+[dir="rtl"] section[id],
+[dir="rtl"] footer,
+[dir="rtl"] .hero-section {
+  overflow: clip;
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* Defensive: never let .row exceed container width visually in RTL */
+[dir="rtl"] .container { max-width: 100%; }
+[dir="rtl"] .container > .row { width: auto; max-width: 100%; }
+
+/* Make sure the slide-reveal columns can never reach beyond viewport
+   while in their initial transformed state on small/tablet screens */
+@media (max-width: 1024px) {
+  [dir="rtl"] .io-slide-l { transform: translateX(20px); }
+  [dir="rtl"] .io-slide-r { transform: translateX(-20px); }
+}
+
+/* ----- Dropdown menu opens to the correct side ----- */
+[dir="rtl"] .primary-nav .dropdown-menu {
+  text-align: right;
+}
+
+/* ----- Buttons with icons: gap reversed via flex direction ----- */
+[dir="rtl"] .btn .bi-arrow-right { transform: scaleX(-1); }
+
+/* ----- Footer column widths stay correct ----- */
+[dir="rtl"] footer .row > [class*="col-"] {
+  text-align: right;
+}
+[dir="rtl"] footer .text-md-start { text-align: right !important; }

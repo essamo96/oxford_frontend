@@ -425,8 +425,105 @@ footer.io-reveal {
 }
 
 /* Section vertical rhythm — uniform across themes */
-section[id] { padding-top: clamp(4rem, 8vw, 7rem); padding-bottom: clamp(4rem, 8vw, 7rem); }
+section[id] {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+  /* `clip` clips overflow WITHOUT creating a scroll container, so
+     Bootstrap's negative .row margins keep aligning correctly and our
+     slide animations get cropped at the edge. Falls back to hidden. */
+  overflow: clip;
+  overflow: hidden;
+  overflow: clip; /* preferred when supported */
+}
 section[id] + .section-separator { margin: 0 auto; }
+
+/* Containers always have safe horizontal padding so content never
+   touches the viewport edge */
+section[id] > .container,
+footer > .container {
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+/* About section — floating widget should stay INSIDE the column */
+#about .glass-panel .absolute.\-bottom-6 {
+  left: 1rem !important;
+  bottom: 1rem !important;
+}
+/* ============================================================
+   Large-screen spacing fixes (≥1280px, ≥1536px, ≥1920px)
+   Bootstrap caps .container at ~1320px on xxl which leaves
+   huge empty margins on FHD/2K/4K monitors. The following
+   widens content + scales paddings so it doesn't feel cramped.
+   ============================================================ */
+@media (min-width: 1280px) {
+  .container { max-width: 1200px; }
+  section[id] {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  /* Headline spacing under section title */
+  section[id] > .container > .text-center { margin-bottom: 5rem; }
+  /* Grid gutter */
+  .row { --bs-gutter-x: 2.25rem; --bs-gutter-y: 2.25rem; }
+}
+
+@media (min-width: 1440px) {
+  .container { max-width: 1320px; }
+  section[id] {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+  section[id] > .container > .text-center { margin-bottom: 5.5rem; }
+  .row { --bs-gutter-x: 2.5rem; --bs-gutter-y: 2.5rem; }
+  /* Slightly larger headlines */
+  section[id] .text-3xl.md\:text-5xl { font-size: 3rem !important; line-height: 1.1; }
+}
+
+@media (min-width: 1680px) {
+  .container { max-width: 1440px; }
+  section[id] {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  section[id] > .container > .text-center { margin-bottom: 6rem; }
+  .row { --bs-gutter-x: 2.75rem; --bs-gutter-y: 2.75rem; }
+}
+
+@media (min-width: 1920px) {
+  .container { max-width: 1560px; }
+  section[id] {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+  .row { --bs-gutter-x: 3rem; --bs-gutter-y: 3rem; }
+}
+
+/* Card / panel internal padding scales with viewport */
+@media (min-width: 1280px) {
+  .glass-panel.p-5,
+  .glass-panel.p-6,
+  .glass-panel.p-12 { padding: 2.25rem !important; }
+}
+@media (min-width: 1680px) {
+  .glass-panel.p-5,
+  .glass-panel.p-6,
+  .glass-panel.p-12 { padding: 2.75rem !important; }
+}
+
+/* Navbar container also benefits from extra horizontal breathing room */
+@media (min-width: 1440px) {
+  .sticky-header > .container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1680px) {
+  .sticky-header > .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 
 /* ----- Scroll fix: only ONE scrollbar, no jank ----- */
 html { overflow-x: hidden; overflow-y: auto; }
@@ -492,15 +589,6 @@ select option {
   font-feature-settings: "ss01","cv11";
   letter-spacing: -0.005em;
 }
-[dir="rtl"] .sticky-header,
-[dir="rtl"] .sticky-header nav a,
-[dir="rtl"] .mobile-nav-menu,
-[dir="rtl"] .mobile-nav-menu a,
-[dir="rtl"] .btn, [dir="rtl"] .btn-luxury, [dir="rtl"] .btn-glass {
-  font-family: var(--font-ar);
-  letter-spacing: 0;
-}
-
 /* Optical sizes / weights */
 .sticky-header nav a.desktop-nav-link { font-weight: 500; }
 .btn-luxury, .btn-glass { font-weight: 600; }
@@ -546,19 +634,6 @@ select option {
    ============================================================ */
 #header-nav .h-12,
 footer .h-12 { margin-right: .75rem; margin-left: 0; }
-
-[dir="rtl"] #header-nav .h-12,
-[dir="rtl"] footer .h-12 {
-  margin-right: 0 !important;
-  margin-left: 1rem !important;
-}
-
-[dir="rtl"] #header-nav a > span.text-xl,
-[dir="rtl"] footer span.text-xl {
-  margin-left: 0;
-  margin-right: 0;
-  line-height: 1.2;
-}
 
 /* ============================================================
    Hero scroll-down indicator — fixed to bottom-center of viewport
@@ -627,8 +702,6 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   padding: 1.1rem 1.25rem;
   box-shadow: none !important;
 }
-[dir="rtl"] .faq-accordion .accordion-button { font-family: var(--font-ar); }
-
 .faq-accordion .accordion-button:not(.collapsed) {
   background: var(--card-bg) !important;
   color: var(--accent-color) !important;
@@ -751,7 +824,6 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   box-shadow: 0 6px 18px -8px var(--accent-glow);
   margin-right: 1rem;
 }
-[dir="rtl"] .testimonial-avatar { margin-right: 0; margin-left: 1rem; }
 .testimonial-avatar img {
   width: 100%;
   height: 100%;
@@ -825,7 +897,6 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   font-family: var(--font-en);
   transition: background .2s ease, color .2s ease;
 }
-[dir="rtl"] .primary-nav .dropdown-menu .dropdown-item { font-family: var(--font-ar); }
 .primary-nav .dropdown-menu .dropdown-item:hover,
 .primary-nav .dropdown-menu .dropdown-item:focus {
   background: var(--accent-glow);
@@ -840,14 +911,38 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
 }
 
-/* Brand text beside the logo — ALWAYS white in light theme */
-html.theme-light #header-nav span.text-xl,
-html.theme-light #header-nav span.text-xl *,
-html.theme-light #header-nav a span.text-xl,
-html.theme-light #header-nav a span.text-xl > span {
-  color: #ffffff !important;
+/* ============================================================
+   Brand text beside the logo (Light theme)
+     • Over hero (top)    : WHITE
+     • Scrolled past hero : BLACK
+   Smooth color transition both ways via direct color animation.
+   #header-nav IS the .sticky-header element — it gets the .scrolled
+   class directly, so we target #header-nav.scrolled (NOT .sticky-header.scrolled #header-nav).
+   ============================================================ */
+
+/* ----- Initial state (over hero) -----
+   "OXFORD"  (outer span text node) → same blue as the Apply Now button
+   "ACADEMY" (inner .font-normal span)  → WHITE
+*/
+html.theme-light #header-nav span.text-xl {
+  color: var(--accent-color, #0284c7) !important;   /* OXFORD = button blue */
+  text-shadow: 0 1px 4px rgba(0,0,0,.35);
+  transition: color .6s cubic-bezier(.22,.7,.2,1),
+              text-shadow .6s cubic-bezier(.22,.7,.2,1);
+}
+html.theme-light #header-nav span.text-xl > span.font-normal {
+  color: #ffffff !important;                        /* ACADEMY = white */
   opacity: 1 !important;
   text-shadow: 0 1px 4px rgba(0,0,0,.35);
+  transition: color .6s cubic-bezier(.22,.7,.2,1),
+              text-shadow .6s cubic-bezier(.22,.7,.2,1);
+}
+
+/* ----- Scrolled state — both words go to BLACK ----- */
+html.theme-light #header-nav.scrolled span.text-xl,
+html.theme-light #header-nav.scrolled span.text-xl > span.font-normal {
+  color: #0a0a0a !important;
+  text-shadow: 0 1px 4px rgba(255,255,255,.55);
 }
 
 /* "Apply Now" / luxury button text → white in light theme */
@@ -892,24 +987,39 @@ html.theme-light #header-nav a span.text-xl > span {
 .btn-luxury:hover::before { left: 130%; }
 
 /* ============================================================
-   Student Gate — white text + white border + animated border on hover
+   Student Gate (Light theme) — color shifts with scroll state
+     • Over hero (top)        : WHITE text + WHITE border + white travelling-border on hover
+     • Scrolled past hero     : BLUE  text + BLUE  border + blue  travelling-border on hover
+   Transitions are smooth in both directions.
    ============================================================ */
-.theme-light .student-gate-link {
-  color: #ffffff !important;
-  background: transparent !important;
-  border: 1.5px solid rgba(255,255,255,.85) !important;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  transition: color .3s ease, background .3s ease,
-              transform .3s ease, box-shadow .3s ease;
-}
-/* Travelling-light gradient border on hover */
 @property --sg-angle {
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
 }
+/* Custom prop drives the live color so transitions are smooth */
+.theme-light .student-gate-link {
+  --sg-color: #ffffff;                  /* WHITE while over the hero */
+  color: var(--sg-color) !important;
+  background: transparent !important;
+  border: 1.5px solid var(--sg-color) !important;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color .55s ease,
+              border-color .55s ease,
+              background .35s ease,
+              transform .3s ease,
+              box-shadow .35s ease,
+              --sg-color .55s ease;
+}
+/* Once the navbar has scrolled past the hero → switch to brand blue */
+.theme-light .sticky-header.scrolled .student-gate-link {
+  --sg-color: #0284c7;                  /* BLUE after scroll */
+}
+
+/* Travelling-light gradient border — color follows --sg-color so it
+   matches both states automatically */
 .theme-light .student-gate-link::before {
   content: "";
   position: absolute;
@@ -918,7 +1028,7 @@ html.theme-light #header-nav a span.text-xl > span {
   padding: 2px;
   background: conic-gradient(from var(--sg-angle, 0deg),
               transparent 0deg,
-              #ffffff 50deg,
+              var(--sg-color) 50deg,
               transparent 140deg,
               transparent 360deg);
   -webkit-mask: linear-gradient(#000 0 0) content-box,
@@ -932,10 +1042,11 @@ html.theme-light #header-nav a span.text-xl > span {
   z-index: 0;
   pointer-events: none;
 }
+
+/* Hover — same elegant animated border in both states, just themed */
 .theme-light .student-gate-link:hover {
-  background: rgba(255,255,255,.1) !important;
-  border-color: rgba(255,255,255,1) !important;
-  box-shadow: 0 0 20px rgba(255,255,255,.35);
+  background: color-mix(in srgb, var(--sg-color) 10%, transparent) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--sg-color) 35%, transparent);
   transform: translateY(-2px);
 }
 .theme-light .student-gate-link:hover::before {
@@ -1021,9 +1132,45 @@ html.theme-light #header-nav a span.text-xl > span {
   transform: none;
 }
 
-[dir="rtl"] .io-slide-l { transform: translateX( 60px); }
-[dir="rtl"] .io-slide-r { transform: translateX(-60px); }
+/* ============================================================
+   ARABIC / RTL SUPPORT — comprehensive direction-aware overrides
+   Tailwind utility classes use physical (left/right) properties that
+   do NOT auto-flip when dir="rtl". This block flips the ones used
+   on this page so spacing stays correct in Arabic on every screen.
+   ============================================================ */
 
+/* Sections must clip horizontal overflow in BOTH directions so slide
+   animations + absolute children never push the layout */
+section[id],
+footer,
+.hero-section { overflow-x: hidden; }
+
+/* Body itself never scrolls horizontally */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* ----- Bootstrap row reverse direction for RTL gutters ----- */
+/* ----- Tailwind margin utilities flipped (mr/ml) ----- */
+/* Tailwind ms-/me- already RTL-aware in v3, just safety */
+
+/* ----- Tailwind space-x reverse — Tailwind's own .space-x-reverse
+   needs to be applied. Force it for any .space-x-* in RTL ----- */
+/* ----- Tailwind positional utilities used on this page ----- */
+/* center stays */
+
+/* News date badge — top corner flip */
+/* About floating widget — already handled, reinforce */
+/* Testimonial avatar — already handled, reinforce */
+/* Bootstrap me-*/ms-* on icons (covers any inline usage) */
+/* Reveal-* legacy classes — flip horizontal direction in RTL */
+/* Tailwind transform translateX classes — flip negatives */
+/* Container padding — generous on RTL to compensate for Arabic letter shapes */
+/* Hero floating shapes — flip absolute positions */
+/* RTL: Bootstrap arrow icons (bi-arrow-right etc.) flip via existing
+   rtl:rotate-180 utility on news/footer; nothing needed here */
+
+/* Floating input labels in RTL — already handled in landing.css but
+   make sure the focus-up animation tracks correctly */
+/* ----- Generic safety: any absolute element with negative offset ----- */
 /* ---------- Accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .hero-content-overlay .hero-stagger,
