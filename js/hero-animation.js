@@ -74,6 +74,24 @@
   pickSplashLogo();
   window.addEventListener('themechanged', pickSplashLogo);
 
+  // ---------- Navbar logo: white variant in Light theme over hero ---------
+  // - Light theme + over-hero (not scrolled) → footer-logo.png (white)
+  // - Light theme + scrolled                  → logo.png (default)
+  // - Dark / Gold themes                      → logo.png everywhere
+  function pickNavbarLogo() {
+    const navLogo = document.getElementById('navbar-logo');
+    const header  = document.getElementById('header-nav');
+    if (!navLogo || !header) return;
+    const isLight    = html.classList.contains('theme-light');
+    const isScrolled = header.classList.contains('scrolled');
+    const wantWhite  = isLight && !isScrolled;
+    const desired = wantWhite ? 'assets/img/footer-logo.png' : 'assets/img/logo.png';
+    if (!navLogo.src.endsWith(desired)) navLogo.src = desired;
+  }
+  pickNavbarLogo();
+  window.addEventListener('themechanged', pickNavbarLogo);
+  window.addEventListener('scroll',       pickNavbarLogo, { passive: true });
+
   html.classList.add('hero-loading');
 
   // ---------- Preload helpers ----------

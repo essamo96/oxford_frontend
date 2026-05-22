@@ -833,6 +833,132 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
 }
 
 /* ============================================================
+   Light theme — navbar brand colors over the dark hero gradient
+   ============================================================ */
+/* Logo image switches to the white variant (set by JS via [data-logo]) */
+.theme-light .sticky-header:not(.scrolled) #navbar-logo {
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+}
+
+/* Brand text beside the logo — ALWAYS white in light theme */
+html.theme-light #header-nav span.text-xl,
+html.theme-light #header-nav span.text-xl *,
+html.theme-light #header-nav a span.text-xl,
+html.theme-light #header-nav a span.text-xl > span {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,.35);
+}
+
+/* "Apply Now" / luxury button text → white in light theme */
+.theme-light .btn-luxury,
+.theme-light .btn-luxury * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.18);
+}
+
+/* ============================================================
+   Apply Now — shimmer-sweep hover effect (all themes)
+   ============================================================ */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .35s cubic-bezier(.22,.7,.2,1),
+              box-shadow .35s ease,
+              filter .35s ease;
+}
+.btn-luxury::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 80%; height: 100%;
+  background: linear-gradient(115deg,
+              transparent 0%,
+              rgba(255,255,255,.5) 50%,
+              transparent 100%);
+  transform: skewX(-22deg);
+  transition: left .75s cubic-bezier(.22,.7,.2,1);
+  pointer-events: none;
+  z-index: 1;
+}
+.btn-luxury > * { position: relative; z-index: 2; }
+.btn-luxury:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 36px -14px var(--accent-glow),
+              0 0 22px var(--accent-glow);
+  filter: brightness(1.06);
+}
+.btn-luxury:hover::before { left: 130%; }
+
+/* ============================================================
+   Student Gate — white text + white border + animated border on hover
+   ============================================================ */
+.theme-light .student-gate-link {
+  color: #ffffff !important;
+  background: transparent !important;
+  border: 1.5px solid rgba(255,255,255,.85) !important;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color .3s ease, background .3s ease,
+              transform .3s ease, box-shadow .3s ease;
+}
+/* Travelling-light gradient border on hover */
+@property --sg-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.theme-light .student-gate-link::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--sg-angle, 0deg),
+              transparent 0deg,
+              #ffffff 50deg,
+              transparent 140deg,
+              transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .25s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.theme-light .student-gate-link:hover {
+  background: rgba(255,255,255,.1) !important;
+  border-color: rgba(255,255,255,1) !important;
+  box-shadow: 0 0 20px rgba(255,255,255,.35);
+  transform: translateY(-2px);
+}
+.theme-light .student-gate-link:hover::before {
+  opacity: 1;
+  animation: studentGateBorder 2.2s linear infinite;
+}
+@keyframes studentGateBorder {
+  to { --sg-angle: 360deg; }
+}
+.theme-light .student-gate-link > * { position: relative; z-index: 1; }
+
+/* "More" dropdown trigger → white text over hero (legible on dark gradient) */
+.theme-light .sticky-header:not(.scrolled) .nav-more-btn,
+.theme-light .sticky-header:not(.scrolled) .nav-more-btn * {
+  color: #ffffff !important;
+}
+/* After scroll (light glass) → revert to readable dark */
+.theme-light .sticky-header.scrolled .nav-more-btn,
+.theme-light .sticky-header.scrolled .nav-more-btn * {
+  color: var(--text-primary) !important;
+}
+
+/* ============================================================
    Hero — softer overlay over the videos in Light theme,
    theme-aware brand-name gradient, readable secondary text
    ============================================================ */
@@ -842,14 +968,19 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
               rgba(255,255,255,0.06) 0%,
               rgba(15,23,42,0.45) 100%) !important;
 }
-/* Light theme hero text must read on (now darker) overlay */
+/* Light theme hero text — title white, but the DESCRIPTION must be black */
 .theme-light #hero h1,
-.theme-light #hero p,
 .theme-light #hero a {
   color: #ffffff !important;
   text-shadow: 0 1px 6px rgba(0,0,0,.35);
 }
-.theme-light #hero p { color: rgba(255,255,255,.92) !important; }
+/* Hero <p> description — WHITE in light theme (updated) */
+.theme-light .hero-content-overlay p,
+.theme-light #hero p {
+  color: #ffffff !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.45);
+  font-weight: 500;
+}
 
 /* Theme-aware brand gradient (replaces hardcoded Tailwind gold) */
 #hero h1 > span[data-en="Oxford Academy"],
