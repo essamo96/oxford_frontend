@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Hub - Full Mark Academy</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"surface-variant": "#343536", "on-primary-fixed-variant": "#00419d", "on-error": "#690005", "on-surface": "#e3e2e3", "on-error-container": "#ffdad6", "on-secondary": "#2c3135", "tertiary-fixed": "#f9e37a", secondary: "#c2c7cc", "on-tertiary-fixed-variant": "#524600", "bg-snow": "#f8fafc", "inverse-primary": "#2259bf", "surface-container": "#1f2021", "secondary-fixed": "#dfe3e8", "primary-fixed": "#d9e2ff", "primary-container": "#3366cc", "bg-navy": "#05070f", "tertiary-container": "#bfab49", error: "#ffb4ab", "on-primary-container": "#e7ebff", "outline-variant": "#434653", "error-container": "#93000a", "sky-deep": "#0369a1", "cyber-cyan": "#00f0ff", "surface-tint": "#b1c5ff", "inverse-on-surface": "#303031", background: "#121314", "cyber-blue": "#0072ff", "surface-container-lowest": "#0d0e0f", "surface-bright": "#38393a", "surface-container-highest": "#343536", "on-surface-variant": "#c3c6d5", "gold-royal": "#c5a880", "on-tertiary": "#393000", "secondary-container": "#42474b", surface: "#121314", "on-primary": "#002c70", tertiary: "#dcc661", "sky-blue": "#0284c7", "surface-dim": "#121314", "bg-obsidian": "#050402", "tertiary-fixed-dim": "#dcc661", "on-secondary-fixed": "#171c20", "inverse-surface": "#e3e2e3", "on-tertiary-fixed": "#211b00", "gold-deep": "#7d633f", "on-background": "#e3e2e3", "primary-fixed-dim": "#b1c5ff", "on-secondary-fixed-variant": "#42474b", "secondary-fixed-dim": "#c2c7cc", "on-tertiary-container": "#4a3f00", primary: "#b1c5ff", outline: "#8d909e", "on-primary-fixed": "#001946", "surface-container-low": "#1b1c1d", "on-secondary-container": "#b1b6ba", "surface-container-high": "#292a2b"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"container-max": "1280px", "z-dropdown": "200", "z-bg": "-1", "margin-mobile": "16px", gutter: "16px", "navbar-default": "80px", "z-base": "1", "z-header": "100", "navbar-scroll": "70px", "z-modal": "500", xl: "32px", sm: "8px", md: "16px", lg: "24px", base: "8px", xs: "4px"}, fontFamily: {"headline-lg": ["Noto Serif"], "body-lg": ["Inter"], "label-md": ["Public Sans"], "display-lg-mobile": ["Outfit"], "display-lg": ["Outfit"], "arabic-body": ["Almarai"], "headline-md": ["Noto Serif"], "arabic-headline": ["Tajawal"], "body-md": ["Inter"], headline: ["Noto Serif"], display: ["Noto Serif"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "1.2", fontWeight: "700"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "label-md": ["14px", {lineHeight: "1.4", fontWeight: "500"}], "display-lg-mobile": ["36px", {lineHeight: "1.2", fontWeight: "800"}], "display-lg": ["48px", {lineHeight: "1.2", fontWeight: "800"}], "arabic-body": ["16px", {lineHeight: "1.8", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "600"}], "arabic-headline": ["32px", {lineHeight: "1.4", fontWeight: "700"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}]}}}};</script>
+<style>
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(30, 27, 24, 0.6); /* surface-container-low */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(77, 70, 60, 0.2); /* outline-variant */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .glass-card {
+            background: rgba(44, 41, 38, 0.5); /* surface-container-high */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(153, 143, 131, 0.1); /* outline */
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            background: rgba(55, 52, 49, 0.7); /* surface-container-highest */
+            border-color: rgba(197, 168, 128, 0.3); /* gold-royal */
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(197, 168, 128, 0.15);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(197, 168, 128, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(197, 168, 128, 0.5); }
+        }
+        .glow-card:hover {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Progress Bar */
+        progress::-webkit-progress-bar {
+            background-color: rgba(77, 70, 60, 0.3);
+            border-radius: 999px;
+        }
+        progress::-webkit-progress-value {
+            background: linear-gradient(90deg, #c5a880, #fedeb2);
+            border-radius: 999px;
+        }
+        progress::-moz-progress-bar {
+            background: linear-gradient(90deg, #c5a880, #fedeb2);
+            border-radius: 999px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #151310;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4d463c;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c5a880;
+        }
+        
+        /* 3D Tilt */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-arabic-body text-arabic-body antialiased min-h-screen overflow-x-hidden selection:bg-gold-royal/30 selection:text-gold-royal">
+<!-- Background Decoration -->
+<div class="fixed inset-0 z-z-bg pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-gold-royal/5 rounded-full blur-[120px] animate-float" style="animation-delay: 0s;"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-fixed/5 rounded-full blur-[150px] animate-float" style="animation-delay: 2s;"></div>
+<div class="absolute top-[40%] left-[20%] w-64 h-64 bg-surface-tint/5 rounded-full blur-[100px] animate-float" style="animation-delay: 4s;"></div>
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 z-header flex flex-row-reverse justify-between items-center px-gutter h-navbar-default bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-md shadow-gold-royal/10 transition-all duration-300" id="top-nav">
+<!-- Logo -->
+<div class="flex items-center gap-4"><img alt="Full Mark Academy" class="h-12 w-auto object-contain mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGjbx9QfsACMSlPis432PjXMng_mGGMaFlxbixSzUu3UV48e2CgyxfNjkC9-mYTdDQKklavKLl8T1Kayw4-DTnxTub3L5jAH-9GyJsxhxPaqwZjm5RkbD8eA5gXvPZsJAnMdj4gB4Pk-er6YSZ2c2ug4XCNHxoZ96zkI8vhJyNhllkBpasGZ-6MiEwk89RkCUdtgDTAK9PQ_Dj7QyHPR4B2OZUeOlpMY8CFjUwpR12APl3EOMBuT4FlzZIobP_9hFh1aCZXmHQG5w"/></div>
+<!-- Navigation Links (Hidden on Mobile) -->
+<nav class="hidden md:flex gap-8 flex-row-reverse">
+<a class="font-arabic-body text-arabic-body text-on-surface-variant hover:bg-primary-container/20 transition-all duration-300 px-4 py-2 rounded-lg" href="#">الرئيسية</a>
+<a class="font-arabic-body text-arabic-body text-gold-royal border-b-2 border-gold-royal hover:bg-primary-container/20 transition-all duration-300 px-4 py-2 rounded-lg Active: scale-95 transition-transform" href="#">لوحة التحكم</a>
+<a class="font-arabic-body text-arabic-body text-on-surface-variant hover:bg-primary-container/20 transition-all duration-300 px-4 py-2 rounded-lg" href="#">الدورات</a>
+<a class="font-arabic-body text-arabic-body text-on-surface-variant hover:bg-primary-container/20 transition-all duration-300 px-4 py-2 rounded-lg" href="#">المجموعات</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4 flex-row-reverse">
+<button class="p-2 text-gold-royal dark:text-primary hover:bg-primary-container/20 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-gold-royal dark:text-primary hover:bg-primary-container/20 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+<button class="p-2 text-gold-royal dark:text-primary hover:bg-primary-container/20 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-gold-royal/30 overflow-hidden ml-2 cursor-pointer">
+<img alt="Student Profile Avatar" class="w-full h-full object-cover" data-alt="A highly detailed close-up portrait of a professional student profile avatar in a modern digital academy setting. The lighting is soft and cinematic, emphasizing a warm, premium educational aesthetic. The background is a subtle, deep obsidian blur with a hint of gold-royal accent lighting, projecting a knowledgeable and confident mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH_o_pXeaNrINvrd5WcQiw6YYG9dbizNNhS7Fzj-qUJgc8pT9FVvUWdA4WmB9f5WPO3FM_87NxWBt943f7Xy92azVQGJ1DKuFYAYsyMREZ7usEX6e0GhIRufCztrccH3ISDllvKr7gUcVc_ovzPI38toZSr0rBrJCUP2NIZgmAqrzFlERE236BnGDfX_iSOp-8T5hRHkUbJr33ESHnOWR9-Xxu6UV8yovEj_n8fsbDghKwlqkQbI-y2cxi1NtXzij0kYq0dZEMpmI"/>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden p-2 text-gold-royal dark:text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex pt-navbar-default min-h-screen">
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex fixed right-0 top-0 h-full w-72 z-modal flex-col pt-navbar-default bg-surface-container-low/90 dark:bg-surface-container-highest/90 backdrop-blur-2xl border-l border-outline-variant/20 shadow-2xl shadow-bg-obsidian/50 transition-all duration-300 transform translate-x-0" id="side-nav">
+<!-- Header/Profile -->
+<div class="p-6 border-b border-outline-variant/20 flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-xl bg-surface-container-high flex items-center justify-center mb-4 border border-gold-royal/20 shadow-[0_0_15px_rgba(197,168,128,0.1)] overflow-hidden"><img alt="Logo" class="w-full h-full object-contain mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGjbx9QfsACMSlPis432PjXMng_mGGMaFlxbixSzUu3UV48e2CgyxfNjkC9-mYTdDQKklavKLl8T1Kayw4-DTnxTub3L5jAH-9GyJsxhxPaqwZjm5RkbD8eA5gXvPZsJAnMdj4gB4Pk-er6YSZ2c2ug4XCNHxoZ96zkI8vhJyNhllkBpasGZ-6MiEwk89RkCUdtgDTAK9PQ_Dj7QyHPR4B2OZUeOlpMY8CFjUwpR12APl3EOMBuT4FlzZIobP_9hFh1aCZXmHQG5w"/></div>
+<h2 class="font-arabic-headline text-arabic-headline text-gold-royal">أكاديمية فل مارك</h2>
+<p class="font-arabic-body text-label-md text-on-surface-variant mt-1">بوابتك للتميز</p>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-gold-deep/20 text-gold-royal border-r-4 border-gold-royal font-bold Active: scale-98 hover:shadow-[0_0_15px_rgba(197,168,128,0.3)] hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="">لوحة التحكم</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="">التنبيهات</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="">الدورات</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="">المواد الدراسية</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="">المالية</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="">المعلومات الشخصية</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="">جدول الامتحانات</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="">المجموعات</span>
+</a>
+</nav>
+<!-- CTA -->
+<div class="p-6 border-t border-outline-variant/20">
+<button class="w-full py-3 px-4 bg-gradient-to-r from-gold-royal to-primary-fixed text-bg-obsidian font-bold rounded-lg shadow-lg shadow-gold-royal/20 hover:shadow-gold-royal/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="support_agent">support_agent</span>
+                    تواصل مع الدعم
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 w-full p-margin-mobile md:p-gutter transition-all duration-300 md:pr-80">
+<div class="max-w-container-max mx-auto space-y-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+<div>
+<h2 class="font-arabic-headline text-display-lg-mobile md:text-display-lg text-on-surface mb-2 tracking-tight">مرحباً بعودتك، <span class="text-gold-royal">أحمد</span></h2>
+<p class="font-arabic-body text-body-lg text-on-surface-variant">إليك نظرة عامة على نشاطك الأكاديمي اليوم.</p>
+</div>
+<div class="glass-panel px-6 py-3 rounded-xl flex items-center gap-3">
+<div class="flex flex-col text-right">
+<span class="text-label-md text-on-surface-variant">النقاط التراكمية</span>
+<span class="font-headline-md text-headline-md text-gold-royal">1,250</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-gold-royal">
+<span class="material-symbols-outlined text-3xl" data-icon="military_tech">military_tech</span>
+</div>
+</div>
+</div>
+<!-- Active Courses (Bento Grid) -->
+<section>
+<div class="flex items-center justify-between mb-6 border-b border-outline-variant/20 pb-4">
+<h3 class="font-arabic-headline text-arabic-headline text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-royal" data-icon="school">school</span>
+                            الدورات النشطة
+                        </h3>
+<button class="text-gold-royal hover:text-primary-fixed transition-colors text-label-md flex items-center gap-1">
+                            عرض الكل
+                            <span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Course Card 1 -->
+<div class="glass-card rounded-2xl p-6 glow-card tilt-card flex flex-col relative overflow-hidden group" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+<div class="absolute top-0 right-0 w-24 h-24 bg-sky-deep/20 rounded-bl-full blur-2xl z-0 transition-all group-hover:bg-sky-deep/40"></div>
+<div class="relative z-10 flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-sky-blue shadow-inner">
+<span class="material-symbols-outlined text-2xl" data-icon="science">science</span>
+</div>
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant text-xs rounded-full border border-outline-variant/50">متقدم</span>
+</div>
+<h4 class="font-arabic-headline text-headline-md text-on-surface mb-2 relative z-10">الفيزياء الكمية</h4>
+<p class="text-label-md text-on-surface-variant mb-6 relative z-10">د. سامي عبدالله • الفصل الثاني</p>
+<div class="mt-auto relative z-10">
+<div class="flex justify-between text-xs mb-2">
+<span class="text-gold-royal">65% مكتمل</span>
+<span class="text-on-surface-variant">12/18 درس</span>
+</div>
+<progress class="w-full h-2" max="100" value="65"></progress>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="glass-card rounded-2xl p-6 glow-card tilt-card flex flex-col relative overflow-hidden group" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+<div class="absolute top-0 right-0 w-24 h-24 bg-error/10 rounded-bl-full blur-2xl z-0 transition-all group-hover:bg-error/20"></div>
+<div class="relative z-10 flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-error shadow-inner">
+<span class="material-symbols-outlined text-2xl" data-icon="calculate">calculate</span>
+</div>
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant text-xs rounded-full border border-outline-variant/50">أساسي</span>
+</div>
+<h4 class="font-arabic-headline text-headline-md text-on-surface mb-2 relative z-10">التفاضل والتكامل</h4>
+<p class="text-label-md text-on-surface-variant mb-6 relative z-10">أ. منى حسين • الفصل الأول</p>
+<div class="mt-auto relative z-10">
+<div class="flex justify-between text-xs mb-2">
+<span class="text-gold-royal">30% مكتمل</span>
+<span class="text-on-surface-variant">4/15 درس</span>
+</div>
+<progress class="w-full h-2" max="100" value="30"></progress>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="glass-card rounded-2xl p-6 glow-card tilt-card flex flex-col relative overflow-hidden group" style="transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-fixed/10 rounded-bl-full blur-2xl z-0 transition-all group-hover:bg-secondary-fixed/30"></div>
+<div class="relative z-10 flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-secondary-fixed shadow-inner">
+<span class="material-symbols-outlined text-2xl" data-icon="code">code</span>
+</div>
+<span class="px-3 py-1 bg-gold-royal/20 text-gold-royal text-xs rounded-full border border-gold-royal/30">مشروع التخرج</span>
+</div>
+<h4 class="font-arabic-headline text-headline-md text-on-surface mb-2 relative z-10">هندسة البرمجيات</h4>
+<p class="text-label-md text-on-surface-variant mb-6 relative z-10">م. خالد طارق • مشاريع عملية</p>
+<div class="mt-auto relative z-10">
+<div class="flex justify-between text-xs mb-2">
+<span class="text-gold-royal">85% مكتمل</span>
+<span class="text-on-surface-variant">التقييم النهائي</span>
+</div>
+<progress class="w-full h-2" max="100" value="85"></progress>
+</div>
+</div>
+</div>
+</section>
+<!-- Two Column Layout: Materials & Timeline -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Study Materials (Takes 2 columns on lg) -->
+<section class="lg:col-span-2">
+<div class="flex items-center justify-between mb-6 border-b border-outline-variant/20 pb-4">
+<h3 class="font-arabic-headline text-arabic-headline text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-royal" data-icon="library_books">library_books</span>
+                                أحدث المواد الدراسية
+                            </h3>
+</div>
+<div class="space-y-4">
+<!-- Material Item 1 -->
+<div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-error/10 flex items-center justify-center text-error group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="flex-1">
+<h5 class="text-body-md font-semibold text-on-surface mb-1 group-hover:text-gold-royal transition-colors">ملخص الفصل الثالث - ميكانيكا الكم</h5>
+<p class="text-label-md text-on-surface-variant">د. سامي عبدالله • أضيف منذ ساعتين</p>
+</div>
+<button class="w-10 h-10 rounded-full border border-outline-variant/50 flex items-center justify-center text-on-surface-variant hover:border-gold-royal hover:text-gold-royal transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</button>
+</div>
+<!-- Material Item 2 -->
+<div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-sky-blue/10 flex items-center justify-center text-sky-blue group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+</div>
+<div class="flex-1">
+<h5 class="text-body-md font-semibold text-on-surface mb-1 group-hover:text-gold-royal transition-colors">محاضرة مسجلة: تكامل الدوال المثلثية</h5>
+<p class="text-label-md text-on-surface-variant">أ. منى حسين • 45 دقيقة • أضيف أمس</p>
+</div>
+<button class="w-10 h-10 rounded-full border border-outline-variant/50 flex items-center justify-center text-on-surface-variant hover:border-gold-royal hover:text-gold-royal transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Material Item 3 -->
+<div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-secondary-fixed/10 flex items-center justify-center text-secondary-fixed group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="folder_zip">folder_zip</span>
+</div>
+<div class="flex-1">
+<h5 class="text-body-md font-semibold text-on-surface mb-1 group-hover:text-gold-royal transition-colors">ملفات مشروع قواعد البيانات</h5>
+<p class="text-label-md text-on-surface-variant">م. خالد طارق • 12 MB</p>
+</div>
+<button class="w-10 h-10 rounded-full border border-outline-variant/50 flex items-center justify-center text-on-surface-variant hover:border-gold-royal hover:text-gold-royal transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Exam Schedule (Takes 1 column on lg) -->
+<aside class="lg:col-span-1">
+<div class="glass-panel rounded-2xl p-6 h-full flex flex-col relative overflow-hidden">
+<!-- Shader Background for urgency/focus mood -->
+<div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
+<!-- Placeholder for shader, assuming static gradient fallback if component not available, but user instructions say to use custom tag if placeholder provided. None provided in prompt, so skipping custom tag -->
+<div class="w-full h-full bg-gradient-to-br from-bg-navy via-surface to-surface-variant"></div>
+</div>
+<div class="relative z-10 flex items-center justify-between mb-6">
+<h3 class="font-arabic-headline text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-royal" data-icon="event">event</span>
+                                    الامتحانات القادمة
+                                </h3>
+</div>
+<div class="relative z-10 flex-1 relative pl-4 border-r-2 border-outline-variant/30 space-y-6 before:absolute before:top-0 before:-right-[2px] before:bottom-0 before:w-[2px] before:bg-gradient-to-b before:from-gold-royal before:to-transparent">
+<!-- Timeline Item 1 -->
+<div class="relative">
+<div class="absolute -right-[23px] top-1 w-3 h-3 rounded-full bg-gold-royal shadow-[0_0_10px_#c5a880]"></div>
+<div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/20 hover:border-gold-royal/50 transition-colors">
+<div class="text-gold-royal text-sm font-bold mb-1">غداً • 10:00 ص</div>
+<h6 class="text-body-md font-semibold text-on-surface mb-2">اختبار قصير: الفيزياء الكمية</h6>
+<div class="flex items-center gap-2 text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                                            قاعة 104 - المبنى ج
+                                        </div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative">
+<div class="absolute -right-[23px] top-1 w-3 h-3 rounded-full bg-outline-variant border-2 border-surface-container"></div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 opacity-80 hover:opacity-100 transition-opacity">
+<div class="text-on-surface-variant text-sm font-bold mb-1">15 مايو • 01:00 م</div>
+<h6 class="text-body-md font-semibold text-on-surface mb-2">الامتحان النصفي: التفاضل</h6>
+<div class="flex items-center gap-2 text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="computer">computer</span>
+                                            اختبار إلكتروني - معمل أ
+                                        </div>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative">
+<div class="absolute -right-[23px] top-1 w-3 h-3 rounded-full bg-outline-variant border-2 border-surface-container"></div>
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 opacity-60 hover:opacity-100 transition-opacity">
+<div class="text-on-surface-variant text-sm font-bold mb-1">22 مايو • 09:00 ص</div>
+<h6 class="text-body-md font-semibold text-on-surface mb-2">تسليم مشروع التخرج</h6>
+<div class="flex items-center gap-2 text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="upload_file">upload_file</span>
+                                            بوابة التسليم الإلكترونية
+                                        </div>
+</div>
+</div>
+</div>
+<button class="relative z-10 mt-6 w-full py-2 border border-outline-variant text-on-surface-variant rounded-lg hover:bg-surface-container-highest hover:text-on-surface transition-all">عرض الجدول الكامل</button>
+</div>
+</aside>
+</div>
+<!-- Study Groups (Hexagon Pattern area) -->
+<section class="mt-12 mb-8">
+<div class="flex items-center justify-between mb-6 border-b border-outline-variant/20 pb-4">
+<h3 class="font-arabic-headline text-arabic-headline text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-royal" data-icon="group_work">group_work</span>
+                            مجموعات الدراسة والتفاعل
+                        </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Group Card 1 -->
+<div class="glass-card rounded-2xl p-5 text-center flex flex-col items-center justify-center relative overflow-hidden group hover:border-cyber-blue/30">
+<!-- Hexagon Decor -->
+<div class="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSI0OCI+PHBhdGggZD0iTTEyIDBMIDI0IDEyTCAyNCAzNkwgMTIgNDhMIDAgMzZMIDAgMTJaIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')] bg-repeat"></div>
+<div class="w-16 h-16 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 flex items-center justify-center text-cyber-blue mb-4 group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-cyber-blue/10 relative z-10">
+<span class="material-symbols-outlined text-3xl" data-icon="forum">forum</span>
+</div>
+<h5 class="text-body-md font-bold text-on-surface mb-1 relative z-10">منتدى الفيزياء العام</h5>
+<p class="text-label-md text-on-surface-variant mb-4 relative z-10">145 عضو • 12 متصل</p>
+<div class="flex -space-x-2 space-x-reverse mb-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-variant border-2 border-surface flex items-center justify-center text-[10px]">+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant border-2 border-surface overflow-hidden"><img class="w-full h-full object-cover" data-alt="A small circular avatar portrait of a student, lit with a cool neon cyan rim light against a dark background, fitting a modern tech-educational platform style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1U5eiA7plwiC-qbFhZ1rvQH9UcO0x8qJAT7yfTq_3jG_xJxc0NqamtWXL5kwwYTdHhJwleGbbfP3taah17tdmwmIfOseb_QLUQIrmfnqsQucAMRz4wZN88x11RlH3oEMdDK2nLAAlRpwPwreTgADYJRpxWnAkDggslYuJ4GCpjDn-jl4dM0UwSEhZHdOk3AJ12fh9uQ5ltcxugwA6r0l9LECQm5y0HUzQiw_IKAnu_t4fu0DDaQ3eIr6jl53TJmxAEaIiYwETlRw"/></div>
+<div class="w-8 h-8 rounded-full bg-surface-variant border-2 border-surface overflow-hidden"><img class="w-full h-full object-cover" data-alt="Another small circular avatar portrait of a student, warm lighting, professional dark theme educational platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfBXmY63YDP_ev3UBdUxZPIinv11POWZM3qHz-anBnj5RE0Hrt-QURk2vSbojha0iA7h97MqytLlkNoZOE5qvGR6fqsw43pbUTY7wHWCt5J_sywFHCmIgv9E3YfpyTVwEnMary6-ecs3CfdKFdaMv3JClKZFE1e8s5mM-jsUPoB7aOoAT9SD4x5DDRskUhuTOjZJsfcDxTNFW7dY5h9weEAfiSjMeS3hj974vdn0OUQaDmvn28bRtAEYsxMlSI59LnajhHTDQVuCQ"/></div>
+</div>
+<button class="w-full py-2 bg-surface-container-highest text-on-surface rounded-lg hover:bg-cyber-blue/20 hover:text-cyber-blue transition-colors relative z-10 text-sm">انضمام للمناقشة</button>
+</div>
+<!-- Group Card 2 -->
+<div class="glass-card rounded-2xl p-5 text-center flex flex-col items-center justify-center relative overflow-hidden group hover:border-gold-royal/30">
+<div class="w-16 h-16 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 flex items-center justify-center text-gold-royal mb-4 group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-gold-royal/10 relative z-10">
+<span class="material-symbols-outlined text-3xl" data-icon="code_blocks">code_blocks</span>
+</div>
+<h5 class="text-body-md font-bold text-on-surface mb-1 relative z-10">فريق مشروع التخرج</h5>
+<p class="text-label-md text-on-surface-variant mb-4 relative z-10">4 أعضاء • خاص</p>
+<div class="flex -space-x-2 space-x-reverse mb-4 relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-variant border-2 border-surface overflow-hidden"><img class="w-full h-full object-cover" data-alt="Student avatar portrait, warm lighting, professional dark theme educational platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHCp3ebDLQ1Favy0g3RHb2NOHXbC9vwRBAbMNYk1QQ-2qqNxncXXW5DmePsvQTDr1Pl0lcv7awHINTDvncZ47AS_BDVaTsDfTv7oAjDPV_Z4xs1aZQSffWAN8uu1hxRmN16FM89MI5MB47PaqO5MDC1vfGzfijaBTc2wtq1XKKqKakM_jS3WjZOMOo5We-TwYNTwMTXTCtXAHwkSl4YSL8UVvKuH3Q9i8_vM5DkuwHRpHH5U0r8E8bYAWFBHnOdGsGMWfeCZplcmI"/></div>
+<div class="w-8 h-8 rounded-full bg-surface-variant border-2 border-surface overflow-hidden"><img class="w-full h-full object-cover" data-alt="Student avatar portrait, cool lighting, professional dark theme educational platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvUNNm8_8ajXJSzgVj8cD0Xy5AaHtp9D7mKBpFCjvkQbLcoYsXsAAeHVrX4JrUfEVVO8q5DQRgYVJ2lybXopMfeGlKIV5n_CQAAupnHOTpfYWWWyVl2YrTm4vO_S1TDVh2Jjc8QfG1ETF3xQDlIXapHe0xqUINr6jLA-SLfinyEsOeII17CwlpP4pnCqk1GB5JVVSde7bOsWma3ddWye7BXDjc6CiWIXhaVyBEkS5-H2YkGDmp0-QDCZqUtPAtM6vEr0AL0iOCWiM"/></div>
+<div class="w-8 h-8 rounded-full bg-surface-variant border-2 border-surface overflow-hidden"><img class="w-full h-full object-cover" data-alt="Student avatar portrait, neutral lighting, professional dark theme educational platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy2gCIUvIN-CKtMlVGO1kdCXreFsJIaAIMpu_1kXcgvyXCIcuB1lYfgix7h-YUO7s6Cs2Gp4f6ZjaA1YIMxXRJdN5Vc0cXTpmZuDvtg2DYRw-UgTMvNjlK_PVlJUvbmtTVIf5Ary4mmeTvTD4Jq2xmTpkkqfCnywTnV9iQKjz8IEQKfvvZBpIbEJhi2hexv3FYQzU_WGsyOynU7a0hvLNV2I_7mLcVhwQGlj93lB3BhAD0djjncOnp_xxSLN7V_hPO1lwaNZkbkn0"/></div>
+</div>
+<button class="w-full py-2 bg-gold-royal/10 text-gold-royal rounded-lg hover:bg-gold-royal hover:text-bg-obsidian transition-colors relative z-10 text-sm font-bold">فتح مساحة العمل</button>
+</div>
+<!-- Add New Group -->
+<div class="glass-card rounded-2xl p-5 text-center flex flex-col items-center justify-center border-dashed border-2 border-outline-variant/50 hover:border-gold-royal/50 hover:bg-surface-container-highest transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-on-surface-variant mb-4 shadow-inner">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</div>
+<h5 class="text-body-md font-bold text-on-surface-variant mb-1">إنشاء مجموعة جديدة</h5>
+<p class="text-label-md text-outline">دعوة زملاء جدد للتعاون</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-6 px-gutter flex flex-row-reverse justify-between items-center bg-surface-container-lowest dark:bg-bg-obsidian border-t border-outline-variant/10 flat md:pr-80">
+<div class="font-arabic-headline text-gold-royal text-lg">
+            أكاديمية فل مارك
+        </div>
+<div class="text-center font-arabic-body text-label-md text-gold-royal">
+            © ٢٠٢٤ أكاديمية فل مارك. جميع الحقوق محفوظة
+        </div>
+<div class="flex gap-4 flex-row-reverse">
+<a class="font-arabic-body text-label-md text-outline hover:text-primary transition-colors" href="#">الشروط والأحكام</a>
+<a class="font-arabic-body text-label-md text-outline hover:text-primary transition-colors" href="#">سياسة الخصوصية</a>
+<a class="font-arabic-body text-label-md text-outline hover:text-primary transition-colors" href="#">اتصل بنا</a>
+</div>
+</footer>
+<!-- Interactive Scripts -->
+<script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('top-nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('h-navbar-scroll', 'bg-surface/90');
+                nav.classList.remove('h-navbar-default', 'bg-surface/80');
+            } else {
+                nav.classList.add('h-navbar-default', 'bg-surface/80');
+                nav.classList.remove('h-navbar-scroll', 'bg-surface/90');
+            }
+        });
+
+        // 3D Tilt Effect for Cards
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -5; // Max rotation 5deg
+                const rotateY = ((x - centerX) / centerX) * 5;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+    </script>
+</body></html>

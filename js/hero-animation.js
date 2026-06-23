@@ -68,29 +68,19 @@
   function pickSplashLogo() {
     const splashLogo = document.getElementById('hero-splash-logo');
     if (!splashLogo) return;
-    const onDark = html.classList.contains('theme-gold') || html.classList.contains('theme-dark');
-    splashLogo.src = onDark ? 'assets/img/footer-logo.png' : 'assets/img/logo.png';
+    splashLogo.src = 'assets/img/logo_backup.png';
   }
   pickSplashLogo();
   window.addEventListener('themechanged', pickSplashLogo);
 
-  // ---------- Navbar logo: white variant in Light theme over hero ---------
-  // - Light theme + over-hero (not scrolled) → footer-logo.png (white)
-  // - Light theme + scrolled                  → logo.png (default)
-  // - Dark / Gold themes                      → logo.png everywhere
+  // ---------- Navbar logo: always use logo.png, CSS filter handles white variant ---------
   function pickNavbarLogo() {
     const navLogo = document.getElementById('navbar-logo');
-    const header  = document.getElementById('header-nav');
-    if (!navLogo || !header) return;
-    const isLight    = html.classList.contains('theme-light');
-    const isScrolled = header.classList.contains('scrolled');
-    const wantWhite  = isLight && !isScrolled;
-    const desired = wantWhite ? 'assets/img/footer-logo.png' : 'assets/img/logo.png';
-    if (!navLogo.src.endsWith(desired)) navLogo.src = desired;
+    if (!navLogo) return;
+    navLogo.src = 'assets/img/logo_backup.png';
   }
   pickNavbarLogo();
   window.addEventListener('themechanged', pickNavbarLogo);
-  window.addEventListener('scroll',       pickNavbarLogo, { passive: true });
 
   html.classList.add('hero-loading');
 

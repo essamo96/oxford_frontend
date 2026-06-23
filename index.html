@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oxford Academy | Premium Landing Page</title>
+  <title>FULL MARKS ACADEMY | Premium Landing Page</title>
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -63,7 +63,7 @@
     <div class="hero-splash__bg"></div>
     <div class="hero-splash__logo-wrap">
       <span class="hero-splash__orbit"></span>
-      <img id="hero-splash-logo" class="hero-splash__logo" src="assets/img/logo.png" alt="Oxford Academy">
+      <img id="hero-splash-logo" class="hero-splash__logo" src="assets/img/logo_backup.png" alt="FULL MARKS ACADEMY">
     </div>
   </div>
 
@@ -72,16 +72,14 @@
     <div class="container d-flex align-items-center justify-content-between">
       <!-- Logo -->
       <a href="#" class="d-flex align-items-center text-decoration-none">
-        <img id="navbar-logo" src="assets/img/logo.png" alt="Oxford Logo" class="h-12 object-contain mr-3">
-        <span class="text-xl font-bold tracking-wider text-primary-class" style="color: var(--text-primary);">
-          OXFORD <span class="font-normal text-sm block opacity-75" data-en="ACADEMY" data-ar="الأكاديمية">ACADEMY</span>
-        </span>
+        <img id="navbar-logo" src="assets/img/logo_backup.png" alt="Oxford Logo" class="h-24 object-contain py-1 me-3" style="image-rendering: -webkit-optimize-contrast;">
       </a>
 
       <!-- Primary nav (desktop full, tablet shows fewer + a 'More' dropdown) -->
       <nav id="primary-nav" class="primary-nav d-flex align-items-center">
         <a href="#hero" class="desktop-nav-link nav-item-primary text-decoration-none font-medium active" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
         <a href="#about" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="#programs" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Programs" data-ar="البرامج">Programs</a>
         <a href="#actions" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
         <a href="#contact" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
 
@@ -117,6 +115,12 @@
           <i class="bi bi-award-fill"></i>
         </button>
 
+        <!-- Student Cart Button -->
+        <button id="cartBtn" class="btn btn-glass icon-btn position-relative" onclick="toggleCartModal()" aria-label="Open cart" title="Open cart">
+          <i class="bi bi-bag-fill"></i>
+          <span id="cartCountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none; font-size: 0.65rem;">0</span>
+        </button>
+
         <a href="#" class="btn btn-glass student-gate-link px-3 py-2 rounded-lg" data-en="Student Gate" data-ar="بوابة الطالب">Student Gate</a>
         <a href="#" class="btn btn-luxury px-4 py-2 rounded-lg" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
       </div>
@@ -133,7 +137,7 @@
   <div id="mobileNavMenu" class="mobile-nav-menu d-flex flex-column justify-content-between">
     <div>
       <div class="d-flex align-items-center justify-content-between mb-8">
-        <span class="text-xl font-bold tracking-wider" style="color: var(--text-primary);" data-en="OXFORD ACADEMY" data-ar="أكاديمية أوكسفورد">OXFORD ACADEMY</span>
+        <span class="text-xl font-bold tracking-wider" style="color: var(--text-primary);" data-en="FULL MARKS ACADEMY" data-ar="أكاديمية أوكسفورد">FULL MARKS ACADEMY</span>
         <button id="closeMobileMenu" class="text-2xl p-2" style="color: var(--text-primary);">
           <i class="bi bi-x-lg"></i>
         </button>
@@ -142,6 +146,7 @@
       <nav class="d-flex flex-column space-y-4">
         <a href="#hero" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
         <a href="#about" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="#programs" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Programs" data-ar="البرامج">Programs</a>
         <a href="#strengths" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Strengths" data-ar="مميزاتنا">Strengths</a>
         <a href="#actions" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
         <a href="#news" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="News" data-ar="الأخبار">News</a>
@@ -159,6 +164,11 @@
         </button>
         <button id="themeCycleBtnMobile" class="btn btn-glass icon-btn icon-btn-lg" type="button" aria-label="Switch theme">
           <i class="bi bi-award-fill"></i>
+        </button>
+        <!-- Mobile Student Cart Button -->
+        <button id="cartBtnMobile" class="btn btn-glass icon-btn icon-btn-lg position-relative" onclick="toggleCartModal()" aria-label="Open cart">
+          <i class="bi bi-bag-fill"></i>
+          <span id="cartCountBadgeMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none; font-size: 0.65rem;">0</span>
         </button>
       </div>
 
@@ -200,7 +210,7 @@
     <div id="hero-content-overlay" class="hero-content hero-content-overlay container px-4">
       <div class="reveal-scale">
         <h1 class="hero-stagger text-4xl md:text-6xl font-extrabold tracking-tight mb-4 uppercase" data-stagger="1" style="color: var(--text-primary);">
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold-dark" data-en="Oxford Academy" data-ar="أكاديمية أوكسفورد">Oxford Academy</span>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold-light to-gold-dark" data-en="FULL MARKS ACADEMY" data-ar="أكاديمية أوكسفورد">FULL MARKS ACADEMY</span>
         </h1>
         <p class="hero-stagger text-lg md:text-2xl text-secondary-class mb-8 max-w-2xl mx-auto leading-relaxed" data-stagger="2" style="color: var(--text-secondary);"
            data-en="Step Into Professional Excellence. Approved Oxford Test Center & Global Academic Preparation."
@@ -260,9 +270,9 @@
           <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="Leading Academic Training Institution" data-ar="المؤسسة الأكاديمية الرائدة للتدريب">Leading Academic Training Institution</h2>
           <div class="w-16 h-1 bg-gold mb-6 rounded-full"></div>
           <p class="text-lg leading-relaxed mb-6" style="color: var(--text-secondary);" 
-             data-en="Oxford Academy stands at the forefront of language education and testing. As an approved Oxford Test of English (OTE) center, we deliver globally recognized certifications alongside premier academic instruction tailored for IELTS preparation, general levels, and corporate business communication."
+             data-en="FULL MARKS ACADEMY stands at the forefront of language education and testing. As an approved Oxford Test of English (OTE) center, we deliver globally recognized certifications alongside premier academic instruction tailored for IELTS preparation, general levels, and corporate business communication."
              data-ar="تقف أكاديمية أوكسفورد في طليعة تعليم اللغات والتقييم الدولي. بصفتنا مركزًا معتمدًا لاختبار Oxford Test of English (OTE)، نقدم شهادات معترف بها عالميًا إلى جانب تدريب أكاديمي متميز مُعد خصيصًا لاجتياز اختبار آيلتس، المستويات العامة، والمحادثة المهنية للمؤسسات.">
-            Oxford Academy stands at the forefront of language education and testing. As an approved Oxford Test of English (OTE) center, we deliver globally recognized certifications alongside premier academic instruction tailored for IELTS preparation, general levels, and corporate business communication.
+            FULL MARKS ACADEMY stands at the forefront of language education and testing. As an approved Oxford Test of English (OTE) center, we deliver globally recognized certifications alongside premier academic instruction tailored for IELTS preparation, general levels, and corporate business communication.
           </p>
           <div class="row g-4 mb-8">
             <div class="col-6 d-flex align-items-start">
@@ -309,6 +319,112 @@
                   <p class="text-xs opacity-75 mb-0" data-en="Guaranteed level improvements" data-ar="تحسن مضمون ومثبت في المستويات">Guaranteed level improvements</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Separator -->
+  <div class="section-separator reveal">
+    <div class="separator-icon"></div>
+  </div>
+
+  <!-- Programs Section -->
+  <section id="programs" class="py-24" style="background: var(--bg-primary);">
+    <div class="container px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+        <h5 class="text-gold font-bold tracking-widest text-sm uppercase mb-2" data-en="OUR ACADEMIC PROGRAMS" data-ar="برامجنا التعليمية">OUR ACADEMIC PROGRAMS</h5>
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-4" style="color: var(--text-primary);" data-en="Specialized Programs for a Brighter Future" data-ar="برامج متخصصة لبناء مستقبل واعد">Specialized Programs for a Brighter Future</h2>
+        <div class="mx-auto w-16 h-1 bg-gold rounded-full"></div>
+      </div>
+
+      <div class="row g-4 justify-content-center reveal">
+        <!-- Program 1: Tawjihi -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-panel news-card h-100 d-flex flex-column justify-content-between tilt-card hover-glow">
+            <div class="news-img-wrapper">
+              <img src="assets/img/featured/tawjihi.png" alt="Tawjihi Program" class="news-img">
+            </div>
+            <div class="p-6 flex-grow d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Tawjihi Program" data-ar="برنامج التوجيهي">Tawjihi Program</h4>
+                <p class="opacity-75 text-sm mb-4" style="color: var(--text-secondary);"
+                   data-en="Comprehensive preparation for high school students with elite teachers to ensure top scores and academic excellence."
+                   data-ar="تأهيل شامل لطلبة الثانوية العامة مع نخبة من أفضل المعلمين لضمان التفوق والحصول على العلامة الكاملة.">
+                  Comprehensive preparation for high school students with elite teachers to ensure top scores and academic excellence.
+                </p>
+              </div>
+              <a href="program-details.html?program=tawjihi" class="btn btn-luxury w-100 py-2.5 rounded-lg text-center mt-3" data-en="Join Program" data-ar="الانضمام للبرنامج">
+                Join Program
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 2: Children -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-panel news-card h-100 d-flex flex-column justify-content-between tilt-card hover-glow">
+            <div class="news-img-wrapper">
+              <img src="assets/img/featured/children.png" alt="Children Program" class="news-img">
+            </div>
+            <div class="p-6 flex-grow d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Children Program" data-ar="برنامج الأطفال">Children Program</h4>
+                <p class="opacity-75 text-sm mb-4" style="color: var(--text-secondary);"
+                   data-en="Fun, interactive language learning designed to build a strong foundation for young learners using modern tools."
+                   data-ar="تعليم تفاعلي مرح يهدف إلى بناء لغوي قوي للأطفال من سن مبكر باستخدام وسائل تعليمية مبتكرة.">
+                  Fun, interactive language learning designed to build a strong foundation for young learners using modern tools.
+                </p>
+              </div>
+              <a href="program-details.html?program=children" class="btn btn-luxury w-100 py-2.5 rounded-lg text-center mt-3" data-en="Join Program" data-ar="الانضمام للبرنامج">
+                Join Program
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 3: Speech Therapy -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-panel news-card h-100 d-flex flex-column justify-content-between tilt-card hover-glow">
+            <div class="news-img-wrapper">
+              <img src="assets/img/featured/speech.png" alt="Speech Therapy" class="news-img">
+            </div>
+            <div class="p-6 flex-grow d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Speech Therapy Program" data-ar="برنامج النطق">Speech Therapy Program</h4>
+                <p class="opacity-75 text-sm mb-4" style="color: var(--text-secondary);"
+                   data-en="Specialized therapy sessions to resolve speech difficulties and enhance articulation for children and adults."
+                   data-ar="جلسات متخصصة لعلاج مشاكل النطق والتخاطب وتحسين النطق السليم لدى الأطفال والبالغين بأحدث الأساليب.">
+                  Specialized therapy sessions to resolve speech difficulties and enhance articulation for children and adults.
+                </p>
+              </div>
+              <a href="program-details.html?program=speech" class="btn btn-luxury w-100 py-2.5 rounded-lg text-center mt-3" data-en="Join Program" data-ar="الانضمام للبرنامج">
+                Join Program
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 4: Rehabilitation -->
+        <div class="col-md-6 col-lg-3">
+          <div class="glass-panel news-card h-100 d-flex flex-column justify-content-between tilt-card hover-glow">
+            <div class="news-img-wrapper">
+              <img src="assets/img/featured/rehabilitation.png" alt="Rehabilitation Program" class="news-img">
+            </div>
+            <div class="p-6 flex-grow d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="text-xl font-bold mb-3" style="color: var(--text-primary);" data-en="Rehabilitation Program" data-ar="برنامج التأهيلي">Rehabilitation Program</h4>
+                <p class="opacity-75 text-sm mb-4" style="color: var(--text-secondary);"
+                   data-en="Intensive training designed to build key academic skills and prepare students for integration into standard tracks."
+                   data-ar="برنامج مكثف لتطوير المهارات الأكاديمية والاجتماعية وتأهيل الطلاب للاندماج الفعال في البيئات التعليمية.">
+                  Intensive training designed to build key academic skills and prepare students for integration into standard tracks.
+                </p>
+              </div>
+              <a href="program-details.html?program=rehab" class="btn btn-luxury w-100 py-2.5 rounded-lg text-center mt-3" data-en="Join Program" data-ar="الانضمام للبرنامج">
+                Join Program
+              </a>
             </div>
           </div>
         </div>
@@ -745,9 +861,9 @@
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
                 <div class="accordion-body"
-                     data-en="Yes, Oxford Academy is a registered test centre. The Oxford Test of English certificate is officially approved by embassies, universities, and international organizations globally."
+                     data-en="Yes, FULL MARKS ACADEMY is a registered test centre. The Oxford Test of English certificate is officially approved by embassies, universities, and international organizations globally."
                      data-ar="نعم، أكاديمية أوكسفورد هي مركز اختبارات مسجل ومعتمد رسميًا. شهادة اختبار أوكسفورد معترف بها ومصادق عليها من قبل السفارات والجامعات والمؤسسات الدولية حول العالم.">
-                  Yes, Oxford Academy is a registered test centre. The Oxford Test of English certificate is officially approved by embassies, universities, and international organizations globally.
+                  Yes, FULL MARKS ACADEMY is a registered test centre. The Oxford Test of English certificate is officially approved by embassies, universities, and international organizations globally.
                 </div>
               </div>
             </div>
@@ -867,10 +983,10 @@
         <!-- Col 1 -->
         <div class="col-lg-4 col-md-6">
           <div class="d-flex align-items-center mb-4">
-            <img src="assets/img/logo.png" alt="Logo" class="h-12 object-contain mr-3">
-            <span class="text-xl font-bold tracking-wider" style="color: var(--text-primary);">
+            <img id="footer-logo" src="assets/img/logo_backup.png" alt="Logo" class="h-12 object-contain mr-3" style="width: 190px !important;">
+            <!-- <span id="footer-logo-text" class="text-xl font-bold tracking-wider" style="color: var(--text-primary);">
               OXFORD <span class="font-normal text-sm block opacity-75" data-en="ACADEMY" data-ar="الأكاديمية">ACADEMY</span>
-            </span>
+            </span> -->
           </div>
           <p class="opacity-75 text-sm mb-6" data-en="Empowering academic horizons under international standards of test preparation."
              data-ar="تمكين الآفاق الأكاديمية تحت مظلة المعايير الدولية للتقييم والتدريب اللغوي الشامل.">
@@ -910,14 +1026,14 @@
 
         <!-- Col 4 -->
         <div class="col-lg-3 col-md-6 text-center text-md-start">
-          <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Approved Centre" data-ar="الاعتمادات والتراخيص">Approved Centre</h4>
-          <img src="assets/img/OTE-Approved-Test-Centre-Logo.png" alt="Approved Centre" class="h-16 object-contain mb-3 mx-auto mx-md-0">
-          <p class="text-xs opacity-75" data-en="Licence verification code: OTE-JO-2026" data-ar="رقم الترخيص المعتمد: OTE-JO-2026">Licence verification code: OTE-JO-2026</p>
+          <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Academy Centre" data-ar="مركز الأكاديمية">Academy Centre</h4>
+          <img id="footer-approved-logo" src="assets/img/logo_backup.png" style="width: 190px !important;" alt="Academy Logo" class="h-16 object-contain mb-3 mx-auto mx-md-0">
+          <p class="text-xs opacity-75" data-en="Licence verification code: FMA-JO-2026" data-ar="رقم الترخيص المعتمد: FMA-JO-2026">Licence verification code: FMA-JO-2026</p>
         </div>
       </div>
 
       <div class="pt-8 border-t d-flex flex-column flex-md-row justify-content-between align-items-center text-sm opacity-60" style="border-color: var(--separator-color) !important;">
-        <p class="mb-0" data-en="&copy; 2026 Oxford Academy. All Rights Reserved." data-ar="&copy; 2026 أكاديمية أوكسفورد. جميع الحقوق محفوظة.">&copy; 2026 Oxford Academy. All Rights Reserved.</p>
+        <p class="mb-0" data-en="&copy; 2026 FULL MARKS ACADEMY. All Rights Reserved." data-ar="&copy; 2026 أكاديمية أوكسفورد. جميع الحقوق محفوظة.">&copy; 2026 FULL MARKS ACADEMY. All Rights Reserved.</p>
         <p class="mb-0 mt-2 mt-md-0" data-en="Designed with Luxury Principles" data-ar="صمم بأرقى معايير واجهات المستخدم">Designed with Luxury Principles</p>
       </div>
     </div>
@@ -933,6 +1049,7 @@
   <script src="js/animations.js"></script>
   <script src="js/scroll-effects.js"></script>
   <script src="js/particles.js"></script>
+  <script src="js/cart.js"></script>
 
   <!-- Client-side translation language manager -->
   <script>

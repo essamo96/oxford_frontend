@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>المركز المالي | أكاديمية فل مارك</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-primary-fixed": "#001946", "secondary-container": "#42474b", secondary: "#c2c7cc", "primary-fixed-dim": "#b1c5ff", "on-background": "#e3e2e3", "surface-dim": "#121314", "secondary-fixed-dim": "#c2c7cc", "inverse-surface": "#e3e2e3", "surface-bright": "#38393a", "error-container": "#93000a", "tertiary-container": "#bfab49", "on-tertiary-fixed-variant": "#524600", "surface-container-high": "#292a2b", "on-primary-container": "#e7ebff", "tertiary-fixed-dim": "#dcc661", "primary-container": "#3366cc", "on-tertiary": "#393000", "inverse-primary": "#2259bf", primary: "#b1c5ff", "on-tertiary-container": "#4a3f00", "on-primary": "#002c70", error: "#ffb4ab", "on-secondary-fixed-variant": "#42474b", "surface-tint": "#b1c5ff", "surface-variant": "#343536", surface: "#121314", "tertiary-fixed": "#f9e37a", "on-tertiary-fixed": "#211b00", "surface-container-lowest": "#0d0e0f", "surface-container": "#1f2021", outline: "#8d909e", "on-error-container": "#ffdad6", "outline-variant": "#434653", "on-surface": "#e3e2e3", "secondary-fixed": "#dfe3e8", "on-secondary-container": "#b1b6ba", "on-surface-variant": "#c3c6d5", tertiary: "#dcc661", "on-secondary": "#2c3135", "on-primary-fixed-variant": "#00419d", "inverse-on-surface": "#303031", "on-error": "#690005", background: "#121314", "surface-container-low": "#1b1c1d", "surface-container-highest": "#343536", "primary-fixed": "#d9e2ff", "on-secondary-fixed": "#171c20"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"container-max": "1280px", "z-dropdown": "200", "z-bg": "-1", "margin-mobile": "16px", gutter: "16px", "navbar-default": "80px", "z-base": "1", "z-header": "100", "navbar-scroll": "70px", "z-modal": "500", base: "8px", sm: "8px", xs: "4px", lg: "24px", md: "16px", xl: "32px"}, fontFamily: {"headline-lg": ["Noto Serif"], "label-md": ["Public Sans"], "headline-md": ["Noto Serif"], "body-md": ["Inter"], headline: ["Noto Serif"], display: ["Noto Serif"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "1.2", fontWeight: "700"}], "label-md": ["14px", {lineHeight: "1.4", fontWeight: "500"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "600"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}]}}}};</script>
+<style>
+        .glass-panel {
+            background: rgba(30, 27, 24, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(177, 197, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(177, 197, 255, 0.3), transparent);
+        }
+        
+        .btn-luxury {
+            background: linear-gradient(135deg, #b1c5ff, #3366cc);
+            color: #001946;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(177, 197, 255, 0.4);
+        }
+        .btn-luxury::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .glow-card {
+            transition: all 0.3s ease;
+        }
+        .glow-card:hover {
+            box-shadow: 0 0 20px rgba(177, 197, 255, 0.15);
+            border-color: rgba(177, 197, 255, 0.3);
+        }
+
+        /* Animations */
+        .reveal-up { animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        
+        @keyframes revealUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md selection:bg-primary/30 selection:text-primary overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 right-0 left-0 z-header flex flex-row-reverse justify-between items-center px-gutter h-navbar-default bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-md shadow-primary/10 transition-all duration-300" id="topNav">
+<div class="flex items-center gap-4">
+<img alt="أكاديمية فل مارك" class="h-10 w-auto object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyQQaO5U65_hjOixxqSIDJF4nxSKjJmnYORBy8heiEZgI7Tnhj34jr0Z1PLbJaybUvxTQjJKLmDO5uhtAvCmgBDgWHzYc316F-sjqK3Bwuw3vMi5JazlY7CJgYS0CTZibpXOZnk68QHfWfAmSC9q7IWI1sBqm0ok1nZRYtRofts-kNnlaXhCyYRJNMdnz1WwWOFxO8stJPkR_S7NPpg0XpUKt48NGCXh8CusbG-ig8rVoF_4fbED2DVi7f73h3Af1KCd8iGy3xMIQ"/>
+</div>
+<div class="hidden md:flex flex-row-reverse items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-high border-outline-variant/50 rounded-full py-2 pr-10 pl-4 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all w-64 text-right" placeholder="بحث..." type="text"/>
+</div>
+</div>
+<div class="flex flex-row-reverse items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-primary-container/20 hover:text-primary rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="relative group cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">keyboard_arrow_down</span>
+<div class="w-10 h-10 rounded-full border-2 border-primary/50 overflow-hidden group-hover:border-primary transition-colors">
+<img alt="Student Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0gVbBe8-pUyl20blEX1tc_BFB5XAkxVcbDyw-Jky1lkFbwUU3yKTY6xvAu9nKyefLxPT0OhdEe9FzOX1zIhiBDlAR97kdAqLmUHdSOl3P2KNeE7wctDue0XOdbptF6YaDXo-RLhJdoBiZMIMo0g56dZtua0FNXDM4FqmPfy7VsPaMWzP_i_KNd4vXtan4SzOFukxaeisEbno27IIXQoTo5RSC3ZQ9WDzwIU1Sd3ZPDV29mgc5tnztkQfycLh4C4CY4jSlD8Bb_jg"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col fixed right-0 top-0 h-full w-72 z-modal bg-surface-container-low/90 dark:bg-surface-container-highest/90 backdrop-blur-2xl border-l border-outline-variant/20 shadow-2xl pt-navbar-default transition-transform duration-300">
+<div class="p-6 text-center border-b border-outline-variant/10">
+<div class="w-24 h-24 mx-auto rounded-xl flex items-center justify-center mb-4">
+<img alt="أكاديمية فل مارك" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyQQaO5U65_hjOixxqSIDJF4nxSKjJmnYORBy8heiEZgI7Tnhj34jr0Z1PLbJaybUvxTQjJKLmDO5uhtAvCmgBDgWHzYc316F-sjqK3Bwuw3vMi5JazlY7CJgYS0CTZibpXOZnk68QHfWfAmSC9q7IWI1sBqm0ok1nZRYtRofts-kNnlaXhCyYRJNMdnz1WwWOFxO8stJPkR_S7NPpg0XpUKt48NGCXh8CusbG-ig8rVoF_4fbED2DVi7f73h3Af1KCd8iGy3xMIQ"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">أكاديمية فل مارك</h2>
+<p class="text-on-surface-variant text-sm">بوابتك للتميز</p>
+</div>
+<div class="flex-1 overflow-y-auto py-6">
+<ul class="space-y-2 px-4">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-bright/50 hover:text-on-surface transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">home</span>
+<span>الرئيسية</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-bright/50 hover:text-on-surface transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">school</span>
+<span>الأكاديمية</span>
+</a>
+</li>
+<!-- Active Nav Item -->
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-primary/20 text-primary border-r-4 border-primary font-bold hover:shadow-[0_0_15px_rgba(177,197,255,0.3)] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span>المالية</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-bright/50 hover:text-on-surface transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">notifications</span>
+<span>الإشعارات</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-bright/50 hover:text-on-surface transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">forum</span>
+<span>التواصل</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-bright/50 hover:text-on-surface transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+<span>الحساب</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="p-6 border-t border-outline-variant/10">
+<button class="w-full py-3 rounded-lg border border-primary/30 text-primary hover:bg-primary hover:text-on-primary-fixed transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span>تواصل مع الدعم</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pt-navbar-default md:pr-72 min-h-screen flex flex-col relative z-z-base">
+<!-- Background Decoration -->
+<div class="absolute inset-0 z-z-bg overflow-hidden pointer-events-none">
+<div class="absolute top-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/5 rounded-full blur-[120px]"></div>
+</div>
+<div class="flex-1 p-margin-mobile md:p-gutter max-w-container-max mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 reveal-up">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">المركز المالي</h1>
+<p class="text-on-surface-variant">إدارة المدفوعات، الفواتير المستحقة، وسجل المعاملات.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-lg border border-outline-variant text-on-surface hover:border-primary hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>كشف حساب</span>
+</button>
+</div>
+</div>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 reveal-up delay-1">
+<!-- Outstanding Balance -->
+<div class="glass-panel rounded-2xl p-6 glow-card border border-error/20">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 rounded-xl bg-error/10 text-error">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<span class="text-sm font-medium text-error bg-error/10 px-2.5 py-1 rounded-full">مستحق الدفع</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-1">إجمالي المبالغ غير المدفوعة</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">١,٢٥٠ <span class="text-headline-md text-on-surface-variant">د.أ</span></h3>
+</div>
+<!-- Total Paid -->
+<div class="glass-panel rounded-2xl p-6 glow-card">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm mb-1">إجمالي المدفوعات (هذا الفصل)</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">٤,٥٠٠ <span class="text-headline-md text-on-surface-variant">د.أ</span></h3>
+</div>
+<!-- Next Installment -->
+<div class="glass-panel rounded-2xl p-6 glow-card">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 rounded-xl bg-surface-bright text-on-surface">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant border border-outline-variant px-2.5 py-1 rounded-full">١٥ نوفمبر ٢٠٢٤</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-1">القسط القادم</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">٧٥٠ <span class="text-headline-md text-on-surface-variant">د.أ</span></h3>
+</div>
+</div>
+<!-- Main Content Area: Two Columns -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column (Wider): Financial History & Invoices -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Unpaid Invoices -->
+<div class="glass-panel rounded-2xl p-6 reveal-up delay-2">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-error">receipt_long</span>
+                                فواتير مستحقة
+                            </h2>
+</div>
+<div class="space-y-4">
+<!-- Invoice Item -->
+<div class="bg-surface-container/50 border border-outline-variant/30 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">قسط دورة الرياضيات المتقدمة</h4>
+<p class="text-sm text-on-surface-variant mt-1">الفصل الدراسي الأول - القسط الثاني</p>
+</div>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-6 border-t md:border-t-0 border-outline-variant/20 pt-4 md:pt-0 mt-2 md:mt-0">
+<div class="text-right">
+<span class="block text-xl font-bold text-on-surface">٥٠٠ د.أ</span>
+<span class="text-xs text-error">تجاوز موعد الاستحقاق (٥ أيام)</span>
+</div>
+<button class="btn-luxury px-6 py-2.5 rounded-lg font-bold text-sm shrink-0">
+                                        دفع الآن
+                                    </button>
+</div>
+</div>
+<!-- Invoice Item -->
+<div class="bg-surface-container/50 border border-outline-variant/30 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined">science</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">رسوم مختبر الفيزياء</h4>
+<p class="text-sm text-on-surface-variant mt-1">مواد وأدوات الفصل الدراسي الأول</p>
+</div>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-6 border-t md:border-t-0 border-outline-variant/20 pt-4 md:pt-0 mt-2 md:mt-0">
+<div class="text-right">
+<span class="block text-xl font-bold text-on-surface">٧٥٠ د.أ</span>
+<span class="text-xs text-on-surface-variant">يستحق في ١٥ نوفمبر</span>
+</div>
+<button class="btn-luxury px-6 py-2.5 rounded-lg font-bold text-sm shrink-0">
+                                        دفع الآن
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial History Table -->
+<div class="glass-panel rounded-2xl p-6 reveal-up delay-3">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                                سجل المعاملات
+                            </h2>
+<div class="flex gap-2">
+<select class="bg-surface-container border border-outline-variant/50 rounded-lg py-1.5 px-3 text-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary">
+<option>الكل</option>
+<option>مدفوعات</option>
+<option>مستردات</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-right">
+<thead>
+<tr class="border-b border-outline-variant/30 text-on-surface-variant text-sm">
+<th class="pb-3 font-normal">رقم المرجع</th>
+<th class="pb-3 font-normal">التاريخ</th>
+<th class="pb-3 font-normal">الوصف</th>
+<th class="pb-3 font-normal">المبلغ</th>
+<th class="pb-3 font-normal">الحالة</th>
+<th class="pb-3 font-normal">الإيصال</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/20 transition-colors">
+<td class="py-4 font-mono text-on-surface-variant">#TRX-9921</td>
+<td class="py-4 text-on-surface">١٠ أكتوبر ٢٠٢٤</td>
+<td class="py-4 text-on-surface">قسط دورة اللغة الإنجليزية</td>
+<td class="py-4 font-bold text-on-surface">٤٥٠ د.أ</td>
+<td class="py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-fixed/10 text-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+                                                مكتمل
+                                            </span>
+</td>
+<td class="py-4">
+<button class="text-primary hover:text-inverse-primary transition-colors" title="تحميل الإيصال">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/20 transition-colors">
+<td class="py-4 font-mono text-on-surface-variant">#TRX-9854</td>
+<td class="py-4 text-on-surface">١٥ سبتمبر ٢٠٢٤</td>
+<td class="py-4 text-on-surface">رسوم التسجيل السنوية</td>
+<td class="py-4 font-bold text-on-surface">٢٠٠ د.أ</td>
+<td class="py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-fixed/10 text-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+                                                مكتمل
+                                            </span>
+</td>
+<td class="py-4">
+<button class="text-primary hover:text-inverse-primary transition-colors" title="تحميل الإيصال">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-bright/20 transition-colors">
+<td class="py-4 font-mono text-on-surface-variant">#TRX-9710</td>
+<td class="py-4 text-on-surface">٠١ سبتمبر ٢٠٢٤</td>
+<td class="py-4 text-on-surface">كتب ومناهج دراسية</td>
+<td class="py-4 font-bold text-on-surface">١٥٠ د.أ</td>
+<td class="py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-fixed/10 text-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+                                                مكتمل
+                                            </span>
+</td>
+<td class="py-4">
+<button class="text-primary hover:text-inverse-primary transition-colors" title="تحميل الإيصال">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 text-center">
+<button class="text-sm text-primary hover:text-inverse-primary transition-colors inline-flex items-center gap-1">
+                                عرض المزيد
+                                <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column (Narrower): Payment Methods & Recent Activity -->
+<div class="space-y-8 reveal-up delay-3">
+<!-- Payment Methods -->
+<div class="glass-panel rounded-2xl p-6 glow-card">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">طرق الدفع</h3>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="space-y-3">
+<!-- Card 1 -->
+<div class="p-4 rounded-xl border border-primary/30 bg-surface/50 relative overflow-hidden group cursor-pointer">
+<div class="absolute top-0 right-0 w-1 h-full bg-primary"></div>
+<div class="flex items-center justify-between relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-6 bg-surface-bright rounded flex items-center justify-center text-xs font-bold text-on-surface">VISA</div>
+<div>
+<p class="text-sm font-medium text-on-surface">البنك العربي</p>
+<p class="text-xs font-mono text-on-surface-variant">**** **** **** ٤٥٨٢</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-4 rounded-xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/50 transition-colors cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-6 bg-surface-bright rounded flex items-center justify-center text-xs font-bold text-on-surface">MC</div>
+<div>
+<p class="text-sm font-medium text-on-surface">بنك الإسكان</p>
+<p class="text-xs font-mono text-on-surface-variant">**** **** **** ٩٠١١</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Support / Policy -->
+<div class="glass-panel rounded-2xl p-6 relative overflow-hidden">
+<div class="absolute -right-10 -top-10 text-surface-bright/20 rotate-12">
+<span class="material-symbols-outlined" style="font-size: 150px;">help_center</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">سياسة الاسترداد</h3>
+<p class="text-sm text-on-surface-variant mb-4 leading-relaxed">
+                                يمكنك طلب استرداد المبالغ المدفوعة خلال ١٤ يوماً من تاريخ الدفع، تطبق الشروط والأحكام.
+                            </p>
+<a class="text-primary text-sm font-bold hover:underline inline-flex items-center gap-1" href="#">
+                                اقرأ المزيد
+                                <span class="material-symbols-outlined text-sm">arrow_left_alt</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-6 px-gutter flex flex-col md:flex-row-reverse justify-between items-center bg-surface-container-lowest border-t border-outline-variant/10 mt-auto">
+<div class="font-headline-md text-primary mb-4 md:mb-0 flex items-center gap-2">
+<img alt="أكاديمية فل مارك" class="h-6 w-auto object-contain rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyQQaO5U65_hjOixxqSIDJF4nxSKjJmnYORBy8heiEZgI7Tnhj34jr0Z1PLbJaybUvxTQjJKLmDO5uhtAvCmgBDgWHzYc316F-sjqK3Bwuw3vMi5JazlY7CJgYS0CTZibpXOZnk68QHfWfAmSC9q7IWI1sBqm0ok1nZRYtRofts-kNnlaXhCyYRJNMdnz1WwWOFxO8stJPkR_S7NPpg0XpUKt48NGCXh8CusbG-ig8rVoF_4fbED2DVi7f73h3Af1KCd8iGy3xMIQ"/>
+                أكاديمية فل مارك
+            </div>
+<div class="flex gap-6 mb-4 md:mb-0">
+<a class="font-body-md text-label-md text-outline hover:text-primary transition-colors" href="#">الشروط والأحكام</a>
+<a class="font-body-md text-label-md text-outline hover:text-primary transition-colors" href="#">سياسة الخصوصية</a>
+<a class="font-body-md text-label-md text-outline hover:text-primary transition-colors" href="#">اتصل بنا</a>
+</div>
+<div class="font-body-md text-label-md text-primary">
+                © ٢٠٢٤ أكاديمية فل مارك. جميع الحقوق محفوظة
+            </div>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-header bg-surface-container-low/90 dark:bg-surface-container-highest/90 backdrop-blur-xl border-t border-outline-variant/20 pb-safe">
+<div class="flex justify-around items-center h-16 px-2">
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] mt-1">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] mt-1">الأكاديمية</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary border-t-2 border-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-[10px] mt-1 font-bold">المالية</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="text-[10px] mt-1">التواصل</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] mt-1">حسابي</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple scroll behavior for top navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('topNav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-lg', 'h-navbar-scroll');
+                nav.classList.remove('h-navbar-default');
+            } else {
+                nav.classList.remove('shadow-lg', 'h-navbar-scroll');
+                nav.classList.add('h-navbar-default');
+            }
+        });
+    </script>
+</body></html>

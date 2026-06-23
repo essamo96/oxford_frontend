@@ -1,0 +1,115 @@
+{
+  "name": "projects/17280925588435731398",
+  "projectId": "17280925588435731398",
+  "title": "Academic Management Dashboard",
+  "visibility": "PRIVATE",
+  "createTime": "2026-06-23T12:11:13.376902Z",
+  "updateTime": "2026-06-23T13:27:12.127438Z",
+  "projectType": "TEXT_TO_UI_PRO",
+  "origin": "STITCH",
+  "deviceType": "DESKTOP",
+  "designTheme": {
+    "colorMode": "DARK",
+    "font": "OUTFIT",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#c5a880"
+  },
+  "screens": {
+    "dashboard": {
+      "id": "775ae8bb7f174028a30e0e39259fad0f",
+      "sourceScreen": "projects/17280925588435731398/screens/775ae8bb7f174028a30e0e39259fad0f",
+      "x": 2688,
+      "y": 2010,
+      "width": 2816,
+      "height": 2252
+    },
+    "test-session": {
+      "id": "c27dfa2356e9461eac64e92aff17d58a",
+      "sourceScreen": "projects/17280925588435731398/screens/c27dfa2356e9461eac64e92aff17d58a",
+      "x": 2688,
+      "y": 3911,
+      "width": 2560,
+      "height": 2078
+    },
+    "profile": {
+      "id": "93bf4f61dbe94b95874d2b22e3a7e9e7",
+      "sourceScreen": "projects/17280925588435731398/screens/93bf4f61dbe94b95874d2b22e3a7e9e7",
+      "x": 1344,
+      "y": 3911,
+      "width": 2560,
+      "height": 2214
+    },
+    "academy": {
+      "id": "f23359401a514adb95019ff9c7662633",
+      "sourceScreen": "projects/17280925588435731398/screens/f23359401a514adb95019ff9c7662633",
+      "x": 1344,
+      "y": 2010,
+      "width": 2560,
+      "height": 3262
+    },
+    "financials": {
+      "id": "91e9dbceff3c4dd08bd1b007260aa016",
+      "sourceScreen": "projects/17280925588435731398/screens/91e9dbceff3c4dd08bd1b007260aa016",
+      "x": 1868,
+      "y": 0,
+      "width": 2560,
+      "height": 2458
+    },
+    "library": {
+      "id": "a2d088362d554d6f9a83d8dded12ce6f",
+      "sourceScreen": "projects/17280925588435731398/screens/a2d088362d554d6f9a83d8dded12ce6f",
+      "x": 4032,
+      "y": 2010,
+      "width": 2560,
+      "height": 2412
+    },
+    "reports": {
+      "id": "f23bad143eda4b4c9a861d209527071e",
+      "sourceScreen": "projects/17280925588435731398/screens/f23bad143eda4b4c9a861d209527071e",
+      "x": 0,
+      "y": 3911,
+      "width": 2560,
+      "height": 2190
+    },
+    "conversations": {
+      "id": "d2433448d0c54167babda59e3f13d6b7",
+      "sourceScreen": "projects/17280925588435731398/screens/d2433448d0c54167babda59e3f13d6b7",
+      "x": 5548,
+      "y": 2086,
+      "width": 2560,
+      "height": 2048
+    },
+    "notifications": {
+      "id": "5c520cfc326c45e9a821ddcf17d3bd9d",
+      "sourceScreen": "projects/17280925588435731398/screens/5c520cfc326c45e9a821ddcf17d3bd9d",
+      "x": 576,
+      "y": 5363,
+      "width": 2560,
+      "height": 2052
+    },
+    "student-login": {
+      "id": "68b9bd81c90944ab833487ff29a77118",
+      "sourceScreen": "projects/17280925588435731398/screens/68b9bd81c90944ab833487ff29a77118",
+      "x": 0,
+      "y": 0,
+      "width": 2816,
+      "height": 2680
+    },
+    "teacher-login": {
+      "id": "343ba2c9105d44d7871d7c3a7e743789",
+      "sourceScreen": "projects/17280925588435731398/screens/343ba2c9105d44d7871d7c3a7e743789",
+      "x": 0,
+      "y": 0,
+      "width": 2816,
+      "height": 2958
+    },
+    "student-register": {
+      "id": "8a204c81e84e46bc91d3e7be0f5fec91",
+      "sourceScreen": "projects/17280925588435731398/screens/8a204c81e84e46bc91d3e7be0f5fec91",
+      "x": 0,
+      "y": 0,
+      "width": 2816,
+      "height": 4406
+    }
+  }
+}

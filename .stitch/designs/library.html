@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>المكتبة الرقمية - أكاديمية العلامة الكاملة</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"primary-container": "#3366cc", "inverse-surface": "#e3e2e3", outline: "#8d909e", "on-tertiary": "#393000", background: "#121314", "on-secondary-fixed-variant": "#42474b", "error-container": "#93000a", "secondary-fixed": "#dfe3e8", "outline-variant": "#434653", "surface-container": "#1f2021", "secondary-container": "#42474b", "surface-bright": "#38393a", "on-error": "#690005", "on-secondary-fixed": "#171c20", "tertiary-fixed-dim": "#dcc661", "on-error-container": "#ffdad6", "surface-container-low": "#1b1c1d", "on-tertiary-fixed": "#211b00", "on-surface-variant": "#c3c6d5", "on-surface": "#e3e2e3", "on-tertiary-container": "#4a3f00", "on-secondary": "#2c3135", "surface-tint": "#b1c5ff", "primary-fixed": "#d9e2ff", "on-primary-fixed": "#001946", "tertiary-container": "#bfab49", surface: "#121314", "primary-fixed-dim": "#b1c5ff", error: "#ffb4ab", "inverse-primary": "#2259bf", "surface-dim": "#121314", "surface-container-high": "#292a2b", "on-secondary-container": "#b1b6ba", "on-primary-fixed-variant": "#00419d", "on-primary-container": "#e7ebff", "on-background": "#e3e2e3", "surface-container-lowest": "#0d0e0f", primary: "#b1c5ff", "tertiary-fixed": "#f9e37a", "inverse-on-surface": "#303031", "surface-container-highest": "#343536", "on-tertiary-fixed-variant": "#524600", tertiary: "#dcc661", "surface-variant": "#343536", secondary: "#c2c7cc", "on-primary": "#002c70", "secondary-fixed-dim": "#c2c7cc", "gold-royal": "#c5a880", "gold-deep": "#7d633f", "bg-obsidian": "#0a0a0a"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {gutter: "16px", "navbar-default": "80px", "container-max": "1280px", "margin-mobile": "16px", "navbar-scroll": "70px", "z-header": "50", xl: "32px", sm: "8px", md: "16px", lg: "24px", base: "8px", xs: "4px"}, fontFamily: {"display-lg-mobile": ["Outfit"], "body-lg": ["Inter"], "body-md": ["Inter"], "headline-md": ["Noto Serif"], "label-md": ["Public Sans"], "display-lg": ["Outfit"], "headline-lg": ["Noto Serif"], "arabic-headline": ["Outfit"], "arabic-body": ["Inter"], headline: ["Noto Serif"], display: ["Noto Serif"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"display-lg-mobile": ["36px", {lineHeight: "1.2", fontWeight: "800"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "600"}], "label-md": ["14px", {lineHeight: "1.4", fontWeight: "500"}], "display-lg": ["48px", {lineHeight: "1.2", fontWeight: "800"}], "headline-lg": ["32px", {lineHeight: "1.2", fontWeight: "700"}]}}}};</script>
+<style>
+        body { background-color: theme('colors.background'); }
+        .glass-panel {
+            background: rgba(255, 248, 243, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(209, 197, 184, 0.3);
+        }
+        .btn-luxury {
+            background: linear-gradient(135deg, theme('colors.gold-royal'), theme('colors.gold-deep'));
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(197, 168, 128, 0.4);
+        }
+        .glow-card {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .glow-card:hover {
+            border-color: theme('colors.gold-royal');
+            box-shadow: 0 0 20px rgba(197, 168, 128, 0.15);
+            transform: translateY(-4px);
+        }
+        .text-gradient-gold {
+            background: linear-gradient(to right, theme('colors.gold-royal'), theme('colors.gold-deep'));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="fixed right-0 top-0 h-full flex flex-col z-header rtl bg-surface/80 backdrop-blur-xl dark:bg-surface-container-low/80 docked right-0 h-full w-72 border-l border-gold-royal/20 shadow-2xl shadow-gold-deep/10 hidden md:flex">
+<div class="p-6 flex flex-col items-center border-b border-gold-royal/10">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest overflow-hidden mb-4 border-2 border-gold-royal/30 p-1">
+<img alt="صورة الملف الشخصي للمستخدم" class="w-full h-full object-cover rounded-full" data-alt="A professional portrait of a student or teacher in a modern, well-lit educational setting. The style is premium corporate photography with soft lighting, reflecting the high-end, light-mode aesthetic of a luxury digital academy. Warm gold and white tones dominate the scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJJOeoKVTYx5ZuVjcDQqwMdaNmzNlKpoXKBluqZaEXq1IXLo1-bY85FRRrJY9HTksQ_cSjUrVTZqy_HYGjREs2NaAwdz9ZDMcadSubvgxLnIOe5kTzk3cPD085RhcyiFIgYb65P4EH_Z6zxhEZaz8jFF34spYeGzdJdJzqAD_F02SPHyzFCZY7y78as4akLqwFjGAxORN_aP0Iq1MnfIeEJ54l8aT6u8NBL2ZymUNodkcMchSpEtUCQJroV--lxF_Knw8_nGawFnE"/>
+</div>
+<h2 class="font-arabic-headline text-headline-md font-bold text-gold-royal text-center">أكاديمية العلامة الكاملة</h2>
+<p class="font-arabic-body text-body-md text-on-surface-variant text-center mt-1">لوحة تحكم النخبة</p>
+</div>
+<nav class="flex-1 overflow-y-auto py-4 px-3 space-y-2">
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined ml-4 text-outline group-hover:text-gold-royal transition-colors">home</span>
+<span class="font-arabic-body text-body-md">الرئيسية</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined ml-4 text-outline group-hover:text-gold-royal transition-colors">notifications</span>
+<span class="font-arabic-body text-body-md">الإشعارات</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined ml-4 text-outline group-hover:text-gold-royal transition-colors">auto_stories</span>
+<span class="font-arabic-body text-body-md">الدورات</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-gold-royal font-bold border-r-4 border-gold-royal bg-primary-container/10 group" href="#">
+<span class="material-symbols-outlined ml-4 text-gold-royal">menu_book</span>
+<span class="font-arabic-body text-body-md">المواد</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined ml-4 text-outline group-hover:text-gold-royal transition-colors">payments</span>
+<span class="font-arabic-body text-body-md">الشؤون المالية</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined ml-4 text-outline group-hover:text-gold-royal transition-colors">person</span>
+<span class="font-arabic-body text-body-md">المعلومات الشخصية</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined ml-4 text-outline group-hover:text-gold-royal transition-colors">event_note</span>
+<span class="font-arabic-body text-body-md">جداول الامتحانات</span>
+</a>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined ml-4 text-outline group-hover:text-gold-royal transition-colors">group</span>
+<span class="font-arabic-body text-body-md">المجموعات</span>
+</a>
+</nav>
+<div class="p-6 border-t border-gold-royal/10">
+<button class="w-full btn-luxury font-arabic-headline text-body-md font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined">support_agent</span>
+                تواصل مع الدعم
+            </button>
+<div class="flex justify-between px-2">
+<a class="text-on-surface-variant hover:text-gold-royal transition-colors flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-arabic-body text-label-md">الإعدادات</span>
+</a>
+<a class="text-on-surface-variant hover:text-error transition-colors flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-arabic-body text-label-md">تسجيل الخروج</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-h-screen flex flex-col md:mr-72 transition-all duration-300 w-full">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full md:w-[calc(100%-18rem)] h-20 flex items-center justify-between px-gutter z-header rtl bg-surface/60 backdrop-blur-lg dark:bg-bg-obsidian/60 docked top-0 left-0 border-b border-white/10 shadow-sm">
+<div class="flex items-center gap-4 w-full max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pr-10 pl-4 font-arabic-body text-body-md text-on-surface focus:outline-none focus:border-gold-royal focus:ring-1 focus:ring-gold-royal transition-all placeholder:text-outline/70" placeholder="ابحث في المكتبة الرقمية..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-gold-royal hover:bg-surface-variant/50 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-gold-royal hover:bg-surface-variant/50 transition-all md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="pt-28 pb-12 px-margin-mobile md:px-gutter max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<div class="mb-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<h1 class="font-arabic-headline text-headline-lg font-bold text-on-surface mb-2">المكتبة الرقمية</h1>
+<p class="font-arabic-body text-body-lg text-on-surface-variant">استكشف آلاف الموارد التعليمية المتميزة من محاضرات وملخصات.</p>
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+<div class="relative group">
+<select class="appearance-none bg-surface-container border border-outline-variant rounded-xl py-2 pl-10 pr-4 font-arabic-body text-body-md text-on-surface focus:outline-none focus:border-gold-royal focus:ring-1 focus:ring-gold-royal cursor-pointer min-w-[140px]">
+<option value="">كل المواد</option>
+<option value="math">الرياضيات</option>
+<option value="physics">الفيزياء</option>
+<option value="chemistry">الكيمياء</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">keyboard_arrow_down</span>
+</div>
+<div class="flex bg-surface-container rounded-xl p-1 border border-outline-variant">
+<button class="px-4 py-1.5 rounded-lg bg-surface shadow-sm text-gold-royal font-arabic-body text-body-md font-medium transition-all">الكل</button>
+<button class="px-4 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-arabic-body text-body-md transition-all">PDF</button>
+<button class="px-4 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-arabic-body text-body-md transition-all">فيديو</button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Resources -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Resource Card: Video (Featured) -->
+<div class="lg:col-span-2 glass-panel rounded-2xl overflow-hidden glow-card group relative flex flex-col md:flex-row">
+<div class="relative w-full md:w-1/2 h-64 md:h-auto">
+<img alt="صورة مصغرة للمحاضرة" class="w-full h-full object-cover" data-alt="A high-quality thumbnail showing a modern physics lecture. A dynamic visualization of quantum mechanics or a sleek chalkboard with elegant equations. High-end lighting, warm gold accents, corporate educational aesthetic, light mode theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbBTW6B4VW-MDrT0dmLsUGMtm9xdHXGtX0vLWLtLL-hc53IMR1up7pz9awkMIgVIwp8ZsIeKXE29fjwBTbRPn1Kq74m78rQAHDjxb9mA73F3_0ZaJYvfph1PeKFZlsWe7-sa4zkGBeMIx1khTovQkZ1ktPjt1lY1jdRrr5vGGLNNvM7Z9DKs8Ebs8mvxg9vMWtlmSU-l6KOJ_pnHRk0YsKO3givmFMbKwohN6zYAJ7KZFahTTUoamqeaPs4mVYan8ecsc8ZzkgRWk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-on-surface">play_circle</span>
+<span class="font-arabic-body text-label-md font-semibold text-on-surface">45:20</span>
+</div>
+</div>
+<div class="p-6 w-full md:w-1/2 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-3">
+<span class="bg-primary-container/20 text-gold-deep px-3 py-1 rounded-md font-arabic-body text-label-md font-bold">الفيزياء</span>
+<button class="text-outline hover:text-gold-royal transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<h3 class="font-arabic-headline text-headline-md font-bold text-on-surface mb-2 leading-tight">المراجعة النهائية: ميكانيكا الكم وتطبيقاتها المتقدمة</h3>
+<p class="font-arabic-body text-body-md text-on-surface-variant line-clamp-3 mb-4">محاضرة شاملة تغطي المفاهيم الأساسية لميكانيكا الكم مع حلول لأسئلة الامتحانات السابقة وتطبيقات عملية.</p>
+</div>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
+<img alt="الأستاذ" class="w-full h-full object-cover" data-alt="A small profile portrait of an elegant, professional physics professor in a bright, modern studio. High-end light mode corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChXnA5b2XjpvUBO71h65zl8SoeFcU9GptpaGXHrvM-ynAgMw1WADsebSK5bQKmvLiHaoRyRKRj1WwviXaUNY1hwQvtsDTu1eAMz7byM-aJJk7s7VC9msl1klGOIaD_9RYfKZoH9ncD8RYnzaBB7y_CSKFOQXysxB2w6T3huJvAQJL0veT7Bf73iBPBNeMC5kQwV9594px-5EVmENEXKK_rGMKk1uJRRHMU0jOrhWVAMtfe9LGp8INadiXB3hEZYXqvHl-t9Mde1zc"/>
+</div>
+<span class="font-arabic-body text-body-md text-on-surface-variant">د. أحمد محمود</span>
+</div>
+<button class="btn-luxury rounded-xl p-2 flex items-center justify-center">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Resource Card: PDF -->
+<div class="glass-panel rounded-2xl p-5 glow-card flex flex-col">
+<div class="relative h-40 rounded-xl bg-surface-container overflow-hidden mb-5 flex items-center justify-center border border-outline-variant/50">
+<span class="material-symbols-outlined text-[64px] text-error/80">picture_as_pdf</span>
+<div class="absolute top-3 left-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md">
+<span class="font-arabic-body text-label-md font-semibold text-on-surface">2.4 MB</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-tertiary-fixed-dim/30 text-on-tertiary-container px-2 py-1 rounded-md font-arabic-body text-label-md font-bold">الرياضيات</span>
+</div>
+<h3 class="font-arabic-headline text-body-lg font-bold text-on-surface mb-2">ملخص قوانين التفاضل والتكامل</h3>
+<p class="font-arabic-body text-body-md text-on-surface-variant mb-4 flex-1">دليل مرجعي سريع لجميع القوانين الهامة مع أمثلة محلولة.</p>
+<button class="w-full bg-surface-container hover:bg-surface-variant text-on-surface font-arabic-body text-body-md font-medium py-2.5 rounded-xl border border-outline-variant/50 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                            تحميل الملف
+                        </button>
+</div>
+</div>
+<!-- Resource Card: PDF -->
+<div class="glass-panel rounded-2xl p-5 glow-card flex flex-col">
+<div class="relative h-40 rounded-xl bg-surface-container overflow-hidden mb-5 flex items-center justify-center border border-outline-variant/50">
+<span class="material-symbols-outlined text-[64px] text-error/80">picture_as_pdf</span>
+<div class="absolute top-3 left-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md">
+<span class="font-arabic-body text-label-md font-semibold text-on-surface">5.1 MB</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-secondary-fixed/30 text-on-secondary-fixed-variant px-2 py-1 rounded-md font-arabic-body text-label-md font-bold">الكيمياء</span>
+</div>
+<h3 class="font-arabic-headline text-body-lg font-bold text-on-surface mb-2">بنك أسئلة الكيمياء العضوية</h3>
+<p class="font-arabic-body text-body-md text-on-surface-variant mb-4 flex-1">أكثر من 500 سؤال شامل لجميع فصول الكيمياء العضوية مع الإجابات النموذجية.</p>
+<button class="w-full bg-surface-container hover:bg-surface-variant text-on-surface font-arabic-body text-body-md font-medium py-2.5 rounded-xl border border-outline-variant/50 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                            تحميل الملف
+                        </button>
+</div>
+</div>
+<!-- Resource Card: Video -->
+<div class="glass-panel rounded-2xl p-5 glow-card flex flex-col">
+<div class="relative h-40 rounded-xl overflow-hidden mb-5 group-hover:shadow-md transition-all">
+<img alt="محاضرة كيمياء" class="w-full h-full object-cover" data-alt="A clean, modern thumbnail showing a chemistry laboratory setup or a stylish digital representation of molecules. Bright, light mode aesthetic with subtle luxurious gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzzkYpU4NhWWWddQEzrBJ57fcCKX34tUye49hqryvYdQnS7JRcHfrg7fmT0HWuGUjDkW2v16niL_IFbasBlcHehrxm31gk6k6Kp-Hsxd7By2GOSE53rY01sIN3v54Zztej8HQ0DLPS72RlYbX7sCftfrUfUPEUKPKFQzCmiYDYAlT7NiXKgpKFv8eFi8vkcWIBVAP9A5xBjSOuqxDE5m2FAJT8d7hQJxkcp9a-oVN2_nqDcnNf6nLpTlOUmEiahxTHcclkFiLRlvo"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-[28px] translate-x-0.5">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-3 left-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md">
+<span class="font-arabic-body text-label-md font-semibold text-on-surface">1:15:00</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-secondary-fixed/30 text-on-secondary-fixed-variant px-2 py-1 rounded-md font-arabic-body text-label-md font-bold">الكيمياء</span>
+</div>
+<h3 class="font-arabic-headline text-body-lg font-bold text-on-surface mb-2">شرح تفاعلات الأكسدة والاختزال</h3>
+<div class="flex items-center gap-2 mt-auto mb-4">
+<div class="w-6 h-6 rounded-full bg-surface-container overflow-hidden">
+<img alt="الأستاذ" class="w-full h-full object-cover" data-alt="A small profile portrait of an elegant chemistry teacher in a bright, modern studio. High-end light mode corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9t3p0LXfQdfm6hX_T98PpPERjO39VRm75S9MDGgEPtv2dp5sasVYp2w3FQQnq_Ha_dLsibwphTi8Nk4_3IQJmh4SyCfX2oQmnVuuHTjUKTv23irwgtxQHDSGis5azOOBrDwrjM-AmEGh9SDzhN8uZ5JzFId3R8megSWxBEoxdxALw5xoyAi-08veVTt1eHGucJzjrNxxp0iXzfD7UGrfOLC0oWzpVdz0GS0eoP0ov5FoUSyUXLU5P3pslfJ9KzQIPFRzBWLkfF1w"/>
+</div>
+<span class="font-arabic-body text-label-md text-on-surface-variant">أ. سارة كامل</span>
+</div>
+</div>
+</div>
+<!-- Resource Card: Audio/Podcast -->
+<div class="glass-panel rounded-2xl p-5 glow-card flex flex-col">
+<div class="relative h-40 rounded-xl bg-gradient-to-br from-surface-container to-surface-variant overflow-hidden mb-5 flex items-center justify-center border border-outline-variant/50">
+<span class="material-symbols-outlined text-[64px] text-primary">headphones</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<!-- Decorative sound waves -->
+<div class="flex gap-1 h-12 items-end opacity-20">
+<div class="w-1.5 bg-primary h-full rounded-full"></div>
+<div class="w-1.5 bg-primary h-2/3 rounded-full"></div>
+<div class="w-1.5 bg-primary h-4/5 rounded-full"></div>
+<div class="w-1.5 bg-primary h-1/2 rounded-full"></div>
+<div class="w-1.5 bg-primary h-full rounded-full"></div>
+</div>
+</div>
+<div class="absolute top-3 left-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md">
+<span class="font-arabic-body text-label-md font-semibold text-on-surface">22:10</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-variant text-on-surface px-2 py-1 rounded-md font-arabic-body text-label-md font-bold">توجيه أكاديمي</span>
+</div>
+<h3 class="font-arabic-headline text-body-lg font-bold text-on-surface mb-2">كيف تنظم وقتك قبل الامتحانات؟</h3>
+<p class="font-arabic-body text-body-md text-on-surface-variant mb-4 flex-1">جلسة صوتية حوارية حول أفضل استراتيجيات إدارة الوقت وتخفيف التوتر الأكاديمي.</p>
+<button class="w-full btn-luxury font-arabic-body text-body-md font-medium py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+                            استماع
+                        </button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center items-center gap-2">
+<button class="w-10 h-10 rounded-lg bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined rtl:rotate-180">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-gold-royal text-white font-arabic-body font-bold flex items-center justify-center shadow-md">1</button>
+<button class="w-10 h-10 rounded-lg bg-surface border border-outline-variant font-arabic-body text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center justify-center">2</button>
+<button class="w-10 h-10 rounded-lg bg-surface border border-outline-variant font-arabic-body text-on-surface-variant hover:bg-surface-variant transition-colors flex items-center justify-center">3</button>
+<span class="text-on-surface-variant mx-1">...</span>
+<button class="w-10 h-10 rounded-lg bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined rtl:rotate-180">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

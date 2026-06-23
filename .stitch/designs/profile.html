@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إعدادات الحساب - Full Mark Academy</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"surface-variant": "#343536", "on-primary-fixed-variant": "#00419d", "on-error": "#690005", "on-surface": "#e3e2e3", "on-error-container": "#ffdad6", "on-secondary": "#2c3135", "tertiary-fixed": "#f9e37a", secondary: "#c2c7cc", "on-tertiary-fixed-variant": "#524600", "bg-snow": "#f8fafc", "inverse-primary": "#2259bf", "surface-container": "#1f2021", "secondary-fixed": "#dfe3e8", "primary-fixed": "#d9e2ff", "primary-container": "#3366cc", "bg-navy": "#05070f", "tertiary-container": "#bfab49", error: "#ffb4ab", "on-primary-container": "#e7ebff", "outline-variant": "#434653", "error-container": "#93000a", "sky-deep": "#0369a1", "cyber-cyan": "#00f0ff", "surface-tint": "#b1c5ff", "inverse-on-surface": "#303031", background: "#121314", "cyber-blue": "#0072ff", "surface-container-lowest": "#0d0e0f", "surface-bright": "#38393a", "surface-container-highest": "#343536", "on-surface-variant": "#c3c6d5", "gold-royal": "#c5a880", "on-tertiary": "#393000", "secondary-container": "#42474b", surface: "#121314", "on-primary": "#002c70", tertiary: "#dcc661", "sky-blue": "#0284c7", "surface-dim": "#121314", "bg-obsidian": "#050402", "tertiary-fixed-dim": "#dcc661", "on-secondary-fixed": "#171c20", "inverse-surface": "#e3e2e3", "on-tertiary-fixed": "#211b00", "gold-deep": "#7d633f", "on-background": "#e3e2e3", "primary-fixed-dim": "#b1c5ff", "on-secondary-fixed-variant": "#42474b", "secondary-fixed-dim": "#c2c7cc", "on-tertiary-container": "#4a3f00", primary: "#b1c5ff", outline: "#8d909e", "on-primary-fixed": "#001946", "surface-container-low": "#1b1c1d", "on-secondary-container": "#b1b6ba", "surface-container-high": "#292a2b"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"container-max": "1280px", "z-dropdown": "200", "z-bg": "-1", "margin-mobile": "16px", gutter: "16px", "navbar-default": "80px", "z-base": "1", "z-header": "100", "navbar-scroll": "70px", "z-modal": "500", xl: "32px", sm: "8px", md: "16px", lg: "24px", base: "8px", xs: "4px"}, fontFamily: {"headline-lg": ["Noto Serif"], "body-lg": ["Inter"], "label-md": ["Public Sans"], "display-lg-mobile": ["Outfit"], "display-lg": ["Outfit"], "arabic-body": ["Almarai"], "headline-md": ["Noto Serif"], "arabic-headline": ["Tajawal"], "body-md": ["Inter"], headline: ["Noto Serif"], display: ["Noto Serif"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "1.2", fontWeight: "700"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "label-md": ["14px", {lineHeight: "1.4", fontWeight: "500"}], "display-lg-mobile": ["36px", {lineHeight: "1.2", fontWeight: "800"}], "display-lg": ["48px", {lineHeight: "1.2", fontWeight: "800"}], "arabic-body": ["16px", {lineHeight: "1.8", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "600"}], "arabic-headline": ["32px", {lineHeight: "1.4", fontWeight: "700"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}]}}}};</script>
+<style>
+        /* Custom Utilities for Luxury Glassmorphism & Animations */
+        .glass-panel {
+            background: rgba(34, 31, 28, 0.6); /* surface-container with opacity */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 168, 128, 0.1); /* gold-royal tint */
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        .luxury-button {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #c5a880 0%, #7d633f 100%); /* gold-royal to gold-deep */
+            color: #151310; /* background */
+            transition: all 0.3s ease;
+        }
+        
+        .luxury-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite linear;
+            pointer-events: none;
+        }
+        
+        .luxury-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(197, 168, 128, 0.4);
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        /* Floating Label Styles for RTL */
+        .floating-input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .floating-input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #4d463c; /* outline-variant */
+            border-radius: 0.5rem;
+            padding: 1rem 1rem 0.5rem 1rem;
+            color: #e8e1dc; /* on-surface */
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .floating-input:focus {
+            border-color: #c5a880; /* gold-royal */
+            box-shadow: 0 0 0 1px #c5a880;
+        }
+        
+        .floating-label {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d1c5b8; /* on-surface-variant */
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+            background-color: #221f1c; /* surface-container */
+            padding: 0 0.25rem;
+        }
+        
+        .floating-input:focus ~ .floating-label,
+        .floating-input:not(:placeholder-shown) ~ .floating-label {
+            top: 0;
+            font-size: 0.75rem;
+            color: #c5a880;
+        }
+
+        .glow-card {
+            transition: all 0.3s ease;
+        }
+        .glow-card:hover {
+            box-shadow: 0 0 20px rgba(197, 168, 128, 0.15);
+            border-color: rgba(197, 168, 128, 0.3);
+        }
+        
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #151310; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #373431; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4d463c; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-arabic-body text-arabic-body min-h-screen antialiased flex">
+<!-- Shared Component: SideNavBar -->
+<nav class="hidden md:flex flex-col bg-surface-container-low/90 dark:bg-surface-container-highest/90 backdrop-blur-2xl border-l border-outline-variant/20 shadow-2xl shadow-bg-obsidian/50 fixed right-0 top-0 h-full w-72 z-modal pt-navbar-default font-arabic-body text-arabic-body transition-all duration-300">
+<!-- Header / Brand Area -->
+<div class="px-6 pb-8 border-b border-outline-variant/10 flex flex-col items-center">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high flex items-center justify-center mb-4 border border-gold-royal/20 shadow-[0_0_15px_rgba(197,168,128,0.1)]">
+<span class="material-symbols-outlined text-gold-royal text-3xl" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+</div>
+<h2 class="font-arabic-headline text-arabic-headline text-gold-royal text-center">أكاديمية فل مارك</h2>
+<p class="text-on-surface-variant text-sm mt-1">بوابتك للتميز</p>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:text-gold-royal transition-colors">dashboard</span>
+<span>لوحة التحكم</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:text-gold-royal transition-colors">notifications</span>
+<span>التنبيهات</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:text-gold-royal transition-colors">school</span>
+<span>الدورات</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:text-gold-royal transition-colors">menu_book</span>
+<span>المواد الدراسية</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:text-gold-royal transition-colors">payments</span>
+<span>المالية</span>
+</a>
+<!-- ACTIVE TAB: Settings/Profile intent perfectly matches "المعلومات الشخصية" -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-gold-deep/20 text-gold-royal border-r-4 border-gold-royal font-bold scale-98 hover:shadow-[0_0_15px_rgba(197,168,128,0.3)] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>المعلومات الشخصية</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:text-gold-royal transition-colors">event_note</span>
+<span>جدول الامتحانات</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright/50 hover:translate-x-[-4px] transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:text-gold-royal transition-colors">group</span>
+<span>المجموعات</span>
+</a>
+</div>
+<!-- CTA Bottom -->
+<div class="p-6 border-t border-outline-variant/10">
+<button class="w-full py-3 px-4 rounded-lg border border-gold-royal/30 text-gold-royal hover:bg-gold-royal/10 transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+                تواصل مع الدعم
+            </button>
+</div>
+</nav>
+<!-- Main Wrapper (accounts for SideNav width) -->
+<div class="flex-1 flex flex-col md:mr-72 min-h-screen">
+<!-- Shared Component: TopNavBar -->
+<header class="fixed top-0 right-0 left-0 z-header flex flex-row-reverse justify-between items-center px-gutter h-navbar-default bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-md shadow-gold-royal/10 transition-all duration-300 md:w-[calc(100%-18rem)] md:right-72">
+<!-- Brand / Mobile Logo Area -->
+<div class="flex items-center gap-4 md:hidden">
+<span class="material-symbols-outlined text-gold-royal text-3xl">auto_stories</span>
+<span class="font-arabic-headline text-arabic-headline text-gold-royal dark:text-primary-fixed">Full Mark Academy</span>
+</div>
+<div class="hidden md:block">
+<!-- Breadcrumbs or contextual title could go here, keeping clean for now -->
+<span class="font-arabic-headline text-headline-md text-on-surface opacity-80">الملف الشخصي</span>
+</div>
+<!-- Search & Actions -->
+<div class="flex items-center gap-6 flex-row-reverse">
+<!-- Search -->
+<div class="hidden lg:flex items-center relative group">
+<input class="bg-surface-container border border-outline-variant rounded-full py-2 pl-4 pr-10 text-sm text-on-surface focus:border-gold-royal focus:outline-none w-64 transition-all" placeholder="بحث..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 text-on-surface-variant group-focus-within:text-gold-royal transition-colors">search</span>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-primary-container/20 hover:text-gold-royal transition-all duration-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-primary-container/20 hover:text-gold-royal transition-all duration-300">
+<span class="material-symbols-outlined">chat</span>
+</button>
+<button class="p-2 rounded-full text-gold-royal border-b-2 border-gold-royal scale-95 transition-transform bg-primary-container/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+</button>
+</div>
+<!-- Profile Image -->
+<div class="h-10 w-10 rounded-full bg-surface-bright border border-outline p-0.5 cursor-pointer hover:border-gold-royal transition-colors overflow-hidden shrink-0">
+<img alt="Student Profile Avatar" class="w-full h-full rounded-full object-cover" data-alt="A highly detailed close-up portrait of an elegant student avatar inside a premium educational interface. The lighting is sophisticated, with a soft cinematic key light reflecting off a dark obsidian background, accented by subtle golden neon edges. High-end modern digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7AWNyL6Ri3eAakvGrgydyTIgTZ6jJNaftyHOINsgonUiBmuEgrnYIVcoZwshaGrsYXMV-mzG0p4f0GB_WxgJyxbDjWnZmGS13sjEsxyilO0Ya54e_fK3z_YYCOKrZ6xqx-tJyOrdzPwAfXDDo6_LjQRgqL7EHJjV9Ercw796UhiNguwUALyWZYvZ7AAFLOEfRhRthwyqyMXyVskUxwj-NRdXSK9r_fVE8essPzo3jgXSgzwqi_3MIbI9vwyBOY0zLCJX3PPMQJy4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-navbar-default p-4 md:p-8 lg:p-gutter max-w-container-max mx-auto w-full">
+<!-- Page Header & In-page Tabs -->
+<div class="mb-8">
+<h1 class="font-arabic-headline text-display-lg-mobile md:text-display-lg text-on-surface mb-6">إعدادات الحساب</h1>
+<!-- Underline Tabs -->
+<div class="flex gap-8 border-b border-outline-variant/30 overflow-x-auto pb-1 hide-scrollbar">
+<button class="font-arabic-body text-arabic-body text-gold-royal border-b-2 border-gold-royal pb-2 px-1 whitespace-nowrap font-bold">
+                        المعلومات الشخصية
+                    </button>
+<button class="font-arabic-body text-arabic-body text-on-surface-variant hover:text-on-surface pb-2 px-1 whitespace-nowrap transition-colors">
+                        الأمان وكلمة المرور
+                    </button>
+<button class="font-arabic-body text-arabic-body text-on-surface-variant hover:text-on-surface pb-2 px-1 whitespace-nowrap transition-colors">
+                        التفضيلات والإشعارات
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout for Settings -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<!-- Left/Top Column: Profile Picture & Status (Takes 1 col on LG) -->
+<div class="lg:col-span-1 glass-panel glow-card rounded-xl p-6 flex flex-col items-center text-center">
+<div class="relative mb-6 group cursor-pointer">
+<div class="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-gold-deep to-gold-royal shadow-lg">
+<img alt="Profile Picture" class="w-full h-full rounded-full object-cover border-4 border-surface-container" data-alt="A highly detailed circular avatar image of a professional student in a modern educational portal. The mood is focused and premium. The lighting is dramatic, with sharp volumetric highlights against a dark, moody background. Rich textures and a high-contrast aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTqPf_ZnCXIqiA_H8Ye_sMzrNkarkrvhZfYTfcC4dU-g2HGKwppyLvixv8cqw8O97wdlORbGSjGKZ5_etSdcTScVHRrFmcojC1-JnhYoAQ_lYKQLhuGvWPUq2wNZCQbHMleRPk2qcyBfFLviQIqrVqgzOVGnWCmVfvoW50zrVU_KStXZAu7yEtrqx-wRCJ57EDqJM5ZbkbVHWjZADG7YLa_gIwNtZW1krZ4_MZJzML0JgYO4WHG7_FFIf5W_SBar50qTBqvWPa-qk"/>
+</div>
+<!-- Upload Overlay -->
+<div class="absolute inset-0 bg-bg-obsidian/60 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm m-1">
+<span class="material-symbols-outlined text-white text-3xl">photo_camera</span>
+</div>
+</div>
+<h3 class="font-arabic-headline text-headline-md text-on-surface mb-1">أحمد محمد</h3>
+<p class="text-on-surface-variant text-sm mb-4">طالب هندسة - السنة الثالثة</p>
+<div class="w-full flex justify-between px-4 py-3 bg-surface-container-high rounded-lg mb-6 border border-outline-variant/20">
+<div class="text-center">
+<span class="block text-gold-royal font-bold text-lg">٩٥٪</span>
+<span class="text-xs text-on-surface-variant">اكتمال الملف</span>
+</div>
+<div class="w-px bg-outline-variant/30"></div>
+<div class="text-center">
+<span class="block text-gold-royal font-bold text-lg">VIP</span>
+<span class="text-xs text-on-surface-variant">نوع الحساب</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-lg border border-outline-variant text-on-surface hover:border-gold-royal hover:text-gold-royal transition-all duration-300 text-sm font-semibold flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+                        تحديث الصورة
+                    </button>
+<p class="text-xs text-on-surface-variant/70 mt-3">صيغ مدعومة: JPG, PNG. أقصى حجم 2MB</p>
+</div>
+<!-- Right Column: Personal Information Form (Takes 2 cols on LG) -->
+<div class="lg:col-span-2 glass-panel glow-card rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-arabic-headline text-headline-md text-gold-royal flex items-center gap-2">
+<span class="material-symbols-outlined">badge</span>
+                            البيانات الأساسية
+                        </h2>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
+<!-- Floating Input: First Name -->
+<div class="floating-input-group">
+<input class="floating-input peer" id="fname" placeholder=" " type="text" value="أحمد"/>
+<label class="floating-label" for="fname">الاسم الأول</label>
+</div>
+<!-- Floating Input: Last Name -->
+<div class="floating-input-group">
+<input class="floating-input peer" id="lname" placeholder=" " type="text" value="محمد"/>
+<label class="floating-label" for="lname">اسم العائلة</label>
+</div>
+<!-- Floating Input: Email -->
+<div class="floating-input-group md:col-span-2">
+<input class="floating-input peer text-left" dir="ltr" id="email" placeholder=" " type="email" value="ahmed.m@example.com"/>
+<label class="floating-label" dir="rtl" for="email">البريد الإلكتروني</label>
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xs bg-primary/10 px-2 py-0.5 rounded border border-primary/20 pointer-events-none hidden peer-placeholder-shown:block md:block">تم التحقق</div>
+</div>
+<!-- Floating Input: Phone -->
+<div class="floating-input-group">
+<input class="floating-input peer text-left" dir="ltr" id="phone" placeholder=" " type="tel" value="+966 50 123 4567"/>
+<label class="floating-label" dir="rtl" for="phone">رقم الهاتف</label>
+</div>
+<!-- Floating Input: Date of Birth -->
+<div class="floating-input-group">
+<input class="floating-input peer" id="dob" placeholder=" " type="date"/>
+<label class="floating-label" for="dob">تاريخ الميلاد</label>
+</div>
+<!-- Location / Map Section -->
+<div class="md:col-span-2 mt-4 mb-8">
+<label class="block text-sm text-on-surface-variant mb-3">الموقع الجغرافي (لأغراض توصيل الشهادات)</label>
+<div class="w-full h-48 rounded-xl overflow-hidden border border-outline-variant/30 relative">
+<img alt="Map Location" class="w-full h-full object-cover opacity-80 mix-blend-screen grayscale-[50%]" data-alt="A high-end, futuristic digital map visualization centered on a specific urban location. The map uses a dark mode color palette with deep obsidian backgrounds, glowing cyber-cyan roads, and golden royal points of interest. Subtle 3D building outlines create depth. Premium navigation interface aesthetic." data-location="Riyadh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE5NR4gWWckZqeUo2IaNH8MakTBOCA2bW2JoZQuXE4iWkbhHiLno1akDokOXCFTI08jnHM6D8hd8yeOHeqLI6Di_Q7go2HLvQMuhIExDrfkLR3lCJss12sb9x-nubayqgIEW6Go0Xh6AiF1pR2kV5_W_0P4G7Wcxi3ZDibURK3YH-vztNEgDNPivKu6XkJ9FqQ6OHeMALwnpnGpGqGVfGFbR0k_iWmQfs6kHCLOmEFw9ta5jOK_ODcVpZvWmhlYNK9N_pBk3IISgQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute bottom-4 right-4 bg-surface-container/90 backdrop-blur border border-outline-variant/50 px-3 py-1.5 rounded-lg text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-royal text-sm">location_on</span>
+                                    الرياض، المملكة العربية السعودية
+                                </div>
+</div>
+</div>
+<!-- Form Actions -->
+<div class="md:col-span-2 flex justify-end gap-4 mt-4 pt-6 border-t border-outline-variant/20">
+<button class="px-6 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-colors font-medium" type="button">
+                                إلغاء التغييرات
+                            </button>
+<button class="luxury-button px-8 py-2.5 rounded-lg font-bold flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-sm">save</span>
+                                حفظ التحديثات
+                            </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="w-full py-6 px-gutter flex flex-col md:flex-row-reverse justify-between items-center bg-surface-container-lowest dark:bg-bg-obsidian border-t border-outline-variant/10 mt-12">
+<!-- Copyright -->
+<div class="font-arabic-body text-label-md text-gold-royal mb-4 md:mb-0">
+                © ٢٠٢٤ أكاديمية فل مارك. جميع الحقوق محفوظة
+            </div>
+<!-- Links -->
+<div class="flex items-center gap-6">
+<a class="font-arabic-body text-label-md text-outline hover:text-primary transition-colors" href="#">الشروط والأحكام</a>
+<a class="font-arabic-body text-label-md text-outline hover:text-primary transition-colors" href="#">سياسة الخصوصية</a>
+<a class="font-arabic-body text-label-md text-outline hover:text-primary transition-colors" href="#">اتصل بنا</a>
+</div>
+<!-- Brand Logo implicit fallback if needed, relying on text above as requested by JSON -->
+</footer>
+</div>
+</body></html>

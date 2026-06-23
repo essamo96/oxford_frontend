@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تسجيل الدخول | أكاديمية العلامة الكاملة</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&amp;family=Outfit:wght@300;400;600;700;800&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#e0c298",
+              "secondary": "#d3fbff",
+              "on-primary": "#402d0f",
+              "tertiary-fixed-dim": "#b9c7e2",
+              "tertiary-container": "#9fadc7",
+              "on-background": "#e8e1dc",
+              "inverse-surface": "#e8e1dc",
+              "on-primary-fixed": "#281800",
+              "surface-container": "#221f1c",
+              "on-primary-fixed-variant": "#584323",
+              "surface-variant": "#373431",
+              "secondary-fixed": "#7df4ff",
+              "on-secondary-container": "#00686f",
+              "error": "#ffb4ab",
+              "secondary-container": "#00eefc",
+              "on-tertiary-container": "#334157",
+              "on-primary-container": "#513d1d",
+              "on-tertiary": "#233146",
+              "surface-bright": "#3c3935",
+              "on-secondary-fixed": "#002022",
+              "surface-container-lowest": "#100e0b",
+              "on-error-container": "#ffdad6",
+              "outline": "#998f83",
+              "surface-dim": "#151310",
+              "primary-fixed-dim": "#e0c298",
+              "background": "#050402",
+              "surface-container-high": "#2c2926",
+              "on-surface": "#e8e1dc",
+              "on-surface-variant": "#d1c5b8",
+              "secondary-fixed-dim": "#00dbe9",
+              "tertiary-fixed": "#d5e3ff",
+              "on-secondary": "#00363a",
+              "on-tertiary-fixed": "#0d1c30",
+              "primary-container": "#c5a880",
+              "surface-container-low": "#1e1b18",
+              "primary-fixed": "#fedeb2",
+              "inverse-on-surface": "#33302d",
+              "surface": "#151310",
+              "on-error": "#690005",
+              "primary": "#e2c399",
+              "royal-gold": "#c5a880",
+              "on-tertiary-fixed-variant": "#3a475d",
+              "tertiary": "#bac8e3",
+              "outline-variant": "#4d463c",
+              "inverse-primary": "#725b38",
+              "error-container": "#93000a",
+              "surface-container-highest": "#373431",
+              "on-secondary-fixed-variant": "#004f54",
+              "obsidian-bg": "#050402"
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+            fontFamily: {
+              "headline": ["Tajawal", "Outfit"],
+              "display": ["Tajawal", "Outfit"],
+              "body": ["Inter", "Tajawal"],
+              "label": ["Tajawal", "Outfit"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        :root {
+            --font-ar: 'Tajawal', sans-serif;
+            --font-en: 'Outfit', sans-serif;
+        }
+        body {
+            font-family: var(--font-ar);
+            background-color: #050402;
+        }
+        .glass-card {
+            background: rgba(30, 27, 24, 0.65);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(197, 168, 128, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .btn-luxury {
+            background: linear-gradient(135deg, #c5a880 0%, #7d633f 100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-luxury:hover {
+            box-shadow: 0 0 20px rgba(197, 168, 128, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-luxury::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .btn-luxury:hover::after {
+            opacity: 1;
+        }
+        .floating-label-input:focus-within label,
+        .floating-label-input input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: #c5a880;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(197, 168, 128, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-obsidian-bg text-on-surface selection:bg-primary/30 min-h-screen flex flex-col">
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full"></div>
+<div class="absolute inset-0 bg-pattern opacity-40"></div>
+</div>
+<!-- Header Section -->
+<header class="fixed top-0 left-0 right-0 z-[100] bg-surface/60 backdrop-blur-xl border-b border-outline-variant/20">
+<nav class="max-w-[1440px] mx-auto px-6 h-[80px] flex items-center justify-between">
+<div class="flex items-center gap-4">
+<img alt="Full Mark Academy Logo" class="h-16 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo_yd8vo70Stanm1qnIIQGUIAOWmFZ2BL9jo_ojzplgCM4-Bi1FRRamcjdMaWxVeVS8ZmTm9wGYarvLVYIxcghwl9-fo3d3bs-nhrfccEqYOSeb9futCY11IUsD-vJfaM4L5LvxaH6lQtAnqDAsteEI2iIyr3Wg-6lmVNtFAX58EH1W1DcILjSezDNB0i6iNp7YQx1U7f9CncOLvzAoP9TIWvedQMoNWf92DcSwXixIWLkuT-WKMCJ-dJWCbBjXdWpXEzIce9VLL8"/>
+<div class="hidden lg:block">
+<h1 class="font-display font-extrabold text-royal-gold text-2xl tracking-tight leading-none uppercase">FULL MARK ACADEMY</h1>
+<p class="font-arabic-body text-outline text-xs mt-1 tracking-[0.2em] font-medium">أكاديمية العلامة الكاملة</p>
+</div>
+</div>
+<ul class="hidden xl:flex items-center gap-8 font-arabic-headline text-[15px] font-medium">
+<li><a class="text-royal-gold" href="#">الرئيسية</a></li>
+<li><a class="text-on-surface-variant hover:text-royal-gold" href="#">عن الأكاديمية</a></li>
+<li><a class="text-on-surface-variant hover:text-royal-gold" href="#">خدماتنا</a></li>
+<li><a class="text-on-surface-variant hover:text-royal-gold" href="#">اتصل بنا</a></li>
+<li><a class="text-on-surface-variant hover:text-royal-gold" href="#">مميزاتنا</a></li>
+<li><a class="text-on-surface-variant hover:text-royal-gold" href="#">الأخبار</a></li>
+<li><a class="text-on-surface-variant hover:text-royal-gold" href="#">التقييمات</a></li>
+<li><a class="text-on-surface-variant hover:text-royal-gold" href="#">الأسئلة الشائعة</a></li>
+</ul>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-royal-gold">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-royal-gold">
+<span class="material-symbols-outlined">award_star</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30 hidden sm:block"></div>
+<a class="hidden md:block text-sm font-bold text-on-surface hover:text-royal-gold transition-colors" href="#">بوابة الطالب</a>
+<button class="btn-luxury px-6 py-2.5 rounded-full text-on-primary text-sm font-bold">
+                سجل الآن
+            </button>
+</div>
+</nav>
+</header>
+<!-- Main Content (Login Portal) -->
+<main class="flex-grow flex items-center justify-center relative z-10 px-6 pt-40 pb-28">
+<div class="w-full max-w-[480px] glass-card rounded-2xl p-8 md:p-10 transition-all duration-500 hover:shadow-royal-gold/5">
+<!-- Welcome Header -->
+<div class="text-center mb-10">
+<h1 class="text-display-lg-mobile md:text-3xl font-extrabold text-royal-gold mb-3 tracking-tight">
+                    تسجيل دخول الطلاب
+                </h1>
+<p class="text-body-md text-on-surface-variant/80 font-medium">
+                    أهلاً بك في أكاديمية العلامة الكاملة
+                </p>
+</div>
+<!-- Login Form -->
+<form class="space-y-6" id="loginForm">
+<!-- Username/Email Field -->
+<div class="floating-label-input relative group">
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-outline group-focus-within:text-royal-gold transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<input class="block w-full pr-12 pl-4 py-4 bg-surface-container-lowest border border-outline-variant/30 rounded-xl text-on-surface focus:ring-2 focus:ring-royal-gold/20 focus:border-royal-gold transition-all duration-300 outline-none" id="username" placeholder=" " type="text"/>
+<label class="absolute right-12 top-4 text-on-surface-variant pointer-events-none transition-all duration-300 origin-right" for="username">البريد الإلكتروني أو رقم الطالب</label>
+</div>
+<!-- Password Field -->
+<div class="floating-label-input relative group">
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-outline group-focus-within:text-royal-gold transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="block w-full pr-12 pl-12 py-4 bg-surface-container-lowest border border-outline-variant/30 rounded-xl text-on-surface focus:ring-2 focus:ring-royal-gold/20 focus:border-royal-gold transition-all duration-300 outline-none" id="password" placeholder=" " type="password"/>
+<label class="absolute right-12 top-4 text-on-surface-variant pointer-events-none transition-all duration-300 origin-right" for="password">كلمة المرور</label>
+<button class="absolute inset-y-0 left-4 flex items-center text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<!-- Remember Me & Forgot Password -->
+<div class="flex items-center justify-between text-sm">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative w-5 h-5 flex items-center justify-center">
+<input class="peer appearance-none w-5 h-5 border border-outline-variant rounded bg-transparent checked:bg-royal-gold checked:border-royal-gold transition-all duration-300" type="checkbox"/>
+<span class="material-symbols-outlined text-on-primary text-[14px] absolute scale-0 peer-checked:scale-100 transition-transform" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-on-surface-variant group-hover:text-on-surface transition-colors select-none">تذكرني</span>
+</label>
+<a class="text-royal-gold hover:text-primary transition-colors font-medium" href="#">نسيت كلمة المرور؟</a>
+</div>
+<!-- Login Button -->
+<button class="w-full py-4 rounded-xl text-on-primary font-bold text-lg btn-luxury flex items-center justify-center gap-2 group" type="submit">
+<span>دخول إلى المنصة</span>
+<span class="material-symbols-outlined group-hover:translate-x-[-4px] transition-transform">arrow_back</span>
+</button>
+</form>
+<!-- Registration Link -->
+<div class="mt-8 pt-8 border-t border-outline-variant/20 text-center">
+<p class="text-on-surface-variant">
+                    طالب جديد؟ 
+                    <a class="text-royal-gold font-bold hover:underline underline-offset-4 mr-1 transition-all" href="#">سجل الآن</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="relative z-10 bg-surface-container-lowest border-t border-outline-variant/20 pt-20 pb-10 mt-auto">
+<div class="max-w-[1440px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<img alt="Full Mark Academy Logo" class="h-14 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo_yd8vo70Stanm1qnIIQGUIAOWmFZ2BL9jo_ojzplgCM4-Bi1FRRamcjdMaWxVeVS8ZmTm9wGYarvLVYIxcghwl9-fo3d3bs-nhrfccEqYOSeb9futCY11IUsD-vJfaM4L5LvxaH6lQtAnqDAsteEI2iIyr3Wg-6lmVNtFAX58EH1W1DcILjSezDNB0i6iNp7YQx1U7f9CncOLvzAoP9TIWvedQMoNWf92DcSwXixIWLkuT-WKMCJ-dJWCbBjXdWpXEzIce9VLL8"/>
+<h3 class="font-display font-bold text-royal-gold text-xl tracking-tight uppercase">FULL MARK ACADEMY</h3>
+</div>
+<p class="text-outline text-sm leading-relaxed max-w-xs">
+                نحن نسعى لتقديم تعليم نوعي يدمج بين الأصالة والمعايير الدولية، لتمكين طلابنا من التفوق في عالم متغير ومتطلب.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">facebook</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">camera</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">work</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">smart_display</span></a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-on-surface text-lg border-r-4 border-royal-gold pr-3">دوراتنا</h4>
+<ul class="space-y-4 text-sm text-outline">
+<li><a class="hover:text-royal-gold transition-colors" href="#">التحضير لاختبار آيلتس (IELTS)</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">مستويات اللغة العامة (General English)</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">دورة المحادثة المتقدمة</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الكتابة الأكاديمية والإنشاء</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الإنجليزية للأعمال والشركات</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-on-surface text-lg border-r-4 border-royal-gold pr-3">روابط سريعة</h4>
+<ul class="space-y-4 text-sm text-outline">
+<li><a class="hover:text-royal-gold transition-colors" href="#">من نحن</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">لماذا نحن؟</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">آخر التحديثات</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الأسئلة المساعدة</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الدعم الأكاديمي</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-on-surface text-lg border-r-4 border-royal-gold pr-3">الاعتمادات والتراخيص</h4>
+<div class="bg-surface-container-high/50 p-6 rounded-2xl border border-white/5">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-royal-gold text-3xl">verified_user</span>
+<span class="font-bold text-on-surface font-display tracking-widest uppercase">Approved Centre</span>
+</div>
+<p class="text-xs text-outline mb-4">مرخص ومعتمد لتقديم البرامج الأكاديمية الدولية</p>
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-4">
+<span class="text-[10px] text-outline uppercase font-label">License Code</span>
+<span class="text-sm font-bold text-royal-gold font-display tracking-wider">OTE-JO-2026</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/10">
+<div class="max-w-[1440px] mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-outline text-xs">© 2026 أكاديمية العلامة الكاملة. جميع الحقوق محفوظة.</p>
+<p class="text-outline/60 text-[10px]">صمم بأرقى معايير واجهات المستخدم - فئة النخبة</p>
+</div>
+</div>
+</footer>
+<!-- Interactive Micro-interactions Script -->
+<script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            
+            // Visual feedback
+            btn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-on-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>جاري التحقق...</span>
+            `;
+            btn.style.opacity = '0.8';
+            btn.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.style.opacity = '1';
+                btn.style.pointerEvents = 'auto';
+                // Success glow effect
+                btn.classList.add('ring-4', 'ring-green-500/20');
+                setTimeout(() => btn.classList.remove('ring-4', 'ring-green-500/20'), 1500);
+            }, 2000);
+        });
+
+        // Floating particles background effect (canvas-less)
+        const createParticle = () => {
+            const particle = document.createElement('div');
+            const size = Math.random() * 3 + 1;
+            particle.style.position = 'fixed';
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.background = '#c5a880';
+            particle.style.opacity = Math.random() * 0.3;
+            particle.style.borderRadius = '50%';
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1';
+            
+            const duration = Math.random() * 20 + 10;
+            particle.animate([
+                { transform: 'translateY(0) translateX(0)', opacity: 0 },
+                { opacity: 0.3, offset: 0.5 },
+                { transform: `translateY(-${Math.random() * 200}px) translateX(${Math.random() * 100 - 50}px)`, opacity: 0 }
+            ], {
+                duration: duration * 1000,
+                iterations: Infinity,
+                easing: 'linear'
+            });
+
+            document.body.appendChild(particle);
+        };
+
+        for(let i = 0; i < 20; i++) createParticle();
+    </script>
+</body></html>

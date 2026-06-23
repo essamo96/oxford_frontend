@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>امتحان - أكاديمية العلامة الكاملة</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"primary-container": "#3366cc", "inverse-surface": "#e3e2e3", outline: "#8d909e", "on-tertiary": "#393000", background: "#121314", "on-secondary-fixed-variant": "#42474b", "error-container": "#93000a", "secondary-fixed": "#dfe3e8", "outline-variant": "#434653", "surface-container": "#1f2021", "secondary-container": "#42474b", "surface-bright": "#38393a", "on-error": "#690005", "on-secondary-fixed": "#171c20", "tertiary-fixed-dim": "#dcc661", "on-error-container": "#ffdad6", "surface-container-low": "#1b1c1d", "on-tertiary-fixed": "#211b00", "on-surface-variant": "#c3c6d5", "on-surface": "#e3e2e3", "on-tertiary-container": "#4a3f00", "on-secondary": "#2c3135", "surface-tint": "#b1c5ff", "primary-fixed": "#d9e2ff", "on-primary-fixed": "#001946", "tertiary-container": "#bfab49", surface: "#121314", "primary-fixed-dim": "#b1c5ff", error: "#ffb4ab", "inverse-primary": "#2259bf", "surface-dim": "#121314", "surface-container-high": "#292a2b", "on-secondary-container": "#b1b6ba", "on-primary-fixed-variant": "#00419d", "on-primary-container": "#e7ebff", "on-background": "#e3e2e3", "surface-container-lowest": "#0d0e0f", primary: "#b1c5ff", "tertiary-fixed": "#f9e37a", "inverse-on-surface": "#303031", "surface-container-highest": "#343536", "on-tertiary-fixed-variant": "#524600", tertiary: "#dcc661", "surface-variant": "#343536", secondary: "#c2c7cc", "on-primary": "#002c70", "secondary-fixed-dim": "#c2c7cc", "gold-royal": "#c5a880", "gold-deep": "#7d633f"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {gutter: "16px", "navbar-default": "80px", "container-max": "1280px", "margin-mobile": "16px", "navbar-scroll": "70px", xl: "32px", sm: "8px", md: "16px", lg: "24px", base: "8px", xs: "4px"}, fontFamily: {"arabic-body": ["Inter", "sans-serif"], "arabic-headline": ["Outfit", "sans-serif"], "display-lg-mobile": ["Outfit"], "body-lg": ["Inter"], "body-md": ["Inter"], "headline-md": ["Noto Serif"], "label-md": ["Public Sans"], "display-lg": ["Outfit"], "headline-lg": ["Noto Serif"], headline: ["Noto Serif"], display: ["Noto Serif"], body: ["Inter"], label: ["Public Sans"]}, fontSize: {"display-lg-mobile": ["36px", {lineHeight: "1.2", fontWeight: "800"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "600"}], "label-md": ["14px", {lineHeight: "1.4", fontWeight: "500"}], "display-lg": ["48px", {lineHeight: "1.2", fontWeight: "800"}], "headline-lg": ["32px", {lineHeight: "1.2", fontWeight: "700"}]}, zIndex: {header: "50"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(197, 168, 128, 0.5); /* gold-royal with opacity */
+            border-radius: 20px;
+        }
+
+        .btn-luxury {
+            background: linear-gradient(135deg, #c5a880 0%, #7d633f 100%);
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(125, 99, 63, 0.2);
+        }
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(125, 99, 63, 0.4);
+        }
+
+        .glow-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 168, 128, 0.2);
+            transition: all 0.3s ease;
+        }
+        .glow-card:hover {
+            border-color: rgba(197, 168, 128, 0.6);
+            box-shadow: 0 0 20px rgba(197, 168, 128, 0.15);
+        }
+
+        .option-label input:checked + div {
+            border-color: #c5a880;
+            background-color: rgba(197, 168, 128, 0.1);
+        }
+        .option-label input:checked + div .radio-inner {
+            background-color: #c5a880;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-arabic-body text-body-md antialiased overflow-x-hidden min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-[calc(100%-18rem)] h-20 flex items-center justify-between px-gutter z-header rtl bg-surface/60 backdrop-blur-lg border-b border-white/10 shadow-sm transition-all duration-300" id="top-nav">
+<div class="flex items-center gap-4">
+<h1 class="font-arabic-headline text-headline-md font-bold text-gold-royal bg-gradient-to-r from-[#c5a880] to-[#7d633f] bg-clip-text text-transparent tracking-tight">Full Mark Academy</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full glow-card">
+<span class="material-symbols-outlined text-gold-royal" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-arabic-headline font-bold text-gold-royal text-headline-md tracking-widest" id="countdown">01:45:30</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-on-surface-variant hover:text-gold-royal transition-all hover:bg-surface-variant/30 hover:backdrop-blur-md">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-on-surface-variant hover:text-gold-royal transition-all hover:bg-surface-variant/30 hover:backdrop-blur-md">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-gold-royal/30 overflow-hidden ml-2 cursor-pointer">
+<img alt="صورة المستخدم" class="w-full h-full object-cover" data-alt="A professional headshot of an Arabic student looking confident. Studio lighting, soft background, modern high-key aesthetic with subtle warm gold tones. The image conveys focus and academic dedication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASXlYaaKEqlhPaki_6w6qxVBmg7StjaIqeRcYZY8vXSpN9HDVtv0fIX8e5QgIseo5HQ0RivESmVFmIIU_jxNpT8zyxPV6vfK7Tr2ufYfFx1sF_sqYVIgQGBNnHwY9wJIeUZzHjd-2Vhr-twBFk_wTnhDf5IyR2geAm8FbuRLD9BhJXHPkvPueTNR1wR1HoWZaOw9mGrSlnTsxQ5E2uKS1beBssu0nZgCNFSEc8d01ktox7Z8lICkYyasXRQaHlHE5lNMJI5PE1jd4"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed right-0 top-0 h-full flex flex-col z-header rtl bg-surface/80 backdrop-blur-xl docked right-0 h-full w-72 border-l border-[#c5a880]/20 shadow-2xl shadow-[#7d633f]/10">
+<!-- Header -->
+<div class="p-6 border-b border-gold-royal/10 flex flex-col items-center">
+<div class="w-20 h-20 rounded-full border-2 border-gold-royal p-1 mb-4">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="صورة الملف الشخصي للمستخدم" class="w-full h-full object-cover" data-alt="A professional headshot of an Arabic student looking confident. Studio lighting, soft background, modern high-key aesthetic with subtle warm gold tones. The image conveys focus and academic dedication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3ZdM5jaWev9jMGYycqo0Qn0aWaCqkPoHFZ9lF6lUgdSsUaqtidqYS6oqcaIkkqUmnZyAyfTP8YPnsDLi44aGpqeOkuAIORpprHH46obeAgAlJOOnSu-UAqi181PzEFlYItUfm_qQBl5mGWzTmKpARtsIqrbSy4gu9UCQA1bPyYMrRMSlCV9wkDOsEVm3XEI15geUZiHBmkbXmG9VLEjHpHEseW_5lvj419c-V77maCseTG4vMncVWjNCPzEKBYNiBuelh6DOkD_Y"/>
+</div>
+</div>
+<h2 class="font-arabic-headline text-headline-md font-bold text-gold-royal mb-1">أكاديمية العلامة الكاملة</h2>
+<p class="text-label-md text-on-surface-variant font-medium">لوحة تحكم النخبة</p>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-6 px-4 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-[#725b38] transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">home</span>
+<span class="font-medium">الرئيسية</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-[#725b38] transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">notifications</span>
+<span class="font-medium">الإشعارات</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-[#725b38] transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">auto_stories</span>
+<span class="font-medium">الدورات</span>
+</a>
+<!-- Active Tab: Materials/Exams conceptually fits here if not "Exams" specifically -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-gold-royal font-bold border-r-4 border-gold-royal bg-primary-container/10 Active: scale-95 transition-transform duration-200 hover:translate-x-[-4px]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-medium">المواد</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-[#725b38] transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">payments</span>
+<span class="font-medium">الشؤون المالية</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-[#725b38] transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+<span class="font-medium">المعلومات الشخصية</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-[#725b38] transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">event_note</span>
+<span class="font-medium">جداول الامتحانات</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-[#725b38] transition-colors duration-300 hover:bg-surface-variant/30 hover:backdrop-blur-md group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">group</span>
+<span class="font-medium">المجموعات</span>
+</a>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 border-t border-gold-royal/10 flex flex-col gap-2">
+<button class="btn-luxury w-full py-3 rounded-xl font-arabic-headline font-bold text-center mb-4 flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+                تواصل مع الدعم
+            </button>
+<div class="flex justify-between px-2">
+<button class="p-2 text-on-surface-variant hover:text-gold-royal transition-colors rounded-lg hover:bg-surface-variant/30" title="الإعدادات">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors rounded-lg hover:bg-error-container/50" title="تسجيل الخروج">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 pr-72 pl-gutter pb-12 min-h-screen">
+<div class="max-w-container-max mx-auto h-full flex gap-8 items-start">
+<!-- Left Area: Exam Content -->
+<div class="flex-1 flex flex-col gap-6 w-full max-w-4xl">
+<!-- Progress Header -->
+<div class="glow-card rounded-2xl p-6 flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-arabic-headline text-headline-md font-bold text-on-surface mb-1">امتحان الفيزياء المتقدمة - الفصل الأول</h2>
+<p class="text-on-surface-variant text-label-md">السؤال 4 من 50</p>
+</div>
+<div class="text-right">
+<span class="font-arabic-headline font-bold text-gold-royal text-headline-md">8%</span>
+<p class="text-on-surface-variant text-label-md">مكتمل</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-l from-[#c5a880] to-[#7d633f] w-[8%] rounded-full transition-all duration-500 ease-out"></div>
+</div>
+</div>
+<!-- Question Area -->
+<div class="glow-card rounded-3xl p-8 flex flex-col gap-8 flex-1">
+<!-- Question Text -->
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center border border-gold-royal/30">
+<span class="font-arabic-headline font-bold text-gold-royal">4</span>
+</div>
+<div class="pt-1">
+<p class="font-arabic-body text-body-lg text-on-surface leading-relaxed">
+                                    في تجربة الشق المزدوج ليونغ، إذا تم استخدام ضوء أحادي اللون بطول موجي <span class="font-semibold text-primary">λ = 600 nm</span>، وكانت المسافة بين الشقين <span class="font-semibold text-primary">d = 0.1 mm</span>، والمسافة إلى الشاشة <span class="font-semibold text-primary">L = 2 m</span>. احسب المسافة بين الهدب المركزي المضيء والهدب المضيء الثاني.
+                                </p>
+</div>
+</div>
+<!-- Question Image (Optional context) -->
+<div class="ml-14 rounded-xl overflow-hidden border border-outline-variant/30">
+<img alt="رسم توضيحي للتجربة" class="w-full object-cover max-h-64 bg-surface-container" data-alt="A high-quality, crisp diagram illustrating Young's double-slit experiment. The diagram features a light source, a barrier with two slits, and a screen showing an interference pattern. The style is modern educational graphic design, clean lines, white background, with subtle gold and cyan accent colors matching the UI theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmqTzMzO3kJvykdDt2QsO8EA_gdKcP7Zdv5_3WFK5ApvWGy-mnPK9RNt_6pUwYZfH7atqRurr0LhDiJoBGxdNzB0S2eNFRNRVsD4MvuyeUGB-3EIQO0UECv4wVGZgMbbzRMdbVKiGhzW9vmfqpw-D_ENQTmWwp0MdgiaOpjFr68cBGToeHNGa3002hMH1LbS4lNfcwDq3rxXW58ksnppa4lUXvo3sgXnfTJ7G4r0LUqwYVgGj_4Q6HRuWnV1K3qq8-sj_gV4zORgU"/>
+</div>
+</div>
+<!-- Options Grid -->
+<div class="ml-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="option-label cursor-pointer relative">
+<input class="peer sr-only" name="q4" type="radio"/>
+<div class="w-full p-5 rounded-xl border-2 border-outline-variant bg-surface hover:bg-surface-container-low transition-all duration-200 flex items-center gap-4 group">
+<div class="w-6 h-6 rounded-full border-2 border-outline group-hover:border-gold-royal flex items-center justify-center flex-shrink-0 transition-colors">
+<div class="w-3 h-3 rounded-full bg-transparent radio-inner transition-transform scale-0"></div>
+</div>
+<span class="font-arabic-body text-body-lg text-on-surface">12 mm</span>
+</div>
+</label>
+<label class="option-label cursor-pointer relative">
+<input class="peer sr-only" name="q4" type="radio"/>
+<div class="w-full p-5 rounded-xl border-2 border-outline-variant bg-surface hover:bg-surface-container-low transition-all duration-200 flex items-center gap-4 group">
+<div class="w-6 h-6 rounded-full border-2 border-outline group-hover:border-gold-royal flex items-center justify-center flex-shrink-0 transition-colors">
+<div class="w-3 h-3 rounded-full bg-transparent radio-inner transition-transform scale-0"></div>
+</div>
+<span class="font-arabic-body text-body-lg text-on-surface">24 mm</span>
+</div>
+</label>
+<label class="option-label cursor-pointer relative">
+<input checked="" class="peer sr-only" name="q4" type="radio"/>
+<div class="w-full p-5 rounded-xl border-2 border-gold-royal bg-primary-container/10 transition-all duration-200 flex items-center gap-4 group">
+<div class="w-6 h-6 rounded-full border-2 border-gold-royal flex items-center justify-center flex-shrink-0 transition-colors">
+<div class="w-3 h-3 rounded-full bg-gold-royal radio-inner transition-transform scale-100"></div>
+</div>
+<span class="font-arabic-body text-body-lg text-on-surface font-semibold">6 mm</span>
+</div>
+</label>
+<label class="option-label cursor-pointer relative">
+<input class="peer sr-only" name="q4" type="radio"/>
+<div class="w-full p-5 rounded-xl border-2 border-outline-variant bg-surface hover:bg-surface-container-low transition-all duration-200 flex items-center gap-4 group">
+<div class="w-6 h-6 rounded-full border-2 border-outline group-hover:border-gold-royal flex items-center justify-center flex-shrink-0 transition-colors">
+<div class="w-3 h-3 rounded-full bg-transparent radio-inner transition-transform scale-0"></div>
+</div>
+<span class="font-arabic-body text-body-lg text-on-surface">18 mm</span>
+</div>
+</label>
+</div>
+<!-- Navigation Buttons -->
+<div class="mt-auto pt-8 border-t border-outline-variant/30 flex justify-between items-center ml-14">
+<button class="px-6 py-3 rounded-xl border border-outline text-on-surface-variant hover:bg-surface-container font-arabic-headline font-semibold transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">arrow_forward</span>
+                            السابق
+                        </button>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-xl text-gold-royal hover:bg-primary-container/10 font-arabic-headline font-semibold transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">flag</span>
+                                تحديد للمراجعة
+                            </button>
+<button class="px-8 py-3 rounded-xl bg-on-surface text-surface hover:bg-on-surface-variant font-arabic-headline font-semibold transition-colors flex items-center gap-2 shadow-lg shadow-black/10">
+                                التالي
+                                <span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Area: Question Navigation Sidebar (Bento Style) -->
+<aside class="w-80 flex-shrink-0 flex flex-col gap-6 sticky top-28">
+<div class="glow-card rounded-2xl p-6 flex flex-col gap-4">
+<h3 class="font-arabic-headline text-headline-md font-bold text-on-surface mb-2 border-b border-outline-variant/30 pb-2">خريطة الأسئلة</h3>
+<!-- Legend -->
+<div class="flex flex-wrap gap-3 mb-4">
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 rounded-full bg-gold-royal/20 border border-gold-royal"></div>
+<span class="text-label-md text-on-surface-variant">مجاب</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 rounded-full bg-surface border border-outline"></div>
+<span class="text-label-md text-on-surface-variant">غير مجاب</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error-container/50 border border-error"></div>
+<span class="text-label-md text-on-surface-variant">مراجعة</span>
+</div>
+</div>
+<!-- Question Grid -->
+<div class="grid grid-cols-5 gap-2 max-h-[400px] overflow-y-auto pr-1">
+<!-- Example States -->
+<!-- Answered -->
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-primary-container/20 border border-gold-royal text-primary hover:bg-primary-container/40 transition-colors">1</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-primary-container/20 border border-gold-royal text-primary hover:bg-primary-container/40 transition-colors">2</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-primary-container/20 border border-gold-royal text-primary hover:bg-primary-container/40 transition-colors">3</button>
+<!-- Current -->
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-bold text-lg bg-gold-royal text-white shadow-md transform scale-110 relative z-10">4</button>
+<!-- Unanswered -->
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">5</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">6</button>
+<!-- Flagged -->
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-error-container/30 border border-error text-error hover:bg-error-container/50 transition-colors relative">
+                            7
+                            <div class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-error"></div>
+</button>
+<!-- Generate rest to look full -->
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">8</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">9</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">10</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">11</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">12</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">13</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">14</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">15</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">16</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">17</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">18</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">19</button>
+<button class="aspect-square rounded-lg flex items-center justify-center font-arabic-headline font-semibold text-sm bg-surface border border-outline text-on-surface-variant hover:border-gold-royal transition-colors">20</button>
+</div>
+</div>
+<div class="mt-auto pt-4">
+<button class="btn-luxury w-full py-4 rounded-xl font-arabic-headline font-bold text-headline-md flex justify-center items-center gap-3">
+<span class="material-symbols-outlined">done_all</span>
+                        إنهاء الامتحان
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<script>
+        // Simple script to handle header shrinking on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('top-nav');
+            if (window.scrollY > 20) {
+                header.classList.remove('h-20');
+                header.classList.add('h-[70px]', 'shadow-md', 'bg-surface/90');
+            } else {
+                header.classList.add('h-20');
+                header.classList.remove('h-[70px]', 'shadow-md', 'bg-surface/90');
+            }
+        });
+    </script>
+</body></html>

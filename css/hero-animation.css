@@ -29,9 +29,10 @@ html.hero-done body {
   gap: 1.5rem;
   background: var(--bg-primary, #060606);
   overflow: hidden;
-  transition: opacity .8s cubic-bezier(.22,.7,.2,1),
-              visibility .8s cubic-bezier(.22,.7,.2,1);
+  transition: opacity .8s cubic-bezier(.22, .7, .2, 1),
+    visibility .8s cubic-bezier(.22, .7, .2, 1);
 }
+
 .hero-splash.is-hidden {
   opacity: 0;
   visibility: hidden;
@@ -60,8 +61,8 @@ html.hero-done body {
   border-radius: 50%;
   /* Soft theme-colored halo directly under the logo */
   background: radial-gradient(circle,
-              var(--accent-glow) 0%,
-              rgba(0,0,0,0) 70%);
+      var(--accent-glow) 0%,
+      rgba(0, 0, 0, 0) 70%);
   animation: splashHaloBreathe 2.4s ease-in-out infinite;
 }
 
@@ -74,7 +75,7 @@ html.hero-done body {
   border-top-color: var(--accent-color);
   border-right-color: var(--accent-color);
   opacity: .85;
-  animation: splashOrbit 2.6s cubic-bezier(.65,.05,.36,1) infinite;
+  animation: splashOrbit 2.6s cubic-bezier(.65, .05, .36, 1) infinite;
   filter: drop-shadow(0 0 10px var(--accent-glow));
 }
 
@@ -92,22 +93,57 @@ html.hero-done body {
 }
 
 @keyframes splashHaloBreathe {
-  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); transform: scale(1); }
-  50%      { box-shadow: 0 0 40px 6px var(--accent-glow); transform: scale(1.04); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--accent-glow);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 40px 6px var(--accent-glow);
+    transform: scale(1.04);
+  }
 }
+
 @keyframes splashOrbit {
-  0%   { transform: rotate(0deg);   }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes splashLogoBreath {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.05); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-splash__logo-wrap { width: 92px; height: 92px; }
-  .hero-splash__logo { width: 52px; height: 52px; max-width: 52px; max-height: 52px; }
-  .hero-splash__orbit { inset: -8px; }
+  .hero-splash__logo-wrap {
+    width: 92px;
+    height: 92px;
+  }
+
+  .hero-splash__logo {
+    width: 52px;
+    height: 52px;
+    max-width: 52px;
+    max-height: 52px;
+  }
+
+  .hero-splash__orbit {
+    inset: -8px;
+  }
 }
 
 /* ---------- Frame stage ---------- */
@@ -156,7 +192,7 @@ html.hero-done body {
 .hero-frame-stage__still {
   z-index: 1;
   opacity: 0;
-  transition: opacity 1.1s cubic-bezier(.22,.7,.2,1);
+  transition: opacity 1.1s cubic-bezier(.22, .7, .2, 1);
   will-change: opacity;
 }
 
@@ -169,9 +205,10 @@ html.hero-done body {
 /* Subtle scale-in on the still image for a modern "settle" effect */
 .hero-frame-stage__still {
   transform: scale(1.04);
-  transition: opacity 1.2s cubic-bezier(.22,.7,.2,1),
-              transform 2.4s cubic-bezier(.22,.7,.2,1);
+  transition: opacity 1.2s cubic-bezier(.22, .7, .2, 1),
+    transform 2.4s cubic-bezier(.22, .7, .2, 1);
 }
+
 .hero-frame-stage__still.is-active {
   transform: scale(1);
 }
@@ -181,12 +218,10 @@ html.hero-done body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.15) 45%,
-    rgba(0,0,0,0.55) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.15) 45%,
+      rgba(0, 0, 0, 0.55) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -213,14 +248,14 @@ html.hero-done body {
   transform: scale(.96);
 }
 
-.icon-btn > i {
+.icon-btn>i {
   margin: 0 !important;
   display: inline-block;
-  transition: transform .35s cubic-bezier(.22,.7,.2,1);
+  transition: transform .35s cubic-bezier(.22, .7, .2, 1);
 }
 
-#themeCycleBtn:active > i,
-#themeCycleBtnMobile:active > i {
+#themeCycleBtn:active>i,
+#themeCycleBtnMobile:active>i {
   transform: rotate(180deg) scale(.9);
 }
 
@@ -247,7 +282,7 @@ html.hero-done body {
   justify-content: center;
 }
 
-.hero-content-overlay > * {
+.hero-content-overlay>* {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -257,9 +292,9 @@ html.hero-done body {
   opacity: 0;
   transform: translateY(40px) scale(.96);
   filter: blur(8px);
-  transition: opacity 1.1s cubic-bezier(.22,.7,.2,1),
-              transform 1.1s cubic-bezier(.22,.7,.2,1),
-              filter   1.1s cubic-bezier(.22,.7,.2,1);
+  transition: opacity 1.1s cubic-bezier(.22, .7, .2, 1),
+    transform 1.1s cubic-bezier(.22, .7, .2, 1),
+    filter 1.1s cubic-bezier(.22, .7, .2, 1);
   will-change: opacity, transform, filter;
 }
 
@@ -269,11 +304,25 @@ html.hero-done body {
   filter: blur(0);
 }
 
-.hero-content-overlay.is-revealed .hero-stagger[data-stagger="1"] { transition-delay: .10s; }
-.hero-content-overlay.is-revealed .hero-stagger[data-stagger="2"] { transition-delay: .35s; }
-.hero-content-overlay.is-revealed .hero-stagger[data-stagger="3"] { transition-delay: .65s; }
-.hero-content-overlay.is-revealed .hero-stagger[data-stagger="4"] { transition-delay: .95s; }
-.hero-content-overlay.is-revealed .hero-stagger[data-stagger="5"] { transition-delay: 1.25s; }
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="1"] {
+  transition-delay: .10s;
+}
+
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="2"] {
+  transition-delay: .35s;
+}
+
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="3"] {
+  transition-delay: .65s;
+}
+
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="4"] {
+  transition-delay: .95s;
+}
+
+.hero-content-overlay.is-revealed .hero-stagger[data-stagger="5"] {
+  transition-delay: 1.25s;
+}
 
 /* ----- REVERSE staggered fade-OUT before the videos restart ----- */
 .hero-content-overlay.is-hiding .hero-stagger {
@@ -281,21 +330,46 @@ html.hero-done body {
   transform: translateY(40px) scale(.96);
   filter: blur(8px);
 }
+
 /* Hide last element first, headline last → feels like a graceful "exit" */
-.hero-content-overlay.is-hiding .hero-stagger[data-stagger="5"] { transition-delay: 0s;    }
-.hero-content-overlay.is-hiding .hero-stagger[data-stagger="4"] { transition-delay: .12s; }
-.hero-content-overlay.is-hiding .hero-stagger[data-stagger="3"] { transition-delay: .26s; }
-.hero-content-overlay.is-hiding .hero-stagger[data-stagger="2"] { transition-delay: .42s; }
-.hero-content-overlay.is-hiding .hero-stagger[data-stagger="1"] { transition-delay: .60s; }
+.hero-content-overlay.is-hiding .hero-stagger[data-stagger="5"] {
+  transition-delay: 0s;
+}
+
+.hero-content-overlay.is-hiding .hero-stagger[data-stagger="4"] {
+  transition-delay: .12s;
+}
+
+.hero-content-overlay.is-hiding .hero-stagger[data-stagger="3"] {
+  transition-delay: .26s;
+}
+
+.hero-content-overlay.is-hiding .hero-stagger[data-stagger="2"] {
+  transition-delay: .42s;
+}
+
+.hero-content-overlay.is-hiding .hero-stagger[data-stagger="1"] {
+  transition-delay: .60s;
+}
 
 /* Particles canvas also fades along with the content */
-#particles-canvas.is-fading-out { opacity: 0; }
+#particles-canvas.is-fading-out {
+  opacity: 0;
+}
 
 /* Soft golden glow pulse when content finishes revealing */
 @keyframes heroGlowIn {
-  0%   { box-shadow: 0 0 0 0 rgba(197,168,128,0); }
-  60%  { box-shadow: 0 18px 60px -10px rgba(197,168,128,.35); }
-  100% { box-shadow: 0 8px 30px -10px rgba(197,168,128,.2); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(197, 168, 128, 0);
+  }
+
+  60% {
+    box-shadow: 0 18px 60px -10px rgba(197, 168, 128, .35);
+  }
+
+  100% {
+    box-shadow: 0 8px 30px -10px rgba(197, 168, 128, .2);
+  }
 }
 
 .hero-content-overlay.is-revealed .btn-luxury {
@@ -306,8 +380,8 @@ html.hero-done body {
 .io-reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity .95s cubic-bezier(.22,.7,.2,1),
-              transform .95s cubic-bezier(.22,.7,.2,1);
+  transition: opacity .95s cubic-bezier(.22, .7, .2, 1),
+    transform .95s cubic-bezier(.22, .7, .2, 1);
   will-change: opacity, transform;
 }
 
@@ -317,8 +391,8 @@ html.hero-done body {
 }
 
 /* Guarantee horizontal centering for every section's Bootstrap container */
-section > .container,
-footer > .container {
+section>.container,
+footer>.container {
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -331,7 +405,10 @@ footer.io-reveal {
 
 /* ---------- Responsive tuning ---------- */
 @media (max-width: 768px) {
-  .hero-section { height: 100svh; min-height: 100svh; }
+  .hero-section {
+    height: 100svh;
+    min-height: 100svh;
+  }
 
   /* The mobile-encoded videos are 720x1280 (9:16) — they already include
      a blurred-fill background, so `cover` here just edge-aligns them. */
@@ -346,12 +423,21 @@ footer.io-reveal {
   }
 
   /* The about-section video also gets its portrait version on mobile */
-  .about-video-wrapper { height: 60vh; min-height: 380px; }
-  .about-video { object-fit: cover; object-position: center center; }
+  .about-video-wrapper {
+    height: 60vh;
+    min-height: 380px;
+  }
+
+  .about-video {
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-preloader__bar { width: 70vw; }
+  .hero-preloader__bar {
+    width: 70vw;
+  }
 }
 
 /* ============================================================
@@ -359,13 +445,16 @@ footer.io-reveal {
    ============================================================ */
 
 /* Navbar — consistent height, padding, link rhythm */
-.sticky-header > .container {
+.sticky-header>.container {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   gap: 1.5rem;
 }
 
-.sticky-header nav { gap: 1.75rem; }
+.sticky-header nav {
+  gap: 1.75rem;
+}
+
 .sticky-header nav a.desktop-nav-link {
   position: relative;
   padding: .5rem 0;
@@ -373,6 +462,7 @@ footer.io-reveal {
   letter-spacing: .01em;
   transition: color .25s ease;
 }
+
 .sticky-header nav a.desktop-nav-link::after {
   content: '';
   position: absolute;
@@ -381,21 +471,24 @@ footer.io-reveal {
   width: 0;
   height: 2px;
   background: var(--accent-color);
-  transition: width .3s cubic-bezier(.22,.7,.2,1);
+  transition: width .3s cubic-bezier(.22, .7, .2, 1);
 }
+
 .sticky-header nav a.desktop-nav-link:hover,
 .sticky-header nav a.desktop-nav-link.active {
   color: var(--accent-color) !important;
 }
+
 /* Animated underline — theme-aware accent color, active in every state */
 .sticky-header nav a.desktop-nav-link:hover::after,
 .sticky-header nav a.desktop-nav-link.active::after {
   width: 100%;
 }
+
 /* Make the underline pop on the bright light-theme hero overlay */
 .theme-light .sticky-header:not(.scrolled) nav a.desktop-nav-link::after {
   background: #ffffff;
-  box-shadow: 0 0 8px rgba(255,255,255,.45);
+  box-shadow: 0 0 8px rgba(255, 255, 255, .45);
 }
 
 /* Force-remove any bottom border on the navbar while at top of page */
@@ -405,8 +498,8 @@ footer.io-reveal {
 }
 
 /* Right-side action buttons — even spacing */
-.sticky-header > .container > .xl\:flex,
-.sticky-header > .container > div:last-child {
+.sticky-header>.container>.xl\:flex,
+.sticky-header>.container>div:last-child {
   gap: .65rem;
 }
 
@@ -415,14 +508,20 @@ footer.io-reveal {
    Keep everything on one line, prevent button text wrapping,
    tighten gaps & font sizes responsively.
    ============================================================ */
-#header-nav .primary-nav { gap: 1.1rem; }
-#header-nav .header-actions { gap: .55rem; }
+#header-nav .primary-nav {
+  gap: 1.1rem;
+}
+
+#header-nav .header-actions {
+  gap: .55rem;
+}
 
 #header-nav .desktop-nav-link {
   font-size: .95rem;
   white-space: nowrap;
   padding: .4rem .2rem;
 }
+
 #header-nav .nav-more-btn {
   padding: .5rem .9rem !important;
   font-size: .95rem !important;
@@ -445,16 +544,19 @@ footer.io-reveal {
   line-height: 1.15;
   white-space: nowrap;
 }
-#header-nav span.text-xl > span.font-normal {
+
+#header-nav span.text-xl>span.font-normal {
   font-size: .72rem;
   white-space: nowrap;
 }
 
 /* Logo a touch smaller so nav has room */
-#navbar-logo { height: 40px; }
+#navbar-logo {
+  height: 200px;
+}
 
 /* Container — consistent breathing room */
-.sticky-header > .container {
+.sticky-header>.container {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   gap: 1rem;
@@ -462,18 +564,37 @@ footer.io-reveal {
 
 /* Tablet (768–1199px) — extra tightening to fit the More dropdown */
 @media (min-width: 768px) and (max-width: 1199px) {
-  #header-nav .primary-nav { gap: .75rem; }
-  #header-nav .header-actions { gap: .45rem; }
-  #header-nav .desktop-nav-link { font-size: .88rem; }
+  #header-nav .primary-nav {
+    gap: .75rem;
+  }
+
+  #header-nav .header-actions {
+    gap: .45rem;
+  }
+
+  #header-nav .desktop-nav-link {
+    font-size: .88rem;
+  }
+
   #header-nav .btn-luxury,
   #header-nav .btn-glass {
     font-size: .88rem;
     padding-left: .75rem;
     padding-right: .75rem;
   }
-  #header-nav .nav-more-btn { font-size: .88rem !important; padding: .45rem .75rem !important; }
-  #navbar-logo { height: 38px; }
-  #header-nav span.text-xl { font-size: 1.05rem; }
+
+  #header-nav .nav-more-btn {
+    font-size: .88rem !important;
+    padding: .45rem .75rem !important;
+  }
+
+  #navbar-logo {
+    height: 200px;
+  }
+
+  #header-nav span.text-xl {
+    font-size: 1.05rem;
+  }
 }
 
 /* Icon buttons — theme-aware accent on hover */
@@ -484,6 +605,7 @@ footer.io-reveal {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
+
 .icon-btn:hover {
   color: var(--accent-color);
   border-color: var(--accent-color);
@@ -499,14 +621,18 @@ section[id] {
      slide animations get cropped at the edge. Falls back to hidden. */
   overflow: clip;
   overflow: hidden;
-  overflow: clip; /* preferred when supported */
+  overflow: clip;
+  /* preferred when supported */
 }
-section[id] + .section-separator { margin: 0 auto; }
+
+section[id]+.section-separator {
+  margin: 0 auto;
+}
 
 /* Containers always have safe horizontal padding so content never
    touches the viewport edge */
-section[id] > .container,
-footer > .container {
+section[id]>.container,
+footer>.container {
   padding-left: clamp(1rem, 4vw, 2rem);
   padding-right: clamp(1rem, 4vw, 2rem);
 }
@@ -516,6 +642,7 @@ footer > .container {
   left: 1rem !important;
   bottom: 1rem !important;
 }
+
 /* ============================================================
    Large-screen spacing fixes (≥1280px, ≥1536px, ≥1920px)
    Bootstrap caps .container at ~1320px on xxl which leaves
@@ -523,81 +650,144 @@ footer > .container {
    widens content + scales paddings so it doesn't feel cramped.
    ============================================================ */
 @media (min-width: 1280px) {
-  .container { max-width: 1200px; }
+  .container {
+    max-width: 1200px;
+  }
+
   section[id] {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
+
   /* Headline spacing under section title */
-  section[id] > .container > .text-center { margin-bottom: 5rem; }
+  section[id]>.container>.text-center {
+    margin-bottom: 5rem;
+  }
+
   /* Grid gutter */
-  .row { --bs-gutter-x: 2.25rem; --bs-gutter-y: 2.25rem; }
+  .row {
+    --bs-gutter-x: 2.25rem;
+    --bs-gutter-y: 2.25rem;
+  }
 }
 
 @media (min-width: 1440px) {
-  .container { max-width: 1320px; }
+  .container {
+    max-width: 1320px;
+  }
+
   section[id] {
     padding-top: 7rem;
     padding-bottom: 7rem;
   }
-  section[id] > .container > .text-center { margin-bottom: 5.5rem; }
-  .row { --bs-gutter-x: 2.5rem; --bs-gutter-y: 2.5rem; }
+
+  section[id]>.container>.text-center {
+    margin-bottom: 5.5rem;
+  }
+
+  .row {
+    --bs-gutter-x: 2.5rem;
+    --bs-gutter-y: 2.5rem;
+  }
+
   /* Slightly larger headlines */
-  section[id] .text-3xl.md\:text-5xl { font-size: 3rem !important; line-height: 1.1; }
+  section[id] .text-3xl.md\:text-5xl {
+    font-size: 3rem !important;
+    line-height: 1.1;
+  }
 }
 
 @media (min-width: 1680px) {
-  .container { max-width: 1440px; }
+  .container {
+    max-width: 1440px;
+  }
+
   section[id] {
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
-  section[id] > .container > .text-center { margin-bottom: 6rem; }
-  .row { --bs-gutter-x: 2.75rem; --bs-gutter-y: 2.75rem; }
+
+  section[id]>.container>.text-center {
+    margin-bottom: 6rem;
+  }
+
+  .row {
+    --bs-gutter-x: 2.75rem;
+    --bs-gutter-y: 2.75rem;
+  }
 }
 
 @media (min-width: 1920px) {
-  .container { max-width: 1560px; }
+  .container {
+    max-width: 1560px;
+  }
+
   section[id] {
     padding-top: 9rem;
     padding-bottom: 9rem;
   }
-  .row { --bs-gutter-x: 3rem; --bs-gutter-y: 3rem; }
+
+  .row {
+    --bs-gutter-x: 3rem;
+    --bs-gutter-y: 3rem;
+  }
 }
 
 /* Card / panel internal padding scales with viewport */
 @media (min-width: 1280px) {
+
   .glass-panel.p-5,
   .glass-panel.p-6,
-  .glass-panel.p-12 { padding: 2.25rem !important; }
+  .glass-panel.p-12 {
+    padding: 2.25rem !important;
+  }
 }
+
 @media (min-width: 1680px) {
+
   .glass-panel.p-5,
   .glass-panel.p-6,
-  .glass-panel.p-12 { padding: 2.75rem !important; }
+  .glass-panel.p-12 {
+    padding: 2.75rem !important;
+  }
 }
 
 /* Navbar container also benefits from extra horizontal breathing room */
 @media (min-width: 1440px) {
-  .sticky-header > .container {
+  .sticky-header>.container {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
 }
+
 @media (min-width: 1680px) {
-  .sticky-header > .container {
+  .sticky-header>.container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
 /* ----- Scroll fix: only ONE scrollbar, no jank ----- */
-html { overflow-x: hidden; overflow-y: auto; }
-body { overflow-x: hidden; overflow-y: visible; }
-html.hero-loading, html.hero-loading body { overflow: hidden !important; }
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+html.hero-loading,
+html.hero-loading body {
+  overflow: hidden !important;
+}
 
 /* Anchor-link offset so content never sits under the fixed navbar */
-html { scroll-padding-top: var(--navbar-height, 80px); }
+html {
+  scroll-padding-top: var(--navbar-height, 80px);
+}
+
 /* Note: removed scroll-behavior:smooth from html — it conflicts with mouse-wheel
    momentum on Windows and causes the "heavy" feeling. Anchor links still work
    instantly; you can re-enable per-click with JS if a smooth jump is desired. */
@@ -608,7 +798,10 @@ html { scroll-padding-top: var(--navbar-height, 80px); }
   transition: opacity 1.2s ease;
   pointer-events: none;
 }
-#particles-canvas.is-on { opacity: 1; }
+
+#particles-canvas.is-on {
+  opacity: 1;
+}
 
 /* ----- FAQ: hide the section header while an accordion item is open ----- */
 #faq .faq-header-block {
@@ -616,6 +809,7 @@ html { scroll-padding-top: var(--navbar-height, 80px); }
   overflow: hidden;
   max-height: 320px;
 }
+
 #faq:has(.accordion-button:not(.collapsed)) .faq-header-block {
   opacity: 0;
   transform: translateY(-12px);
@@ -631,14 +825,24 @@ select option {
 }
 
 /* Mobile menu — improved padding + safe-area */
-.mobile-nav-menu { padding: 1.75rem 1.5rem; gap: 1rem; }
+.mobile-nav-menu {
+  padding: 1.75rem 1.5rem;
+  gap: 1rem;
+}
 
 /* Logo block — tighter alignment */
-#header-nav .h-12 { height: 44px; }
-#header-nav span.text-xl { line-height: 1.05; margin-left: .65rem; }
+#header-nav .h-12 {
+  height: 44px;
+}
+
+#header-nav span.text-xl {
+  line-height: 1.05;
+  margin-left: .65rem;
+}
 
 /* Buttons — consistent radius across themes */
-.btn-luxury, .btn-glass {
+.btn-luxury,
+.btn-glass {
   border-radius: 12px;
   letter-spacing: .015em;
 }
@@ -650,16 +854,32 @@ select option {
 .sticky-header nav a,
 .mobile-nav-menu,
 .mobile-nav-menu a,
-.btn, .btn-luxury, .btn-glass {
+.btn,
+.btn-luxury,
+.btn-glass {
   font-family: var(--font-en);
-  font-feature-settings: "ss01","cv11";
+  font-feature-settings: "ss01", "cv11";
   letter-spacing: -0.005em;
 }
+
 /* Optical sizes / weights */
-.sticky-header nav a.desktop-nav-link { font-weight: 500; }
-.btn-luxury, .btn-glass { font-weight: 600; }
-#hero h1 { font-weight: 800; letter-spacing: -0.02em; }
-#hero p  { font-weight: 400; }
+.sticky-header nav a.desktop-nav-link {
+  font-weight: 500;
+}
+
+.btn-luxury,
+.btn-glass {
+  font-weight: 600;
+}
+
+#hero h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+#hero p {
+  font-weight: 400;
+}
 
 /* ============================================================
    Navbar — Light-mode legibility over animated hero videos
@@ -667,39 +887,44 @@ select option {
 /* Light theme: transparent over hero (video stays sharp) but with
    a subtle dark gradient + white text for contrast */
 .theme-light .sticky-header:not(.scrolled) {
-  background: linear-gradient(180deg, rgba(8,12,24,.45) 0%, rgba(8,12,24,0) 100%);
+  background: linear-gradient(180deg, rgba(8, 12, 24, .45) 0%, rgba(8, 12, 24, 0) 100%);
   border-bottom-color: transparent;
 }
+
 .theme-light .sticky-header:not(.scrolled) nav a.desktop-nav-link,
 .theme-light .sticky-header:not(.scrolled) #header-nav span,
 .theme-light .sticky-header:not(.scrolled) .icon-btn {
   color: #fff !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
 }
+
 .theme-light .sticky-header:not(.scrolled) .icon-btn {
-  background: rgba(255,255,255,.10);
-  border-color: rgba(255,255,255,.18);
+  background: rgba(255, 255, 255, .10);
+  border-color: rgba(255, 255, 255, .18);
 }
 
 /* Once scrolled past hero, switch to a translucent white glass */
 .theme-light .sticky-header.scrolled {
-  background: rgba(255,255,255,.72);
+  background: rgba(255, 255, 255, .72);
   -webkit-backdrop-filter: saturate(180%) blur(18px);
-          backdrop-filter: saturate(180%) blur(18px);
-  border-bottom: 1px solid rgba(15,23,42,.06);
+  backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid rgba(15, 23, 42, .06);
 }
 
 /* Dark + Gold themes: keep a very subtle gradient over hero so logo pops */
 .theme-dark .sticky-header:not(.scrolled),
 .theme-gold .sticky-header:not(.scrolled) {
-  background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, .35) 0%, transparent 100%);
 }
 
 /* ============================================================
    RTL logo / brand spacing — header + footer
    ============================================================ */
 #header-nav .h-12,
-footer .h-12 { margin-right: .75rem; margin-left: 0; }
+footer .h-12 {
+  margin-right: .75rem;
+  margin-left: 0;
+}
 
 /* ============================================================
    Hero scroll-down indicator — fixed to bottom-center of viewport
@@ -719,25 +944,27 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   opacity: 0;
   filter: blur(8px);
   transform: translate(-50%, 40px) scale(.96);
-  transition: opacity 1.1s cubic-bezier(.22,.7,.2,1),
-              transform 1.1s cubic-bezier(.22,.7,.2,1),
-              filter   1.1s cubic-bezier(.22,.7,.2,1);
+  transition: opacity 1.1s cubic-bezier(.22, .7, .2, 1),
+    transform 1.1s cubic-bezier(.22, .7, .2, 1),
+    filter 1.1s cubic-bezier(.22, .7, .2, 1);
   will-change: opacity, transform, filter;
 }
+
 #hero-scroll-indicator .bi-chevron-double-down {
   font-size: 1.4rem;
   margin-top: .35rem;
 }
 
 /* Reveal — last item in the stagger (delay matches data-stagger="5") */
-.hero-content-overlay.is-revealed ~ #hero-scroll-indicator {
+.hero-content-overlay.is-revealed~#hero-scroll-indicator {
   opacity: .9;
   filter: blur(0);
   transform: translate(-50%, 0) scale(1);
   transition-delay: 1.25s;
 }
+
 /* Hide — first item in the reverse stagger */
-.hero-content-overlay.is-hiding ~ #hero-scroll-indicator {
+.hero-content-overlay.is-hiding~#hero-scroll-indicator {
   opacity: 0;
   filter: blur(8px);
   transform: translate(-50%, 40px) scale(.96);
@@ -745,10 +972,15 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
 }
 
 /* Light theme: scroll indicator must read on bright videos */
-.theme-light #hero-scroll-indicator { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.theme-light #hero-scroll-indicator {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
 
 /* Make sure the .hero-section is the positioning context for the indicator */
-#hero { position: relative; }
+#hero {
+  position: relative;
+}
 
 /* ============================================================
    FAQ accordion — visible & legible text in all themes
@@ -760,6 +992,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   margin-bottom: .75rem;
   overflow: hidden;
 }
+
 .faq-accordion .accordion-button {
   background: var(--card-bg) !important;
   color: var(--text-primary) !important;
@@ -768,15 +1001,20 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   padding: 1.1rem 1.25rem;
   box-shadow: none !important;
 }
+
 .faq-accordion .accordion-button:not(.collapsed) {
   background: var(--card-bg) !important;
   color: var(--accent-color) !important;
 }
+
 .faq-accordion .accordion-button::after {
   filter: invert(var(--accordion-arrow-invert, 0));
 }
+
 .theme-dark .faq-accordion .accordion-button::after,
-.theme-gold .faq-accordion .accordion-button::after { filter: invert(1) brightness(1.4); }
+.theme-gold .faq-accordion .accordion-button::after {
+  filter: invert(1) brightness(1.4);
+}
 
 /* FAQ answer body — force readable color in every theme.
    Bootstrap 5.3 uses internal CSS custom properties (--bs-accordion-*)
@@ -785,12 +1023,13 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
 .faq-accordion .accordion-item,
 .faq-accordion .accordion-collapse,
 .faq-accordion .accordion-body {
-  --bs-accordion-color:        var(--text-primary);
-  --bs-accordion-bg:           var(--card-bg);
+  --bs-accordion-color: var(--text-primary);
+  --bs-accordion-bg: var(--card-bg);
   --bs-accordion-active-color: var(--text-primary);
-  --bs-accordion-active-bg:    var(--card-bg);
-  --bs-accordion-body-color:   var(--text-primary);
+  --bs-accordion-active-bg: var(--card-bg);
+  --bs-accordion-body-color: var(--text-primary);
 }
+
 .faq-accordion .accordion-body,
 .faq-accordion .accordion-body * {
   background: var(--card-bg) !important;
@@ -800,6 +1039,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   padding-inline-start: 0;
   padding-inline-end: 0;
 }
+
 .faq-accordion .accordion-body {
   padding: 1rem 1.25rem 1.5rem !important;
   line-height: 1.75;
@@ -816,6 +1056,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   border-radius: 12px;
   isolation: isolate;
 }
+
 .about-video {
   position: absolute;
   inset: 0;
@@ -827,13 +1068,15 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   /* Smooth gentle ken-burns-style breathing, very subtle */
   transition: transform 8s ease-in-out;
 }
+
 .about-video-wrapper:hover .about-video {
   transform: scale(1.03);
 }
+
 .about-video-tint {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, .35) 100%);
   pointer-events: none;
   border-radius: 12px;
   z-index: 1;
@@ -845,12 +1088,14 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
 .stat-card {
   position: relative;
   overflow: hidden;
-  transition: transform .35s cubic-bezier(.22,.7,.2,1), box-shadow .35s ease;
+  transition: transform .35s cubic-bezier(.22, .7, .2, 1), box-shadow .35s ease;
 }
+
 .stat-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 50px -20px var(--accent-glow);
 }
+
 .stat-card::before {
   /* Subtle theme-colored radial halo at top */
   content: "";
@@ -865,7 +1110,11 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   pointer-events: none;
   z-index: 0;
 }
-.stat-card > * { position: relative; z-index: 1; }
+
+.stat-card>* {
+  position: relative;
+  z-index: 1;
+}
 
 .stat-icon {
   width: 72px;
@@ -880,8 +1129,9 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 100%);
   border: 1px solid var(--accent-color);
   box-shadow: 0 8px 24px -10px var(--accent-glow), inset 0 0 18px var(--accent-glow);
-  transition: transform .4s cubic-bezier(.22,.7,.2,1);
+  transition: transform .4s cubic-bezier(.22, .7, .2, 1);
 }
+
 .stat-card:hover .stat-icon {
   transform: rotate(-6deg) scale(1.08);
 }
@@ -890,7 +1140,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
 .stat-card .counter-number {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   filter: drop-shadow(0 4px 14px var(--accent-glow));
@@ -911,6 +1161,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   box-shadow: 0 6px 18px -8px var(--accent-glow);
   margin-right: 1rem;
 }
+
 .testimonial-avatar img {
   width: 100%;
   height: 100%;
@@ -927,41 +1178,83 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
 
 /* Default — hide everything below md, show on md+ */
 .primary-nav,
-.header-actions       { display: none !important; }
-.mobile-menu-toggle   { display: inline-flex; }
-.nav-more-wrap        { display: none; }
-.nav-item-extra       { display: none; }
+.header-actions {
+  display: none !important;
+}
+
+.mobile-menu-toggle {
+  display: inline-flex;
+}
+
+.nav-more-wrap {
+  display: none;
+}
+
+.nav-item-extra {
+  display: none;
+}
 
 /* Tablet & up (≥768px) */
 @media (min-width: 768px) {
-  .primary-nav        { display: flex !important; align-items: center; gap: 1.5rem; }
-  .header-actions     { display: flex !important; align-items: center; gap: .65rem; }
-  .mobile-menu-toggle { display: none !important; }
+  .primary-nav {
+    display: flex !important;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center;
+    gap: .65rem;
+  }
+
+  .mobile-menu-toggle {
+    display: none !important;
+  }
 
   /* On tablet, hide the "extra" inline items — they live inside More */
-  .nav-item-extra { display: none !important; }
-  .nav-more-wrap  { display: inline-block; }
+  .nav-item-extra {
+    display: none !important;
+  }
+
+  .nav-more-wrap {
+    display: inline-block;
+  }
 
   /* Hide non-essential desktop labels — keep icons + Apply Now */
-  .header-actions .student-gate-link { display: none; }
+  .header-actions .student-gate-link {
+    display: none;
+  }
 }
 
 /* Full desktop (≥1280px) — show everything inline, drop the More dropdown */
 @media (min-width: 1280px) {
-  .nav-item-extra { display: inline-block !important; }
-  .nav-more-wrap  { display: none !important; }
-  .header-actions .student-gate-link { display: inline-block; }
+  .nav-item-extra {
+    display: inline-block !important;
+  }
+
+  .nav-more-wrap {
+    display: none !important;
+  }
+
+  .header-actions .student-gate-link {
+    display: inline-block;
+  }
 }
 
 /* Make sure the inline elements actually flex on tablet */
-.primary-nav > .nav-item-primary,
-.primary-nav > .nav-item-extra { display: inline-block; }
+.primary-nav>.nav-item-primary,
+.primary-nav>.nav-item-extra {
+  display: inline-block;
+}
+
 .primary-nav .nav-more-btn {
   padding: .5rem 1rem !important;
   font-size: .95rem;
   font-weight: 500;
   border-radius: 12px !important;
 }
+
 .primary-nav .nav-more-btn::after {
   margin-left: .35rem;
   vertical-align: .15em;
@@ -976,6 +1269,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   min-width: 180px;
   padding: .35rem;
 }
+
 .primary-nav .dropdown-menu .dropdown-item {
   color: var(--text-primary);
   border-radius: 8px;
@@ -984,6 +1278,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
   font-family: var(--font-en);
   transition: background .2s ease, color .2s ease;
 }
+
 .primary-nav .dropdown-menu .dropdown-item:hover,
 .primary-nav .dropdown-menu .dropdown-item:focus {
   background: var(--accent-glow);
@@ -995,7 +1290,7 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
    ============================================================ */
 /* Logo image switches to the white variant (set by JS via [data-logo]) */
 .theme-light .sticky-header:not(.scrolled) #navbar-logo {
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .35));
 }
 
 /* ============================================================
@@ -1012,45 +1307,49 @@ footer .h-12 { margin-right: .75rem; margin-left: 0; }
    "ACADEMY" (inner .font-normal span)  → WHITE
 */
 html.theme-light #header-nav span.text-xl {
-  color: var(--accent-color, #0284c7) !important;   /* OXFORD = button blue */
-  text-shadow: 0 1px 4px rgba(0,0,0,.35);
-  transition: color .6s cubic-bezier(.22,.7,.2,1),
-              text-shadow .6s cubic-bezier(.22,.7,.2,1);
+  color: var(--accent-color, #0284c7) !important;
+  /* OXFORD = button blue */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+  transition: color .6s cubic-bezier(.22, .7, .2, 1),
+    text-shadow .6s cubic-bezier(.22, .7, .2, 1);
 }
-html.theme-light #header-nav span.text-xl > span.font-normal {
-  color: #ffffff !important;                        /* ACADEMY = white */
+
+html.theme-light #header-nav span.text-xl>span.font-normal {
+  color: #ffffff !important;
+  /* ACADEMY = white */
   opacity: 1 !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,.35);
-  transition: color .6s cubic-bezier(.22,.7,.2,1),
-              text-shadow .6s cubic-bezier(.22,.7,.2,1);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+  transition: color .6s cubic-bezier(.22, .7, .2, 1),
+    text-shadow .6s cubic-bezier(.22, .7, .2, 1);
 }
 
 /* ----- Scrolled state — both words go to BLACK ----- */
 html.theme-light #header-nav.scrolled span.text-xl,
-html.theme-light #header-nav.scrolled span.text-xl > span.font-normal {
+html.theme-light #header-nav.scrolled span.text-xl>span.font-normal {
   color: #0a0a0a !important;
-  text-shadow: 0 1px 4px rgba(255,255,255,.55);
+  text-shadow: 0 1px 4px rgba(255, 255, 255, .55);
 }
 
 /* Mobile menu toggle (.bi-list icon) — same scroll-aware color flip */
 html.theme-light #header-nav .mobile-menu-toggle,
 html.theme-light #header-nav .mobile-menu-toggle i.bi-list {
   color: #ffffff !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,.4);
-  transition: color .6s cubic-bezier(.22,.7,.2,1),
-              text-shadow .6s cubic-bezier(.22,.7,.2,1);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+  transition: color .6s cubic-bezier(.22, .7, .2, 1),
+    text-shadow .6s cubic-bezier(.22, .7, .2, 1);
 }
+
 html.theme-light #header-nav.scrolled .mobile-menu-toggle,
 html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   color: #0a0a0a !important;
-  text-shadow: 0 1px 4px rgba(255,255,255,.55);
+  text-shadow: 0 1px 4px rgba(255, 255, 255, .55);
 }
 
 /* "Apply Now" / luxury button text → white in light theme */
 .theme-light .btn-luxury,
 .theme-light .btn-luxury * {
   color: #ffffff !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,.18);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .18);
 }
 
 /* ============================================================
@@ -1060,32 +1359,43 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  transition: transform .35s cubic-bezier(.22,.7,.2,1),
-              box-shadow .35s ease,
-              filter .35s ease;
+  transition: transform .35s cubic-bezier(.22, .7, .2, 1),
+    box-shadow .35s ease,
+    filter .35s ease;
 }
+
 .btn-luxury::before {
   content: "";
   position: absolute;
-  top: 0; left: -120%;
-  width: 80%; height: 100%;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
   background: linear-gradient(115deg,
-              transparent 0%,
-              rgba(255,255,255,.5) 50%,
-              transparent 100%);
+      transparent 0%,
+      rgba(255, 255, 255, .5) 50%,
+      transparent 100%);
   transform: skewX(-22deg);
-  transition: left .75s cubic-bezier(.22,.7,.2,1);
+  transition: left .75s cubic-bezier(.22, .7, .2, 1);
   pointer-events: none;
   z-index: 1;
 }
-.btn-luxury > * { position: relative; z-index: 2; }
+
+.btn-luxury>* {
+  position: relative;
+  z-index: 2;
+}
+
 .btn-luxury:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 18px 36px -14px var(--accent-glow),
-              0 0 22px var(--accent-glow);
+    0 0 22px var(--accent-glow);
   filter: brightness(1.06);
 }
-.btn-luxury:hover::before { left: 130%; }
+
+.btn-luxury:hover::before {
+  left: 130%;
+}
 
 /* ============================================================
    Student Gate (Light theme) — color shifts with scroll state
@@ -1098,9 +1408,11 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   initial-value: 0deg;
   inherits: false;
 }
+
 /* Custom prop drives the live color so transitions are smooth */
 .theme-light .student-gate-link {
-  --sg-color: #ffffff;                  /* WHITE while over the hero */
+  --sg-color: #ffffff;
+  /* WHITE while over the hero */
   color: var(--sg-color) !important;
   background: transparent !important;
   border: 1.5px solid var(--sg-color) !important;
@@ -1108,15 +1420,17 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   overflow: hidden;
   isolation: isolate;
   transition: color .55s ease,
-              border-color .55s ease,
-              background .35s ease,
-              transform .3s ease,
-              box-shadow .35s ease,
-              --sg-color .55s ease;
+    border-color .55s ease,
+    background .35s ease,
+    transform .3s ease,
+    box-shadow .35s ease,
+    --sg-color .55s ease;
 }
+
 /* Once the navbar has scrolled past the hero → switch to brand blue */
 .theme-light .sticky-header.scrolled .student-gate-link {
-  --sg-color: #0284c7;                  /* BLUE after scroll */
+  --sg-color: #0284c7;
+  /* BLUE after scroll */
 }
 
 /* Travelling-light gradient border — color follows --sg-color so it
@@ -1128,16 +1442,16 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   border-radius: inherit;
   padding: 2px;
   background: conic-gradient(from var(--sg-angle, 0deg),
-              transparent 0deg,
-              var(--sg-color) 50deg,
-              transparent 140deg,
-              transparent 360deg);
+      transparent 0deg,
+      var(--sg-color) 50deg,
+      transparent 140deg,
+      transparent 360deg);
   -webkit-mask: linear-gradient(#000 0 0) content-box,
-                linear-gradient(#000 0 0);
-          mask: linear-gradient(#000 0 0) content-box,
-                linear-gradient(#000 0 0);
+    linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  mask-composite: exclude;
   opacity: 0;
   transition: opacity .25s ease;
   z-index: 0;
@@ -1150,20 +1464,29 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   box-shadow: 0 0 20px color-mix(in srgb, var(--sg-color) 35%, transparent);
   transform: translateY(-2px);
 }
+
 .theme-light .student-gate-link:hover::before {
   opacity: 1;
   animation: studentGateBorder 2.2s linear infinite;
 }
+
 @keyframes studentGateBorder {
-  to { --sg-angle: 360deg; }
+  to {
+    --sg-angle: 360deg;
+  }
 }
-.theme-light .student-gate-link > * { position: relative; z-index: 1; }
+
+.theme-light .student-gate-link>* {
+  position: relative;
+  z-index: 1;
+}
 
 /* "More" dropdown trigger → white text over hero (legible on dark gradient) */
 .theme-light .sticky-header:not(.scrolled) .nav-more-btn,
 .theme-light .sticky-header:not(.scrolled) .nav-more-btn * {
   color: #ffffff !important;
 }
+
 /* After scroll (light glass) → revert to readable dark */
 .theme-light .sticky-header.scrolled .nav-more-btn,
 .theme-light .sticky-header.scrolled .nav-more-btn * {
@@ -1177,20 +1500,22 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
 /* Significantly reduce the white wash in light theme so videos pop */
 .theme-light .hero-overlay {
   background: radial-gradient(circle at center,
-              rgba(255,255,255,0.06) 0%,
-              rgba(15,23,42,0.45) 100%) !important;
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(15, 23, 42, 0.45) 100%) !important;
 }
+
 /* Light theme hero text — title white, but the DESCRIPTION must be black */
 .theme-light #hero h1,
 .theme-light #hero a {
   color: #ffffff !important;
-  text-shadow: 0 1px 6px rgba(0,0,0,.35);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .35);
 }
+
 /* Hero <p> description — WHITE in light theme (updated) */
 .theme-light .hero-content-overlay p,
 .theme-light #hero p {
   color: #ffffff !important;
-  text-shadow: 0 1px 6px rgba(0,0,0,.45);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .45);
   font-weight: 500;
 }
 
@@ -1199,24 +1524,25 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
 .theme-light #hero .tilt-card p.opacity-75 {
   color: var(--accent-color, #0284c7) !important;
   opacity: 1 !important;
-  text-shadow: 0 1px 3px rgba(255,255,255,.55);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, .55);
   font-weight: 500;
 }
 
 /* Theme-aware brand gradient (replaces hardcoded Tailwind gold) */
-#hero h1 > span[data-en="Oxford Academy"],
+#hero h1>span[data-en="FULL MARKS ACADEMY"],
 #hero h1 .brand-gradient {
   background: var(--accent-gradient) !important;
   -webkit-background-clip: text !important;
-          background-clip: text !important;
+  background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
   filter: drop-shadow(0 4px 18px var(--accent-glow));
 }
-.theme-light #hero h1 > span[data-en="Oxford Academy"] {
+
+.theme-light #hero h1>span[data-en="FULL MARKS ACADEMY"] {
   -webkit-text-fill-color: #ffffff !important;
   background: none !important;
-  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .4);
 }
 
 /* ============================================================
@@ -1226,14 +1552,23 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
 .io-slide-r,
 .io-fade-up {
   opacity: 0;
-  transition: opacity 1s cubic-bezier(.22,.7,.2,1),
-              transform 1s cubic-bezier(.22,.7,.2,1);
+  transition: opacity 1s cubic-bezier(.22, .7, .2, 1),
+    transform 1s cubic-bezier(.22, .7, .2, 1);
   transition-delay: var(--io-delay, 0ms);
   will-change: opacity, transform;
 }
-.io-slide-l  { transform: translateX(-60px); }
-.io-slide-r  { transform: translateX( 60px); }
-.io-fade-up  { transform: translateY( 30px); }
+
+.io-slide-l {
+  transform: translateX(-60px);
+}
+
+.io-slide-r {
+  transform: translateX(60px);
+}
+
+.io-fade-up {
+  transform: translateY(30px);
+}
 
 .io-slide-l.is-in-view,
 .io-slide-r.is-in-view,
@@ -1253,10 +1588,16 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
    animations + absolute children never push the layout */
 section[id],
 footer,
-.hero-section { overflow-x: hidden; }
+.hero-section {
+  overflow-x: hidden;
+}
 
 /* Body itself never scrolls horizontally */
-html, body { max-width: 100%; overflow-x: hidden; }
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 /* ----- Bootstrap row reverse direction for RTL gutters ----- */
 /* ----- Tailwind margin utilities flipped (mr/ml) ----- */
@@ -1270,7 +1611,8 @@ html, body { max-width: 100%; overflow-x: hidden; }
 /* News date badge — top corner flip */
 /* About floating widget — already handled, reinforce */
 /* Testimonial avatar — already handled, reinforce */
-/* Bootstrap me-*/ms-* on icons (covers any inline usage) */
+/* Bootstrap me-*/
+ms-* on icons (covers any inline usage) */
 /* Reveal-* legacy classes — flip horizontal direction in RTL */
 /* Tailwind transform translateX classes — flip negatives */
 /* Container padding — generous on RTL to compensate for Arabic letter shapes */
@@ -1283,6 +1625,7 @@ html, body { max-width: 100%; overflow-x: hidden; }
 /* ----- Generic safety: any absolute element with negative offset ----- */
 /* ---------- Accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
+
   .hero-content-overlay .hero-stagger,
   .io-reveal {
     transition: none !important;

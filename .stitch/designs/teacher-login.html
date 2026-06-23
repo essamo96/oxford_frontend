@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>بوابة أعضاء هيئة التدريس | أكاديمية العلامة الكاملة</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&amp;family=Outfit:wght@300;400;600;800&amp;family=Inter:wght@400;500&amp;family=Almarai:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#281800",
+              "on-tertiary-container": "#334157",
+              "tertiary-fixed-dim": "#b9c7e2",
+              "surface-container": "#221f1c",
+              "primary": "#e2c399",
+              "on-secondary-fixed-variant": "#004f54",
+              "on-tertiary-fixed-variant": "#3a475d",
+              "on-surface-variant": "#d1c5b8",
+              "on-secondary": "#00363a",
+              "on-primary": "#402d0f",
+              "surface-container-highest": "#373431",
+              "error-container": "#93000a",
+              "on-secondary-fixed": "#002022",
+              "tertiary-fixed": "#d5e3ff",
+              "surface-tint": "#e0c298",
+              "outline": "#998f83",
+              "surface-container-low": "#1e1b18",
+              "on-error-container": "#ffdad6",
+              "inverse-on-surface": "#33302d",
+              "surface-dim": "#151310",
+              "surface-bright": "#3c3935",
+              "secondary": "#d3fbff",
+              "surface-container-lowest": "#100e0b",
+              "inverse-surface": "#e8e1dc",
+              "secondary-fixed-dim": "#00dbe9",
+              "surface-container-high": "#2c2926",
+              "surface": "#151310",
+              "on-primary-container": "#513d1d",
+              "surface-variant": "#373431",
+              "primary-fixed": "#fedeb2",
+              "secondary-container": "#00eefc",
+              "outline-variant": "#4d463c",
+              "primary-container": "#c5a880",
+              "on-surface": "#e8e1dc",
+              "tertiary": "#bac8e3",
+              "background": "#151310",
+              "tertiary-container": "#9fadc7",
+              "on-background": "#e8e1dc",
+              "secondary-fixed": "#7df4ff",
+              "on-primary-fixed-variant": "#584323",
+              "error": "#ffb4ab",
+              "inverse-primary": "#725b38",
+              "primary-fixed-dim": "#e0c298",
+              "on-tertiary-fixed": "#0d1c30",
+              "on-tertiary": "#233146",
+              "on-error": "#690005",
+              "on-secondary-container": "#00686f",
+              "royal-gold": "#c5a880",
+              "obsidian-bg": "#161310"
+            },
+            fontFamily: {
+              "arabic-headline": ["Tajawal", "sans-serif"],
+              "arabic-body": ["Almarai", "sans-serif"],
+              "headline": ["Tajawal", "Outfit", "sans-serif"],
+              "display": ["Tajawal", "Outfit", "sans-serif"],
+              "body": ["Inter", "Tajawal", "sans-serif"],
+              "label": ["Tajawal", "Outfit", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "full": "9999px"
+            },
+            spacing: {
+              "navbar-default": "80px",
+              "gutter": "24px"
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        :root {
+            --font-ar: 'Tajawal', sans-serif;
+        }
+        body {
+            font-family: var(--font-ar);
+            background-color: #151310;
+        }
+        .glass-panel {
+            background: rgba(34, 31, 28, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(197, 168, 128, 0.15);
+        }
+        .btn-luxury {
+            background: linear-gradient(135deg, #c5a880 0%, #7d633f 100%);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(197, 168, 128, 0.2);
+        }
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(197, 168, 128, 0.3);
+            filter: brightness(1.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-luxury {
+            background: rgba(16, 14, 11, 0.4);
+            border: 1px solid rgba(153, 143, 131, 0.2);
+            transition: all 0.3s ease;
+        }
+        .input-luxury:focus {
+            border-color: #c5a880;
+            box-shadow: 0 0 0 4px rgba(197, 168, 128, 0.1);
+            outline: none;
+        }
+        .gold-glow {
+            filter: drop-shadow(0 0 8px rgba(197, 168, 128, 0.2));
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: #c5a880;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-on-surface">
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-royal-gold/5 blur-[120px] rounded-full animate-pulse"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/5 blur-[120px] rounded-full"></div>
+</div>
+<!-- Sticky Luxury Header -->
+<header class="fixed top-0 left-0 right-0 z-[100] bg-surface/60 backdrop-blur-xl border-b border-outline-variant/20">
+<nav class="max-w-[1440px] mx-auto px-gutter h-navbar-default flex items-center justify-between">
+<!-- Right side: Logo -->
+<div class="flex items-center gap-4">
+<img alt="Full Mark Academy Logo" class="h-16 w-auto object-contain gold-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvpMU8E7h4Kyq-_i2UnfMMmtGQjfH557Bde1Fm8wqiKjcoxk2xAZ2IDP8E2jp3rI9RJiMkGkjQs0Ax323cR9aDJOXepPGZyMjPKx3evoj-r74toDwbSNtsRpORhNrD33uSd5uVPwE0aw7K5j4jPnYYjagBp9-Yok3pLQ8U8JiVit_iPDvGZMWhBUnlHoFTy0A9uZcs-XdDDoENXi0EFKxu4Y_Shr80N8oByu4GJ4pjOr18muFw_jtYC6nPBS-wYQs3MUDDN9Vdnc0"/>
+<div class="hidden lg:block">
+<h1 class="font-display font-extrabold text-royal-gold text-2xl tracking-tight leading-none uppercase">FULL MARK ACADEMY</h1>
+<p class="font-arabic-body text-outline text-xs mt-1 tracking-[0.2em] font-medium">أكاديمية العلامة الكاملة</p>
+</div>
+</div>
+<!-- Center: Navigation -->
+<ul class="hidden xl:flex items-center gap-8 font-arabic-headline text-[15px] font-medium">
+<li><a class="nav-link text-royal-gold" href="#">الرئيسية</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-royal-gold" href="#">عن الأكاديمية</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-royal-gold" href="#">خدماتنا</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-royal-gold" href="#">اتصل بنا</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-royal-gold" href="#">مميزاتنا</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-royal-gold" href="#">الأخبار</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-royal-gold" href="#">التقييمات</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-royal-gold" href="#">الأسئلة الشائعة</a></li>
+</ul>
+<!-- Left: Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-royal-gold">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-royal-gold">
+<span class="material-symbols-outlined">award_star</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30 hidden sm:block"></div>
+<a class="hidden md:block text-sm font-arabic-headline font-bold text-on-surface hover:text-royal-gold transition-colors" href="#">بوابة الطالب</a>
+<button class="btn-luxury px-6 py-2.5 rounded-full text-on-primary text-sm font-bold font-arabic-headline">
+                سجل الآن
+            </button>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 flex-grow flex items-center justify-center px-4 pt-40 pb-28">
+<div class="w-full max-w-lg animate-float">
+<div class="glass-panel p-8 md:p-12 rounded-2xl shadow-2xl relative overflow-hidden">
+<!-- Subtle gold accent line at top -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-royal-gold/40 to-transparent"></div>
+<div class="text-center mb-10">
+<img alt="Full Mark Academy Logo" class="w-20 h-20 mx-auto mb-6 object-contain gold-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvpMU8E7h4Kyq-_i2UnfMMmtGQjfH557Bde1Fm8wqiKjcoxk2xAZ2IDP8E2jp3rI9RJiMkGkjQs0Ax323cR9aDJOXepPGZyMjPKx3evoj-r74toDwbSNtsRpORhNrD33uSd5uVPwE0aw7K5j4jPnYYjagBp9-Yok3pLQ8U8JiVit_iPDvGZMWhBUnlHoFTy0A9uZcs-XdDDoENXi0EFKxu4Y_Shr80N8oByu4GJ4pjOr18muFw_jtYC6nPBS-wYQs3MUDDN9Vdnc0"/>
+<h1 class="text-headline-lg md:text-3xl font-extrabold text-royal-gold mb-3 tracking-tight">بوابة أعضاء هيئة التدريس</h1>
+<p class="text-on-surface-variant text-body-md font-medium opacity-80 leading-relaxed">
+                    أهلاً بك في نظام إدارة الأكاديمية - يرجى تسجيل الدخول للمتابعة
+                </p>
+</div>
+<form class="space-y-6" id="loginForm">
+<!-- Teacher ID / Email -->
+<div class="space-y-2">
+<label class="block text-label-md text-on-surface-variant mr-1" for="id">معرف المعلم أو البريد المهني</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-royal-gold transition-colors">
+                            badge
+                        </span>
+<input class="input-luxury w-full py-4 pr-12 pl-4 rounded-lg text-on-surface placeholder:text-outline-variant/60" id="id" name="id" placeholder="مثلاً: T-12345 أو email@fullmark.com" type="text"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="block text-label-md text-on-surface-variant" for="password">كلمة المرور</label>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-royal-gold transition-colors">
+                            lock
+                        </span>
+<input class="input-luxury w-full py-4 pr-12 pl-12 rounded-lg text-on-surface placeholder:text-outline-variant/60" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute left-4 top-1/2 -translate-y-1/2 text-outline hover:text-royal-gold transition-colors flex items-center" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="toggleIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="btn-luxury w-full py-4 rounded-lg text-on-primary font-bold text-headline-md flex justify-center items-center gap-3 mt-8" type="submit">
+<span>دخول لوحة التحكم</span>
+<span class="material-symbols-outlined">login</span>
+</button>
+</form>
+<!-- Secondary Link -->
+<div class="mt-10 text-center">
+<a class="text-on-surface-variant hover:text-royal-gold text-label-md transition-all flex items-center justify-center gap-2 group" href="#">
+<span>طلب بيانات الدخول / التواصل مع الدعم الفني</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-[-4px] transition-transform">contact_support</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Detailed 4-Column Footer -->
+<footer class="relative z-10 bg-surface-container-lowest border-t border-outline-variant/20 pt-20 pb-10 mt-auto">
+<!-- Top Footer -->
+<div class="max-w-[1440px] mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<!-- Col 1: Brand -->
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<img alt="Full Mark Academy Logo" class="h-14 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvpMU8E7h4Kyq-_i2UnfMMmtGQjfH557Bde1Fm8wqiKjcoxk2xAZ2IDP8E2jp3rI9RJiMkGkjQs0Ax323cR9aDJOXepPGZyMjPKx3evoj-r74toDwbSNtsRpORhNrD33uSd5uVPwE0aw7K5j4jPnYYjagBp9-Yok3pLQ8U8JiVit_iPDvGZMWhBUnlHoFTy0A9uZcs-XdDDoENXi0EFKxu4Y_Shr80N8oByu4GJ4pjOr18muFw_jtYC6nPBS-wYQs3MUDDN9Vdnc0"/>
+<h3 class="font-display font-bold text-royal-gold text-xl tracking-tight uppercase">FULL MARK ACADEMY</h3>
+</div>
+<p class="text-outline text-sm leading-relaxed max-w-xs font-arabic-body">
+                نحن نسعى لتقديم تعليم نوعي يدمج بين الأصالة والمعايير الدولية، لتمكين طلابنا من التفوق في عالم متغير ومتطلب.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">facebook</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">camera</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">work</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-royal-gold hover:text-royal-gold transition-all" href="#"><span class="material-symbols-outlined text-xl">smart_display</span></a>
+</div>
+</div>
+<!-- Col 2: Courses -->
+<div class="space-y-6">
+<h4 class="font-arabic-headline font-bold text-on-surface text-lg border-r-4 border-royal-gold pr-3">دوراتنا</h4>
+<ul class="space-y-4 text-sm font-arabic-body text-outline">
+<li><a class="hover:text-royal-gold transition-colors" href="#">التحضير لاختبار آيلتس (IELTS)</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">مستويات اللغة العامة (General English)</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">دورة المحادثة المتقدمة</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الكتابة الأكاديمية والإنشاء</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الإنجليزية للأعمال والشركات</a></li>
+</ul>
+</div>
+<!-- Col 3: Quick Links -->
+<div class="space-y-6">
+<h4 class="font-arabic-headline font-bold text-on-surface text-lg border-r-4 border-royal-gold pr-3">روابط سريعة</h4>
+<ul class="space-y-4 text-sm font-arabic-body text-outline">
+<li><a class="hover:text-royal-gold transition-colors" href="#">من نحن</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">لماذا نحن؟</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">آخر التحديثات</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الأسئلة المساعدة</a></li>
+<li><a class="hover:text-royal-gold transition-colors" href="#">الدعم الأكاديمي</a></li>
+</ul>
+</div>
+<!-- Col 4: Accreditation -->
+<div class="space-y-6">
+<h4 class="font-arabic-headline font-bold text-on-surface text-lg border-r-4 border-royal-gold pr-3">الاعتمادات والتراخيص</h4>
+<div class="bg-surface-container-high/50 p-6 rounded-2xl border border-white/5">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-royal-gold text-3xl">verified_user</span>
+<span class="font-bold text-on-surface font-display tracking-widest uppercase">Approved Centre</span>
+</div>
+<p class="text-xs text-outline font-arabic-body mb-4">مرخص ومعتمد لتقديم البرامج الأكاديمية الدولية</p>
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-4">
+<span class="text-[10px] text-outline uppercase font-label">License Code</span>
+<span class="text-sm font-bold text-royal-gold font-display tracking-wider">OTE-JO-2026</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Copyright Bar -->
+<div class="border-t border-outline-variant/10">
+<div class="max-w-[1440px] mx-auto px-gutter py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-outline text-xs font-arabic-body">© 2024 أكاديمية العلامة الكاملة. جميع الحقوق محفوظة.</p>
+<p class="text-outline/60 text-[10px] font-arabic-body">صمم بأرقى معايير واجهات المستخدم - فئة النخبة</p>
+</div>
+</div>
+</footer>
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.innerText = 'visibility_off';
+        } else {
+            passwordInput.type = 'password';
+            toggleIcon.innerText = 'visibility';
+        }
+    }
+
+    // Form Submission Micro-interaction
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button[type="submit"]');
+        const originalContent = btn.innerHTML;
+        
+        btn.disabled = true;
+        btn.innerHTML = `
+            <svg class="animate-spin h-5 w-5 text-on-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>جاري التحقق...</span>
+        `;
+
+        // Mocking delay
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+            btn.disabled = false;
+        }, 1500);
+    });
+
+    // Background parallax effect for the login card
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        const card = document.querySelector('.glass-panel');
+        if (card) {
+            const xOffset = (x - 0.5) * 10;
+            const yOffset = (y - 0.5) * 10;
+            card.style.transform = `perspective(1000px) rotateY(${xOffset}deg) rotateX(${-yOffset}deg)`;
+        }
+    });
+</script>
+</body></html>

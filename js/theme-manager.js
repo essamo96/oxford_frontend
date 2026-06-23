@@ -17,6 +17,43 @@
     
     // Update theme switcher UI if exists
     updateThemeUI(themeName);
+    updateBrandLogos(themeName);
+  }
+
+  // Update brand logos and text next to them based on active theme
+  function updateBrandLogos(themeName) {
+    const isLight = themeName === 'theme-light';
+    const logoSrc = 'assets/img/logo_backup.png';
+
+    const navbarLogo = document.getElementById('navbar-logo');
+    if (navbarLogo) navbarLogo.src = logoSrc;
+
+    const footerLogo = document.getElementById('footer-logo');
+    if (footerLogo) footerLogo.src = logoSrc;
+
+    const approvedLogo = document.getElementById('footer-approved-logo');
+    if (approvedLogo) approvedLogo.src = logoSrc;
+
+    const splashLogo = document.getElementById('hero-splash-logo');
+    if (splashLogo) splashLogo.src = logoSrc;
+
+    // Header logo text brand swap (OXFORD vs FULL MARK)
+    const navbarText = document.querySelector('.logo-text');
+    if (navbarText) {
+      const brandWord = isLight ? 'FULL MARK ' : 'OXFORD ';
+      if (navbarText.firstChild && navbarText.firstChild.nodeType === Node.TEXT_NODE) {
+        navbarText.firstChild.textContent = brandWord;
+      }
+    }
+
+    // Footer logo text brand swap
+    const footerText = document.getElementById('footer-logo-text');
+    if (footerText) {
+      const brandWord = isLight ? 'FULL MARK ' : 'OXFORD ';
+      if (footerText.firstChild && footerText.firstChild.nodeType === Node.TEXT_NODE) {
+        footerText.firstChild.textContent = brandWord;
+      }
+    }
   }
 
   // Get active theme
@@ -54,6 +91,7 @@
   // Bind events when DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
     updateThemeUI(initialTheme);
+    updateBrandLogos(initialTheme);
 
     document.querySelectorAll('#themeCycleBtn, #themeCycleBtnMobile').forEach(btn => {
       btn.addEventListener('click', (e) => {

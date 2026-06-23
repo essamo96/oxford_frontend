@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تسجيل طالب جديد | أكاديمية العلامة الكاملة</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&amp;family=Outfit:wght@300;400;600;800&amp;family=Inter:wght@400;500&amp;family=Almarai:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#bac8e3",
+              "primary-fixed-dim": "#e0c298",
+              "on-secondary-container": "#00686f",
+              "on-error-container": "#ffdad6",
+              "surface-container-low": "#1e1b18",
+              "on-background": "#e8e1dc",
+              "surface-tint": "#e0c298",
+              "inverse-primary": "#725b38",
+              "surface-container-highest": "#373431",
+              "primary": "#e2c399",
+              "primary-container": "#c5a880",
+              "inverse-surface": "#e8e1dc",
+              "tertiary-fixed": "#d5e3ff",
+              "surface-container-high": "#2c2926",
+              "on-secondary": "#00363a",
+              "surface-dim": "#151310",
+              "on-primary": "#402d0f",
+              "on-primary-fixed-variant": "#584323",
+              "on-error": "#690005",
+              "secondary-fixed-dim": "#00dbe9",
+              "secondary-container": "#00eefc",
+              "outline": "#998f83",
+              "on-tertiary-fixed": "#0d1c30",
+              "on-secondary-fixed-variant": "#004f54",
+              "inverse-on-surface": "#33302d",
+              "background": "#151310",
+              "surface-variant": "#373431",
+              "on-tertiary": "#233146",
+              "outline-variant": "#4d463c",
+              "on-surface": "#e8e1dc",
+              "on-primary-fixed": "#281800",
+              "on-tertiary-fixed-variant": "#3a475d",
+              "surface-container-lowest": "#100e0b",
+              "surface-bright": "#3c3935",
+              "surface": "#151310",
+              "primary-fixed": "#fedeb2",
+              "on-secondary-fixed": "#002022",
+              "on-primary-container": "#513d1d",
+              "error-container": "#93000a",
+              "tertiary-container": "#9fadc7",
+              "surface-container": "#221f1c",
+              "secondary": "#d3fbff",
+              "tertiary-fixed-dim": "#b9c7e2",
+              "on-tertiary-container": "#334157",
+              "on-surface-variant": "#d1c5b8",
+              "error": "#ffb4ab",
+              "secondary-fixed": "#7df4ff",
+              "gold-royal": "#c5a880",
+              "gold-deep": "#7d633f"
+            },
+            fontFamily: {
+              "arabic-headline": ["Tajawal", "sans-serif"],
+              "arabic-body": ["Almarai", "sans-serif"],
+              "headline": ["Outfit", "sans-serif"],
+              "display": ["Outfit", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Outfit", "sans-serif"]
+            },
+            spacing: {
+              "navbar-default": "80px",
+              "gutter": "24px"
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        :root {
+            --font-ar: 'Tajawal', sans-serif;
+            --font-en: 'Outfit', sans-serif;
+        }
+        body {
+            font-family: var(--font-ar);
+            background-color: #151310;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .glass-panel {
+            background: rgba(34, 31, 28, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(197, 168, 128, 0.15);
+        }
+        .btn-luxury {
+            background: linear-gradient(135deg, #c5a880, #7d633f);
+            box-shadow: 0 4px 15px rgba(125, 99, 63, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-luxury:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(197, 168, 128, 0.4);
+            filter: brightness(1.1);
+        }
+        .floating-label-group {
+            position: relative;
+        }
+        .floating-label-group input:focus ~ label,
+        .floating-label-group input:not(:placeholder-shown) ~ label,
+        .floating-label-group textarea:focus ~ label,
+        .floating-label-group textarea:not(:placeholder-shown) ~ label {
+            top: -10px;
+            right: 12px;
+            font-size: 0.75rem;
+            color: #c5a880;
+            background: #1e1b18;
+            padding: 0 6px;
+        }
+        .floating-label-group label {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+            color: #998f83;
+        }
+        .floating-label-group.textarea-group label {
+            top: 24px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #151310;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4d463c;
+            border-radius: 10px;
+        }
+        .gold-glow {
+            filter: drop-shadow(0 0 8px rgba(197, 168, 128, 0.2));
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: #c5a880;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-gold-royal/30 selection:text-white custom-scrollbar">
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-gold-royal/5 blur-[120px] rounded-full animate-pulse"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/5 blur-[120px] rounded-full"></div>
+</div>
+<!-- Sticky Luxury Header -->
+<header class="fixed top-0 left-0 right-0 z-[100] bg-surface/60 backdrop-blur-xl border-b border-outline-variant/20">
+<nav class="max-w-[1440px] mx-auto px-gutter h-navbar-default flex items-center justify-between">
+<!-- Right side: Logo -->
+<div class="flex items-center gap-4">
+<img alt="Full Mark Academy Logo" class="h-16 w-auto object-contain gold-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5XX-0APodIdancnQN6vs1V4gYv37yojRGrPD-I3n-8TLobtf9zByN04Q_hQOVK56of1SCmmiyNCGtU2HskMUN_CaUbbyC0bfpvDmk2PaAV3MX7gi2qIP5F6Q0Fu2m2GjQ52GjZvcz2pJwVOv-yh9Quce-u_r4_4leQJjuXs7EYV8y3Apppa3TNJg5ojCt1TIPB5_FHI5OAK_C8CkQ3K2CGDxfVQlf9ReGKMjA-sbApEYagatkWu1hWn3pvBFKIrRYYu7YJTjp0uQ"/>
+<div class="hidden lg:block">
+<h1 class="font-display font-extrabold text-gold-royal text-2xl tracking-tight leading-none uppercase">FULL MARK ACADEMY</h1>
+<p class="font-arabic-body text-outline text-xs mt-1 tracking-[0.2em] font-medium">أكاديمية العلامة الكاملة</p>
+</div>
+</div>
+<!-- Center: Navigation -->
+<ul class="hidden xl:flex items-center gap-8 font-arabic-headline text-[15px] font-medium">
+<li><a class="nav-link text-gold-royal" href="#">الرئيسية</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-gold-royal" href="#">عن الأكاديمية</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-gold-royal" href="#">خدماتنا</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-gold-royal" href="#">اتصل بنا</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-gold-royal" href="#">مميزاتنا</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-gold-royal" href="#">الأخبار</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-gold-royal" href="#">التقييمات</a></li>
+<li><a class="nav-link text-on-surface-variant hover:text-gold-royal" href="#">الأسئلة الشائعة</a></li>
+</ul>
+<!-- Left: Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-gold-royal">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-gold-royal">
+<span class="material-symbols-outlined" data-icon="award_star">award_star</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30 hidden sm:block"></div>
+<a class="hidden md:block text-sm font-arabic-headline font-bold text-on-surface hover:text-gold-royal transition-colors" href="#">بوابة الطالب</a>
+<button class="btn-luxury px-6 py-2.5 rounded-full text-on-primary text-sm font-bold font-arabic-headline">
+                سجل الآن
+            </button>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 flex-grow flex items-center justify-center px-4 pt-40 pb-28">
+<div class="w-full animate-float max-w-4xl mx-auto">
+<!-- Registration Card -->
+<div class="glass-panel rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10">
+<div class="p-10 md:p-16">
+<!-- Title Section -->
+<div class="text-center mb-16">
+<div class="flex justify-center mb-6">
+<img alt="Full Mark Academy" class="h-20 w-auto mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5XX-0APodIdancnQN6vs1V4gYv37yojRGrPD-I3n-8TLobtf9zByN04Q_hQOVK56of1SCmmiyNCGtU2HskMUN_CaUbbyC0bfpvDmk2PaAV3MX7gi2qIP5F6Q0Fu2m2GjQ52GjZvcz2pJwVOv-yh9Quce-u_r4_4leQJjuXs7EYV8y3Apppa3TNJg5ojCt1TIPB5_FHI5OAK_C8CkQ3K2CGDxfVQlf9ReGKMjA-sbApEYagatkWu1hWn3pvBFKIrRYYu7YJTjp0uQ"/>
+</div>
+<h2 class="font-arabic-headline text-3xl md:text-5xl font-extrabold text-gold-royal mb-4">انضم لعائلة العلامة الكاملة</h2>
+<div class="h-1.5 w-24 bg-gold-royal mx-auto rounded-full mb-6"></div>
+<p class="text-on-surface-variant font-arabic-body text-base md:text-lg max-w-xl mx-auto leading-relaxed">أكمل بياناتك لبدء رحلة التميز الأكاديمي والحصول على تعليم بمعايير عالمية</p>
+</div>
+<!-- Expanded Form -->
+<form class="space-y-10" id="registrationForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+<!-- Full Name Arabic -->
+<div class="floating-label-group">
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all" id="fullnameAr" placeholder=" " required="" type="text"/>
+<label for="fullnameAr">اسم الطالب رباعي باللغة العربية</label>
+</div>
+<!-- Full Name English -->
+<div class="floating-label-group">
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all" id="fullnameEn" placeholder=" " required="" type="text"/>
+<label for="fullnameEn">Student Full Name (English)</label>
+</div>
+<!-- Email -->
+<div class="floating-label-group">
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all" id="email" placeholder=" " required="" type="email"/>
+<label for="email">البريد الإلكتروني</label>
+</div>
+<!-- Phone -->
+<div class="floating-label-group">
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all" id="phone" placeholder=" " required="" type="tel"/>
+<label for="phone">رقم الجوال</label>
+</div>
+<!-- Date of Birth -->
+<div class="floating-label-group">
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all" id="dob" placeholder=" " required="" type="date"/>
+<label for="dob">تاريخ الميلاد</label>
+</div>
+<!-- Gender -->
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all appearance-none" required="">
+<option disabled="" selected="" value="">الجنس</option>
+<option value="male">ذكر</option>
+<option value="female">أنثى</option>
+</select>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Profession -->
+<div class="floating-label-group md:col-span-1">
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all" id="profession" placeholder=" " required="" type="text"/>
+<label for="profession">المهنة</label>
+</div>
+<!-- Academy Branch -->
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all appearance-none" required="">
+<option disabled="" selected="" value="">اختر فرع الأكاديمية</option>
+<option value="cairo">القاهرة</option>
+<option value="alex">الإسكندرية</option>
+<option value="giza">الجيزة</option>
+<option value="mansoura">المنصورة</option>
+</select>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Full Width Fields -->
+<div class="space-y-10">
+<!-- Address -->
+<div class="floating-label-group textarea-group">
+<textarea class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all min-h-[120px]" id="address" placeholder=" " required=""></textarea>
+<label for="address">تفاصيل العنوان</label>
+</div>
+<!-- Health Status -->
+<div class="floating-label-group">
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-2xl px-6 py-5 text-on-surface focus:border-gold-royal focus:ring-2 focus:ring-gold-royal/20 outline-none transition-all" id="health" placeholder=" " required="" type="text"/>
+<label for="health">الحالة الصحية (يرجى ذكر أي ملاحظات هامة)</label>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-4 p-6 bg-gold-royal/5 rounded-2xl border border-gold-royal/10 mt-6">
+<input class="mt-1 w-5 h-5 rounded border-outline-variant bg-surface-container-low text-gold-royal focus:ring-gold-royal" id="terms" required="" type="checkbox"/>
+<label class="text-on-surface-variant text-sm md:text-base font-arabic-body leading-relaxed cursor-pointer" for="terms">
+                            أقر بصحة البيانات المسجلة أعلاه وأوافق على <a class="text-gold-royal font-bold hover:underline" href="#">شروط الالتحاق</a> وسياسة الخصوصية الخاصة بالأكاديمية
+                        </label>
+</div>
+<!-- Action Button -->
+<button class="btn-luxury w-full py-6 rounded-2xl text-on-primary font-bold text-xl font-arabic-headline mt-6 flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                        إنشاء حساب جديد
+                    </button>
+<!-- Login Link -->
+<div class="text-center pt-4">
+<p class="text-on-surface-variant text-sm font-arabic-body">
+                            هل لديك حساب مسبق في النظام؟ 
+                            <a class="text-gold-royal font-extrabold hover:underline underline-offset-4 mr-2" href="#">تسجيل الدخول</a>
+</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<!-- Professional Footer -->
+<footer class="relative z-10 bg-surface-container-lowest border-t border-outline-variant/20 pt-20 pb-10 mt-auto">
+<!-- Top Footer -->
+<div class="max-w-[1440px] mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<!-- Col 1: Brand -->
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<img alt="Full Mark Academy Logo" class="h-14 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5XX-0APodIdancnQN6vs1V4gYv37yojRGrPD-I3n-8TLobtf9zByN04Q_hQOVK56of1SCmmiyNCGtU2HskMUN_CaUbbyC0bfpvDmk2PaAV3MX7gi2qIP5F6Q0Fu2m2GjQ52GjZvcz2pJwVOv-yh9Quce-u_r4_4leQJjuXs7EYV8y3Apppa3TNJg5ojCt1TIPB5_FHI5OAK_C8CkQ3K2CGDxfVQlf9ReGKMjA-sbApEYagatkWu1hWn3pvBFKIrRYYu7YJTjp0uQ"/>
+<h3 class="font-display font-bold text-gold-royal text-xl tracking-tight uppercase">FULL MARK ACADEMY</h3>
+</div>
+<p class="text-outline text-sm leading-relaxed max-w-xs font-arabic-body">
+                نحن نسعى لتقديم تعليم نوعي يدمج بين الأصالة والمعايير الدولية، لتمكين طلابنا من التفوق في عالم متغير ومتطلب.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-gold-royal hover:text-gold-royal transition-all" href="#"><span class="material-symbols-outlined text-xl" data-icon="facebook">facebook</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-gold-royal hover:text-gold-royal transition-all" href="#"><span class="material-symbols-outlined text-xl" data-icon="camera">camera</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-gold-royal hover:text-gold-royal transition-all" href="#"><span class="material-symbols-outlined text-xl" data-icon="work">work</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline hover:border-gold-royal hover:text-gold-royal transition-all" href="#"><span class="material-symbols-outlined text-xl" data-icon="smart_display">smart_display</span></a>
+</div>
+</div>
+<!-- Col 2: Courses -->
+<div class="space-y-6">
+<h4 class="font-arabic-headline font-bold text-on-surface text-lg border-r-4 border-gold-royal pr-3">دوراتنا</h4>
+<ul class="space-y-4 text-sm font-arabic-body text-outline">
+<li><a class="hover:text-gold-royal transition-colors" href="#">التحضير لاختبار آيلتس (IELTS)</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">مستويات اللغة العامة (General English)</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">دورة المحادثة المتقدمة</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">الكتابة الأكاديمية والإنشاء</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">الإنجليزية للأعمال والشركات</a></li>
+</ul>
+</div>
+<!-- Col 3: Quick Links -->
+<div class="space-y-6">
+<h4 class="font-arabic-headline font-bold text-on-surface text-lg border-r-4 border-gold-royal pr-3">روابط سريعة</h4>
+<ul class="space-y-4 text-sm font-arabic-body text-outline">
+<li><a class="hover:text-gold-royal transition-colors" href="#">من نحن</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">لماذا نحن؟</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">آخر التحديثات</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">الأسئلة المساعدة</a></li>
+<li><a class="hover:text-gold-royal transition-colors" href="#">الدعم الأكاديمي</a></li>
+</ul>
+</div>
+<!-- Col 4: Accreditation -->
+<div class="space-y-6">
+<h4 class="font-arabic-headline font-bold text-on-surface text-lg border-r-4 border-gold-royal pr-3">الاعتمادات والتراخيص</h4>
+<div class="bg-surface-container-high/50 p-6 rounded-2xl border border-white/5">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-gold-royal text-3xl" data-icon="verified_user">verified_user</span>
+<span class="font-bold text-on-surface font-display tracking-widest uppercase">Approved Centre</span>
+</div>
+<p class="text-xs text-outline font-arabic-body mb-4">مرخص ومعتمد لتقديم البرامج الأكاديمية الدولية</p>
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-4">
+<span class="text-[10px] text-outline uppercase font-label">License Code</span>
+<span class="text-sm font-bold text-gold-royal font-display tracking-wider">OTE-JO-2026</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Copyright Bar -->
+<div class="border-t border-outline-variant/10">
+<div class="max-w-[1440px] mx-auto px-gutter py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-outline text-xs font-arabic-body">© 2026 أكاديمية العلامة الكاملة. جميع الحقوق محفوظة.</p>
+<p class="text-outline/60 text-[10px] font-arabic-body">صمم بأرقى معايير واجهات المستخدم - فئة النخبة</p>
+</div>
+</div>
+</footer>
+<script>
+    // Subtle interaction effect on form focus
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('scale-[1.01]');
+            input.parentElement.style.transition = 'transform 0.3s ease';
+        });
+        input.addEventListener('blur', () => {
+            input.parentElement.classList.remove('scale-[1.01]');
+        });
+    });
+
+    // Form submission animation
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button[type="submit"]');
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> جاري معالجة الطلب...';
+        btn.classList.add('opacity-80', 'cursor-not-allowed');
+        
+        setTimeout(() => {
+            alert('تم تقديم طلب تسجيلك بنجاح! سيقوم مستشارك الأكاديمي بالتواصل معك قريباً.');
+            btn.innerHTML = originalContent;
+            btn.classList.remove('opacity-80', 'cursor-not-allowed');
+            this.reset();
+        }, 2000);
+    });
+</script>
+</body></html>
