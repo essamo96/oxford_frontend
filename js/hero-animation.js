@@ -238,11 +238,18 @@
   function initNavbarScroll() {
     const header = document.getElementById('header-nav');
     if (!header) return;
+    let isScrolling = false;
     const onScroll = () => {
       if (window.scrollY > 60) header.classList.add('scrolled');
       else header.classList.remove('scrolled');
+      isScrolling = false;
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', () => {
+      if (!isScrolling) {
+        window.requestAnimationFrame(onScroll);
+        isScrolling = true;
+      }
+    }, { passive: true });
     onScroll();
   }
 

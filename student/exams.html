@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-gold" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="Student Dashboard | FULL MARK ACADEMY" data-ar="لوحة تحكم الطالب | أكاديمية العلامة الكاملة">Student Dashboard | FULL MARK ACADEMY</title>
+  <meta name="description" content="Student Dashboard for Full Mark Academy">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="shortcut icon" href="../assets/img/favicon.ico">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=Outfit:wght@300;400;600;700;800&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#e8d0ad', DEFAULT: '#c5a880', dark: '#a3875f' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Theme Stylesheets -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/themes/dark.css">
+  <link rel="stylesheet" href="../css/themes/light.css">
+  <link rel="stylesheet" href="../css/themes/gold.css">
+  <link rel="stylesheet" href="../css/animations/transitions.css">
+  <link rel="stylesheet" href="../css/animations/scroll-effects.css">
+  <link rel="stylesheet" href="../css/landing.css">
+  <link rel="stylesheet" href="../css/hero-animation.css">
+  <link rel="stylesheet" href="../dashboard-assets/css/dashboard.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+
+  <!-- Theme loading script -->
+  <script src="../js/theme-manager.js"></script>
+
+</head>
+<body class="position-relative overflow-x-hidden selection:bg-gold-light selection:text-black">
+
+  <!-- Ambient Animated Background -->
+  <div class="fixed inset-0 pointer-events-none" style="z-index: -1;">
+    <div class="absolute top-0 left-0 w-1/2 h-1/2 bg-gold/10 rounded-full blur-[120px] mix-blend-screen opacity-50 float-slow"></div>
+    <div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gold/5 rounded-full blur-[150px] mix-blend-screen opacity-50 float-medium"></div>
+  </div>
+
+  <div class="dashboard-wrapper">
+    <!-- Overlay for mobile sidebar -->
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ════ SIDEBAR ════ -->
+    <aside id="dashboardSidebar" class="dashboard-sidebar">
+      <div class="d-flex flex-column align-items-center mb-5 border-b pb-4" style="border-color: var(--separator-color) !important;">
+        <div class="w-24 h-24 rounded-circle border-2 p-1 mb-3 position-relative overflow-hidden" style="border-color: var(--accent-color);">
+          <img src="../assets/favicon-removebg-preview.png" alt="Student Profile" class="w-100 h-100 object-contain rounded-circle">
+        </div>
+      </div>
+
+      <nav class="flex-1 d-flex flex-column gap-1 w-100 px-2">
+        <!-- Dashboard -->
+        <a href="dashboard.html" class="sidebar-nav-item active">
+          <i class="bi bi-grid-1x2-fill sidebar-nav-item-icon"></i>
+          <span class="sidebar-nav-item-text" data-en="Overview" data-ar="الرئيسية">Overview</span>
+        </a>
+
+        <!-- Academy -->
+        <a href="#menuAcademy" class="sidebar-nav-item accordion-trigger"  aria-expanded="false" aria-controls="menuAcademy">
+          <i class="bi bi-mortarboard sidebar-nav-item-icon"></i>
+          <span class="sidebar-nav-item-text" data-en="Academy" data-ar="الأكاديمية">Academy</span>
+          <i class="bi bi-chevron-down sidebar-nav-item-chevron"></i>
+        </a>
+        <ul class="sidebar-submenu-wrapper sidebar-submenu" id="menuAcademy">
+          <li><a href="academy-programs.html" class="sidebar-submenu-item" data-en="Programs" data-ar="البرامج الدراسية">Programs</a></li>
+          <li><a href="academy-courses.html" class="sidebar-submenu-item" data-en="Courses" data-ar="المواد التعليمية">Courses</a></li>
+          <li><a href="academy-groups.html" class="sidebar-submenu-item" data-en="Study Groups" data-ar="المجموعات الدراسية">Study Groups</a></li>
+          <li><a href="academy-sessions.html" class="sidebar-submenu-item" data-en="Sessions & Lectures" data-ar="الجلسات والمحاضرات">Sessions & Lectures</a></li>
+          <li><a href="academy-resources.html" class="sidebar-submenu-item" data-en="Resources" data-ar="الموارد التعليمية">Resources</a></li>
+        </ul>
+
+        <!-- Exams -->
+        <a href="#menuExams" class="sidebar-nav-item accordion-trigger"  aria-expanded="false" aria-controls="menuExams">
+          <i class="bi bi-journal-check sidebar-nav-item-icon"></i>
+          <span class="sidebar-nav-item-text" data-en="Exams & Assessments" data-ar="الامتحانات والتقييمات">Exams & Assessments</span>
+          <i class="bi bi-chevron-down sidebar-nav-item-chevron"></i>
+        </a>
+        <ul class="sidebar-submenu-wrapper sidebar-submenu" id="menuExams">
+          <li><a href="exams-main.html" class="sidebar-submenu-item" data-en="Exams" data-ar="الامتحانات">Exams</a></li>
+          <li><a href="exams-results.html" class="sidebar-submenu-item" data-en="Results" data-ar="النتائج">Results</a></li>
+          <li><a href="exams-assessments.html" class="sidebar-submenu-item" data-en="Assessments" data-ar="التقييمات">Assessments</a></li>
+          <li><a href="exams-certificates.html" class="sidebar-submenu-item" data-en="Certificates" data-ar="الشهادات">Certificates</a></li>
+        </ul>
+
+        <!-- Financials -->
+        <a href="#menuFinance" class="sidebar-nav-item accordion-trigger"  aria-expanded="false" aria-controls="menuFinance">
+          <i class="bi bi-wallet2 sidebar-nav-item-icon"></i>
+          <span class="sidebar-nav-item-text" data-en="Financials" data-ar="المالية">Financials</span>
+          <i class="bi bi-chevron-down sidebar-nav-item-chevron"></i>
+        </a>
+        <ul class="sidebar-submenu-wrapper sidebar-submenu" id="menuFinance">
+          <li><a href="finance-records.html" class="sidebar-submenu-item" data-en="Financial Record" data-ar="السجل المالي">Financial Record</a></li>
+          <li><a href="finance-invoices.html" class="sidebar-submenu-item" data-en="Invoices" data-ar="الفواتير">Invoices</a></li>
+          <li><a href="finance-payments.html" class="sidebar-submenu-item" data-en="Payments" data-ar="الدفعات">Payments</a></li>
+          <li><a href="finance-alerts.html" class="sidebar-submenu-item" data-en="Alerts" data-ar="الإشعارات المالية">Alerts</a></li>
+        </ul>
+
+        <!-- Communication -->
+        <a href="#menuComm" class="sidebar-nav-item accordion-trigger"  aria-expanded="false" aria-controls="menuComm">
+          <i class="bi bi-chat-left-dots sidebar-nav-item-icon"></i>
+          <span class="sidebar-nav-item-text" data-en="Communication" data-ar="التواصل">Communication</span>
+          <i class="bi bi-chevron-down sidebar-nav-item-chevron"></i>
+        </a>
+        <ul class="sidebar-submenu-wrapper sidebar-submenu" id="menuComm">
+          <li><a href="comm-messages.html" class="sidebar-submenu-item" data-en="Messages" data-ar="الرسائل">Messages</a></li>
+          <li><a href="comm-announcements.html" class="sidebar-submenu-item" data-en="Announcements" data-ar="الإعلانات">Announcements</a></li>
+          <li><a href="comm-notifications.html" class="sidebar-submenu-item" data-en="Notifications" data-ar="الإشعارات">Notifications</a></li>
+          <li><a href="comm-support.html" class="sidebar-submenu-item" data-en="Support" data-ar="الدعم الفني">Support</a></li>
+        </ul>
+
+        <!-- Profile -->
+        <a href="#menuProfile" class="sidebar-nav-item accordion-trigger"  aria-expanded="false" aria-controls="menuProfile">
+          <i class="bi bi-person sidebar-nav-item-icon"></i>
+          <span class="sidebar-nav-item-text" data-en="My Account" data-ar="حسابي">My Account</span>
+          <i class="bi bi-chevron-down sidebar-nav-item-chevron"></i>
+        </a>
+        <ul class="sidebar-submenu-wrapper sidebar-submenu" id="menuProfile">
+          <li><a href="profile-data.html" class="sidebar-submenu-item" data-en="My Data" data-ar="بياناتي">My Data</a></li>
+          <li><a href="profile-settings.html" class="sidebar-submenu-item" data-en="Profile" data-ar="الملف الشخصي">Profile</a></li>
+          <li><a href="profile-security.html" class="sidebar-submenu-item" data-en="Security" data-ar="الأمان">Security</a></li>
+          <li><a href="../index.html" class="sidebar-submenu-item text-danger" data-en="Logout" data-ar="تسجيل الخروج">Logout</a></li>
+        </ul>
+      </nav>
+
+      <div class="mt-4 pt-4 border-t d-flex flex-column gap-2" style="border-color: var(--separator-color) !important;">
+        <a href="#" class="sidebar-nav-item">
+          <i class="bi bi-gear"></i>
+          <span data-en="Settings" data-ar="الإعدادات">Settings</span>
+        </a>
+        <a href="../index.html" class="sidebar-nav-item text-danger">
+          <i class="bi bi-box-arrow-left"></i>
+          <span data-en="Logout" data-ar="تسجيل الخروج">Logout</span>
+        </a>
+        <button class="btn btn-luxury w-100 mt-2 py-2 d-flex align-items-center justify-content-center gap-2">
+          <i class="bi bi-headset"></i>
+          <span data-en="Support" data-ar="الدعم الفني">Support</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ════ TOP HEADER ════ -->
+    <header class="dashboard-header">
+      <div class="d-flex align-items-center">
+        <!-- Mobile Sidebar Toggle -->
+        <button class="btn btn-glass icon-btn d-lg-none me-3" onclick="toggleSidebar()">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+        <h2 class="h5 mb-0 fw-bold d-none d-md-block" style="color: var(--text-primary);" data-en="Overview" data-ar="نظرة عامة">Overview</h2>
+      </div>
+
+      <div class="d-flex align-items-center gap-3">
+        <!-- Language Switcher -->
+        <button id="langToggleBtn" class="btn btn-glass icon-btn" onclick="toggleLanguage()" title="Toggle language">
+          <i class="bi bi-globe2"></i>
+        </button>
+
+        <!-- Theme Cycle -->
+        <button id="themeCycleBtn" class="btn btn-glass icon-btn" type="button" title="Switch theme">
+          <i class="bi bi-award-fill"></i>
+        </button>
+
+        <!-- Notifications -->
+        <button class="btn btn-glass icon-btn position-relative">
+          <i class="bi bi-bell-fill"></i>
+          <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span>
+        </button>
+
+        <!-- Profile Mini -->
+        <div class="d-flex align-items-center gap-2 ms-2 cursor-pointer p-1 rounded-pill" style="background: var(--bg-secondary); border: 1px solid var(--separator-color);">
+          <img src="../assets/favicon-removebg-preview.png" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
+          <span class="fw-semibold d-none d-sm-block me-3 text-sm" style="color: var(--text-primary);">Ahmad M.</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ════ MAIN CONTENT ════ -->
+    <main class="dashboard-main">
+      <div class="container-fluid px-0">
+        
+        <!-- Welcome Banner -->
+        <section class="glass-panel rounded-4 p-4 p-md-5 mb-4 position-relative overflow-hidden d-flex flex-column flex-md-row align-items-center justify-content-between gap-4">
+          <div class="position-absolute top-0 end-0 w-50 h-100 bg-gold/10 blur-[80px]"></div>
+          <div class="position-relative z-1 text-center text-md-start">
+            <h1 class="display-6 fw-bold mb-2" style="color: var(--text-primary);">
+              <span data-en="Welcome back," data-ar="مرحباً بعودتك،">Welcome back,</span> <span style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Ahmad M.</span>
+            </h1>
+            <p class="fs-5 opacity-75 mb-0" data-en="You have completed 75% of your weekly goals. Keep it up!" data-ar="لقد أكملت 75% من أهدافك التعليمية لهذا الأسبوع. واصل التقدم!">
+              You have completed 75% of your weekly goals. Keep it up!
+            </p>
+          </div>
+          <div class="position-relative z-1 d-flex align-items-center justify-content-center" style="width: 120px; height: 120px;">
+            <svg class="w-100 h-100 transform -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="var(--bg-tertiary)" stroke-width="8"></circle>
+              <circle class="progress-ring-circle" cx="50" cy="50" r="40" fill="none" stroke="var(--accent-color)" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round"></circle>
+            </svg>
+            <div class="position-absolute d-flex flex-column align-items-center justify-content-center">
+              <span class="fs-4 fw-bold" style="color: var(--accent-color);">75%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="row g-4 mb-4">
+          <!-- Stat 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-panel rounded-4 p-4 h-100 tilt-card glow-card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="p-2 rounded" style="background: rgba(197, 168, 128, 0.1); color: var(--accent-color);">
+                  <i class="bi bi-award fs-4"></i>
+                </div>
+                <span class="badge bg-success bg-opacity-25 text-success">+0.2 <i class="bi bi-graph-up"></i></span>
+              </div>
+              <p class="mb-1 text-sm opacity-75" data-en="Current GPA" data-ar="المعدل التراكمي (GPA)">Current GPA</p>
+              <h3 class="fw-bold mb-0" style="color: var(--text-primary);">3.85</h3>
+            </div>
+          </div>
+          <!-- Stat 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-panel rounded-4 p-4 h-100 tilt-card glow-card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="p-2 rounded" style="background: rgba(197, 168, 128, 0.1); color: var(--accent-color);">
+                  <i class="bi bi-journal-check fs-4"></i>
+                </div>
+              </div>
+              <p class="mb-1 text-sm opacity-75" data-en="Completed Courses" data-ar="الدورات المكتملة">Completed Courses</p>
+              <h3 class="fw-bold mb-0" style="color: var(--text-primary);">12</h3>
+            </div>
+          </div>
+          <!-- Active Lecture (Spans 2 cols) -->
+          <div class="col-lg-6">
+            <div class="glass-panel rounded-4 p-4 h-100 tilt-card glow-card position-relative overflow-hidden d-flex flex-column justify-content-center">
+              <div class="position-absolute start-0 top-0 h-100 w-50 bg-gradient-to-r from-black/20 to-transparent z-0 pointer-events-none"></div>
+              <div class="position-relative z-1 d-flex flex-column flex-sm-row justify-content-between align-items-start h-100 gap-3">
+                <div>
+                  <span class="badge bg-danger mb-2 d-inline-flex align-items-center gap-2">
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    <span data-en="LIVE NOW" data-ar="مباشر الآن">LIVE NOW</span>
+                  </span>
+                  <h4 class="fw-bold mb-1" style="color: var(--text-primary);" data-en="Advanced Physics - Lec 4" data-ar="الفيزياء المتقدمة - المحاضرة 4">Advanced Physics - Lec 4</h4>
+                  <p class="text-sm opacity-75 mb-0"><i class="bi bi-clock me-1"></i> <span data-en="Started 15 mins ago" data-ar="بدأ منذ 15 دقيقة">Started 15 mins ago</span></p>
+                </div>
+                <button class="btn btn-luxury px-4 py-2 mt-auto mt-sm-0 align-self-sm-center" data-en="Join Session" data-ar="انضمام">Join Session</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="row g-4">
+          <!-- My Courses List -->
+          <div class="col-lg-8">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <h3 class="h4 fw-bold mb-0 border-start border-4 ps-3" style="border-color: var(--accent-color) !important;" data-en="My Current Courses" data-ar="دوراتي الحالية">My Current Courses</h3>
+              <a href="#" class="text-decoration-none text-sm fw-medium d-flex align-items-center gap-1" style="color: var(--accent-color);">
+                <span data-en="View All" data-ar="عرض الكل">View All</span>
+                <i class="bi bi-arrow-right rtl:rotate-180"></i>
+              </a>
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+              <!-- Course Item -->
+              <div class="glass-panel rounded-3 p-3 d-flex align-items-center gap-3 transition-all hover:bg-white/5 cursor-pointer">
+                <div class="rounded p-3 d-flex align-items-center justify-content-center border" style="background: var(--bg-secondary); border-color: var(--separator-color); width: 64px; height: 64px;">
+                  <i class="bi bi-calculator fs-2" style="color: var(--accent-color);"></i>
+                </div>
+                <div class="flex-1 w-100">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h5 class="mb-0 fs-6 fw-bold" style="color: var(--text-primary);" data-en="Mathematics - Calculus" data-ar="الرياضيات - التفاضل والتكامل">Mathematics - Calculus</h5>
+                    <span class="text-sm fw-bold" style="color: var(--accent-color);">60%</span>
+                  </div>
+                  <div class="progress mb-1" style="height: 6px; background: var(--bg-tertiary);">
+                    <div class="progress-bar" role="progressbar" style="width: 60%; background: var(--accent-gradient);" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="text-xs opacity-75"><i class="bi bi-book me-1"></i> <span data-en="12 out of 20 Lessons" data-ar="12 من 20 درس">12 out of 20 Lessons</span></span>
+                </div>
+              </div>
+
+              <!-- Course Item -->
+              <div class="glass-panel rounded-3 p-3 d-flex align-items-center gap-3 transition-all hover:bg-white/5 cursor-pointer">
+                <div class="rounded p-3 d-flex align-items-center justify-content-center border" style="background: var(--bg-secondary); border-color: var(--separator-color); width: 64px; height: 64px;">
+                  <i class="bi bi-virus fs-2" style="color: #00f0ff;"></i>
+                </div>
+                <div class="flex-1 w-100">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h5 class="mb-0 fs-6 fw-bold" style="color: var(--text-primary);" data-en="Organic Chemistry" data-ar="الكيمياء العضوية">Organic Chemistry</h5>
+                    <span class="text-sm fw-bold" style="color: var(--accent-color);">35%</span>
+                  </div>
+                  <div class="progress mb-1" style="height: 6px; background: var(--bg-tertiary);">
+                    <div class="progress-bar" role="progressbar" style="width: 35%; background: var(--accent-gradient);" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <span class="text-xs opacity-75"><i class="bi bi-book me-1"></i> <span data-en="7 out of 20 Lessons" data-ar="7 من 20 درس">7 out of 20 Lessons</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deadlines Timeline -->
+          <div class="col-lg-4">
+            <h3 class="h4 fw-bold mb-4 border-start border-4 ps-3" style="border-color: var(--accent-color) !important;" data-en="Upcoming Deadlines" data-ar="المواعيد القادمة">Upcoming Deadlines</h3>
+            
+            <div class="glass-panel rounded-4 p-4 position-relative">
+              <div class="position-absolute end-0 top-0 bottom-0 ms-4" style="width: 2px; background: var(--separator-color); margin-right: 28px;"></div>
+              
+              <div class="d-flex flex-column gap-4 position-relative z-1">
+                <!-- Timeline Item -->
+                <div class="d-flex gap-3">
+                  <div class="rounded-circle border border-4 mt-1 flex-shrink-0" style="width: 20px; height: 20px; background: #ff4757; border-color: var(--bg-primary); z-index: 2; box-shadow: 0 0 10px rgba(255,71,87,0.5);"></div>
+                  <div>
+                    <span class="text-sm fw-bold d-block mb-1" style="color: #ff4757;" data-en="Tomorrow - 10:00 AM" data-ar="غداً - 10:00 ص">Tomorrow - 10:00 AM</span>
+                    <div class="rounded p-3 border" style="background: var(--bg-secondary); border-color: var(--separator-color);">
+                      <h6 class="fw-bold mb-1" style="color: var(--text-primary);" data-en="Midterm Physics Exam" data-ar="امتحان الفيزياء النصفي">Midterm Physics Exam</h6>
+                      <span class="text-xs opacity-75" data-en="Virtual Hall A" data-ar="القاعة الافتراضية أ">Virtual Hall A</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Timeline Item -->
+                <div class="d-flex gap-3">
+                  <div class="rounded-circle border border-4 mt-1 flex-shrink-0" style="width: 20px; height: 20px; background: var(--accent-color); border-color: var(--bg-primary); z-index: 2;"></div>
+                  <div>
+                    <span class="text-sm fw-bold d-block mb-1" style="color: var(--accent-color);" data-en="Oct 15 - 11:59 PM" data-ar="15 أكتوبر - 11:59 م">Oct 15 - 11:59 PM</span>
+                    <div class="rounded p-3 border" style="background: var(--bg-secondary); border-color: var(--separator-color);">
+                      <h6 class="fw-bold mb-1" style="color: var(--text-primary);" data-en="History Assignment Due" data-ar="تسليم بحث التاريخ">History Assignment Due</h6>
+                      <span class="text-xs opacity-75" data-en="Via Education Portal" data-ar="عبر البوابة التعليمية">Via Education Portal</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Chat Widget (Floating) -->
+  <button class="btn btn-luxury rounded-circle position-fixed bottom-0 end-0 m-4 d-flex align-items-center justify-content-center shadow-lg" style="width: 60px; height: 60px; z-index: 1000;">
+    <i class="bi bi-chat-dots-fill fs-4"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/lang.js"></script>
+  <script src="../dashboard-assets/js/dashboard.js"></script>
+  <script>
+    // Initialize Theme Cycle logic dynamically using existing mechanism if available, 
+    // or handle it individually for the dashboard.
+    const cycleBtn = document.getElementById('themeCycleBtn');
+    if(cycleBtn) {
+      cycleBtn.addEventListener('click', () => {
+        window.dispatchEvent(new Event('themeCycleRequest'));
+      });
+    }
+
+    // Sidebar Mobile Toggle
+    function toggleSidebar() {
+      document.getElementById('dashboardSidebar').classList.toggle('mobile-open');
+      document.getElementById('sidebarOverlay').classList.toggle('active');
+    }
+
+    // Border RTL fix script
+    document.addEventListener('languageChanged', (e) => {
+      // Dynamic adjust border-start to border-end based on RTL
+      const borders = document.querySelectorAll('.border-start, .border-end');
+      borders.forEach(el => {
+        if (e.detail.dir === 'rtl') {
+          if (el.classList.contains('border-start')) {
+            el.classList.replace('border-start', 'border-end');
+          }
+        } else {
+          if (el.classList.contains('border-end')) {
+            el.classList.replace('border-end', 'border-start');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

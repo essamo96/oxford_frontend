@@ -49,22 +49,3 @@ body {
   font-family: var(--font-ar);
 }
 
-/* Logo Theme Calibration */
-.theme-gold #navbar-logo,
-.theme-gold #footer-logo,
-.theme-gold #footer-approved-logo,
-.theme-gold #hero-splash-logo {
-  filter: none;
-}
-.theme-dark #navbar-logo,
-.theme-dark #footer-logo,
-.theme-dark #footer-approved-logo,
-.theme-dark #hero-splash-logo {
-  filter: hue-rotate(130deg) brightness(1.2) saturate(1.2);
-}
-.theme-light #navbar-logo,
-.theme-light #footer-logo,
-.theme-light #footer-approved-logo,
-.theme-light #hero-splash-logo {
-  filter: brightness(0.4) hue-rotate(155deg) saturate(2);
-}
