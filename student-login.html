@@ -450,10 +450,8 @@
         btn.style.background = 'linear-gradient(135deg, #4caf87, #2e7d55)';
         txt.textContent = lang === 'ar' ? 'تم تسجيل الدخول' : 'Signed In!';
         setTimeout(() => {
-          btn.style.background = '';
-          icon.className = 'bi bi-box-arrow-in-right';
-          txt.textContent = lang === 'ar' ? 'دخول المنصة' : 'Access My Platform';
-        }, 3000);
+          window.location.href = 'student-dashboard.html';
+        }, 1500);
       }, 1800);
     });
 

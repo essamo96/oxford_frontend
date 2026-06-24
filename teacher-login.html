@@ -516,10 +516,8 @@
         btn.style.background = 'linear-gradient(135deg, #4caf87, #2e7d55)';
         txt.textContent = lang === 'ar' ? 'تم تسجيل الدخول بنجاح' : 'Access Granted!';
         setTimeout(() => {
-          btn.style.background = '';
-          icon.className = 'bi bi-arrow-right-circle-fill';
-          txt.textContent = lang === 'ar' ? 'دخول لوحة التحكم' : 'Access Dashboard';
-        }, 3000);
+          window.location.href = 'teacher-dashboard.html';
+        }, 1500);
       }, 1800);
     });
 
