@@ -16,6 +16,37 @@
   background: var(--accent-color);
 }
 
+/* Button Styles */
+.btn-luxury {
+  background: var(--accent-gradient, linear-gradient(135deg, #c5a880 0%, #a3875f 50%, #7d633f 100%));
+  color: #050402 !important; /* Keep text dark for contrast against gold */
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.theme-light .btn-luxury {
+  color: #ffffff !important;
+}
+.btn-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+.btn-glass:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-color);
+}
+
 /* Glassmorphism Styles */
 .glass-panel {
   background: var(--glass-bg);

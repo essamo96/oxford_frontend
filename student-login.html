@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-gold" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="Student Login | FULL MARK ACADEMY" data-ar="دخول الطالب | أكاديمية العلامة الكاملة">Student Login | FULL MARK ACADEMY</title>
+  <meta name="description" content="Student portal login for FULL MARK ACADEMY.">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { gold: { light: '#e8d0ad', DEFAULT: '#c5a880', dark: '#a3875f' } } } } }
+  </script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/themes/dark.css">
+  <link rel="stylesheet" href="css/themes/light.css">
+  <link rel="stylesheet" href="css/themes/gold.css">
+  <link rel="stylesheet" href="css/animations/transitions.css">
+  <link rel="stylesheet" href="css/animations/scroll-effects.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/hero-animation.css">
+  <link rel="stylesheet" href="css/rtl.css">
+
+  <script src="js/theme-manager.js"></script>
+
+  <style>
+    .page-wrapper { min-height: 100dvh; display: flex; flex-direction: column; padding-top: var(--navbar-height, 80px); }
+    .page-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: clamp(3rem, 8vw, 6rem) 1rem; position: relative; }
+
+    /* Ambient orbs */
+    .ambient-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); }
+    .ambient-orb-1 { width: 600px; height: 600px; top: -15%; right: -10%; background: var(--accent-glow); opacity: 0.6; animation: breathe 7s ease-in-out infinite; }
+    .ambient-orb-2 { width: 400px; height: 400px; bottom: -10%; left: -8%; background: var(--accent-glow); opacity: 0.35; animation: breathe 9s ease-in-out infinite reverse; }
+    @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+
+    /* Subtle grid pattern */
+    .bg-grid-pattern {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(circle at 1px 1px, rgba(197,168,128,0.04) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+
+    /* Login card — larger for visual impact */
+    .login-card {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 500px;
+    }
+    .login-card-inner {
+      background: var(--bg-secondary, rgba(13,10,6,0.93));
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(197,168,128,0.2);
+      border-radius: var(--radius-xl, 24px);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.55), 0 0 60px rgba(197,168,128,0.04) inset;
+      overflow: hidden;
+      padding: 3rem 3rem 2.5rem;
+      transition: transform 0.6s cubic-bezier(.22,.7,.2,1), box-shadow 0.6s cubic-bezier(.22,.7,.2,1);
+    }
+    .login-card-inner:hover { transform: translateY(-4px); box-shadow: 0 50px 120px rgba(0,0,0,0.65), 0 0 60px rgba(197,168,128,0.06) inset; }
+
+    /* Top accent line */
+    .login-card-inner::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--accent-gradient, linear-gradient(135deg, #c5a880, #7d633f));
+    }
+
+    /* Card header */
+    .card-header-block { text-align: center; margin-bottom: 2rem; }
+    .card-title {
+      font-family: var(--font-en, 'Outfit', sans-serif);
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 800;
+      color: var(--accent-color, #c5a880);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    [dir="rtl"] .card-title { font-family: var(--font-ar, 'Tajawal', sans-serif); }
+    .card-subtitle { color: var(--text-muted, #8c8276); font-size: 0.9rem; }
+
+    /* Input groups */
+    .input-group-luxe {
+      position: relative;
+      margin-bottom: 0;
+    }
+    .input-group-luxe label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary, #d1c7bd);
+      margin-bottom: 0.5rem;
+    }
+    .input-group-luxe .lux-input {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      background: rgba(5,4,2,0.45);
+      border: 1px solid rgba(197,168,128,0.15);
+      border-radius: var(--radius-md, 12px);
+      color: var(--text-primary, #fbfbf9);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    [dir="rtl"] .input-group-luxe .lux-input { padding: 0.9rem 2.8rem 0.9rem 1rem; }
+    .input-group-luxe .lux-input:focus {
+      border-color: var(--accent-color, #c5a880);
+      box-shadow: 0 0 0 3px rgba(197,168,128,0.12);
+    }
+    .input-group-luxe .lux-input::placeholder { color: var(--text-muted, #8c8276); font-size: 0.9rem; }
+    .input-group-luxe .input-icon {
+      position: absolute;
+      left: 0.9rem;
+      bottom: 0.85rem;
+      color: var(--text-muted, #8c8276);
+      font-size: 1.05rem;
+      pointer-events: none;
+      transition: color 0.2s ease;
+    }
+    [dir="rtl"] .input-group-luxe .input-icon { left: auto; right: 0.9rem; }
+    .input-group-luxe:focus-within .input-icon { color: var(--accent-color, #c5a880); }
+
+    .pw-toggle-btn {
+      position: absolute;
+      right: 0.9rem;
+      bottom: 0.8rem;
+      background: none;
+      border: none;
+      color: var(--text-muted, #8c8276);
+      cursor: pointer;
+      padding: 0.25rem;
+      transition: color 0.2s ease;
+    }
+    [dir="rtl"] .pw-toggle-btn { right: auto; left: 0.9rem; }
+    .pw-toggle-btn:hover { color: var(--accent-color, #c5a880); }
+    .pw-input-wrap .lux-input { padding-right: 2.8rem; }
+    [dir="rtl"] .pw-input-wrap .lux-input { padding-right: 2.8rem; padding-left: 2.8rem; }
+
+    /* Remember me & forgot */
+    .form-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .form-meta label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary, #d1c7bd); }
+    .form-meta input[type="checkbox"] { accent-color: var(--accent-color, #c5a880); width: 1rem; height: 1rem; }
+    .form-meta a { color: var(--accent-color, #c5a880); text-decoration: none; font-weight: 600; }
+    .form-meta a:hover { text-decoration: underline; }
+
+    /* Divider */
+    .or-divider { display: flex; align-items: center; gap: 0.75rem; color: var(--text-muted, #8c8276); font-size: 0.8rem; }
+    .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: rgba(197,168,128,0.12); }
+
+    /* Sign up link */
+    .signup-link { text-align: center; font-size: 0.88rem; color: var(--text-muted, #8c8276); }
+    .signup-link a { color: var(--accent-color, #c5a880); font-weight: 700; text-decoration: none; margin-inline-start: 0.3rem; }
+    .signup-link a:hover { text-decoration: underline; }
+
+    /* Quick access chips */
+    .quick-access { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+    .quick-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      background: rgba(197,168,128,0.06);
+      border: 1px solid rgba(197,168,128,0.15);
+      border-radius: 9999px;
+      color: var(--text-secondary, #d1c7bd);
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .quick-chip:hover { background: rgba(197,168,128,0.14); border-color: rgba(197,168,128,0.35); color: var(--accent-color, #c5a880); }
+
+    /* Loading button state */
+    .btn-luxury.loading { opacity: 0.75; pointer-events: none; }
+    @media (max-width: 576px) { .login-card-inner { padding: 2rem 1.5rem; } }
+  </style>
+</head>
+<body class="smooth-transition">
+
+  <div class="bg-grid-pattern" aria-hidden="true"></div>
+  <div class="ambient-orb ambient-orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb ambient-orb-2" aria-hidden="true"></div>
+
+  <!-- ════ HEADER ════ -->
+  <header id="header-nav" class="sticky-header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="d-flex align-items-center text-decoration-none">
+        <img id="navbar-logo" src="assets/img/logo_backup.png" alt="FULL MARK ACADEMY" class="h-24 object-contain py-1 me-3" style="image-rendering: -webkit-optimize-contrast;">
+      </a>
+      <nav id="primary-nav" class="primary-nav d-flex align-items-center">
+        <a href="index.html#hero" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="index.html#about" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="index.html#programs" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Programs" data-ar="البرامج">Programs</a>
+        <a href="index.html#actions" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
+        <a href="index.html#contact" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+        <a href="index.html#strengths" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Strengths" data-ar="مميزاتنا">Strengths</a>
+        <a href="index.html#news" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="News" data-ar="الأخبار">News</a>
+        <div class="dropdown nav-more-wrap">
+          <button class="btn btn-glass desktop-nav-link nav-more-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <span data-en="More" data-ar="المزيد">More</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end glass-panel border-0 mt-2 shadow-lg">
+            <li><a class="dropdown-item" href="index.html#testimonials" data-en="Testimonials" data-ar="التقييمات">Testimonials</a></li>
+            <li><a class="dropdown-item" href="index.html#faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="header-actions d-flex align-items-center">
+        <button id="langToggleBtn" class="btn btn-glass icon-btn" onclick="toggleLanguage()" aria-label="Toggle language"><i class="bi bi-globe2"></i></button>
+        <button id="themeCycleBtn" class="btn btn-glass icon-btn" type="button" aria-label="Switch theme"><i class="bi bi-award-fill"></i></button>
+        <button id="cartBtn" class="btn btn-glass icon-btn position-relative" onclick="toggleCartModal()" aria-label="Open cart">
+          <i class="bi bi-bag-fill"></i>
+          <span id="cartCountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none; font-size: 0.65rem;">0</span>
+        </button>
+        <a href="student-login.html" class="btn btn-glass student-gate-link px-3 py-2 rounded-lg active" data-en="Student Login" data-ar="دخول الطالب">Student Login</a>
+        <a href="student-register.html" class="btn btn-luxury px-4 py-2 rounded-lg" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
+      </div>
+      <button id="mobileMenuToggle" class="mobile-menu-toggle text-2xl p-2 rounded-lg" style="color: var(--text-primary);" aria-label="Open menu"><i class="bi bi-list"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileMenuBackdrop" class="mobile-menu-backdrop"></div>
+  <div id="mobileNavMenu" class="mobile-nav-menu d-flex flex-column justify-content-between">
+    <div>
+      <div class="d-flex align-items-center justify-content-between mb-8">
+        <span class="text-xl font-bold tracking-wider" style="color: var(--text-primary);" data-en="FULL MARK ACADEMY" data-ar="أكاديمية العلامة الكاملة">FULL MARK ACADEMY</span>
+        <button id="closeMobileMenu" class="text-2xl p-2" style="color: var(--text-primary);"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <nav class="d-flex flex-column space-y-4">
+        <a href="index.html#hero" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="index.html#about" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="index.html#programs" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Programs" data-ar="البرامج">Programs</a>
+        <a href="index.html#contact" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+      </nav>
+    </div>
+    <div class="d-flex flex-column gap-3 mt-8">
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-glass icon-btn icon-btn-lg" onclick="toggleLanguage()" aria-label="Toggle language"><i class="bi bi-globe2"></i></button>
+        <button id="themeCycleBtnMobile" class="btn btn-glass icon-btn icon-btn-lg" type="button" aria-label="Switch theme"><i class="bi bi-award-fill"></i></button>
+        <button id="cartBtnMobile" class="btn btn-glass icon-btn icon-btn-lg position-relative" onclick="toggleCartModal()" aria-label="Open cart">
+          <i class="bi bi-bag-fill"></i>
+          <span id="cartCountBadgeMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none; font-size: 0.65rem;">0</span>
+        </button>
+      </div>
+      <a href="student-login.html" class="btn btn-glass w-100 py-3 rounded-lg text-center active" data-en="Student Login" data-ar="دخول الطالب">Student Login</a>
+      <a href="student-register.html" class="btn btn-luxury w-100 py-3 rounded-lg text-center" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
+    </div>
+  </div>
+
+  <!-- ════ MAIN CONTENT ════ -->
+  <div class="page-wrapper">
+    <main class="page-main">
+      <div class="login-card reveal-scale">
+        <div class="login-card-inner">
+
+          <!-- Card Header -->
+          <div class="card-header-block">
+            <h1 class="card-title" data-en="Student Portal" data-ar="بوابة الطالب">Student Portal</h1>
+            <p class="card-subtitle" data-en="Welcome back — sign in to continue your learning journey." data-ar="مرحباً بك — سجّل دخولك لمواصلة رحلتك الأكاديمية.">
+              Welcome back — sign in to continue your learning journey.
+            </p>
+          </div>
+
+          <!-- Login Form -->
+          <form id="studentLoginForm" novalidate>
+            <div class="d-flex flex-column gap-4">
+
+              <!-- Username / Student ID -->
+              <div class="input-group-luxe">
+                <label for="studentId" data-en="Email or Student ID" data-ar="البريد الإلكتروني أو رقم الطالب">Email or Student ID</label>
+                <div class="position-relative">
+                  <i class="bi bi-person-fill input-icon"></i>
+                  <input type="text" id="studentId" name="studentId" class="lux-input" placeholder="student@fullmark.jo or STD-12345" autocomplete="username" required>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="input-group-luxe">
+                <label for="studentPassword" data-en="Password" data-ar="كلمة المرور">Password</label>
+                <div class="position-relative pw-input-wrap">
+                  <i class="bi bi-lock-fill input-icon"></i>
+                  <input type="password" id="studentPassword" name="studentPassword" class="lux-input" placeholder="••••••••" autocomplete="current-password" required>
+                  <button type="button" class="pw-toggle-btn" id="pwToggleStudent" aria-label="Toggle password visibility">
+                    <i class="bi bi-eye" id="pwToggleIconStudent"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Remember & Forgot -->
+              <div class="form-meta">
+                <label>
+                  <input type="checkbox" id="rememberMe" name="rememberMe">
+                  <span data-en="Remember me" data-ar="تذكرني">Remember me</span>
+                </label>
+                <a href="#" data-en="Forgot password?" data-ar="نسيت كلمة المرور؟">Forgot password?</a>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" id="studentLoginBtn" class="btn btn-luxury w-100 py-3 rounded-lg d-flex align-items-center justify-content-center gap-2" style="font-size:1rem; font-weight:700; margin-top:0.5rem;">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span data-en="Access My Platform" data-ar="دخول المنصة">Access My Platform</span>
+              </button>
+
+              <!-- Divider -->
+              <div class="or-divider">
+                <span data-en="or" data-ar="أو">or</span>
+              </div>
+
+              <!-- Quick access chips -->
+              <div>
+                <p class="text-center mb-2" style="font-size:0.8rem; color:var(--text-muted);" data-en="Quick Access" data-ar="دخول سريع">Quick Access</p>
+                <div class="quick-access">
+                  <span class="quick-chip"><i class="bi bi-mortarboard-fill"></i> <span data-en="Tawjihi" data-ar="التوجيهي">Tawjihi</span></span>
+                  <span class="quick-chip"><i class="bi bi-person-hearts"></i> <span data-en="Children" data-ar="الأطفال">Children</span></span>
+                  <span class="quick-chip"><i class="bi bi-chat-dots-fill"></i> <span data-en="Speech" data-ar="النطق">Speech</span></span>
+                  <span class="quick-chip"><i class="bi bi-stars"></i> <span data-en="Rehab" data-ar="التأهيلي">Rehab</span></span>
+                </div>
+              </div>
+
+              <!-- Sign-up link -->
+              <div class="signup-link">
+                <span data-en="New student?" data-ar="طالب جديد؟">New student?</span>
+                <a href="student-register.html" data-en="Create an account" data-ar="سجّل الآن">Create an account</a>
+              </div>
+
+              <!-- Teacher portal link -->
+              <div class="signup-link" style="padding-top:0.5rem; border-top: 1px solid rgba(197,168,128,0.1); margin-top:0.25rem;">
+                <i class="bi bi-shield-lock-fill" style="color:var(--text-muted); font-size:0.8rem;"></i>
+                <a href="teacher-login.html" style="font-size:0.82rem; font-weight:500;" data-en="Teacher / Staff Portal →" data-ar="← بوابة المعلمين والموظفين">Teacher / Staff Portal →</a>
+              </div>
+            </div>
+          </form>
+
+        </div><!-- /inner -->
+      </div><!-- /card -->
+    </main>
+
+    <!-- ════ FOOTER ════ -->
+    <footer class="py-16" style="background: var(--bg-primary); border-top: 1px solid var(--separator-color);">
+      <div class="container px-4">
+        <div class="row g-8 mb-12">
+          <div class="col-lg-4 col-md-6">
+            <div class="d-flex align-items-center mb-4">
+              <img id="footer-logo" src="assets/img/logo_backup.png" alt="Logo" class="object-contain mr-3" style="width:190px; height:auto;">
+            </div>
+            <p class="opacity-75 text-sm mb-6" data-en="Empowering academic horizons under international standards. Full Mark Academy is committed to shaping the next generation of achievers." data-ar="تمكين الآفاق الأكاديمية تحت مظلة المعايير الدولية. أكاديمية العلامة الكاملة ملتزمة بصياغة جيل المتفوقين القادم.">
+              Empowering academic horizons under international standards. Full Mark Academy is committed to shaping the next generation of achievers.
+            </p>
+            <div class="d-flex space-x-3">
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Our Programs" data-ar="برامجنا">Our Programs</h4>
+            <ul class="list-unstyled space-y-2 text-sm opacity-75">
+              <li><a href="program-details.html?program=tawjihi" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Tawjihi Program" data-ar="برنامج التوجيهي">Tawjihi Program</a></li>
+              <li><a href="program-details.html?program=children" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Children Program" data-ar="برنامج الأطفال">Children Program</a></li>
+              <li><a href="program-details.html?program=speech" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Speech Therapy" data-ar="برنامج النطق">Speech Therapy</a></li>
+              <li><a href="program-details.html?program=rehab" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Rehabilitation" data-ar="البرنامج التأهيلي">Rehabilitation</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+            <ul class="list-unstyled space-y-2 text-sm opacity-75">
+              <li><a href="index.html#about" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="About Us" data-ar="من نحن">About Us</a></li>
+              <li><a href="index.html#strengths" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Why Us" data-ar="لماذا نحن؟">Why Us</a></li>
+              <li><a href="index.html#faq" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Help FAQ" data-ar="الأسئلة المساعدة">Help FAQ</a></li>
+              <li><a href="index.html#contact" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center text-md-start">
+            <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Academy Centre" data-ar="مركز الأكاديمية">Academy Centre</h4>
+            <img id="footer-approved-logo" src="assets/img/logo_backup.png" alt="Academy Logo" class="object-contain mb-3 mx-auto mx-md-0" style="width:180px; height:auto; display:block;">
+            <p class="text-xs opacity-75" data-en="Licence verification code: FMA-JO-2026" data-ar="رقم الترخيص المعتمد: FMA-JO-2026">Licence verification code: FMA-JO-2026</p>
+          </div>
+        </div>
+        <div class="pt-8 border-t d-flex flex-column flex-md-row justify-content-between align-items-center text-sm opacity-60" style="border-color: var(--separator-color) !important;">
+          <p class="mb-0" data-en="&copy; 2026 FULL MARK ACADEMY. All Rights Reserved." data-ar="&copy; 2026 أكاديمية العلامة الكاملة. جميع الحقوق محفوظة.">&copy; 2026 FULL MARK ACADEMY. All Rights Reserved.</p>
+          <p class="mb-0 mt-2 mt-md-0" data-en="Designed with Luxury Principles" data-ar="صمم بأرقى معايير واجهات المستخدم">Designed with Luxury Principles</p>
+        </div>
+      </div>
+    </footer>
+  </div><!-- /page-wrapper -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/landing.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/scroll-effects.js"></script>
+
+  <script>
+    function toggleLanguage() {
+      const html = document.documentElement;
+      const isRtl = html.dir === 'rtl';
+      html.dir = isRtl ? 'ltr' : 'rtl';
+      html.lang = isRtl ? 'en' : 'ar';
+      document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        el.textContent = isRtl ? el.dataset.en : el.dataset.ar;
+      });
+    }
+
+    // Password toggle
+    document.getElementById('pwToggleStudent').addEventListener('click', function() {
+      const inp = document.getElementById('studentPassword');
+      const icon = document.getElementById('pwToggleIconStudent');
+      if (inp.type === 'password') { inp.type = 'text'; icon.className = 'bi bi-eye-slash'; }
+      else { inp.type = 'password'; icon.className = 'bi bi-eye'; }
+    });
+
+    // Form submit
+    document.getElementById('studentLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('studentLoginBtn');
+      const icon = btn.querySelector('i');
+      const txt = btn.querySelector('span');
+      btn.classList.add('loading');
+      icon.className = 'bi bi-arrow-repeat';
+      const spin = document.createElement('style');
+      spin.textContent = '@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}';
+      if (!document.getElementById('spin-s')) { spin.id='spin-s'; document.head.appendChild(spin); }
+      icon.style.animation = 'spin 0.8s linear infinite';
+      const lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+      txt.textContent = lang === 'ar' ? 'جاري التحقق...' : 'Verifying...';
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        icon.style.animation = '';
+        icon.className = 'bi bi-check-circle-fill';
+        btn.style.background = 'linear-gradient(135deg, #4caf87, #2e7d55)';
+        txt.textContent = lang === 'ar' ? 'تم تسجيل الدخول' : 'Signed In!';
+        setTimeout(() => {
+          btn.style.background = '';
+          icon.className = 'bi bi-box-arrow-in-right';
+          txt.textContent = lang === 'ar' ? 'دخول المنصة' : 'Access My Platform';
+        }, 3000);
+      }, 1800);
+    });
+
+    // 3D tilt on desktop
+    const card = document.querySelector('.login-card-inner');
+    document.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 8;
+      const y = (e.clientY / window.innerHeight - 0.5) * 8;
+      card.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-4px)`;
+    });
+    document.addEventListener('mouseleave', () => { card.style.transform = ''; });
+
+    window.addEventListener('themechanged', () => {
+      const src = 'assets/img/logo_backup.png';
+      ['login-card-logo','footer-logo','footer-approved-logo'].forEach(id => {
+        const el = document.getElementById(id); if(el) el.src = src;
+      });
+    });
+  </script>
+
+</body>
+</html>

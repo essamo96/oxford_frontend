@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-gold" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="Teacher Portal | FULL MARK ACADEMY" data-ar="بوابة المعلمين | أكاديمية العلامة الكاملة">Teacher Portal | FULL MARK ACADEMY</title>
+  <meta name="description" content="Staff and teacher login portal for FULL MARK ACADEMY management system.">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { gold: { light: '#e8d0ad', DEFAULT: '#c5a880', dark: '#a3875f' } } } } }
+  </script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/themes/dark.css">
+  <link rel="stylesheet" href="css/themes/light.css">
+  <link rel="stylesheet" href="css/themes/gold.css">
+  <link rel="stylesheet" href="css/animations/transitions.css">
+  <link rel="stylesheet" href="css/animations/scroll-effects.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/hero-animation.css">
+  <link rel="stylesheet" href="css/rtl.css">
+
+  <script src="js/theme-manager.js"></script>
+
+  <style>
+    .page-wrapper { min-height: 100dvh; display: flex; flex-direction: column; padding-top: var(--navbar-height, 80px); }
+
+    /* Split layout: left panel + right card */
+    .teacher-main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 991px) { .teacher-main { grid-template-columns: 1fr; } }
+
+    /* Left decorative panel */
+    .teacher-panel-left {
+      background: var(--bg-secondary, #0d0a06);
+      border-right: 1px solid rgba(197,168,128,0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 991px) { .teacher-panel-left { display: none; } }
+
+    .panel-bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+    .panel-bg-orb-1 { width: 300px; height: 300px; background: var(--accent-glow); top: 10%; left: 20%; opacity: 0.5; animation: breathe 6s ease-in-out infinite; }
+    .panel-bg-orb-2 { width: 200px; height: 200px; background: var(--accent-glow); bottom: 15%; right: 10%; opacity: 0.3; animation: breathe 8s ease-in-out infinite reverse; }
+    @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+
+    .panel-content { position: relative; z-index: 1; text-align: center; }
+    .panel-icon-ring {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 2px solid rgba(197,168,128,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    .panel-icon-ring::before {
+      content: '';
+      position: absolute; inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(197,168,128,0.12);
+    }
+    .panel-icon-ring::after {
+      content: '';
+      position: absolute; inset: -16px;
+      border-radius: 50%;
+      border: 1px solid rgba(197,168,128,0.06);
+    }
+    .panel-icon-ring i { font-size: 3.2rem; color: var(--accent-color, #c5a880); filter: drop-shadow(0 0 20px var(--accent-glow)); }
+
+    .panel-title {
+      font-family: var(--font-en, 'Outfit', sans-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent-color, #c5a880);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    [dir="rtl"] .panel-title { font-family: var(--font-ar, 'Tajawal', sans-serif); }
+    .panel-desc { color: var(--text-secondary, #d1c7bd); font-size: 0.9rem; line-height: 1.7; max-width: 300px; }
+
+    /* Feature pills */
+    .panel-pills { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2.5rem; }
+    .panel-pill {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      background: rgba(197,168,128,0.06);
+      border: 1px solid rgba(197,168,128,0.12);
+      border-radius: var(--radius-md, 12px);
+      text-align: start;
+    }
+    .panel-pill i { color: var(--accent-color, #c5a880); font-size: 1rem; flex-shrink: 0; }
+    .panel-pill span { font-size: 0.85rem; color: var(--text-secondary, #d1c7bd); }
+
+    /* Right: login form */
+    .teacher-panel-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+      background: var(--bg-primary, #050402);
+      position: relative;
+    }
+
+    /* Background grid */
+    .teacher-panel-right::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle at 1px 1px, rgba(197,168,128,0.04) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+
+    .teacher-form-wrap { position: relative; z-index: 1; width: 100%; max-width: 440px; }
+
+    /* Top security badge */
+    .security-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(197,168,128,0.06);
+      border: 1px solid rgba(197,168,128,0.18);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      color: var(--accent-color, #c5a880);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .teacher-form-title {
+      font-family: var(--font-en, 'Outfit', sans-serif);
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      color: var(--text-primary, #fbfbf9);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    [dir="rtl"] .teacher-form-title { font-family: var(--font-ar, 'Tajawal', sans-serif); }
+    .teacher-form-subtitle { font-size: 0.9rem; color: var(--text-muted, #8c8276); margin-bottom: 2.5rem; line-height: 1.6; }
+
+    /* Inputs */
+    .input-row { display: flex; flex-direction: column; gap: 1.5rem; }
+    .lux-field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary, #d1c7bd);
+      margin-bottom: 0.5rem;
+    }
+    .lux-field .lux-input-wrap { position: relative; }
+    .lux-field .lux-input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      background: var(--bg-tertiary, rgba(10,8,4,0.5));
+      border: 1px solid rgba(197,168,128,0.16);
+      border-radius: var(--radius-md, 12px);
+      color: var(--text-primary, #fbfbf9);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+      outline: none;
+    }
+    [dir="rtl"] .lux-field .lux-input { padding: 1rem 3rem 1rem 1rem; }
+    .lux-field .lux-input:focus {
+      border-color: var(--accent-color, #c5a880);
+      box-shadow: 0 0 0 3px rgba(197,168,128,0.1);
+    }
+    .lux-field .lux-input::placeholder { color: var(--text-muted, #8c8276); font-size: 0.88rem; }
+    .lux-field .field-icon {
+      position: absolute;
+      left: 1rem; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted, #8c8276);
+      pointer-events: none;
+      transition: color 0.2s ease;
+      font-size: 1.05rem;
+    }
+    [dir="rtl"] .lux-field .field-icon { left: auto; right: 1rem; }
+    .lux-field .lux-input-wrap:focus-within .field-icon { color: var(--accent-color, #c5a880); }
+    .lux-field .pw-reveal-btn {
+      position: absolute;
+      right: 1rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none;
+      color: var(--text-muted, #8c8276);
+      cursor: pointer; padding: 0;
+      transition: color 0.2s ease;
+    }
+    [dir="rtl"] .lux-field .pw-reveal-btn { right: auto; left: 1rem; }
+    .lux-field .pw-reveal-btn:hover { color: var(--accent-color, #c5a880); }
+    .lux-field .pw-input .lux-input { padding-right: 3rem; }
+    [dir="rtl"] .lux-field .pw-input .lux-input { padding-right: 3rem; padding-left: 3rem; }
+
+    /* Support link */
+    .support-link {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted, #8c8276);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      padding-top: 0.5rem;
+    }
+    .support-link:hover { color: var(--accent-color, #c5a880); }
+
+    /* Student link */
+    .student-portal-link { text-align: center; font-size: 0.85rem; color: var(--text-muted, #8c8276); padding-top: 1rem; border-top: 1px solid rgba(197,168,128,0.1); margin-top: 1rem; }
+    .student-portal-link a { color: var(--accent-color, #c5a880); font-weight: 600; text-decoration: none; margin-inline-start: 0.3rem; }
+    .student-portal-link a:hover { text-decoration: underline; }
+
+    /* Loading */
+    .btn-luxury.loading { opacity: 0.75; pointer-events: none; }
+
+    @media (max-width: 576px) { .teacher-panel-right { padding: 2rem 1rem; } }
+  </style>
+</head>
+<body class="smooth-transition">
+
+  <!-- ════ HEADER ════ -->
+  <header id="header-nav" class="sticky-header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="d-flex align-items-center text-decoration-none">
+        <img id="navbar-logo" src="assets/img/logo_backup.png" alt="FULL MARK ACADEMY" class="h-24 object-contain py-1 me-3" style="image-rendering: -webkit-optimize-contrast;">
+      </a>
+      <nav id="primary-nav" class="primary-nav d-flex align-items-center">
+        <a href="index.html#hero" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="index.html#about" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="About" data-ar="عن الأكاديمية">About</a>
+        <a href="index.html#programs" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Programs" data-ar="البرامج">Programs</a>
+        <a href="index.html#actions" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Services" data-ar="خدماتنا">Services</a>
+        <a href="index.html#contact" class="desktop-nav-link nav-item-primary text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+        <a href="index.html#strengths" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="Strengths" data-ar="مميزاتنا">Strengths</a>
+        <a href="index.html#news" class="desktop-nav-link nav-item-extra text-decoration-none font-medium" style="color: var(--text-primary);" data-en="News" data-ar="الأخبار">News</a>
+        <div class="dropdown nav-more-wrap">
+          <button class="btn btn-glass desktop-nav-link nav-more-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <span data-en="More" data-ar="المزيد">More</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end glass-panel border-0 mt-2 shadow-lg">
+            <li><a class="dropdown-item" href="index.html#testimonials" data-en="Testimonials" data-ar="التقييمات">Testimonials</a></li>
+            <li><a class="dropdown-item" href="index.html#faq" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="header-actions d-flex align-items-center">
+        <button id="langToggleBtn" class="btn btn-glass icon-btn" onclick="toggleLanguage()" aria-label="Toggle language"><i class="bi bi-globe2"></i></button>
+        <button id="themeCycleBtn" class="btn btn-glass icon-btn" type="button" aria-label="Switch theme"><i class="bi bi-award-fill"></i></button>
+        <button id="cartBtn" class="btn btn-glass icon-btn position-relative" onclick="toggleCartModal()" aria-label="Open cart">
+          <i class="bi bi-bag-fill"></i>
+          <span id="cartCountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none; font-size: 0.65rem;">0</span>
+        </button>
+        <a href="student-login.html" class="btn btn-glass student-gate-link px-3 py-2 rounded-lg" data-en="Student Login" data-ar="دخول الطالب">Student Login</a>
+        <a href="student-register.html" class="btn btn-luxury px-4 py-2 rounded-lg" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
+      </div>
+      <button id="mobileMenuToggle" class="mobile-menu-toggle text-2xl p-2 rounded-lg" style="color: var(--text-primary);" aria-label="Open menu"><i class="bi bi-list"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileMenuBackdrop" class="mobile-menu-backdrop"></div>
+  <div id="mobileNavMenu" class="mobile-nav-menu d-flex flex-column justify-content-between">
+    <div>
+      <div class="d-flex align-items-center justify-content-between mb-8">
+        <span class="text-xl font-bold tracking-wider" style="color: var(--text-primary);" data-en="FULL MARK ACADEMY" data-ar="أكاديمية العلامة الكاملة">FULL MARK ACADEMY</span>
+        <button id="closeMobileMenu" class="text-2xl p-2" style="color: var(--text-primary);"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <nav class="d-flex flex-column space-y-4">
+        <a href="index.html#hero" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="index.html#programs" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Programs" data-ar="البرامج">Programs</a>
+        <a href="index.html#contact" class="text-lg text-decoration-none font-medium py-2" style="color: var(--text-primary);" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+      </nav>
+    </div>
+    <div class="d-flex flex-column gap-3 mt-8">
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-glass icon-btn icon-btn-lg" onclick="toggleLanguage()" aria-label="Toggle language"><i class="bi bi-globe2"></i></button>
+        <button id="themeCycleBtnMobile" class="btn btn-glass icon-btn icon-btn-lg" type="button" aria-label="Switch theme"><i class="bi bi-award-fill"></i></button>
+        <button id="cartBtnMobile" class="btn btn-glass icon-btn icon-btn-lg position-relative" onclick="toggleCartModal()" aria-label="Open cart">
+          <i class="bi bi-bag-fill"></i>
+          <span id="cartCountBadgeMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none; font-size: 0.65rem;">0</span>
+        </button>
+      </div>
+      <a href="student-login.html" class="btn btn-glass w-100 py-3 rounded-lg text-center" data-en="Student Login" data-ar="دخول الطالب">Student Login</a>
+      <a href="student-register.html" class="btn btn-luxury w-100 py-3 rounded-lg text-center" data-en="Apply Now" data-ar="سجل الآن">Apply Now</a>
+    </div>
+  </div>
+
+  <!-- ════ MAIN — SPLIT LAYOUT ════ -->
+  <div class="page-wrapper">
+    <main class="teacher-main">
+
+      <!-- LEFT — Decorative brand panel -->
+      <div class="teacher-panel-left">
+        <div class="panel-bg-orb panel-bg-orb-1" aria-hidden="true"></div>
+        <div class="panel-bg-orb panel-bg-orb-2" aria-hidden="true"></div>
+
+        <div class="panel-content">
+
+          <div class="panel-icon-ring">
+            <i class="bi bi-shield-lock-fill"></i>
+          </div>
+
+          <h2 class="panel-title" data-en="Staff Management Portal" data-ar="بوابة إدارة الكادر التعليمي">Staff Management Portal</h2>
+          <p class="panel-desc" data-en="Secure access to the academy's full teaching and administrative management system. Exclusive for authorized staff members." data-ar="وصول آمن إلى نظام الإدارة الأكاديمي الشامل. مخصص للكادر المعتمد فقط.">
+            Secure access to the academy's full teaching and administrative management system. Exclusive for authorized staff members.
+          </p>
+
+          <div class="panel-pills">
+            <div class="panel-pill">
+              <i class="bi bi-calendar-check-fill"></i>
+              <span data-en="Schedule & Attendance Management" data-ar="إدارة الجداول والحضور">Schedule &amp; Attendance Management</span>
+            </div>
+            <div class="panel-pill">
+              <i class="bi bi-graph-up-arrow"></i>
+              <span data-en="Student Progress Tracking" data-ar="متابعة تقدم الطلاب">Student Progress Tracking</span>
+            </div>
+            <div class="panel-pill">
+              <i class="bi bi-file-earmark-richtext-fill"></i>
+              <span data-en="Curriculum & Resources" data-ar="المناهج والمحتوى التعليمي">Curriculum &amp; Resources</span>
+            </div>
+            <div class="panel-pill">
+              <i class="bi bi-bell-fill"></i>
+              <span data-en="Communications & Notifications" data-ar="التواصل والإشعارات">Communications &amp; Notifications</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Login form -->
+      <div class="teacher-panel-right">
+        <div class="teacher-form-wrap reveal-scale">
+
+          <!-- Security badge -->
+          <div class="security-badge">
+            <i class="bi bi-shield-check-fill"></i>
+            <span data-en="Secure Staff Access" data-ar="وصول آمن للكادر">Secure Staff Access</span>
+          </div>
+
+          <h1 class="teacher-form-title" data-en="Teaching Staff Portal" data-ar="بوابة أعضاء هيئة التدريس">Teaching Staff Portal</h1>
+          <p class="teacher-form-subtitle" data-en="Welcome back — please sign in with your staff credentials to access the management dashboard." data-ar="مرحباً بك — يرجى تسجيل الدخول ببيانات الكادر للوصول إلى لوحة التحكم.">
+            Welcome back — please sign in with your staff credentials to access the management dashboard.
+          </p>
+
+          <!-- Teacher Login Form -->
+          <form id="teacherLoginForm" novalidate>
+            <div class="input-row mb-4">
+
+              <!-- Staff ID / Email -->
+              <div class="lux-field">
+                <label for="teacherId" data-en="Staff ID or Professional Email" data-ar="معرّف المعلم أو البريد المهني">Staff ID or Professional Email</label>
+                <div class="lux-input-wrap">
+                  <i class="bi bi-badge-fill field-icon"></i>
+                  <input type="text" id="teacherId" name="teacherId" class="lux-input" placeholder="T-12345 or teacher@fullmark.jo" autocomplete="username" required>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="lux-field">
+                <label for="teacherPassword" data-en="Password" data-ar="كلمة المرور">Password</label>
+                <div class="lux-input-wrap pw-input">
+                  <i class="bi bi-lock-fill field-icon"></i>
+                  <input type="password" id="teacherPassword" name="teacherPassword" class="lux-input" placeholder="••••••••" autocomplete="current-password" required>
+                  <button type="button" class="pw-reveal-btn" id="teacherPwToggle" aria-label="Toggle password">
+                    <i class="bi bi-eye" id="teacherPwIcon"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="teacherLoginBtn" class="btn btn-luxury w-100 py-3 rounded-lg d-flex align-items-center justify-content-center gap-2 mb-3" style="font-size:1rem; font-weight:700;">
+              <span data-en="Access Dashboard" data-ar="دخول لوحة التحكم">Access Dashboard</span>
+              <i class="bi bi-arrow-right-circle-fill" id="teacherLoginIcon"></i>
+            </button>
+
+            <!-- Support link -->
+            <a href="#" class="support-link">
+              <i class="bi bi-headset"></i>
+              <span data-en="Request credentials or contact technical support" data-ar="طلب بيانات الدخول أو التواصل مع الدعم الفني">Request credentials or contact technical support</span>
+            </a>
+
+            <!-- Student portal link -->
+            <div class="student-portal-link">
+              <span data-en="Looking for Student Portal?" data-ar="تبحث عن بوابة الطالب؟">Looking for Student Portal?</span>
+              <a href="student-login.html" data-en="Login here" data-ar="ادخل من هنا">Login here</a>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- ════ FOOTER ════ -->
+    <footer class="py-16" style="background: var(--bg-primary); border-top: 1px solid var(--separator-color);">
+      <div class="container px-4">
+        <div class="row g-8 mb-12">
+          <div class="col-lg-4 col-md-6">
+            <div class="d-flex align-items-center mb-4">
+              <img id="footer-logo" src="assets/img/logo_backup.png" alt="Logo" class="object-contain mr-3" style="width:190px; height:auto;">
+            </div>
+            <p class="opacity-75 text-sm mb-6" data-en="Empowering academic horizons under international standards. Full Mark Academy is committed to shaping the next generation of achievers." data-ar="تمكين الآفاق الأكاديمية تحت مظلة المعايير الدولية. أكاديمية العلامة الكاملة ملتزمة بصياغة جيل المتفوقين القادم.">
+              Empowering academic horizons under international standards. Full Mark Academy is committed to shaping the next generation of achievers.
+            </p>
+            <div class="d-flex space-x-3">
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="w-10 h-10 bg-gold bg-opacity-10 text-gold rounded-full d-flex align-items-center justify-content-center text-lg"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Our Programs" data-ar="برامجنا">Our Programs</h4>
+            <ul class="list-unstyled space-y-2 text-sm opacity-75">
+              <li><a href="program-details.html?program=tawjihi" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Tawjihi Program" data-ar="برنامج التوجيهي">Tawjihi Program</a></li>
+              <li><a href="program-details.html?program=children" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Children Program" data-ar="برنامج الأطفال">Children Program</a></li>
+              <li><a href="program-details.html?program=speech" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Speech Therapy" data-ar="برنامج النطق">Speech Therapy</a></li>
+              <li><a href="program-details.html?program=rehab" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Rehabilitation" data-ar="البرنامج التأهيلي">Rehabilitation</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+            <ul class="list-unstyled space-y-2 text-sm opacity-75">
+              <li><a href="index.html#about" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="About Us" data-ar="من نحن">About Us</a></li>
+              <li><a href="index.html#strengths" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Why Us" data-ar="لماذا نحن؟">Why Us</a></li>
+              <li><a href="index.html#faq" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Help FAQ" data-ar="الأسئلة المساعدة">Help FAQ</a></li>
+              <li><a href="index.html#contact" class="text-decoration-none hover:text-gold" style="color: var(--text-primary);" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center text-md-start">
+            <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Academy Centre" data-ar="مركز الأكاديمية">Academy Centre</h4>
+            <img id="footer-approved-logo" src="assets/img/logo_backup.png" alt="Academy Logo" class="object-contain mb-3 mx-auto mx-md-0" style="width:180px; height:auto; display:block;">
+            <p class="text-xs opacity-75" data-en="Licence verification code: FMA-JO-2026" data-ar="رقم الترخيص المعتمد: FMA-JO-2026">Licence verification code: FMA-JO-2026</p>
+          </div>
+        </div>
+        <div class="pt-8 border-t d-flex flex-column flex-md-row justify-content-between align-items-center text-sm opacity-60" style="border-color: var(--separator-color) !important;">
+          <p class="mb-0" data-en="&copy; 2026 FULL MARK ACADEMY. All Rights Reserved." data-ar="&copy; 2026 أكاديمية العلامة الكاملة. جميع الحقوق محفوظة.">&copy; 2026 FULL MARK ACADEMY. All Rights Reserved.</p>
+          <p class="mb-0 mt-2 mt-md-0" data-en="Designed with Luxury Principles" data-ar="صمم بأرقى معايير واجهات المستخدم">Designed with Luxury Principles</p>
+        </div>
+      </div>
+    </footer>
+  </div><!-- /page-wrapper -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/landing.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/scroll-effects.js"></script>
+
+  <script>
+    function toggleLanguage() {
+      const html = document.documentElement;
+      const isRtl = html.dir === 'rtl';
+      html.dir = isRtl ? 'ltr' : 'rtl';
+      html.lang = isRtl ? 'en' : 'ar';
+      document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        el.textContent = isRtl ? el.dataset.en : el.dataset.ar;
+      });
+    }
+
+    // Password toggle
+    document.getElementById('teacherPwToggle').addEventListener('click', function() {
+      const inp = document.getElementById('teacherPassword');
+      const icon = document.getElementById('teacherPwIcon');
+      if (inp.type === 'password') { inp.type = 'text'; icon.className = 'bi bi-eye-slash'; }
+      else { inp.type = 'password'; icon.className = 'bi bi-eye'; }
+    });
+
+    // Form submit
+    document.getElementById('teacherLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('teacherLoginBtn');
+      const icon = document.getElementById('teacherLoginIcon');
+      const txt = btn.querySelector('span');
+      btn.classList.add('loading');
+      icon.className = 'bi bi-arrow-repeat';
+      if (!document.getElementById('spin-s')) {
+        const s = document.createElement('style');
+        s.id = 'spin-s';
+        s.textContent = '@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}';
+        document.head.appendChild(s);
+      }
+      icon.style.animation = 'spin 0.8s linear infinite';
+      const lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+      txt.textContent = lang === 'ar' ? 'جاري التحقق...' : 'Verifying...';
+
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        icon.style.animation = '';
+        icon.className = 'bi bi-check-circle-fill';
+        btn.style.background = 'linear-gradient(135deg, #4caf87, #2e7d55)';
+        txt.textContent = lang === 'ar' ? 'تم تسجيل الدخول بنجاح' : 'Access Granted!';
+        setTimeout(() => {
+          btn.style.background = '';
+          icon.className = 'bi bi-arrow-right-circle-fill';
+          txt.textContent = lang === 'ar' ? 'دخول لوحة التحكم' : 'Access Dashboard';
+        }, 3000);
+      }, 1800);
+    });
+
+    // Logo sync
+    window.addEventListener('themechanged', () => {
+      const src = 'assets/img/logo_backup.png';
+      ['panel-logo','footer-logo','footer-approved-logo'].forEach(id => {
+        const el = document.getElementById(id); if(el) el.src = src;
+      });
+    });
+  </script>
+
+</body>
+</html>
