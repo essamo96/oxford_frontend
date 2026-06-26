@@ -23,19 +23,6 @@
   // Update brand logos and text next to them based on active theme
   function updateBrandLogos(themeName) {
     const isLight = themeName === 'theme-light';
-    const logoSrc = 'assets/img/logo_backup.png';
-
-    const navbarLogo = document.getElementById('navbar-logo');
-    if (navbarLogo) navbarLogo.src = logoSrc;
-
-    const footerLogo = document.getElementById('footer-logo');
-    if (footerLogo) footerLogo.src = logoSrc;
-
-    const approvedLogo = document.getElementById('footer-approved-logo');
-    if (approvedLogo) approvedLogo.src = logoSrc;
-
-    const splashLogo = document.getElementById('hero-splash-logo');
-    if (splashLogo) splashLogo.src = logoSrc;
 
     // Header logo text brand swap (OXFORD vs FULL MARK)
     const navbarText = document.querySelector('.logo-text');
@@ -92,6 +79,11 @@
   document.addEventListener('DOMContentLoaded', () => {
     updateThemeUI(initialTheme);
     updateBrandLogos(initialTheme);
+
+    // Listen to language changes to update logos
+    window.addEventListener('languageChanged', () => {
+      updateBrandLogos(getActiveTheme());
+    });
 
     document.querySelectorAll('#themeCycleBtn, #themeCycleBtnMobile').forEach(btn => {
       btn.addEventListener('click', (e) => {

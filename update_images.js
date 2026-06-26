@@ -22,7 +22,7 @@ dirsToSearch.forEach(dir => {
     const searchRegex = /(?:\.\.\/assets\/img\/)(avatar-default\.png|logo_backup\.png|logo\.png)/g;
     
     if (searchRegex.test(html)) {
-      html = html.replace(searchRegex, '../assets/favicon-removebg-preview.png');
+      html = html.replace(searchRegex, '../assets/img/logo_backup.png');
       fs.writeFileSync(filePath, html, 'utf8');
       replacedCount++;
     }
@@ -35,7 +35,7 @@ if (fs.existsSync(indexHtmlPath)) {
   let indexHtml = fs.readFileSync(indexHtmlPath, 'utf8');
   const searchRegex = /(?:assets\/img\/)(avatar-default\.png|logo_backup\.png|logo\.png)/g;
   if (searchRegex.test(indexHtml)) {
-    indexHtml = indexHtml.replace(searchRegex, 'assets/favicon-removebg-preview.png');
+    indexHtml = indexHtml.replace(searchRegex, 'assets/img/logo_backup.png');
     fs.writeFileSync(indexHtmlPath, indexHtml, 'utf8');
     replacedCount++;
   }

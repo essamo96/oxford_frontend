@@ -62,25 +62,6 @@
   if (mqMobile.addEventListener) mqMobile.addEventListener('change', pickResponsiveSources);
   else if (mqMobile.addListener) mqMobile.addListener(pickResponsiveSources);
 
-  // Pick the splash logo that contrasts best with the active theme.
-  // Gold + Dark themes have dark backgrounds → use the white footer-logo.
-  // Light theme has a bright background → use the standard colored logo.
-  function pickSplashLogo() {
-    const splashLogo = document.getElementById('hero-splash-logo');
-    if (!splashLogo) return;
-    splashLogo.src = 'assets/img/logo_backup.png';
-  }
-  pickSplashLogo();
-  window.addEventListener('themechanged', pickSplashLogo);
-
-  // ---------- Navbar logo: always use logo.png, CSS filter handles white variant ---------
-  function pickNavbarLogo() {
-    const navLogo = document.getElementById('navbar-logo');
-    if (!navLogo) return;
-    navLogo.src = 'assets/img/logo_backup.png';
-  }
-  pickNavbarLogo();
-  window.addEventListener('themechanged', pickNavbarLogo);
 
   html.classList.add('hero-loading');
 
