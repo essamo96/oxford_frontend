@@ -1,6 +1,6 @@
 /* ============================================================
    Hero looping intro:
-   1) video1 (last_vidio.mp4) → crossfade → video2 (ezgif-...mp4)
+   1) video1 (slider1.mp4) → crossfade → video2 (ezgif-...mp4)
    2) ~2 frames before video2 ends, the 4K still image fades in
    3) Hero content reveals with staggered delays
    4) After 20s of content visible, content fades out and the
@@ -12,23 +12,23 @@
 (() => {
   'use strict';
 
-  const CROSSFADE_LEAD_SEC  = 0.9;         // start video2 this many s before video1 ends
-  const STILL_LEAD_FRAMES   = 2;           // show still N frames before video2 ends
-  const ASSUMED_FPS         = 30;          // for the "frames" calculation
-  const CONTENT_VISIBLE_MS  = 20000;       // 20 s before looping
-  const SAFETY_TIMEOUT_MS   = 25000;
-  const SPLASH_MIN_MS       = 4000;        // splash visible for at least 4 s
-  const REDUCED_MOTION      = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const SPLASH_START        = performance.now();
+  const CROSSFADE_LEAD_SEC = 0.9;         // start video2 this many s before video1 ends
+  const STILL_LEAD_FRAMES = 2;           // show still N frames before video2 ends
+  const ASSUMED_FPS = 30;          // for the "frames" calculation
+  const CONTENT_VISIBLE_MS = 20000;       // 20 s before looping
+  const SAFETY_TIMEOUT_MS = 25000;
+  const SPLASH_MIN_MS = 4000;        // splash visible for at least 4 s
+  const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SPLASH_START = performance.now();
 
-  const html      = document.documentElement;
+  const html = document.documentElement;
   const preloader = document.getElementById('hero-preloader');
-  const barFill   = document.getElementById('hero-preloader-fill');
-  const pctEl     = document.getElementById('hero-preloader-pct');
-  const v1        = document.getElementById('hero-bg-video-1');
-  const v2        = document.getElementById('hero-bg-video-2');
-  const still     = document.getElementById('hero-bg-still');
-  const overlay   = document.getElementById('hero-content-overlay');
+  const barFill = document.getElementById('hero-preloader-fill');
+  const pctEl = document.getElementById('hero-preloader-pct');
+  const v1 = document.getElementById('hero-bg-video-1');
+  const v2 = document.getElementById('hero-bg-video-2');
+  const still = document.getElementById('hero-bg-still');
+  const overlay = document.getElementById('hero-content-overlay');
 
   if (!v1 || !v2 || !overlay) return;
 
@@ -39,12 +39,12 @@
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const map = {
       'hero-bg-video-1': isMobile
-        ? 'assets/last_vidio_mobile.mp4'
-        : 'assets/last_vidio.mp4',
+        ? 'assets/slider1.mp4'
+        : 'assets/slider1.mp4',
       'hero-bg-video-2': isMobile
-        ? 'assets/ezgif-4717916b679dc07a_mobile.mp4'
-        : 'assets/ezgif-4717916b679dc07a.mp4',
-      'about-video':    isMobile
+        ? 'assets/slider2_mobile.mp4'
+        : 'assets/slider2.mp4',
+      'about-video': isMobile
         ? 'assets/aboutUs_mobile.mp4'
         : 'assets/aboutUs.mp4',
     };
@@ -52,7 +52,7 @@
       const el = document.getElementById(id);
       if (el && el.getAttribute('src') !== src) {
         el.setAttribute('src', src);
-        try { el.load(); } catch (_) {}
+        try { el.load(); } catch (_) { }
       }
     });
   }
@@ -70,7 +70,7 @@
     return new Promise((resolve) => {
       if (v.readyState >= 3) return resolve();
       const done = () => resolve();
-      v.addEventListener('canplay',    done, { once: true });
+      v.addEventListener('canplay', done, { once: true });
       v.addEventListener('loadeddata', done, { once: true });
       setTimeout(done, SAFETY_TIMEOUT_MS);
     });
@@ -78,7 +78,7 @@
   function whenImageReady(img) {
     return new Promise((resolve) => {
       if (img.complete && img.naturalWidth) return resolve();
-      img.addEventListener('load',  resolve, { once: true });
+      img.addEventListener('load', resolve, { once: true });
       img.addEventListener('error', resolve, { once: true });
       setTimeout(resolve, SAFETY_TIMEOUT_MS);
     });
@@ -94,7 +94,7 @@
     const setPct = (p) => {
       const pct = Math.round(p * 100);
       if (barFill) barFill.style.width = pct + '%';
-      if (pctEl)   pctEl.textContent  = pct + '%';
+      if (pctEl) pctEl.textContent = pct + '%';
     };
     tasks.forEach((p) => p.then(() => setPct(++done / tasks.length)));
     return Promise.all(tasks);
@@ -109,7 +109,7 @@
     try {
       v1.pause(); v1.currentTime = 0;
       v2.pause(); v2.currentTime = 0;
-    } catch (_) {}
+    } catch (_) { }
   }
 
   function playCycle() {
@@ -121,9 +121,9 @@
       const handoffToV2 = () => {
         if (v1HandedOff) return;
         v1HandedOff = true;
-        try { v2.currentTime = 0; } catch (_) {}
+        try { v2.currentTime = 0; } catch (_) { }
         const p = v2.play();
-        if (p && p.catch) p.catch(() => {});
+        if (p && p.catch) p.catch(() => { });
         v2.classList.add('is-active');
         v1.classList.remove('is-active');
         scheduleStillReveal();   // arm the early still fade
@@ -170,7 +170,7 @@
 
       // Start video1 (autoplay attribute may already have started it).
       const p1 = v1.play();
-      if (p1 && p1.catch) p1.catch(() => {});
+      if (p1 && p1.catch) p1.catch(() => { });
     });
   }
 
@@ -196,17 +196,17 @@
     const aboutVid = document.getElementById('about-video');
     if (!aboutVid) return;
     aboutVid.muted = true;
-    aboutVid.loop  = true;
+    aboutVid.loop = true;
 
     if (!('IntersectionObserver' in window)) {
-      const p = aboutVid.play(); if (p && p.catch) p.catch(() => {});
+      const p = aboutVid.play(); if (p && p.catch) p.catch(() => { });
       return;
     }
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
           const p = aboutVid.play();
-          if (p && p.catch) p.catch(() => {});
+          if (p && p.catch) p.catch(() => { });
         } else {
           aboutVid.pause();
         }

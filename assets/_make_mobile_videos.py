@@ -14,8 +14,8 @@ FF = imageio_ffmpeg.get_ffmpeg_exe()
 ASSETS = Path(__file__).parent
 
 JOBS = [
-    ("last_vidio.mp4",                 "last_vidio_mobile.mp4"),
-    ("ezgif-4717916b679dc07a.mp4",     "ezgif-4717916b679dc07a_mobile.mp4"),
+    ("slider1.mp4",                 "slider1.mp4"),
+    ("slider2.mp4",     "slider2_mobile.mp4"),
     ("aboutUs.mp4",                    "aboutUs_mobile.mp4"),
 ]
 
