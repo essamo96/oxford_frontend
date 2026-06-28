@@ -550,10 +550,7 @@ footer.io-reveal {
   white-space: nowrap;
 }
 
-/* Logo a touch smaller so nav has room */
-#navbar-logo {
-  height: 200px;
-}
+/* Logo size is handled globally in index.html */
 
 /* Container — consistent breathing room */
 .sticky-header>.container {
@@ -588,9 +585,7 @@ footer.io-reveal {
     padding: .45rem .75rem !important;
   }
 
-  #navbar-logo {
-    height: 200px;
-  }
+
 
   #header-nav span.text-xl {
     font-size: 1.05rem;
@@ -1577,15 +1572,7 @@ html.theme-light #header-nav.scrolled .mobile-menu-toggle i.bi-list {
   transform: none;
 }
 
-/* ============================================================
-   ARABIC / RTL SUPPORT — comprehensive direction-aware overrides
-   Tailwind utility classes use physical (left/right) properties that
-   do NOT auto-flip when dir="rtl". This block flips the ones used
-   on this page so spacing stays correct in Arabic on every screen.
-   ============================================================ */
 
-/* Sections must clip horizontal overflow in BOTH directions so slide
-   animations + absolute children never push the layout */
 section[id],
 footer,
 .hero-section {
@@ -1599,31 +1586,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ----- Bootstrap row reverse direction for RTL gutters ----- */
-/* ----- Tailwind margin utilities flipped (mr/ml) ----- */
-/* Tailwind ms-/me- already RTL-aware in v3, just safety */
 
-/* ----- Tailwind space-x reverse — Tailwind's own .space-x-reverse
-   needs to be applied. Force it for any .space-x-* in RTL ----- */
-/* ----- Tailwind positional utilities used on this page ----- */
-/* center stays */
-
-/* News date badge — top corner flip */
-/* About floating widget — already handled, reinforce */
-/* Testimonial avatar — already handled, reinforce */
-/* Bootstrap me-*/
-ms-* on icons (covers any inline usage) */
-/* Reveal-* legacy classes — flip horizontal direction in RTL */
-/* Tailwind transform translateX classes — flip negatives */
-/* Container padding — generous on RTL to compensate for Arabic letter shapes */
-/* Hero floating shapes — flip absolute positions */
-/* RTL: Bootstrap arrow icons (bi-arrow-right etc.) flip via existing
-   rtl:rotate-180 utility on news/footer; nothing needed here */
-
-/* Floating input labels in RTL — already handled in landing.css but
-   make sure the focus-up animation tracks correctly */
-/* ----- Generic safety: any absolute element with negative offset ----- */
-/* ---------- Accessibility: respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
 
   .hero-content-overlay .hero-stagger,

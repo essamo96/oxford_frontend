@@ -62,10 +62,7 @@
   font-size: .7rem !important;
 }
 
-/* Logo image a touch smaller so the wider Arabic text fits naturally */
-[dir="rtl"] #navbar-logo {
-  height: 200px !important;
-}
+
 
 /* Wider container padding for navbar in Arabic to give breathing room */
 [dir="rtl"] .sticky-header>.container {

@@ -41,6 +41,18 @@
         footerText.firstChild.textContent = brandWord;
       }
     }
+
+    // Update logo images based on theme
+    let logoSrc = 'assets/logo_v2_gold.png';
+    if (themeName === 'theme-dark' || themeName === 'theme-light') {
+      logoSrc = 'assets/logo_v2_blue.png';
+    }
+
+    const logoIds = ['navbar-logo', 'hero-splash-logo', 'footer-logo', 'footer-approved-logo'];
+    logoIds.forEach(id => {
+      const img = document.getElementById(id);
+      if (img) img.src = logoSrc;
+    });
   }
 
   // Get active theme

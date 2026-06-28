@@ -6,9 +6,9 @@
   <title>FULL MARKS ACADEMY | Premium Landing Page</title>
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" href="assets/img/logo_backup.png">
-  <link rel="shortcut icon" href="assets/img/logo_backup.png">
-  <link rel="apple-touch-icon" href="assets/img/logo_backup.png">
+  <link rel="icon" type="image/png" href="assets/logo_v2_gold.png">
+  <link rel="shortcut icon" href="assets/logo_v2_gold.png">
+  <link rel="apple-touch-icon" href="assets/logo_v2_gold.png">
 
   <!-- Modern academic-grade typography (English + Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +55,26 @@
 
   <!-- Theme loading script (prevents theme flash) -->
   <script src="js/theme-manager.js"></script>
+
+  <!-- Global Logo Size Override (For both RTL and LTR) -->
+  <style>
+    #navbar-logo,
+    #footer-logo,
+    #footer-approved-logo,
+    #hero-splash-logo,
+    .hero-splash__logo {
+      height: 100px !important;
+      max-height: 100px !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+    
+    /* Ensure hero logo wrapper can accommodate the 100px logo without squishing */
+    .hero-splash__logo-wrap {
+      width: auto !important;
+      height: auto !important;
+    }
+  </style>
 </head>
 <body class="smooth-transition">
 
@@ -63,7 +83,7 @@
     <div class="hero-splash__bg"></div>
     <div class="hero-splash__logo-wrap">
       <span class="hero-splash__orbit"></span>
-      <img id="hero-splash-logo" class="hero-splash__logo" src="assets/img/logo_backup.png" alt="FULL MARKS ACADEMY">
+      <img id="hero-splash-logo" class="hero-splash__logo object-contain" style="object-fit: contain;" src="assets/logo_v2_gold.png" alt="FULL MARKS ACADEMY">
     </div>
   </div>
 
@@ -72,7 +92,7 @@
     <div class="container d-flex align-items-center justify-content-between">
       <!-- Logo -->
       <a href="#" class="d-flex align-items-center text-decoration-none">
-        <img id="navbar-logo" src="assets/img/logo_backup.png" alt="Oxford Logo" class="h-24 object-contain py-1 me-3" style="image-rendering: -webkit-optimize-contrast;">
+        <img id="navbar-logo" src="assets/logo_v2_gold.png" alt="Full Mark Logo" class="object-contain py-1 me-3" style="image-rendering: -webkit-optimize-contrast;">
       </a>
 
       <!-- Primary nav (desktop full, tablet shows fewer + a 'More' dropdown) -->
@@ -983,7 +1003,7 @@
         <!-- Col 1 -->
         <div class="col-lg-4 col-md-6">
           <div class="d-flex align-items-center mb-4">
-            <img id="footer-logo" src="assets/img/logo_backup.png" alt="Logo" class="h-12 object-contain mr-3" style="width: 190px !important;">
+            <img id="footer-logo" src="assets/logo_v2_gold.png" alt="Logo" class="object-contain mr-3">
             <!-- <span id="footer-logo-text" class="text-xl font-bold tracking-wider" style="color: var(--text-primary);">
               OXFORD <span class="font-normal text-sm block opacity-75" data-en="ACADEMY" data-ar="الأكاديمية">ACADEMY</span>
             </span> -->
@@ -1026,7 +1046,7 @@
         <!-- Col 4 -->
         <div class="col-lg-3 col-md-6 text-center text-md-start">
           <h4 class="font-bold text-lg mb-4" style="color: var(--text-primary);" data-en="Academy Centre" data-ar="مركز الأكاديمية">Academy Centre</h4>
-          <img id="footer-approved-logo" src="assets/img/logo_backup.png" style="width: 190px !important;" alt="Academy Logo" class="h-16 object-contain mb-3 mx-auto mx-md-0">
+          <img id="footer-approved-logo" src="assets/logo_v2_gold.png" alt="Academy Logo" class="object-contain mb-3 mx-auto mx-md-0">
           <p class="text-xs opacity-75" data-en="Licence verification code: FMA-JO-2026" data-ar="رقم الترخيص المعتمد: FMA-JO-2026">Licence verification code: FMA-JO-2026</p>
         </div>
       </div>
